@@ -11,6 +11,7 @@ set.seed(25)
 root <- normalizePath(Sys.getenv("PROJECT_ROOT", unset = getwd()), mustWork = TRUE)
 out <- normalizePath(Sys.getenv("PUBLICATION_OUTPUT_DIR"), mustWork = TRUE)
 source(file.path(root, "R/figures/style_helpers.R"))
+if (figure_style_c) source(file.path(root, "R/figures/style_C_helpers.R"))
 input_dir <- file.path(root, "results/tables")
 
 spec <- list(
@@ -119,6 +120,71 @@ render_one <- function(family) {
   union_n <- sum(membership$pattern != zero_pattern)
   all_set_n <- intersections[pattern == paste(rep("1", length(flag_cols)), collapse = ""), n_genes]
   if (!length(all_set_n)) all_set_n <- 0L
+  if (figure_style_c) {
+    intersections[, is_core := pattern == paste(rep("1", length(flag_cols)), collapse = "")]
+    p_sets_c <- ggplot(set_plot_data, aes(y = set_name, x = n_genes)) +
+      geom_col(width = 0.70, fill = STYLE_C_COLOURS$panel, colour = STYLE_C_COLOURS$blue, linewidth = 0.35) +
+      geom_text(aes(label = n_genes), hjust = -0.14, size = 3.0, colour = STYLE_C_COLOURS$ink) +
+      scale_x_continuous(expand = expansion(mult = c(0, 0.18))) +
+      labs(x = "Set size", y = NULL) +
+      theme_style_C(9.3) +
+      theme(panel.grid = element_blank(), axis.text.y = element_text(size = 8.8),
+            axis.text.x = element_text(size = 8), plot.margin = margin(4, 8, 4, 4))
+    p_intersections_c <- ggplot(
+      intersections,
+      aes(x = factor(intersection_label, levels = intersections$intersection_label), y = n_genes, fill = is_core)
+    ) +
+      geom_col(width = 0.74, colour = STYLE_C_COLOURS$white, linewidth = 0.20) +
+      geom_text(aes(label = n_genes), vjust = -0.20, size = 2.65, colour = STYLE_C_COLOURS$ink) +
+      scale_fill_manual(values = c(`FALSE` = STYLE_C_COLOURS$blue, `TRUE` = STYLE_C_COLOURS$gold), guide = "none") +
+      scale_y_continuous(trans = scales::pseudo_log_trans(sigma = 1), labels = scales::comma,
+                         expand = expansion(mult = c(0, 0.14))) +
+      labs(x = NULL, y = "Intersection size (pseudo-log scale)") +
+      theme_style_C(9.1) +
+      theme(panel.grid.major.y = element_line(colour = STYLE_C_COLOURS$grid, linewidth = 0.30),
+            axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+            axis.text.y = element_text(size = 8), axis.title.y = element_text(size = 8.8),
+            plot.margin = margin(4, 8, 0, 4))
+    p_matrix_c <- ggplot(matrix_long, aes(intersection_label, set_name)) +
+      geom_point(aes(alpha = included), size = 2.35, colour = STYLE_C_COLOURS$ink) +
+      geom_segment(
+        data = matrix_long[included == 1L, .(ymin = min(as.integer(set_name)), ymax = max(as.integer(set_name))), by = intersection_label],
+        aes(x = intersection_label, xend = intersection_label, y = ymin, yend = ymax),
+        inherit.aes = FALSE, colour = STYLE_C_COLOURS$ink, linewidth = 0.60
+      ) +
+      scale_alpha_continuous(limits = c(0, 1), range = c(0.12, 1), guide = "none") +
+      labs(x = "Set intersection", y = NULL) +
+      theme_style_C(9.1) +
+      theme(panel.grid = element_blank(),
+            panel.grid.major.y = element_line(colour = STYLE_C_COLOURS$grid, linewidth = 0.30),
+            axis.text.x = element_text(size = 6.6, angle = 90, hjust = 1, vjust = 0.5),
+            axis.text.y = element_text(size = 8.8), axis.title.x = element_text(size = 8.8),
+            plot.margin = margin(0, 8, 4, 4))
+    plot_c <- p_sets_c + (p_intersections_c / p_matrix_c + plot_layout(heights = c(1.20, 1))) +
+      plot_layout(widths = c(1.05, 4.15)) +
+      plot_annotation(
+        title = if (family == "up_tissues") {
+          "GO:0006974 membership above the positive NES threshold"
+        } else {
+          "GO:0006974 membership below the negative NES threshold"
+        },
+        subtitle = paste0(
+          "Ensembl dataset-union repertoire | union = ", union_n,
+          " | all-set intersection = ", all_set_n,
+          " | gold marks the all-set core"
+        ),
+        caption = "Exact membership counts are unchanged; the pseudo-log axis keeps the dominant core and minority intersections visible together."
+      ) &
+      theme(
+        plot.title = element_text(face = "bold", size = 13.5, hjust = 0.5, colour = STYLE_C_COLOURS$ink),
+        plot.subtitle = element_text(size = 8.8, hjust = 0.5, colour = STYLE_C_COLOURS$muted),
+        plot.caption = element_text(size = 7.2, hjust = 0.5, colour = STYLE_C_COLOURS$muted),
+        plot.margin = margin(8, 12, 8, 12)
+      )
+    stem_c <- sub("[.]png$", "", spec[[family]]$output)
+    save_style_C(plot_c, out, stem_c, 13.5, 8.5)
+    return(invisible(NULL))
+  }
   subtitle <- paste0(
     "n = 893 GO:0006974 Ensembl IDs | dataset presence: any included sample with source value - 1 > 0",
     " | all-set intersection = ", all_set_n, " | union = ", union_n

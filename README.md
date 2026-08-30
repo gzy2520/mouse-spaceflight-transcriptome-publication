@@ -50,6 +50,32 @@ Rscript workflow/run_style_A.R results_style_A_rebuilt
 
 Style A keeps the same plotting inputs, filters, ordering, membership counts and numeric matrices while applying a consistent publication palette, typography, spacing and high-resolution export. It writes the same 44-file set to the chosen output directory, never overwrites `results/`, and ends with `STYLE_A_CONTRACT_PASS`.
 
+## Narrative figure variant (Style C)
+
+The C-story variant is an independent, higher-level manuscript layout. It is
+rendered with:
+
+```bash
+Rscript workflow/run_style_C.R results_style_C_rebuilt
+```
+
+It keeps the frozen analysis inputs and publication tables unchanged, but uses
+functional-block facets for Fig. 1, a single lower-triangle display for Fig. 2,
+UpSet geometry for the four- and five-set membership panels, dot matrices for
+sparse meta-log2FC displays, and pathway-faceted small multiples for Fig. S5.
+The output contains 16 PNG figures, matching PDF figures, and the 27 copied
+publication tables. The complete figure mapping and display-only changes are
+recorded in `provenance/style_C_figure_manifest.csv`.
+
+Validate an existing C-story directory with:
+
+```bash
+Rscript tests/validate_style_C_contract.R results_style_C_rebuilt
+```
+
+`results/` remains the approved reference set; Style C is a candidate visual
+variant until the manuscript team selects it.
+
 ## Figure 1 display convention
 
 The checked-in `Main/Fig_1.png` follows the teacher-requested heatmap presentation: the frozen 26 × 15 matrix is unchanged, in-cell NES numbers and the decorative top bar are omitted, and a fine continuous blue–white–red scale carries the value detail. Exact NES values remain in the publication tables. Figure 2 is the explicit exception and keeps its Spearman numbers.

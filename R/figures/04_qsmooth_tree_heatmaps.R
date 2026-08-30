@@ -11,6 +11,7 @@ set.seed(25)
 root <- normalizePath(Sys.getenv("PROJECT_ROOT", unset = getwd()), mustWork = TRUE)
 out <- normalizePath(Sys.getenv("PUBLICATION_OUTPUT_DIR"), mustWork = TRUE)
 source(file.path(root, "R/figures/style_helpers.R"))
+if (figure_style_c) source(file.path(root, "R/figures/style_C_helpers.R"))
 input_dir <- file.path(root, "data/publication_input/qsmooth")
 assert <- function(x, message) if (!isTRUE(x)) stop(message, call. = FALSE)
 
@@ -121,7 +122,9 @@ make_tree_plot <- function(cluster) {
 }
 
 make_label_plot <- function(ordered_tissues) {
-  label_values <- if (figure_style_a) {
+  label_values <- if (figure_style_c) {
+    display_tissue_name(ordered_tissues)
+  } else if (figure_style_a) {
     display_tissue_name(ordered_tissues)
   } else {
     paste0(display_tissue_name(ordered_tissues), "\n", unname(tissue_labels[ordered_tissues]))
@@ -153,6 +156,30 @@ make_heatmap_plot <- function(plot_data, ordered_tissues) {
       TissueYARNNormalizedLog2 >= yarn_min + 0.84 * (yarn_max - yarn_min),
     "white", "#1F2937"
   )]
+  if (figure_style_c) {
+    return(
+      ggplot(plot_data, aes(x = DisplayComponent, y = TissueKey, fill = TissueYARNNormalizedLog2)) +
+        geom_tile(colour = STYLE_C_COLOURS$white, linewidth = 0.16) +
+        facet_grid(. ~ PlotPathwayDisplay, scales = "free_x", space = "free_x", switch = "x", drop = TRUE) +
+        scale_x_discrete(expand = expansion(add = 0)) +
+        scale_y_discrete(drop = FALSE, labels = function(x) rep("", length(x))) +
+        scale_style_C_expression(c(yarn_min, yarn_max), "YARN qsmooth log2 expression") +
+        labs(x = NULL, y = NULL) +
+        theme_style_C(8.7) +
+        theme(
+          panel.grid = element_blank(),
+          axis.text.x = element_text(angle = 58, hjust = 1, vjust = 1, size = 6.2),
+          axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+          strip.background = element_rect(fill = STYLE_C_COLOURS$panel, colour = NA),
+          strip.text.x.bottom = element_text(face = "bold", size = 9.0),
+          strip.placement = "outside", panel.spacing.x = unit(0.42, "lines"),
+          legend.position = "top", legend.justification = "center",
+          legend.title = element_text(size = 8.5, face = "bold"),
+          legend.text = element_text(size = 7.5),
+          plot.margin = margin(2, 0, 10, 0)
+        )
+    )
+  }
   ggplot(plot_data, aes(x = DisplayComponent, y = TissueKey, fill = TissueYARNNormalizedLog2)) +
     geom_tile(colour = "white", linewidth = if (figure_style_a) 0.12 else 0.16) +
     geom_text(aes(label = sprintf("%.1f", TissueYARNNormalizedLog2), colour = CellTextColour),
@@ -211,6 +238,35 @@ render_combined <- function(cluster, pathways, title, subtitle, output_file) {
   selected <- tissue_matrix[PlotPathwayDisplay %chin% pathways]
   component_n <- component_audit[PlottedPathwayDisplay %chin% pathways, .N]
   assert(nrow(selected) == 26L * component_n, paste("Unexpected", cluster$figure, "cells"))
+  if (figure_style_c) {
+    c_title <- if (cluster$figure == "DSB") {
+      "Double-strand break repair components across tissues"
+    } else {
+      "Single-strand break repair components across tissues"
+    }
+    c_subtitle <- if (cluster$figure == "DSB") {
+      "29 components across 26 tissues; rows ordered by tissue-level Spearman clustering"
+    } else {
+      "45 components across 26 tissues; Neil2 excluded; rows ordered by tissue-level Spearman clustering"
+    }
+    combined_c <- make_tree_plot(cluster) + make_heatmap_plot(selected, cluster$ordered_tissues) +
+      make_label_plot(cluster$ordered_tissues) +
+      plot_layout(widths = c(3.6, 31.0, 8.2), guides = "collect") +
+      plot_annotation(
+        title = c_title,
+        subtitle = c_subtitle,
+        caption = "Left: average-linkage tree from tissue Spearman profiles. Centre: frozen YARN qsmooth log2 expression matrix. Right: tissue labels."
+      ) &
+      theme(
+        plot.title = element_text(hjust = 0.5, face = "bold", size = 13.5, colour = STYLE_C_COLOURS$ink),
+        plot.subtitle = element_text(hjust = 0.5, size = 8.6, colour = STYLE_C_COLOURS$muted),
+        plot.caption = element_text(hjust = 0, size = 7.2, colour = STYLE_C_COLOURS$muted),
+        plot.margin = margin(8, 8, 8, 8)
+      ) & theme(legend.position = "top")
+    stem_c <- sub("[.]png$", "", output_file)
+    save_style_C(combined_c, out, stem_c, 25.0, 9.2)
+    return(invisible(NULL))
+  }
   combined <- make_tree_plot(cluster) + make_heatmap_plot(selected, cluster$ordered_tissues) +
     make_label_plot(cluster$ordered_tissues) +
     plot_layout(widths = if (figure_style_a) c(3.6, 28, 6.0) else c(4.4, 28, 7.0), guides = "collect") +

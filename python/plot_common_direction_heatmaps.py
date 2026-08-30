@@ -18,6 +18,7 @@ import pandas as pd
 ROOT = Path(os.environ.get("PROJECT_ROOT", Path.cwd())).resolve()
 OUT = Path(os.environ["PUBLICATION_OUTPUT_DIR"]).resolve()
 INPUT = ROOT / "data/publication_input/common_direction"
+STYLE_C = os.environ.get("FIGURE_STYLE", "approved") == "C"
 STYLE_A = os.environ.get("FIGURE_STYLE", "approved") == "A"
 
 SPECS = {
@@ -103,6 +104,16 @@ def row_labels(selected: pd.DataFrame) -> list[str]:
     ]
 
 
+def row_labels_c(selected: pd.DataFrame) -> list[str]:
+    symbols = selected["display_symbol"].where(
+        selected["display_symbol"].ne(""), selected["ensembl_id"]
+    )
+    arrows = selected["common_direction"].map(
+        {"common_up": "↑", "common_down": "↓"}
+    ).fillna("")
+    return [f"{symbol} {arrow}" for symbol, arrow in zip(symbols, arrows)]
+
+
 def render_one(group_id: str, columns: pd.DataFrame, norm: Normalize) -> None:
     spec = SPECS[group_id]
     source = INPUT / f"{group_id}_DDR_common_direction_top30_min_abs_log2fc_direction_ordered.csv"
@@ -120,6 +131,9 @@ def render_one(group_id: str, columns: pd.DataFrame, norm: Normalize) -> None:
         }
     values = selected[[f"log2fc__{unit}" for unit in unit_order]].to_numpy(float)
     n_rows, n_cols = values.shape
+    if STYLE_C:
+        render_one_c(group_id, selected, columns, values, norm, labels)
+        return
     fig, ax = plt.subplots(
         figsize=(max(10.5, 1.25 * n_cols + 4.5), max(7.2, 3.0 + 0.30 * n_rows))
     )
@@ -172,6 +186,54 @@ def render_one(group_id: str, columns: pd.DataFrame, norm: Normalize) -> None:
         # Keep the approved archive metadata stable across matplotlib patch versions.
         metadata={"Software": "Matplotlib version3.10.8, https://matplotlib.org/"},
     )
+    plt.close(fig)
+
+
+def render_one_c(
+    group_id: str,
+    selected: pd.DataFrame,
+    columns: pd.DataFrame,
+    values: np.ndarray,
+    norm: Normalize,
+    labels: dict[str, str],
+) -> None:
+    """C-story heatmap: concise gene labels and a quieter cell layer."""
+    n_rows, n_cols = values.shape
+    fig, ax = plt.subplots(
+        figsize=(max(9.5, 1.12 * n_cols + 3.8), max(6.8, 2.8 + 0.24 * n_rows))
+    )
+    cmap = signed_cmap()
+    ax.imshow(
+        np.ma.masked_invalid(values), aspect="auto", interpolation="none",
+        cmap=cmap, norm=norm
+    )
+    ax.set_xticks(np.arange(n_cols))
+    ax.set_xticklabels([labels[unit] for unit in columns["column_id"]], rotation=38, ha="right")
+    ax.set_yticks(np.arange(n_rows))
+    ax.set_yticklabels(row_labels_c(selected), fontsize=7.1 if n_rows > 30 else 7.6)
+    ax.set_xticks(np.arange(-0.5, n_cols, 1), minor=True)
+    ax.set_yticks(np.arange(-0.5, n_rows, 1), minor=True)
+    ax.grid(which="minor", color="white", linewidth=0.45)
+    ax.tick_params(which="minor", bottom=False, left=False)
+    ax.tick_params(axis="x", labelsize=8)
+    ax.tick_params(axis="y", length=1.5, pad=2.0)
+    direction_colours = {"common_up": "#C65A5A", "common_down": "#3B6FB6"}
+    for tick, direction in zip(ax.get_yticklabels(), selected["common_direction"]):
+        tick.set_color(direction_colours.get(direction, "#263442"))
+    spec = SPECS[group_id]
+    up_n = int(selected["common_direction"].eq("common_up").sum())
+    down_n = int(selected["common_direction"].eq("common_down").sum())
+    ax.set_title(
+        f"{spec['title']}\nTop 30 pooled genes; common direction (up {up_n}, down {down_n})",
+        loc="left", weight="bold", pad=8,
+    )
+    fig.tight_layout(pad=1.0, rect=(0.01, 0.02, 0.86, 0.96))
+    colorbar_axis = fig.add_axes([0.89, 0.24, 0.018, 0.52])
+    colorbar = fig.colorbar(ScalarMappable(norm=norm, cmap=cmap), cax=colorbar_axis)
+    colorbar.set_label("Unified log2FC: spaceflight − ground/control")
+    stem = OUT / spec["output"]
+    fig.savefig(stem, dpi=600, bbox_inches="tight", pad_inches=0.08, facecolor="white")
+    fig.savefig(stem.with_suffix(".pdf"), bbox_inches="tight", pad_inches=0.08, facecolor="white")
     plt.close(fig)
 
 

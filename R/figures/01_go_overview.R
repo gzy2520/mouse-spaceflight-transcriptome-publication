@@ -9,6 +9,7 @@ set.seed(25)
 root <- normalizePath(Sys.getenv("PROJECT_ROOT", unset = getwd()), mustWork = TRUE)
 out <- normalizePath(Sys.getenv("PUBLICATION_OUTPUT_DIR"), mustWork = TRUE)
 source(file.path(root, "R/figures/style_helpers.R"))
+if (figure_style_c) source(file.path(root, "R/figures/style_C_helpers.R"))
 input_dir <- file.path(root, "data/publication_input/go")
 assert <- function(x, message) if (!isTRUE(x)) stop(message, call. = FALSE)
 
@@ -30,7 +31,59 @@ teacher_fig1 <- identical(
   Sys.getenv("FIGURE1_LABELS", unset = if (figure_style_a) "numbers" else "none"),
   "none"
 )
-if (teacher_fig1) {
+if (figure_style_c) {
+  # C-story overview: preserve the complete 26 x 15 matrix, but make the
+  # manuscript panel read as three functional blocks. Only the strongest
+  # cells receive text; the exact matrix remains in the frozen tables.
+  term_meta_c <- copy(term_meta)
+  term_meta_c[, display_label := short_go_label(term_name, go_id)]
+  term_meta_c[, term_group := ifelse(
+    term_role == "official_root", "DDR core",
+    ifelse(term_role == "context", "Context terms", "Comparator")
+  )]
+  term_meta_c[, term_group := factor(
+    term_group, levels = c("DDR core", "Context terms", "Comparator")
+  )]
+  plot_data[, analysis_tissue := factor(
+    short_tissue_name(as.character(analysis_tissue)),
+    levels = rev(short_tissue_name(tissue_order))
+  )]
+  plot_data <- merge(
+    plot_data,
+    term_meta_c[, .(term_key, display_label, term_group)],
+    by = "term_key", sort = FALSE
+  )
+  term_levels_c <- term_meta_c[order(term_order), display_label]
+  plot_data[, term_display := factor(display_label, levels = term_levels_c)]
+  nes_limit_c <- max(abs(plot_data$mean_mission_nes), na.rm = TRUE)
+  label_cutoff_c <- quantile(abs(plot_data$mean_mission_nes), probs = 0.90, na.rm = TRUE)
+  plot_data[, nes_label_c := ifelse(
+    stouffer_FDR_all_cells < 0.05 | abs(mean_mission_nes) >= label_cutoff_c,
+    sprintf("%.2f", mean_mission_nes), ""
+  )]
+  fig1_c <- ggplot(plot_data, aes(term_display, analysis_tissue, fill = mean_mission_nes)) +
+    geom_tile(colour = STYLE_C_COLOURS$white, linewidth = 0.20) +
+    geom_text(aes(label = nes_label_c), size = 2.05, colour = STYLE_C_COLOURS$ink, na.rm = TRUE) +
+    facet_grid(. ~ term_group, scales = "free_x", space = "free_x", switch = "x") +
+    scale_style_C_signed(c(-nes_limit_c, nes_limit_c), "Mission-equal mean NES") +
+    labs(
+      title = "Tissue-level response across the DNA-damage landscape",
+      subtitle = "26 tissues; 15 predefined GO terms; labels mark FDR < 0.05 or the strongest 10% of cells",
+      x = NULL, y = NULL,
+      caption = "Colour and cell labels are display encodings of the frozen NES matrix; exact values and sign-flip inference are retained in the publication tables."
+    ) +
+    theme_style_C(8.6) +
+    theme(
+      axis.text.x = element_text(angle = 46, hjust = 1, vjust = 1, size = 6.2),
+      axis.text.y = element_text(size = 7.0),
+      strip.placement = "outside",
+      strip.text.x = element_text(size = 8.5, face = "bold"),
+      panel.spacing.x = grid::unit(0.55, "lines"),
+      legend.position = "right",
+      plot.margin = margin(8, 10, 8, 8)
+    )
+  save_style_C(fig1_c, out, "Main/Fig_1", 13.8, 9.2)
+} else if (teacher_fig1) {
   # Teacher-requested display: retain every frozen cell and its colour, but
   # remove the 390 in-cell labels. Short display labels make the same 26 x 15
   # matrix readable at manuscript width without adding a decorative bar. This branch is
@@ -231,13 +284,48 @@ fig2 <- ggplot(heatmap_data, aes(x = column_label, y = row_label, fill = rho)) +
 fig2_path <- file.path(out, "Main/Fig_2.png")
 ggsave(fig2_path, fig2, width = 15.2, height = 13.4, dpi = if (figure_style_a) 600 else 300, bg = "white")
 
+if (figure_style_c) {
+  # C-story correlation panel: show each correlation once in a lower triangle
+  # while retaining the approved clustered order and exact rho values.
+  rho_c <- copy(heatmap_data)
+  rho_c[, `:=`(
+    i = match(row_key, ordered_keys),
+    j = match(column_key, ordered_keys)
+  )]
+  rho_c <- rho_c[i >= j]
+  rho_c[, `:=`(
+    x_c = factor(j, levels = seq_along(ordered_keys), labels = label_order),
+    y_c = factor(i, levels = rev(seq_along(ordered_keys)), labels = rev(label_order)),
+    rho_label_c = sprintf("%.2f", rho)
+  )]
+  fig2_c <- ggplot(rho_c, aes(x_c, y_c, fill = rho)) +
+    geom_tile(colour = STYLE_C_COLOURS$white, linewidth = 0.25) +
+    geom_text(aes(label = rho_label_c), size = 1.9, colour = STYLE_C_COLOURS$ink) +
+    coord_fixed() +
+    scale_style_C_signed(c(-1, 1), "Spearman rho") +
+    labs(
+      title = "Cross-tissue relationships among response terms",
+      subtitle = "Lower triangle shown once; the approved average-linkage order is retained",
+      x = NULL, y = NULL,
+      caption = "Spearman rho describes co-response across tissues, not causality or direct regulation."
+    ) +
+    theme_style_C(8.4) +
+    theme(
+      axis.text.x = element_text(angle = 48, hjust = 1, vjust = 1, size = 5.8),
+      axis.text.y = element_text(size = 5.8),
+      legend.position = "right",
+      plot.margin = margin(8, 10, 8, 8)
+    )
+  save_style_C(fig2_c, out, "Main/Fig_2", 11.8, 10.2)
+}
+
 # The teacher-requested Figure 1 branch omits all in-cell text. On the base
 # R bitmap device that changes the font-cache initialization for the following
 # text-heavy Spearman panel, even though its data and ggplot object are
 # identical. Keep Figure 2 byte-for-byte identical to the approved reference;
 # its numeric labels and display are explicitly out of scope for this change.
 frozen_fig2 <- file.path(root, "results/Main/Fig_2.png")
-if (teacher_fig1 && file.exists(frozen_fig2) &&
+if (teacher_fig1 && !figure_style_c && file.exists(frozen_fig2) &&
     normalizePath(frozen_fig2, mustWork = TRUE) != normalizePath(fig2_path, mustWork = FALSE)) {
   assert(file.copy(frozen_fig2, fig2_path, overwrite = TRUE, copy.date = TRUE),
          "Failed to restore the frozen Figure 2 reference")

@@ -10,6 +10,7 @@ set.seed(25)
 root <- normalizePath(Sys.getenv("PROJECT_ROOT", unset = getwd()), mustWork = TRUE)
 out <- normalizePath(Sys.getenv("PUBLICATION_OUTPUT_DIR"), mustWork = TRUE)
 source(file.path(root, "R/figures/style_helpers.R"))
+if (figure_style_c) source(file.path(root, "R/figures/style_C_helpers.R"))
 
 # Fig 4b: DSB components. This is the approved plotting block applied to the
 # frozen 26 x 29 publication matrix.
@@ -94,6 +95,52 @@ fig4b <- ggplot(dsb, aes(x = DisplayComponent, y = TissueLabel, fill = Log2FCDis
 ggsave(file.path(out, "Main/Fig_4b.png"), fig4b, width = 20, height = 10.5,
        dpi = if (figure_style_a) 600 else 320, bg = "white")
 
+if (figure_style_c) {
+  # C-story DSB panel: sparse nominally significant cells become a dot matrix.
+  # The tile grid preserves the tissue/component layout; dot colour and size
+  # are display encodings of the same frozen log2FC values.
+  dsb_c <- copy(dsb)
+  dsb_c[, `:=`(
+    TissueC = factor(Group, levels = rev(tissue_order)),
+    ComponentC = factor(OfficialMouseSymbol, levels = component_levels),
+    PathwayC = factor(PathwayDisplay, levels = pathway_levels)
+  )]
+  dsb_sig_c <- dsb_c[NominalPDisplayed & is.finite(Log2FCDisplayed)]
+  fig4b_c <- ggplot(dsb_c, aes(ComponentC, TissueC)) +
+    geom_tile(fill = STYLE_C_COLOURS$panel, colour = STYLE_C_COLOURS$white, linewidth = 0.16) +
+    geom_point(
+      data = dsb_sig_c,
+      aes(colour = Log2FCDisplayed, size = abs(Log2FCDisplayed)),
+      alpha = 0.95
+    ) +
+    facet_grid(. ~ PathwayC, scales = "free_x", space = "free_x", switch = "x") +
+    scale_colour_gradient2(
+      low = STYLE_C_COLOURS$blue, mid = STYLE_C_COLOURS$white,
+      high = STYLE_C_COLOURS$red, midpoint = 0,
+      limits = c(-dsb_limit, dsb_limit), oob = scales::squish,
+      name = "Meta log2FC\n(P < 0.05)"
+    ) +
+    scale_size_continuous(
+      range = c(1.5, 5.2),
+      name = "|log2FC|", breaks = pretty(c(0, max(abs(dsb_sig_c$Log2FCDisplayed))), n = 3)
+    ) +
+    labs(
+      title = "Double-strand break response across tissues",
+      subtitle = "Dots mark nominal tissue-meta P < 0.05; colour is direction and size is effect magnitude",
+      x = NULL, y = NULL,
+      caption = "Meta-log2FC is the median of mission-level median log2FC values; exact values and P values are retained in the publication tables."
+    ) +
+    theme_style_C(8.8) +
+    theme(
+      axis.text.x = element_text(angle = 52, hjust = 1, vjust = 1, size = 6.4),
+      axis.text.y = element_text(size = 7.0),
+      strip.placement = "outside", strip.text.x.bottom = element_text(size = 9.0, face = "bold"),
+      panel.spacing.x = grid::unit(0.45, "lines"),
+      legend.position = "right", plot.margin = margin(8, 10, 8, 8)
+    )
+  save_style_C(fig4b_c, out, "Main/Fig_4b", 16.0, 9.0)
+}
+
 # Fig 5b: SSB components after removing Neil2. The symmetric limit is retained
 # from the original 75-component source so the approved colour mapping is exact.
 ssb <- fread(file.path(root, "results/tables/01_SSB_tissue_meta_log2FC_pvalue_matrix_without_Neil2.csv"))
@@ -163,3 +210,47 @@ fig5b <- ggplot(ssb, aes(x = DisplayComponent, y = TissueLabel, fill = Log2FCDis
   ) + ssb_theme
 ggsave(file.path(out, "Main/Fig_5b.png"), fig5b, width = 28, height = 12.5,
        units = "in", dpi = if (figure_style_a) 600 else 320, bg = "white", limitsize = FALSE)
+
+if (figure_style_c) {
+  # C-story SSB panel uses the same encoding and layout as Fig. 4b.
+  ssb_c <- copy(ssb)
+  ssb_c[, `:=`(
+    TissueC = factor(as.character(Group), levels = rev(unique(as.character(ssb$Group[order(ssb$TissueOrder)])))),
+    ComponentC = factor(as.character(DisplayComponent), levels = ssb_components),
+    PathwayC = factor(as.character(PathwayDisplay), levels = c("BER", "NER", "MMR", "FA"))
+  )]
+  ssb_sig_c <- ssb_c[P_lt_0_05 & is.finite(Log2FCDisplayed)]
+  fig5b_c <- ggplot(ssb_c, aes(ComponentC, TissueC)) +
+    geom_tile(fill = STYLE_C_COLOURS$panel, colour = STYLE_C_COLOURS$white, linewidth = 0.14) +
+    geom_point(
+      data = ssb_sig_c,
+      aes(colour = Log2FCDisplayed, size = abs(Log2FCDisplayed)),
+      alpha = 0.95
+    ) +
+    facet_grid(. ~ PathwayC, scales = "free_x", space = "free_x", switch = "x") +
+    scale_colour_gradient2(
+      low = STYLE_C_COLOURS$blue, mid = STYLE_C_COLOURS$white,
+      high = STYLE_C_COLOURS$red, midpoint = 0,
+      limits = c(-ssb_limit, ssb_limit), oob = scales::squish,
+      name = "Meta log2FC\n(P < 0.05)"
+    ) +
+    scale_size_continuous(
+      range = c(1.5, 5.2),
+      name = "|log2FC|", breaks = pretty(c(0, max(abs(ssb_sig_c$Log2FCDisplayed))), n = 3)
+    ) +
+    labs(
+      title = "Single-strand break response across tissues",
+      subtitle = "45 components; Neil2 excluded; dots mark nominal tissue-meta P < 0.05",
+      x = NULL, y = NULL,
+      caption = "Meta-log2FC is the median of mission-level median log2FC values; exact values and P values are retained in the publication tables."
+    ) +
+    theme_style_C(8.8) +
+    theme(
+      axis.text.x = element_text(angle = 56, hjust = 1, vjust = 1, size = 6.2),
+      axis.text.y = element_text(size = 7.0),
+      strip.placement = "outside", strip.text.x.bottom = element_text(size = 9.0, face = "bold"),
+      panel.spacing.x = grid::unit(0.45, "lines"),
+      legend.position = "right", plot.margin = margin(8, 10, 8, 8)
+    )
+  save_style_C(fig5b_c, out, "Main/Fig_5b", 19.5, 9.0)
+}
