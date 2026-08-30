@@ -19,7 +19,7 @@ results/                   Approved figures and manuscript tables
 provenance/                Input/output hashes and figure-source mapping
 ```
 
-The release contains 9 main-figure PNGs (including the mouse-composition overview Fig. 6), one main-figure PDF vector export, 8 supplementary PNGs, the PDF version of Fig. S5, and 28 CSV tables. The expected 47-file set and SHA-256 values are recorded in `provenance/reference_sha256.csv`.
+The release contains 9 main-figure PNGs (including the mouse-composition overview Fig. 6), one main-figure PDF vector export, 8 supplementary PNGs, the PDF version of Fig. S5, and 29 CSV tables. The expected 48-file set and SHA-256 values are recorded in `provenance/reference_sha256.csv`.
 
 ## Reproduce the release
 
@@ -50,6 +50,14 @@ between the paired rows. Age is encoded by a fixed, ordered discrete palette wit
 no continuous colour interpolation, while point area is the number of unique mice
 in that mission–tissue–sex–age stratum. Flight and Ground samples are both included;
 their separate counts remain in `results/tables/Fig_6_mouse_metadata_grouped.csv`.
+
+The single sample-level audit table
+`results/tables/Fig_6_mouse_sample_metadata_complete_audit.csv` contains 761
+rows and 54 columns. Each analysis sample is linked to its original ISA Sample
+Name and Source Name, raw and normalized age/sex/mission values, matching rule,
+Flight/Ground check, conflict resolution, metadata download URL, ZIP filename,
+size and SHA-256 checksum. `audit_status` must be `PASS` for every row; special
+handling remains visible in the semicolon-delimited `audit_flags` column.
 
 The Fig. 6 metadata was refreshed directly from all 48 NASA OSDR ISA metadata
 ZIPs on 2026-08-30. The frozen publication input contains 1,588 complete ISA

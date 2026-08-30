@@ -19,7 +19,10 @@ out <- normalizePath(out, mustWork = TRUE)
 # byte-for-byte avoids silently recomputing a different upstream scope while
 # the plotting scripts use the minimal frozen inputs needed for each panel.
 table_sources <- list.files(file.path(root, "results/tables"), full.names = TRUE)
-table_sources <- table_sources[basename(table_sources) != "Fig_6_mouse_metadata_grouped.csv"]
+table_sources <- table_sources[!basename(table_sources) %in% c(
+  "Fig_6_mouse_metadata_grouped.csv",
+  "Fig_6_mouse_sample_metadata_complete_audit.csv"
+)]
 if (length(table_sources) != 27L) stop("Expected 27 frozen publication tables", call. = FALSE)
 copied <- file.copy(table_sources, file.path(out, "tables"), overwrite = FALSE, copy.date = TRUE)
 if (!all(copied)) stop("Failed to copy publication tables", call. = FALSE)
@@ -31,6 +34,10 @@ Sys.setenv(
 )
 old_wd <- setwd(root)
 on.exit(setwd(old_wd), add = TRUE)
+
+status <- system2("Rscript", "R/data/02_build_mouse_sample_metadata_audit.R")
+if (!identical(status, 0L)) stop("Mouse sample audit-table build failed", call. = FALSE)
+
 r_scripts <- file.path("R/figures", c(
   "01_go_overview.R",
   "02_hallmark_gsea.R",

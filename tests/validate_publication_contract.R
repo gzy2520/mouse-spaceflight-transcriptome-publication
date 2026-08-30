@@ -50,7 +50,7 @@ assert(sum(grepl("^Main/Fig_.*[.]png$", expected)) == 9L, "Expected 9 main figur
 assert(sum(grepl("^Main/Fig_.*[.]pdf$", expected)) == 1L, "Expected the Fig. 6 vector export")
 assert(sum(grepl("^Suppl/Fig_S.*[.]png$", expected)) == 8L, "Expected 8 supplementary PNG figures")
 assert(sum(grepl("^Suppl/Fig_S5[.]pdf$", expected)) == 1L, "Expected the Fig S5 PDF")
-assert(sum(grepl("^tables/.*[.]csv$", expected)) == 28L, "Expected 28 tables")
+assert(sum(grepl("^tables/.*[.]csv$", expected)) == 29L, "Expected 29 tables")
 
 tables <- file.path(target, "tables")
 ssb_map <- fread(file.path(tables, "02_SSB_component_stable_id_mapping_without_Neil2.csv"))
@@ -92,9 +92,16 @@ assert(all(c("source_age_values", "age_source_fields", "age_is_range", "accessio
 age_map <- unique(mouse_grouped[, .(age_label, age_colour)])
 assert(!anyNA(mouse_grouped$age_colour) && nrow(age_map) == uniqueN(mouse_grouped$age_label) && uniqueN(age_map$age_colour) == nrow(age_map), "Fig. 6 age colours are not one-to-one")
 
+mouse_audit <- fread(file.path(tables, "Fig_6_mouse_sample_metadata_complete_audit.csv"))
+assert(nrow(mouse_audit) == 761L && ncol(mouse_audit) == 54L, "Complete mouse sample audit dimensions changed")
+assert(!anyDuplicated(mouse_audit$audit_row_id) && all(mouse_audit$audit_status == "PASS"), "Complete mouse sample audit has duplicate or failed rows")
+assert(uniqueN(mouse_audit$accession) == 48L && uniqueN(mouse_audit$analysis_unit_id) == 59L && uniqueN(mouse_audit$tissue) == 26L, "Complete mouse sample audit scope changed")
+assert(sum(mouse_audit$age_is_range) == 312L && sum(mouse_audit$mission_conflict_detected) == 5L, "Complete mouse sample audit exception counts changed")
+assert(all(mouse_audit$status_matches_analysis) && all(grepl("^[0-9a-f]{64}$", mouse_audit$metadata_zip_sha256)), "Complete mouse sample audit status or ZIP provenance failed")
+
 for (family in c("up_tissues", "down_tissues")) {
   membership <- fread(file.path(tables, paste0("04_membership_matrix_", family, ".csv")))
   assert(!anyDuplicated(membership$ensembl_id), paste("Duplicate Ensembl IDs in", family))
 }
 
-message("PUBLICATION_CONTRACT_PASS: 47 files; SHA-256, stable-ID and scope checks passed")
+message("PUBLICATION_CONTRACT_PASS: 48 files; SHA-256, stable-ID and scope checks passed")
