@@ -9,6 +9,7 @@ suppressPackageStartupMessages({
 set.seed(25)
 root <- normalizePath(Sys.getenv("PROJECT_ROOT", unset = getwd()), mustWork = TRUE)
 out <- normalizePath(Sys.getenv("PUBLICATION_OUTPUT_DIR"), mustWork = TRUE)
+source(file.path(root, "R/figures/style_helpers.R"))
 
 # Fig 4b: DSB components. This is the approved plotting block applied to the
 # frozen 26 x 29 publication matrix.
@@ -33,46 +34,65 @@ tissue_labels <- c(
 )
 tissue_order <- sort(unique(dsb$Group))
 tissue_display_labels <- setNames(paste0(tissue_order, "\n", tissue_labels[tissue_order]), tissue_order)
+dsb_tissue_levels <- if (figure_style_a) rev(tissue_order) else unname(tissue_display_labels[rev(tissue_order)])
 component_levels <- dsb[order(ComponentOrder), unique(OfficialMouseSymbol)]
 pathway_levels <- dsb[order(ComponentOrder), unique(PathwayDisplay)]
 dsb[, `:=`(
   TissueLabel = factor(
-    paste0(Group, "\n", tissue_labels[Group]),
-    levels = unname(tissue_display_labels[rev(tissue_order)])
+    if (figure_style_a) Group else paste0(Group, "\n", tissue_labels[Group]),
+    levels = dsb_tissue_levels
   ),
   DisplayComponent = factor(OfficialMouseSymbol, levels = component_levels),
   PathwayDisplay = factor(PathwayDisplay, levels = pathway_levels)
 )]
 dsb_limit <- quantile(abs(dsb$Log2FCDisplayed), probs = 0.95, na.rm = TRUE, names = FALSE)
-dsb_theme <- theme_minimal(base_size = 8.5, base_family = "Arial Unicode MS") +
-  theme(
-    panel.grid = element_blank(),
-    axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 8),
-    axis.text.y = element_text(size = 6.7, lineheight = 0.85), axis.ticks = element_blank(),
-    strip.background = element_rect(fill = "#F0F0F0", colour = NA),
-    strip.text.x.bottom = element_text(face = "bold", size = 9),
-    strip.placement = "outside", panel.spacing.x = grid::unit(0.45, "lines"),
-    plot.title = element_text(face = "bold", size = 12),
-    plot.subtitle = element_text(size = 8.5),
-    plot.caption = element_text(size = 7.2, hjust = 0, colour = "#444444"),
-    legend.position = "right", plot.margin = margin(6, 10, 6, 7)
-  )
+dsb_theme <- if (figure_style_a) {
+  theme_minimal(base_size = 8.5, base_family = "Arial") +
+    theme(
+      panel.grid = element_blank(),
+      axis.text.x = element_text(angle = 42, hjust = 1, vjust = 1, size = 8.1, colour = FIGURE_COLOURS$ink),
+      axis.text.y = element_text(size = 7.1, colour = FIGURE_COLOURS$ink), axis.ticks = element_blank(),
+      strip.background = element_rect(fill = FIGURE_COLOURS$panel, colour = NA),
+      strip.text.x.bottom = element_text(face = "bold", size = 9, colour = FIGURE_COLOURS$ink),
+      strip.placement = "outside", panel.spacing.x = grid::unit(0.38, "lines"),
+      plot.title = style_title(13), plot.subtitle = style_subtitle(8.4), plot.caption = style_caption(7.2),
+      legend.position = "right", plot.margin = margin(6, 10, 6, 7)
+    )
+} else {
+  theme_minimal(base_size = 8.5, base_family = "Arial Unicode MS") +
+    theme(
+      panel.grid = element_blank(),
+      axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 8),
+      axis.text.y = element_text(size = 6.7, lineheight = 0.85), axis.ticks = element_blank(),
+      strip.background = element_rect(fill = "#F0F0F0", colour = NA),
+      strip.text.x.bottom = element_text(face = "bold", size = 9),
+      strip.placement = "outside", panel.spacing.x = grid::unit(0.45, "lines"),
+      plot.title = element_text(face = "bold", size = 12),
+      plot.subtitle = element_text(size = 8.5),
+      plot.caption = element_text(size = 7.2, hjust = 0, colour = "#444444"),
+      legend.position = "right", plot.margin = margin(6, 10, 6, 7)
+    )
+}
 fig4b <- ggplot(dsb, aes(x = DisplayComponent, y = TissueLabel, fill = Log2FCDisplayed)) +
-  geom_tile(colour = "white", linewidth = 0.18) +
-  geom_text(aes(label = Log2FCLabel), size = 2.25, colour = "#2F2F2F") +
+  geom_tile(colour = "white", linewidth = if (figure_style_a) 0.14 else 0.18) +
+  geom_text(aes(label = Log2FCLabel), size = if (figure_style_a) 2.05 else 2.25,
+            colour = if (figure_style_a) FIGURE_COLOURS$ink else "#2F2F2F") +
   facet_grid(. ~ PathwayDisplay, scales = "free_x", space = "free_x", switch = "x") +
   scale_fill_gradient2(
-    low = "#2166AC", mid = "#FFFFFF", high = "#B2182B", midpoint = 0,
+    low = if (figure_style_a) FIGURE_COLOURS$low else "#2166AC",
+    mid = if (figure_style_a) FIGURE_COLOURS$mid else "#FFFFFF",
+    high = if (figure_style_a) FIGURE_COLOURS$high else "#B2182B", midpoint = 0,
     limits = c(-dsb_limit, dsb_limit), oob = squish,
     na.value = "#EEF1F4", name = "Meta log2FC\n(P < 0.05)"
   ) +
   labs(
-    title = "Flight response: tissue meta-log2FC",
-    subtitle = "Only cells with unadjusted tissue-meta P < 0.05 are coloured and labelled; blue = lower in flight, red = higher in flight.",
+    title = if (figure_style_a) "DSB components: tissue meta-log2FC" else "Flight response: tissue meta-log2FC",
+    subtitle = if (figure_style_a) "Nominal P < 0.05 cells are coloured and labelled; blue = lower in flight, red = higher in flight." else "Only cells with unadjusted tissue-meta P < 0.05 are coloured and labelled; blue = lower in flight, red = higher in flight.",
     x = NULL, y = NULL,
     caption = "Meta-log2FC is the median of mission-level median log2FC values. Nominal tissue-meta P is from mission-level signed Stouffer aggregation."
   ) + dsb_theme
-ggsave(file.path(out, "Main/Fig_4b.png"), fig4b, width = 20, height = 10.5, dpi = 320, bg = "white")
+ggsave(file.path(out, "Main/Fig_4b.png"), fig4b, width = 20, height = 10.5,
+       dpi = if (figure_style_a) 600 else 320, bg = "white")
 
 # Fig 5b: SSB components after removing Neil2. The symmetric limit is retained
 # from the original 75-component source so the approved colour mapping is exact.
@@ -85,37 +105,56 @@ ssb[, Log2FCLabel := fifelse(
   ""
 )]
 ssb_tissues <- ssb[order(TissueOrder), unique(TissueLabel)]
+ssb_tissue_levels <- if (figure_style_a) ssb[order(TissueOrder), unique(Group)] else ssb_tissues
 ssb_components <- ssb[order(PathwayOrder, ComponentOrder), unique(DisplayComponent)]
 ssb[, `:=`(
-  TissueLabel = factor(as.character(TissueLabel), levels = rev(ssb_tissues)),
+  TissueLabel = factor(if (figure_style_a) as.character(Group) else as.character(TissueLabel), levels = rev(ssb_tissue_levels)),
   DisplayComponent = factor(as.character(DisplayComponent), levels = ssb_components),
   PathwayDisplay = factor(as.character(PathwayDisplay), levels = c("BER", "NER", "MMR", "FA"))
 )]
 ssb_limit <- as.numeric(run_audit$common_symmetric_fc_limit[[1L]])
-ssb_theme <- theme_minimal(base_size = 8.8, base_family = "Arial Unicode MS") +
-  theme(
-    panel.grid = element_blank(),
-    axis.text.x = element_text(angle = 60, hjust = 1, vjust = 1, size = 6.5, colour = "#3D3D3D"),
-    axis.text.y = element_text(size = 7.1, lineheight = 0.84, colour = "#3D3D3D"),
-    axis.ticks = element_blank(), strip.background = element_rect(fill = "#F0F0F0", colour = NA),
-    strip.text.x.bottom = element_text(face = "bold", size = 9.5), strip.placement = "outside",
-    panel.spacing.x = grid::unit(0.42, "lines"), plot.title = element_text(face = "bold", size = 14),
-    plot.subtitle = element_text(size = 9),
-    plot.caption = element_text(size = 7.5, hjust = 0, colour = "#444444"),
-    legend.position = "right", plot.margin = margin(8, 12, 10, 8)
-  )
+ssb_theme <- if (figure_style_a) {
+  theme_minimal(base_size = 8.8, base_family = "Arial") +
+    theme(
+      panel.grid = element_blank(),
+      axis.text.x = element_text(angle = 55, hjust = 1, vjust = 1, size = 6.8, colour = FIGURE_COLOURS$ink),
+      axis.text.y = element_text(size = 7.2, lineheight = 0.84, colour = FIGURE_COLOURS$ink),
+      axis.ticks = element_blank(), strip.background = element_rect(fill = FIGURE_COLOURS$panel, colour = NA),
+      strip.text.x.bottom = element_text(face = "bold", size = 9.5, colour = FIGURE_COLOURS$ink), strip.placement = "outside",
+      panel.spacing.x = grid::unit(0.38, "lines"), plot.title = style_title(13),
+      plot.subtitle = style_subtitle(8.5), plot.caption = style_caption(7.3),
+      legend.position = "right", plot.margin = margin(8, 12, 10, 8)
+    )
+} else {
+  theme_minimal(base_size = 8.8, base_family = "Arial Unicode MS") +
+    theme(
+      panel.grid = element_blank(),
+      axis.text.x = element_text(angle = 60, hjust = 1, vjust = 1, size = 6.5, colour = "#3D3D3D"),
+      axis.text.y = element_text(size = 7.1, lineheight = 0.84, colour = "#3D3D3D"),
+      axis.ticks = element_blank(), strip.background = element_rect(fill = "#F0F0F0", colour = NA),
+      strip.text.x.bottom = element_text(face = "bold", size = 9.5), strip.placement = "outside",
+      panel.spacing.x = grid::unit(0.42, "lines"), plot.title = element_text(face = "bold", size = 14),
+      plot.subtitle = element_text(size = 9),
+      plot.caption = element_text(size = 7.5, hjust = 0, colour = "#444444"),
+      legend.position = "right", plot.margin = margin(8, 12, 10, 8)
+    )
+}
 fig5b <- ggplot(ssb, aes(x = DisplayComponent, y = TissueLabel, fill = Log2FCDisplayed)) +
-  geom_tile(colour = "white", linewidth = 0.16) +
-  geom_text(aes(label = Log2FCLabel), size = 1.9, colour = "#2F2F2F", family = "Arial Unicode MS") +
+  geom_tile(colour = "white", linewidth = if (figure_style_a) 0.13 else 0.16) +
+  geom_text(aes(label = Log2FCLabel), size = if (figure_style_a) 1.85 else 1.9,
+            colour = if (figure_style_a) FIGURE_COLOURS$ink else "#2F2F2F",
+            family = if (figure_style_a) "Arial" else "Arial Unicode MS") +
   facet_grid(. ~ PathwayDisplay, scales = "free_x", space = "free_x", switch = "x") +
   scale_fill_gradient2(
-    low = "#2166AC", mid = "#FFFFFF", high = "#B2182B", midpoint = 0,
+    low = if (figure_style_a) FIGURE_COLOURS$low else "#2166AC",
+    mid = if (figure_style_a) FIGURE_COLOURS$mid else "#FFFFFF",
+    high = if (figure_style_a) FIGURE_COLOURS$high else "#B2182B", midpoint = 0,
     limits = c(-ssb_limit, ssb_limit), oob = squish,
     na.value = "#EEF1F4", name = "Meta log2FC\n(P < 0.05)"
   ) +
   labs(
-    title = "SSB essential components: tissue meta-log2FC (P < 0.05)",
-    subtitle = "26 mouse tissues; 45 SSB components; Neil2 removed to match Fig 5a; blue = lower in flight, red = higher in flight",
+    title = if (figure_style_a) "SSB components: tissue meta-log2FC" else "SSB essential components: tissue meta-log2FC (P < 0.05)",
+    subtitle = if (figure_style_a) "26 mouse tissues; 45 components; Neil2 excluded from the display; blue = lower in flight, red = higher in flight" else "26 mouse tissues; 45 SSB components; Neil2 removed to match Fig 5a; blue = lower in flight, red = higher in flight",
     x = NULL, y = NULL,
     caption = paste(
       "Only unadjusted tissue_meta_p < 0.05 cells are coloured and labelled; grey cells are not displayed as significant.",
@@ -123,4 +162,4 @@ fig5b <- ggplot(ssb, aes(x = DisplayComponent, y = TissueLabel, fill = Log2FCDis
     )
   ) + ssb_theme
 ggsave(file.path(out, "Main/Fig_5b.png"), fig5b, width = 28, height = 12.5,
-       units = "in", dpi = 320, bg = "white", limitsize = FALSE)
+       units = "in", dpi = if (figure_style_a) 600 else 320, bg = "white", limitsize = FALSE)

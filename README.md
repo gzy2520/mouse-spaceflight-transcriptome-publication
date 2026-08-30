@@ -40,6 +40,16 @@ Rscript tests/validate_publication_contract.R results
 
 The validator checks the exact file list and SHA-256 values, as well as the main stable-ID and scope contracts used by the manuscript tables. A successful run ends with `PUBLICATION_CONTRACT_PASS`.
 
+## Conservative visual refresh (Style A)
+
+The original `results/` directory is the approved reference set. A visual-only refresh can be rendered separately with:
+
+```bash
+Rscript workflow/run_style_A.R results_style_A_rebuilt
+```
+
+Style A keeps the same plotting inputs, filters, ordering, membership counts and numeric matrices while applying a consistent publication palette, typography, spacing and high-resolution export. It writes the same 44-file set to the chosen output directory, never overwrites `results/`, and ends with `STYLE_A_CONTRACT_PASS`.
+
 ## Analysis conventions retained in this release
 
 - Ensembl gene IDs are the analysis keys. Gene symbols are retained only as display labels.

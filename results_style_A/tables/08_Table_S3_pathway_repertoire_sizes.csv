@@ -1,0 +1,8 @@
+﻿Pathway,PathwayOrder,MemberGeneCount,DescriptionInTeacherText
+BER,1,54,BER (>50 genes)
+NER,2,53,NER (>50 genes)
+MMR,3,27,MMR (~30 genes)
+FA,4,39,FA (~40 genes)
+HR,5,135,HR (>130 genes)
+AEJ,6,9,A-EJ (~10 genes)
+NHEJ,7,18,NHEJ (~20 genes)

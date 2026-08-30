@@ -8,6 +8,7 @@ suppressPackageStartupMessages({
 set.seed(25)
 root <- normalizePath(Sys.getenv("PROJECT_ROOT", unset = getwd()), mustWork = TRUE)
 out <- normalizePath(Sys.getenv("PUBLICATION_OUTPUT_DIR"), mustWork = TRUE)
+source(file.path(root, "R/figures/style_helpers.R"))
 input_dir <- file.path(root, "data/publication_input/go")
 assert <- function(x, message) if (!isTRUE(x)) stop(message, call. = FALSE)
 
@@ -35,31 +36,44 @@ plot_data[, `:=`(
   mean_NES_label = sprintf("%.2f", mean_mission_nes),
   tile_text_colour = ifelse(abs(mean_mission_nes) >= limit * 0.48, "white", "#1A1A1A")
 )]
+fig1_theme <- if (figure_style_a) {
+  theme_minimal(base_family = "Arial", base_size = 9.2) +
+    theme(
+      panel.grid = element_blank(),
+      axis.text.x = element_text(angle = 42, hjust = 1, vjust = 1, size = 7.0, colour = FIGURE_COLOURS$ink),
+      axis.text.y = element_text(size = 7.2, colour = FIGURE_COLOURS$ink),
+      plot.title = style_title(13), plot.subtitle = style_subtitle(8.5),
+      plot.caption = style_caption(7.3), legend.position = "right",
+      legend.title = element_text(size = 8.2), legend.text = element_text(size = 7.6)
+    )
+} else {
+  theme_minimal(base_family = "Arial", base_size = 9) +
+    theme(
+      panel.grid = element_blank(),
+      axis.text.x = element_text(angle = 42, hjust = 1, vjust = 1, size = 7.2),
+      axis.text.y = element_text(size = 7.5), plot.title = element_text(face = "bold")
+    )
+}
 fig1 <- ggplot(plot_data, aes(x = term_display, y = analysis_tissue, fill = mean_mission_nes)) +
-  geom_tile(colour = "white", linewidth = 0.2) +
-  geom_text(aes(label = mean_NES_label, colour = tile_text_colour), size = 2.25, show.legend = FALSE) +
+  geom_tile(colour = "white", linewidth = if (figure_style_a) 0.16 else 0.2) +
+  geom_text(aes(label = mean_NES_label, colour = tile_text_colour),
+            size = if (figure_style_a) 2.05 else 2.25, show.legend = FALSE) +
   scale_colour_identity() +
   scale_fill_gradient2(
-    low = "#2166AC", mid = "white", high = "#B2182B", midpoint = 0,
+    low = FIGURE_COLOURS$low, mid = if (figure_style_a) FIGURE_COLOURS$mid else "white", high = FIGURE_COLOURS$high, midpoint = 0,
     limits = c(-limit, limit), name = "Mission-equal\nmean NES"
   ) +
   labs(
-    title = "Mouse tissue GO enrichment using stable Ensembl Gene IDs",
-    subtitle = "Explicit GO root terms; no derived DDR-minus-repair gene set",
+    title = if (figure_style_a) "Mouse tissue GO enrichment" else "Mouse tissue GO enrichment using stable Ensembl Gene IDs",
+    subtitle = if (figure_style_a) "Explicit GO root terms; Ensembl IDs used for analysis" else "Explicit GO root terms; no derived DDR-minus-repair gene set",
     x = NULL, y = NULL,
     caption = paste(
       "NES is enrichment direction, not pathway activation/inhibition.",
       "Exact mission sign-flip inference is reported in the tables."
     )
   ) +
-  theme_minimal(base_family = "Arial", base_size = 9) +
-  theme(
-    panel.grid = element_blank(),
-    axis.text.x = element_text(angle = 42, hjust = 1, vjust = 1, size = 7.2),
-    axis.text.y = element_text(size = 7.5),
-    plot.title = element_text(face = "bold")
-  )
-ggsave(file.path(out, "Main/Fig_1.png"), fig1, width = 19, height = 12, dpi = 300)
+  fig1_theme
+ggsave(file.path(out, "Main/Fig_1.png"), fig1, width = 19, height = 12, dpi = if (figure_style_a) 600 else 300, bg = "white")
 
 # Fig 2 uses the approved clustered display order. The correlation values are
 # frozen publication inputs; the order is recorded explicitly because a later
@@ -108,26 +122,41 @@ heatmap_data[, `:=`(
   column_label = factor(column_label, levels = label_order),
   value_label = sprintf("%.2f", rho)
 )]
+fig2_theme <- if (figure_style_a) {
+  theme_minimal(base_family = "Arial", base_size = 9.2) +
+    theme(
+      panel.grid = element_blank(),
+      axis.text.x = element_text(angle = 48, hjust = 1, vjust = 1, size = 6.4, colour = FIGURE_COLOURS$ink),
+      axis.text.y = element_text(size = 6.4, colour = FIGURE_COLOURS$ink),
+      plot.title = style_title(13), plot.subtitle = style_subtitle(8.5),
+      plot.caption = style_caption(7.3)
+    )
+} else {
+  theme_minimal(base_family = "Arial", base_size = 9) +
+    theme(
+      panel.grid = element_blank(),
+      axis.text.x = element_text(angle = 48, hjust = 1, vjust = 1, size = 6.6),
+      axis.text.y = element_text(size = 6.6),
+      plot.title = element_text(face = "bold", size = 15),
+      plot.subtitle = element_text(size = 9.5),
+      plot.caption = element_text(size = 8, colour = "#4B5563")
+    )
+}
 fig2 <- ggplot(heatmap_data, aes(x = column_label, y = row_label, fill = rho)) +
-  geom_tile(colour = "white", linewidth = 0.28) +
-  geom_text(aes(label = value_label), size = 2.2, colour = "#171717") +
+  geom_tile(colour = "white", linewidth = if (figure_style_a) 0.22 else 0.28) +
+  geom_text(aes(label = value_label), size = if (figure_style_a) 2.0 else 2.2,
+            colour = if (figure_style_a) FIGURE_COLOURS$ink else "#171717") +
   scale_fill_gradient2(
-    low = "#2C6DB2", mid = "#F7F7F7", high = "#C93335",
+    low = if (figure_style_a) "#3B6FB6" else "#2C6DB2",
+    mid = if (figure_style_a) FIGURE_COLOURS$mid else "#F7F7F7",
+    high = if (figure_style_a) "#C65A5A" else "#C93335",
     midpoint = 0, limits = c(-1, 1), name = "Spearman\nrho"
   ) +
   labs(
-    title = "Data-derived pathway relationships across mouse tissues",
-    subtitle = "Average-linkage order; distance = (1 - Spearman rho) / 2; 26 tissues, mission-equal NES",
+    title = if (figure_style_a) "Pathway relationships across mouse tissues" else "Data-derived pathway relationships across mouse tissues",
+    subtitle = if (figure_style_a) "Average-linkage order; 26 tissues; mission-equal NES" else "Average-linkage order; distance = (1 - Spearman rho) / 2; 26 tissues, mission-equal NES",
     x = NULL, y = NULL,
     caption = "Numbers are cross-tissue Spearman correlations. They describe co-response, not causality or direct regulation."
   ) +
-  theme_minimal(base_family = "Arial", base_size = 9) +
-  theme(
-    panel.grid = element_blank(),
-    axis.text.x = element_text(angle = 48, hjust = 1, vjust = 1, size = 6.6),
-    axis.text.y = element_text(size = 6.6),
-    plot.title = element_text(face = "bold", size = 15),
-    plot.subtitle = element_text(size = 9.5),
-    plot.caption = element_text(size = 8, colour = "#4B5563")
-  )
-ggsave(file.path(out, "Main/Fig_2.png"), fig2, width = 15.2, height = 13.4, dpi = 300, bg = "white")
+  fig2_theme
+ggsave(file.path(out, "Main/Fig_2.png"), fig2, width = 15.2, height = 13.4, dpi = if (figure_style_a) 600 else 300, bg = "white")

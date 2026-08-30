@@ -10,15 +10,16 @@ suppressPackageStartupMessages({
 set.seed(25)
 root <- normalizePath(Sys.getenv("PROJECT_ROOT", unset = getwd()), mustWork = TRUE)
 out <- normalizePath(Sys.getenv("PUBLICATION_OUTPUT_DIR"), mustWork = TRUE)
+source(file.path(root, "R/figures/style_helpers.R"))
 input_dir <- file.path(root, "results/tables")
 
 spec <- list(
   up_tissues = list(
-    title = "GO:0006974 dataset-union repertoire | NES > 1 tissues (Kidney excluded)",
+    title = if (figure_style_a) "GO:0006974 repertoire | NES > 1 tissues" else "GO:0006974 dataset-union repertoire | NES > 1 tissues (Kidney excluded)",
     output = "Suppl/Fig_S3a.png"
   ),
   down_tissues = list(
-    title = "GO:0006974 dataset-union repertoire | NES < -1 tissues (Lung and Thymus excluded)",
+    title = if (figure_style_a) "GO:0006974 repertoire | NES < -1 tissues" else "GO:0006974 dataset-union repertoire | NES < -1 tissues (Lung and Thymus excluded)",
     output = "Suppl/Fig_S4a.png"
   )
 )
@@ -62,8 +63,11 @@ render_one <- function(family) {
   set_plot_data <- copy(sizes)
   set_plot_data[, set_name := factor(display_set_names, levels = set_levels)]
   p_sets <- ggplot(set_plot_data, aes(y = set_name, x = n_genes)) +
-    geom_col(width = 0.72, fill = "#F1C4BB", colour = "#C97A70", linewidth = 0.25) +
-    geom_text(aes(label = n_genes), hjust = -0.12, size = 3.0, colour = "#7A2E2A") +
+    geom_col(width = 0.72,
+             fill = if (figure_style_a) "#D9E2EC" else "#F1C4BB",
+             colour = if (figure_style_a) "#52606D" else "#C97A70", linewidth = 0.25) +
+    geom_text(aes(label = n_genes), hjust = -0.12, size = 3.0,
+              colour = if (figure_style_a) FIGURE_COLOURS$ink else "#7A2E2A") +
     scale_x_continuous(expand = expansion(mult = c(0, 0.17))) +
     labs(x = "Set size", y = NULL) +
     theme_minimal(base_size = 10) +
@@ -77,8 +81,10 @@ render_one <- function(family) {
     intersections,
     aes(x = factor(intersection_label, levels = intersections$intersection_label), y = n_genes)
   ) +
-    geom_col(width = 0.76, fill = "#B94C4A", colour = "#7A2E2A", linewidth = 0.2) +
-    geom_text(aes(label = n_genes), vjust = -0.22, size = 2.8, colour = "#374151") +
+    geom_col(width = 0.76, fill = if (figure_style_a) FIGURE_COLOURS$red else "#B94C4A",
+             colour = if (figure_style_a) "#8E3E3E" else "#7A2E2A", linewidth = 0.2) +
+    geom_text(aes(label = n_genes), vjust = -0.22, size = 2.8,
+              colour = if (figure_style_a) FIGURE_COLOURS$ink else "#374151") +
     scale_y_continuous(expand = expansion(mult = c(0, 0.16)), labels = comma) +
     labs(x = NULL, y = "Intersection size") +
     theme_minimal(base_size = 10) +
@@ -89,13 +95,14 @@ render_one <- function(family) {
       axis.title.y = element_text(size = 9.5), plot.margin = margin(4, 7, 0, 4)
     )
   p_matrix <- ggplot(matrix_long, aes(x = intersection_label, y = set_name)) +
-    geom_point(aes(alpha = included), size = 2.5, colour = "#374151") +
+    geom_point(aes(alpha = included), size = 2.5,
+               colour = if (figure_style_a) FIGURE_COLOURS$ink else "#374151") +
     geom_segment(
       data = matrix_long[included == 1L, .(
         ymin = min(as.integer(set_name)), ymax = max(as.integer(set_name))
       ), by = intersection_label],
       aes(x = intersection_label, xend = intersection_label, y = ymin, yend = ymax),
-      inherit.aes = FALSE, colour = "#374151", linewidth = 0.65
+      inherit.aes = FALSE, colour = if (figure_style_a) FIGURE_COLOURS$ink else "#374151", linewidth = 0.65
     ) +
     scale_alpha_continuous(limits = c(0, 1), range = c(0.12, 1), guide = "none") +
     scale_y_discrete(drop = FALSE) +
@@ -120,17 +127,28 @@ render_one <- function(family) {
     plot_layout(widths = c(1.05, 3.9)) +
     plot_annotation(
       title = spec[[family]]$title, subtitle = subtitle,
-      caption = "Exact Ensembl membership counts are unchanged; geometry is an UpSet display. Set-size bars use a pale warm colour."
+      caption = if (figure_style_a) {
+        "Exact Ensembl membership counts are unchanged; geometry is an UpSet display."
+      } else {
+        "Exact Ensembl membership counts are unchanged; geometry is an UpSet display. Set-size bars use a pale warm colour."
+      }
     ) &
-    theme(
-      plot.title = element_text(face = "bold", size = 15, hjust = 0.5),
-      plot.subtitle = element_text(size = 9.5, hjust = 0.5, colour = "#374151"),
-      plot.caption = element_text(size = 8.2, colour = "#4B5563", hjust = 0.5),
-      plot.margin = margin(8, 12, 8, 12)
-    )
+    if (figure_style_a) {
+      theme(
+        plot.title = style_title(13, hjust = 0.5), plot.subtitle = style_subtitle(8.6, hjust = 0.5),
+        plot.caption = style_caption(7.2, hjust = 0.5), plot.margin = margin(8, 12, 8, 12)
+      )
+    } else {
+      theme(
+        plot.title = element_text(face = "bold", size = 15, hjust = 0.5),
+        plot.subtitle = element_text(size = 9.5, hjust = 0.5, colour = "#374151"),
+        plot.caption = element_text(size = 8.2, colour = "#4B5563", hjust = 0.5),
+        plot.margin = margin(8, 12, 8, 12)
+      )
+    }
   ggsave(
     file.path(out, spec[[family]]$output), plot,
-    width = 14, height = 8.6, units = "in", dpi = 320,
+    width = 14, height = 8.6, units = "in", dpi = if (figure_style_a) 600 else 320,
     bg = "white", limitsize = FALSE
   )
 }

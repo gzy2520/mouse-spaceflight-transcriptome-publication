@@ -10,6 +10,7 @@ suppressPackageStartupMessages({
 set.seed(25)
 root <- normalizePath(Sys.getenv("PROJECT_ROOT", unset = getwd()), mustWork = TRUE)
 out <- normalizePath(Sys.getenv("PUBLICATION_OUTPUT_DIR"), mustWork = TRUE)
+source(file.path(root, "R/figures/style_helpers.R"))
 counts <- fread(file.path(
   root, "results/tables/02_seven_pathway_member_gene_counts_per_source_sample_long.csv"
 ))
@@ -33,6 +34,7 @@ tissue_levels <- c(
 tissue_display <- setNames(tissue_levels, tissue_levels)
 tissue_display[["Heart / Heart right ventricle"]] <- "Heart right ventricle"
 stopifnot(uniqueN(counts$Group) == 26L, uniqueN(counts$Pathway) == 7L)
+sample_colours <- c(Flight = FIGURE_COLOURS$flight, Ground = FIGURE_COLOURS$ground)
 
 plot_data <- counts[, .(
   Tissue = factor(TissueLabel, levels = unname(tissue_display[tissue_levels])),
@@ -54,7 +56,8 @@ make_tissue_plot <- function(idx) {
   ggplot(panel, aes(x = Pathway, y = n_member_genes)) +
     geom_boxplot(
       aes(group = Pathway), width = 0.88, outlier.shape = NA,
-      fill = "#E2E8F0", colour = "#475569", linewidth = 0.75
+      fill = if (figure_style_a) "#EEF2F7" else "#E2E8F0",
+      colour = if (figure_style_a) "#52606D" else "#475569", linewidth = 0.75
     ) +
     geom_point(
       aes(shape = Pathway, colour = sample_status),
@@ -63,32 +66,44 @@ make_tissue_plot <- function(idx) {
     ) +
     geom_text(
       data = panel_summary, aes(x = Pathway, y = label_y, label = round(median_count)),
-      inherit.aes = FALSE, size = 4.10, colour = "#7A2E2A", fontface = "bold"
+      inherit.aes = FALSE, size = 4.10,
+      colour = if (figure_style_a) FIGURE_COLOURS$red else "#7A2E2A", fontface = "bold"
     ) +
     scale_shape_manual(values = pathway_shapes, limits = pathway_levels, drop = FALSE) +
-    scale_colour_manual(values = c(Flight = "#D55E00", Ground = "#0072B2"), guide = "none") +
+    scale_colour_manual(values = sample_colours, guide = "none") +
     scale_x_discrete(limits = pathway_levels, labels = rep("", length(pathway_levels)), drop = FALSE) +
     scale_y_continuous(
       limits = c(0, max_y), breaks = pretty_breaks(n = 4),
       expand = expansion(mult = c(0, 0.02))
     ) +
     labs(title = tissue_name, x = NULL, y = if (show_y_title) "Member genes" else NULL) +
-    theme_minimal(base_size = 8, base_family = "Arial Unicode MS") +
-    theme(
-      panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),
-      panel.grid.major.y = element_line(colour = "#E5E7EB", linewidth = 0.25),
-      axis.text.x = element_blank(), axis.ticks.x = element_blank(),
-      axis.text.y = if (show_y_axis) element_text(size = 7.5, colour = "#374151") else element_blank(),
-      axis.ticks.y = if (show_y_axis) element_line(colour = "#6B7280", linewidth = 0.35) else element_blank(),
-      axis.title.y = if (show_y_title) element_text(size = 9.5, colour = "#374151") else element_blank(),
-      plot.title = element_text(
-        face = "bold", size = 11.5, hjust = 0.5, colour = "#1F2937",
-        margin = margin(2, 1, 2, 1)
-      ),
-      plot.background = element_rect(fill = "white", colour = "#374151", linewidth = 1.25),
-      panel.border = element_rect(fill = NA, colour = "#CBD5E1", linewidth = 0.55),
-      plot.margin = margin(0.5, 0.5, 0.5, 0.5)
-    )
+    if (figure_style_a) {
+      theme_minimal(base_size = 8.2, base_family = "Arial") +
+        theme(
+          panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),
+          panel.grid.major.y = element_line(colour = FIGURE_COLOURS$grid, linewidth = 0.25),
+          axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+          axis.text.y = if (show_y_axis) element_text(size = 7.5, colour = FIGURE_COLOURS$ink) else element_blank(),
+          axis.ticks.y = if (show_y_axis) element_line(colour = FIGURE_COLOURS$muted, linewidth = 0.35) else element_blank(),
+          axis.title.y = if (show_y_title) element_text(size = 9.5, colour = FIGURE_COLOURS$ink) else element_blank(),
+          plot.title = element_text(face = "bold", size = 11.5, hjust = 0.5, colour = FIGURE_COLOURS$ink, margin = margin(2, 1, 2, 1)),
+          plot.background = element_rect(fill = "white", colour = FIGURE_COLOURS$ink, linewidth = 0.85),
+          panel.border = element_rect(fill = NA, colour = "#CBD5E1", linewidth = 0.45), plot.margin = margin(0.5, 0.5, 0.5, 0.5)
+        )
+    } else {
+      theme_minimal(base_size = 8, base_family = "Arial Unicode MS") +
+        theme(
+          panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(),
+          panel.grid.major.y = element_line(colour = "#E5E7EB", linewidth = 0.25),
+          axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+          axis.text.y = if (show_y_axis) element_text(size = 7.5, colour = "#374151") else element_blank(),
+          axis.ticks.y = if (show_y_axis) element_line(colour = "#6B7280", linewidth = 0.35) else element_blank(),
+          axis.title.y = if (show_y_title) element_text(size = 9.5, colour = "#374151") else element_blank(),
+          plot.title = element_text(face = "bold", size = 11.5, hjust = 0.5, colour = "#1F2937", margin = margin(2, 1, 2, 1)),
+          plot.background = element_rect(fill = "white", colour = "#374151", linewidth = 1.25),
+          panel.border = element_rect(fill = NA, colour = "#CBD5E1", linewidth = 0.55), plot.margin = margin(0.5, 0.5, 0.5, 0.5)
+        )
+    }
 }
 
 legend_data <- data.table(
@@ -103,27 +118,27 @@ status_data <- data.table(
 legend_plot <- ggplot() +
   geom_point(
     data = legend_data, aes(x = 0.20, y = y, shape = Pathway),
-    size = 5.2, colour = "#374151", fill = NA, show.legend = FALSE
+    size = 5.2, colour = if (figure_style_a) FIGURE_COLOURS$ink else "#374151", fill = NA, show.legend = FALSE
   ) +
   geom_text(data = legend_data, aes(x = 0.48, y = y, label = label),
-            hjust = 0, size = 3.6, colour = "#374151") +
+            hjust = 0, size = 3.6, colour = if (figure_style_a) FIGURE_COLOURS$ink else "#374151") +
   geom_point(data = status_data, aes(x = 2.22, y = y, colour = status),
              shape = 16, size = 4.5, show.legend = FALSE) +
   geom_text(data = status_data, aes(x = 2.38, y = y, label = label),
-            hjust = 0, size = 3.4, colour = "#374151") +
+            hjust = 0, size = 3.4, colour = if (figure_style_a) FIGURE_COLOURS$ink else "#374151") +
   annotate("text", x = 0.04, y = 8.28, label = "Pathway symbols", hjust = 0,
-           size = 4.7, fontface = "bold", colour = "#111827") +
+           size = 4.7, fontface = "bold", colour = if (figure_style_a) FIGURE_COLOURS$ink else "#111827") +
   annotate("text", x = 0.04, y = 7.88, label = "Symbol = pathway", hjust = 0,
-           size = 3.2, colour = "#6B7280") +
+           size = 3.2, colour = if (figure_style_a) FIGURE_COLOURS$muted else "#6B7280") +
   annotate("text", x = 2.07, y = 1.53, label = "Colour = sample status", hjust = 0,
-           size = 3.2, fontface = "bold", colour = "#111827") +
+           size = 3.2, fontface = "bold", colour = if (figure_style_a) FIGURE_COLOURS$ink else "#111827") +
   scale_shape_manual(values = pathway_shapes, limits = pathway_levels, drop = FALSE) +
-  scale_colour_manual(values = c(Flight = "#D55E00", Ground = "#0072B2")) +
+  scale_colour_manual(values = sample_colours) +
   scale_x_continuous(limits = c(0, 3.75), expand = c(0, 0)) +
   scale_y_continuous(limits = c(0.25, 8.65), expand = c(0, 0)) +
-  theme_void(base_size = 8, base_family = "Arial Unicode MS") +
+  theme_void(base_size = 8, base_family = if (figure_style_a) "Arial" else "Arial Unicode MS") +
   theme(
-    plot.background = element_rect(fill = "white", colour = "#9CA3AF", linewidth = 0.55),
+    plot.background = element_rect(fill = "white", colour = if (figure_style_a) "#CBD5E1" else "#9CA3AF", linewidth = 0.55),
     plot.margin = margin(5, 5, 5, 5)
   )
 
@@ -132,24 +147,31 @@ plot_list <- c(tissue_plots, list(a = legend_plot))
 layout_design <- paste(c("ABCD", "EFGH", "IJKL", "MNOP", "QRST", "UVWX", "YZaa"), collapse = "\n")
 plot <- wrap_plots(plot_list, design = layout_design) +
   plot_annotation(
-    title = "Seven DNA-repair pathway member-gene counts per source sample",
+    title = if (figure_style_a) "Seven DNA-repair pathway member-gene counts" else "Seven DNA-repair pathway member-gene counts per source sample",
     subtitle = paste0(
-      "26 mouse tissues in a 4 × 7 layout; each tissue is framed, and the lower-right two cells contain the symbol legend.\n",
+      if (figure_style_a) "26 mouse tissues; one point per source sample; symbols encode pathway and colour encodes sample status.\n" else "26 mouse tissues in a 4 × 7 layout; each tissue is framed, and the lower-right two cells contain the symbol legend.\n",
       "Each point is one source sample column; symbol = pathway, colour = sample status; median labels are shown.\n",
       "Presence = finite source value − 1 > 0; Ensembl Gene IDs are counted once per pathway.\n",
       "Teacher-text/Table S3 catalog sizes: BER 54 | NER 53 | MMR 27 | FA 39 | HR 135 | A-EJ 9 | NHEJ 18."
     ),
     caption = "Counts describe repertoire presence, not pathway activity or expression magnitude. Source column labels, including technical-replicate markers, are retained in the audit table; no imputation was performed.",
-    theme = theme(
-      plot.title = element_text(face = "bold", size = 20.5, hjust = 0, colour = "#111827"),
-      plot.subtitle = element_text(size = 11.5, colour = "#374151", hjust = 0),
-      plot.caption = element_text(size = 9.2, colour = "#4B5563", hjust = 0),
-      plot.margin = margin(7, 10, 6, 10)
-    )
+    theme = if (figure_style_a) {
+      theme(
+        plot.title = style_title(18, hjust = 0), plot.subtitle = style_subtitle(10.2, hjust = 0),
+        plot.caption = style_caption(8.2, hjust = 0), plot.margin = margin(7, 10, 6, 10)
+      )
+    } else {
+      theme(
+        plot.title = element_text(face = "bold", size = 20.5, hjust = 0, colour = "#111827"),
+        plot.subtitle = element_text(size = 11.5, colour = "#374151", hjust = 0),
+        plot.caption = element_text(size = 9.2, colour = "#4B5563", hjust = 0),
+        plot.margin = margin(7, 10, 6, 10)
+      )
+    }
   )
 
 ggsave(file.path(out, "Suppl/Fig_S5.png"), plot, width = 18.5, height = 26.5,
-       units = "in", dpi = 320, bg = "white", limitsize = FALSE)
+       units = "in", dpi = if (figure_style_a) 600 else 320, bg = "white", limitsize = FALSE)
 
 # Cairo embeds the current wall-clock time in a PDF even when the page content
 # is identical. Keep the approved vector export byte-for-byte; the PNG above is

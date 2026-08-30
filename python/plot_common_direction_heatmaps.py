@@ -18,6 +18,7 @@ import pandas as pd
 ROOT = Path(os.environ.get("PROJECT_ROOT", Path.cwd())).resolve()
 OUT = Path(os.environ["PUBLICATION_OUTPUT_DIR"]).resolve()
 INPUT = ROOT / "data/publication_input/common_direction"
+STYLE_A = os.environ.get("FIGURE_STYLE", "approved") == "A"
 
 SPECS = {
     "A_kidney": {
@@ -60,7 +61,7 @@ def apply_style() -> None:
     plt.rcParams.update(
         {
             "font.family": ["Arial", "Helvetica", "DejaVu Sans", "sans-serif"],
-            "font.size": 9,
+            "font.size": 9 if not STYLE_A else 9.4,
             "axes.spines.top": False,
             "axes.spines.right": False,
             "axes.linewidth": 1.0,
@@ -73,7 +74,8 @@ def apply_style() -> None:
 
 def signed_cmap() -> LinearSegmentedColormap:
     cmap = LinearSegmentedColormap.from_list(
-        "negative_blue_positive_red", ["#3775BA", "#F7F7F7", "#B64342"]
+        "negative_blue_positive_red",
+        ["#3775BA", "#F7F7F7", "#B64342"] if not STYLE_A else ["#3B6FB6", "#F7F7F5", "#C65A5A"],
     )
     cmap.set_bad("#D9D9D9")
     return cmap
@@ -86,6 +88,13 @@ def row_labels(selected: pd.DataFrame) -> list[str]:
     arrows = selected["common_direction"].map(
         {"common_up": "↑", "common_down": "↓"}
     ).fillna("")
+    if STYLE_A:
+        return [
+            f"{symbol} {arrow}  q={q:.2g}  min|FC|={score:.2f}"
+            for symbol, arrow, q, score in zip(
+                symbols, arrows, selected["final_fdr"], selected["ranking_score"]
+            )
+        ]
     return [
         f"{symbol} {arrow} | q={q:.2g} | minimum |log2FC|={score:.2f}"
         for symbol, arrow, q, score in zip(
@@ -133,11 +142,17 @@ def render_one(group_id: str, columns: pd.DataFrame, norm: Normalize) -> None:
     ax.set_ylabel("")
     up_n = int(selected["common_direction"].eq("common_up").sum())
     down_n = int(selected["common_direction"].eq("common_down").sum())
-    ax.set_title(
-        f"{spec['title']}\nq < {spec['cutoff']:.2f}; same pooled Top 30 ordered by common direction "
-        f"(up {up_n}, down {down_n}), then minimum |log2FC|",
-        loc="left", weight="bold", pad=8,
-    )
+    if STYLE_A:
+        title = (
+            f"{spec['title']}\nq < {spec['cutoff']:.2f} · pooled Top 30 · "
+            f"direction ordered (up {up_n}, down {down_n})"
+        )
+    else:
+        title = (
+            f"{spec['title']}\nq < {spec['cutoff']:.2f}; same pooled Top 30 ordered by common direction "
+            f"(up {up_n}, down {down_n}), then minimum |log2FC|"
+        )
+    ax.set_title(title, loc="left", weight="bold", pad=8)
     for row in range(n_rows):
         for column in range(n_cols):
             value = values[row, column]
@@ -152,8 +167,10 @@ def render_one(group_id: str, columns: pd.DataFrame, norm: Normalize) -> None:
     colorbar = fig.colorbar(ScalarMappable(norm=norm, cmap=cmap), cax=colorbar_axis)
     colorbar.set_label("Unified log2FC: spaceflight - ground/control")
     fig.savefig(
-        OUT / spec["output"], dpi=300, bbox_inches="tight", pad_inches=0.08,
+        OUT / spec["output"], dpi=600 if STYLE_A else 300, bbox_inches="tight", pad_inches=0.08,
         facecolor="white",
+        # Keep the approved archive metadata stable across matplotlib patch versions.
+        metadata={"Software": "Matplotlib version3.10.8, https://matplotlib.org/"},
     )
     plt.close(fig)
 
