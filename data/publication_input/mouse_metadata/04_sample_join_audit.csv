@@ -1,0 +1,49 @@
+accession,n_selected_sample_columns,n_unique_mice,n_exact_matches,n_transformed_matches,n_missing_age,n_age_range_samples,n_missing_sex,n_status_conflicts,n_launch_mission_conflicts,selected_age_labels,selected_sexes,selected_missions
+OSD-100,12,12,12,0,0,0,0,0,0,16 wk,Female,SpaceX-4
+OSD-101,12,12,12,0,0,0,0,0,0,16 wk,Female,SpaceX-4
+OSD-104,12,12,12,0,0,0,0,0,0,16 wk,Female,SpaceX-4
+OSD-137,12,12,12,0,0,0,0,0,0,12 wk,Female,SpaceX-8
+OSD-161,10,10,10,0,0,0,0,0,0,12 wk,Female,SpaceX-8
+OSD-162,10,10,10,0,0,0,0,0,5,12 wk,Female,SpaceX-8
+OSD-163,12,12,12,0,0,0,0,0,0,12 wk,Female,SpaceX-8
+OSD-194,9,9,9,0,0,0,0,0,0,12 wk,Female,SpaceX-8
+OSD-239,5,5,5,0,0,0,0,0,0,9 wk,Male,SpaceX-12
+OSD-240,20,20,20,0,0,0,0,0,0,30 wk,Female,SpaceX-11
+OSD-241,19,19,19,0,0,0,0,0,0,30 wk,Female,SpaceX-11
+OSD-242,9,9,9,0,0,0,0,0,0,10 wk,Male,SpaceX-12
+OSD-253,39,39,39,0,0,0,0,0,0,11 wk,Female,SpaceX-15
+OSD-254,40,40,40,0,0,0,0,0,0,11 wk,Female,SpaceX-15
+OSD-255,16,16,16,0,0,0,0,0,0,10 wk,Male,SpaceX-12
+OSD-289,12,12,12,0,0,0,0,0,0,8 wk;9 wk,Male,SpaceX-12;SpaceX-9
+OSD-379,30,30,30,0,0,16,0,0,0,10–12 wk;32 wk,Female,SpaceX-16
+OSD-397,16,16,16,0,0,0,0,0,0,16 wk,Female,SpaceX-4
+OSD-419,12,12,12,0,0,0,0,0,0,16 wk,Female,SpaceX-4
+OSD-420,20,20,20,0,0,0,0,0,0,10 wk,Male,SpaceX-12
+OSD-421,20,20,20,0,0,0,0,0,0,10 wk,Male,SpaceX-12
+OSD-462,20,20,0,20,0,20,0,0,0,14–15 wk,Female,SpaceX-21
+OSD-463,18,18,18,0,0,18,0,0,0,16–17 wk,Male,SpaceX-21
+OSD-464,17,17,17,0,0,17,0,0,0,16–17 wk,Male,SpaceX-21
+OSD-47,6,6,6,0,0,0,0,0,0,8 mo,Female,SpaceX-4
+OSD-48,4,4,4,0,0,0,0,0,0,16 wk,Female,SpaceX-4
+OSD-506,17,17,17,0,0,17,0,0,0,16–17 wk,Male,SpaceX-21
+OSD-511,25,25,25,0,0,13,0,0,0,10–12 wk;32 wk,Female,SpaceX-16
+OSD-512,18,18,18,0,0,18,0,0,0,16–17 wk,Male,SpaceX-21
+OSD-513,18,18,18,0,0,18,0,0,0,16–17 wk,Male,SpaceX-21
+OSD-515,16,16,16,0,0,16,0,0,0,16–17 wk,Male,SpaceX-21
+OSD-525,18,18,18,0,0,18,0,0,0,16–17 wk,Male,SpaceX-21
+OSD-576,18,18,18,0,0,18,0,0,0,16–17 wk,Male,SpaceX-21
+OSD-580,30,30,30,0,0,0,0,0,0,12 wk;29 wk,Female,SpaceX-18
+OSD-599,6,6,6,0,0,6,0,0,0,9–11 wk,Female,NG-11
+OSD-665,18,18,18,0,0,18,0,0,0,16–17 wk,Male,SpaceX-21
+OSD-666,18,18,18,0,0,18,0,0,0,16–17 wk,Male,SpaceX-21
+OSD-667,9,9,9,0,0,9,0,0,0,14–15 wk,Female,SpaceX-21
+OSD-686,6,6,6,0,0,0,0,0,0,9 wk,Male,SpaceX-12
+OSD-690,12,12,12,0,0,0,0,0,0,12 wk,Male,SpaceX-14
+OSD-714,6,6,6,0,0,0,0,0,0,8 wk,Male,SpaceX-9
+OSD-758,17,17,17,0,0,17,0,0,0,11–12 wk,Male,SpaceX-27
+OSD-759,17,17,17,0,0,17,0,0,0,11–12 wk,Male,SpaceX-27
+OSD-770,18,18,18,0,0,18,0,0,0,16–17 wk,Male,SpaceX-21
+OSD-771,30,30,30,0,0,0,0,0,0,12 wk;29 wk,Female,SpaceX-18
+OSD-899,10,10,10,0,0,10,0,0,0,14–15 wk,Female,SpaceX-21
+OSD-900,10,10,10,0,0,10,0,0,0,14–15 wk,Female,SpaceX-21
+OSD-99,12,12,12,0,0,0,0,0,0,16 wk,Female,SpaceX-4

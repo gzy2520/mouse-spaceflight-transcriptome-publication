@@ -1,0 +1,6 @@
+accession,analysis_unit_id,sample_column,mouse_id,issue_type,source_value,canonical_value,resolution
+OSD-162,OSD-162,Mmus_BAL-TAL_EYE_FLT_Rep1_F1,RR3_FLT_F1,ISA launch mission conflicts with current dataset API mission,SpaceX-3,SpaceX-8,Use the current OSDR dataset API mission for plotting; retain the ISA value for audit
+OSD-162,OSD-162,Mmus_BAL-TAL_EYE_FLT_Rep2_F2,RR3_FLT_F2,ISA launch mission conflicts with current dataset API mission,SpaceX-3,SpaceX-8,Use the current OSDR dataset API mission for plotting; retain the ISA value for audit
+OSD-162,OSD-162,Mmus_BAL-TAL_EYE_FLT_Rep3_F3,RR3_FLT_F3,ISA launch mission conflicts with current dataset API mission,SpaceX-3,SpaceX-8,Use the current OSDR dataset API mission for plotting; retain the ISA value for audit
+OSD-162,OSD-162,Mmus_BAL-TAL_EYE_FLT_Rep4_F4,RR3_FLT_F4,ISA launch mission conflicts with current dataset API mission,SpaceX-3,SpaceX-8,Use the current OSDR dataset API mission for plotting; retain the ISA value for audit
+OSD-162,OSD-162,Mmus_BAL-TAL_EYE_FLT_Rep5_F5,RR3_FLT_F5,ISA launch mission conflicts with current dataset API mission,SpaceX-3,SpaceX-8,Use the current OSDR dataset API mission for plotting; retain the ISA value for audit

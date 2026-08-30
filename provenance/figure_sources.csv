@@ -15,3 +15,4 @@ Fig_S3b,Suppl/Fig_S3b.png,python/plot_common_direction_heatmaps.py,data/publicat
 Fig_S4a,Suppl/Fig_S4a.png,R/figures/06_go_upsets.R,results/tables/04_membership_matrix_down_tissues.csv
 Fig_S4b,Suppl/Fig_S4b.png,python/plot_common_direction_heatmaps.py,data/publication_input/common_direction/C_NES_lt_minus1_excl_Lung_Thymus_DDR_common_direction_top30_min_abs_log2fc_direction_ordered.csv
 Fig_S5,Suppl/Fig_S5.png,R/figures/07_seven_pathway_counts.R,results/tables/02_seven_pathway_member_gene_counts_per_source_sample_long.csv
+Fig_6,Main/Fig_6_mouse_metadata_bubble.png,R/figures/08_mouse_metadata_bubble.R,data/publication_input/mouse_metadata/03_mouse_level_metadata.csv

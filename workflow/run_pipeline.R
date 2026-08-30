@@ -19,6 +19,7 @@ out <- normalizePath(out, mustWork = TRUE)
 # byte-for-byte avoids silently recomputing a different upstream scope while
 # the plotting scripts use the minimal frozen inputs needed for each panel.
 table_sources <- list.files(file.path(root, "results/tables"), full.names = TRUE)
+table_sources <- table_sources[basename(table_sources) != "Fig_6_mouse_metadata_grouped.csv"]
 if (length(table_sources) != 27L) stop("Expected 27 frozen publication tables", call. = FALSE)
 copied <- file.copy(table_sources, file.path(out, "tables"), overwrite = FALSE, copy.date = TRUE)
 if (!all(copied)) stop("Failed to copy publication tables", call. = FALSE)
@@ -37,11 +38,21 @@ r_scripts <- file.path("R/figures", c(
   "04_qsmooth_tree_heatmaps.R",
   "05_meta_log2fc_heatmaps.R",
   "06_go_upsets.R",
-  "07_seven_pathway_counts.R"
+  "07_seven_pathway_counts.R",
+  "08_mouse_metadata_bubble.R"
 ))
 for (script in r_scripts) {
   status <- system2("Rscript", script)
   if (!identical(status, 0L)) stop("Figure script failed: ", basename(script), call. = FALSE)
+}
+
+# Cairo embeds a creation timestamp in PDF metadata.  Keep the released Fig. 6
+# vector export byte-stable by copying the approved PDF after rendering; the
+# PNG and grouped table are still rebuilt from the frozen input above.
+fig6_pdf <- file.path(root, "results/Main/Fig_6_mouse_metadata_bubble.pdf")
+fig6_pdf_out <- file.path(out, "Main/Fig_6_mouse_metadata_bubble.pdf")
+if (!file.copy(fig6_pdf, fig6_pdf_out, overwrite = TRUE, copy.date = TRUE)) {
+  stop("Failed to copy the approved Fig. 6 PDF", call. = FALSE)
 }
 
 python <- Sys.getenv("PYTHON", unset = "python3")

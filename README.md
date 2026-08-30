@@ -10,6 +10,7 @@ The Fig. S5 PNG is freshly rendered during a run. Its companion PDF is copied by
 
 ```text
 data/publication_input/    Frozen, figure-level input tables
+R/data/                    Source-refresh and metadata-audit scripts
 R/figures/                 R scripts for the R-rendered figures
 python/                    Matplotlib script retained for four heatmaps
 workflow/run_pipeline.R    One-command reproduction entry point
@@ -18,7 +19,7 @@ results/                   Approved figures and manuscript tables
 provenance/                Input/output hashes and figure-source mapping
 ```
 
-The release contains 8 main-figure PNGs, 8 supplementary PNGs, the PDF version of Fig. S5, and 27 CSV tables. The expected 44-file set and SHA-256 values are recorded in `provenance/reference_sha256.csv`.
+The release contains 9 main-figure PNGs (including the mouse-composition overview Fig. 6), one main-figure PDF vector export, 8 supplementary PNGs, the PDF version of Fig. S5, and 28 CSV tables. The expected 47-file set and SHA-256 values are recorded in `provenance/reference_sha256.csv`.
 
 ## Reproduce the release
 
@@ -39,6 +40,35 @@ Rscript tests/validate_publication_contract.R results
 ```
 
 The validator checks the exact file list and SHA-256 values, as well as the main stable-ID and scope contracts used by the manuscript tables. A successful run ends with `PUBLICATION_CONTRACT_PASS`.
+
+## Figure 6 display convention
+
+`Main/Fig_6_mouse_metadata_bubble.png` (and its PDF companion) is a sample-design
+overview. The x-axis follows the 26-tissue order in the cross-tissue GO table.
+Each mission occupies two rows (female, then male); the mission name is printed
+between the paired rows. Age is encoded by a fixed, ordered discrete palette with
+no continuous colour interpolation, while point area is the number of unique mice
+in that mission–tissue–sex–age stratum. Flight and Ground samples are both included;
+their separate counts remain in `results/tables/Fig_6_mouse_metadata_grouped.csv`.
+
+The Fig. 6 metadata was refreshed directly from all 48 NASA OSDR ISA metadata
+ZIPs on 2026-08-30. The frozen publication input contains 1,588 complete ISA
+source/sample rows and a one-to-one audited join for all 761 selected analysis
+sample columns. OSD-162 is assigned to the current dataset-API mission
+`SpaceX-8`; its legacy ISA value `SpaceX-3` is retained only in the conflict
+audit. Age ranges are shown only when the downloaded ISA cell is itself a range.
+Exact source values such as `32 week` are not converted to months.
+
+To refresh the source snapshot from NASA and rebuild the Fig. 6 input tables:
+
+```bash
+Rscript R/data/01_refresh_osdr_mouse_metadata.R
+```
+
+This network-dependent refresh is intentionally separate from the offline
+publication-output reproduction command. URLs, download time, sizes and SHA-256
+values are recorded in
+`data/publication_input/mouse_metadata/02_osdr_download_manifest.csv`.
 
 ## Conservative visual refresh (Style A)
 

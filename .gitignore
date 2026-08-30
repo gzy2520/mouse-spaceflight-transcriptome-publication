@@ -10,3 +10,4 @@ renv/library/
 reproduced_results/
 work/
 tmp/
+data/.cache/

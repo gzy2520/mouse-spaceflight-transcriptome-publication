@@ -46,10 +46,11 @@ assert(identical(unname(hashes), unname(reference_hashes)), paste(
   "SHA-256 mismatch:", paste(expected[hashes != reference_hashes], collapse = "; ")
 ))
 
-assert(sum(grepl("^Main/Fig_.*[.]png$", expected)) == 8L, "Expected 8 main figures")
+assert(sum(grepl("^Main/Fig_.*[.]png$", expected)) == 9L, "Expected 9 main figures")
+assert(sum(grepl("^Main/Fig_.*[.]pdf$", expected)) == 1L, "Expected the Fig. 6 vector export")
 assert(sum(grepl("^Suppl/Fig_S.*[.]png$", expected)) == 8L, "Expected 8 supplementary PNG figures")
 assert(sum(grepl("^Suppl/Fig_S5[.]pdf$", expected)) == 1L, "Expected the Fig S5 PDF")
-assert(sum(grepl("^tables/.*[.]csv$", expected)) == 27L, "Expected 27 tables")
+assert(sum(grepl("^tables/.*[.]csv$", expected)) == 28L, "Expected 28 tables")
 
 tables <- file.path(target, "tables")
 ssb_map <- fread(file.path(tables, "02_SSB_component_stable_id_mapping_without_Neil2.csv"))
@@ -63,9 +64,37 @@ assert(uniqueN(seven$Group) == 26L && uniqueN(seven$Pathway) == 7L, "Seven-pathw
 assert(uniqueN(seven[, .(analysis_unit_id, sample_column, sample_status)]) == 761L, "Source-sample count changed")
 assert(!anyDuplicated(seven[, .(analysis_unit_id, sample_column, sample_status, Pathway)]), "Duplicate seven-pathway sample rows")
 
+mouse_dir <- file.path(root, "data/publication_input/mouse_metadata")
+mouse <- fread(file.path(mouse_dir, "03_mouse_level_metadata.csv"))
+assert(nrow(mouse) == 761L && !anyDuplicated(mouse$sample_column), "Mouse metadata input scope changed")
+assert(uniqueN(mouse$accession) == 48L && uniqueN(mouse$analysis_unit_id) == 59L, "Mouse metadata accession/unit scope changed")
+assert(uniqueN(mouse$Group) == 26L && uniqueN(mouse$mission_cluster) == 12L, "Mouse metadata mission/tissue scope changed")
+assert(!"SpaceX-8+SpaceX-9" %chin% mouse$mission_cluster, "The erroneous composite OSD-162 mission remains")
+assert(unique(mouse[accession == "OSD-162", mission_cluster]) == "SpaceX-8", "OSD-162 is not assigned to the current OSDR mission")
+assert(all(mouse$sex %chin% c("Female", "Male")) && all(!is.na(mouse$age_order_weeks)), "Mouse metadata has missing sex or age")
+assert(all(mouse$isa_status_matches_analysis), "Mouse metadata conflicts with the analysis Flight/Ground scope")
+assert(!anyNA(mouse[, .(mouse_id, metadata_zip_sha256, age_source_field)]), "Mouse metadata provenance is incomplete")
+
+source_core <- fread(file.path(mouse_dir, "01_osdr_isa_sample_source_core_all.csv"))
+download_manifest <- fread(file.path(mouse_dir, "02_osdr_download_manifest.csv"))
+join_audit <- fread(file.path(mouse_dir, "04_sample_join_audit.csv"))
+conflict_audit <- fread(file.path(mouse_dir, "06_metadata_conflict_audit.csv"))
+assert(nrow(source_core) == 1588L && uniqueN(source_core$accession) == 48L, "Complete OSDR ISA source table scope changed")
+assert(nrow(download_manifest) == 48L && !anyDuplicated(download_manifest$accession), "OSDR download manifest scope changed")
+assert(all(grepl("^[0-9a-f]{64}$", download_manifest$metadata_zip_sha256)), "Invalid OSDR ZIP SHA-256")
+assert(all(mouse$metadata_zip_sha256 == download_manifest$metadata_zip_sha256[match(mouse$accession, download_manifest$accession)]), "Selected rows do not match the OSDR ZIP manifest")
+assert(nrow(join_audit) == 48L && sum(join_audit$n_missing_age) == 0L && sum(join_audit$n_missing_sex) == 0L && sum(join_audit$n_status_conflicts) == 0L, "OSDR sample join audit failed")
+assert(nrow(conflict_audit) == 5L && all(conflict_audit$accession == "OSD-162") && all(conflict_audit$canonical_value == "SpaceX-8"), "Expected OSD-162 legacy mission conflict audit changed")
+mouse_grouped <- fread(file.path(tables, "Fig_6_mouse_metadata_grouped.csv"))
+assert(!anyDuplicated(mouse_grouped[, .(mission_cluster, Group, sex, age_label)]), "Duplicate Fig. 6 strata")
+assert(all(mouse_grouped$n_mice > 0L), "Fig. 6 contains a non-positive mouse count")
+assert(all(c("source_age_values", "age_source_fields", "age_is_range", "accessions") %chin% names(mouse_grouped)), "Fig. 6 source-age provenance columns are missing")
+age_map <- unique(mouse_grouped[, .(age_label, age_colour)])
+assert(!anyNA(mouse_grouped$age_colour) && nrow(age_map) == uniqueN(mouse_grouped$age_label) && uniqueN(age_map$age_colour) == nrow(age_map), "Fig. 6 age colours are not one-to-one")
+
 for (family in c("up_tissues", "down_tissues")) {
   membership <- fread(file.path(tables, paste0("04_membership_matrix_", family, ".csv")))
   assert(!anyDuplicated(membership$ensembl_id), paste("Duplicate Ensembl IDs in", family))
 }
 
-message("PUBLICATION_CONTRACT_PASS: 44 files; SHA-256, stable-ID and scope checks passed")
+message("PUBLICATION_CONTRACT_PASS: 47 files; SHA-256, stable-ID and scope checks passed")
