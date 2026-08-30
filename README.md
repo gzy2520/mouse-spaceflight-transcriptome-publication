@@ -50,6 +50,10 @@ Rscript workflow/run_style_A.R results_style_A_rebuilt
 
 Style A keeps the same plotting inputs, filters, ordering, membership counts and numeric matrices while applying a consistent publication palette, typography, spacing and high-resolution export. It writes the same 44-file set to the chosen output directory, never overwrites `results/`, and ends with `STYLE_A_CONTRACT_PASS`.
 
+## Figure 1 display convention
+
+The checked-in `Main/Fig_1.png` follows the teacher-requested heatmap presentation: the frozen 26 × 15 matrix is unchanged, in-cell NES numbers and the decorative top bar are omitted, and a fine continuous blue–white–red scale carries the value detail. Exact NES values remain in the publication tables. Figure 2 is the explicit exception and keeps its Spearman numbers.
+
 ## Analysis conventions retained in this release
 
 - Ensembl gene IDs are the analysis keys. Gene symbols are retained only as display labels.

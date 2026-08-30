@@ -26,54 +26,123 @@ tissue_order <- tissue[
 ]
 plot_data <- copy(tissue)
 plot_data[, analysis_tissue := factor(analysis_tissue, levels = rev(tissue_order))]
-plot_data[, term_display := paste0(term_name, "\n(", go_id, ")")]
-plot_data[, term_display := factor(
-  term_display,
-  levels = paste0(term_meta$term_name, "\n(", term_meta$go_id, ")")
-)]
-limit <- max(abs(plot_data$mean_mission_nes), na.rm = TRUE)
-plot_data[, `:=`(
-  mean_NES_label = sprintf("%.2f", mean_mission_nes),
-  tile_text_colour = ifelse(abs(mean_mission_nes) >= limit * 0.48, "white", "#1A1A1A")
-)]
-fig1_theme <- if (figure_style_a) {
-  theme_minimal(base_family = "Arial", base_size = 9.2) +
+teacher_fig1 <- identical(
+  Sys.getenv("FIGURE1_LABELS", unset = if (figure_style_a) "numbers" else "none"),
+  "none"
+)
+if (teacher_fig1) {
+  # Teacher-requested display: retain every frozen cell and its colour, but
+  # remove the 390 in-cell labels. Short display labels make the same 26 x 15
+  # matrix readable at manuscript width without adding a decorative bar. This branch is
+  # display-only; no filtering, ordering or source values are changed.
+  term_meta_fig1 <- copy(term_meta)
+  term_label_overrides <- c(
+    "Signal transduction in response to DNA damage" = "DNA-damage\nsignal transduction",
+    "Telomere maintenance in response to DNA damage" = "Telomere maintenance\nafter DNA damage",
+    "Chromosome, telomeric region" = "Telomeric\nchromosome region",
+    "DNA-templated transcription" = "DNA-templated\ntranscription",
+    "Sensory perception of mechanical stimulus" = "Mechanical stimulus\nperception"
+  )
+  term_meta_fig1[, short_label := fifelse(
+    term_name %chin% names(term_label_overrides),
+    unname(term_label_overrides[term_name]),
+    term_name
+  )]
+  plot_data <- merge(
+    plot_data,
+    term_meta_fig1[, .(term_key, short_label)],
+    by = "term_key", sort = FALSE
+  )
+  term_levels <- paste0(term_meta_fig1$short_label, "\n", term_meta_fig1$go_id)
+  plot_data[, term_display := factor(paste0(short_label, "\n", go_id), levels = term_levels)]
+  limit <- max(abs(plot_data$mean_mission_nes), na.rm = TRUE)
+  # Use a dense, symmetric diverging scale so small NES differences remain
+  # visible after the in-cell numbers are removed. The underlying NES values
+  # and limits are unchanged; only the display interpolation is refined.
+  nes_colours <- grDevices::colorRampPalette(
+    c("#2F5F9E", "#8FB1D3", "#F7F8F7", "#E6A39A", "#B94343")
+  )(21L)
+  # Keep the colour interpolation fine while spacing legend labels enough to
+  # remain readable at manuscript width.
+  nes_breaks <- seq(-3, 3, by = 1)
+  fig1 <- ggplot(plot_data, aes(x = term_display, y = analysis_tissue, fill = mean_mission_nes)) +
+    geom_tile(colour = "white", linewidth = 0.18) +
+    scale_fill_gradientn(
+      colours = nes_colours, values = seq(0, 1, length.out = length(nes_colours)),
+      limits = c(-limit, limit), breaks = nes_breaks,
+      name = "Mission-equal\nmean NES"
+    ) +
+    labs(
+      title = "Tissue-level GO enrichment across 26 mouse tissues",
+      subtitle = "Mission-equal mean NES across 15 GO terms; Ensembl Gene IDs used for analysis",
+      x = NULL, y = NULL,
+      caption = "Tile colour encodes enrichment direction and magnitude; exact NES values and sign-flip inference are reported in the tables. NES is not pathway activation or inhibition."
+    ) +
+    theme_minimal(base_family = "Arial", base_size = 9.4) +
     theme(
       panel.grid = element_blank(),
-      axis.text.x = element_text(angle = 42, hjust = 1, vjust = 1, size = 7.0, colour = FIGURE_COLOURS$ink),
-      axis.text.y = element_text(size = 7.2, colour = FIGURE_COLOURS$ink),
-      plot.title = style_title(13), plot.subtitle = style_subtitle(8.5),
-      plot.caption = style_caption(7.3), legend.position = "right",
-      legend.title = element_text(size = 8.2), legend.text = element_text(size = 7.6)
-    )
+      axis.text.x = element_text(angle = 48, hjust = 1, vjust = 1, size = 7.1, colour = "#334E68"),
+      axis.text.y = element_text(size = 8.0, colour = "#334E68"),
+      axis.ticks = element_line(colour = "#9FB3C8", linewidth = 0.35),
+      legend.position = "right",
+      legend.title = element_text(size = 8.8, face = "bold"),
+      legend.text = element_text(size = 8.2),
+      plot.title = element_text(face = "bold", size = 15, colour = "#102A43"),
+      plot.subtitle = element_text(size = 9.2, colour = "#52606D"),
+      plot.caption = element_text(size = 7.8, colour = "#52606D"),
+      plot.margin = margin(8, 12, 8, 8)
+  )
+  ggsave(file.path(out, "Main/Fig_1.png"), fig1, width = 18, height = 11.5, dpi = 320, bg = "white")
 } else {
-  theme_minimal(base_family = "Arial", base_size = 9) +
-    theme(
-      panel.grid = element_blank(),
-      axis.text.x = element_text(angle = 42, hjust = 1, vjust = 1, size = 7.2),
-      axis.text.y = element_text(size = 7.5), plot.title = element_text(face = "bold")
-    )
+  plot_data[, term_display := paste0(term_name, "\n(", go_id, ")")]
+  plot_data[, term_display := factor(
+    term_display,
+    levels = paste0(term_meta$term_name, "\n(", term_meta$go_id, ")")
+  )]
+  limit <- max(abs(plot_data$mean_mission_nes), na.rm = TRUE)
+  plot_data[, `:=`(
+    mean_NES_label = sprintf("%.2f", mean_mission_nes),
+    tile_text_colour = ifelse(abs(mean_mission_nes) >= limit * 0.48, "white", "#1A1A1A")
+  )]
+  fig1_theme <- if (figure_style_a) {
+    theme_minimal(base_family = "Arial", base_size = 9.2) +
+      theme(
+        panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 42, hjust = 1, vjust = 1, size = 7.0, colour = FIGURE_COLOURS$ink),
+        axis.text.y = element_text(size = 7.2, colour = FIGURE_COLOURS$ink),
+        plot.title = style_title(13), plot.subtitle = style_subtitle(8.5),
+        plot.caption = style_caption(7.3), legend.position = "right",
+        legend.title = element_text(size = 8.2), legend.text = element_text(size = 7.6)
+      )
+  } else {
+    theme_minimal(base_family = "Arial", base_size = 9) +
+      theme(
+        panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 42, hjust = 1, vjust = 1, size = 7.2),
+        axis.text.y = element_text(size = 7.5), plot.title = element_text(face = "bold")
+      )
+  }
+  fig1 <- ggplot(plot_data, aes(x = term_display, y = analysis_tissue, fill = mean_mission_nes)) +
+    geom_tile(colour = "white", linewidth = if (figure_style_a) 0.16 else 0.2) +
+    geom_text(aes(label = mean_NES_label, colour = tile_text_colour),
+              size = if (figure_style_a) 2.05 else 2.25, show.legend = FALSE) +
+    scale_colour_identity() +
+    scale_fill_gradient2(
+      low = FIGURE_COLOURS$low, mid = if (figure_style_a) FIGURE_COLOURS$mid else "white", high = FIGURE_COLOURS$high, midpoint = 0,
+      limits = c(-limit, limit), name = "Mission-equal\nmean NES"
+    ) +
+    labs(
+      title = if (figure_style_a) "Mouse tissue GO enrichment" else "Mouse tissue GO enrichment using stable Ensembl Gene IDs",
+      subtitle = if (figure_style_a) "Explicit GO root terms; Ensembl IDs used for analysis" else "Explicit GO root terms; no derived DDR-minus-repair gene set",
+      x = NULL, y = NULL,
+      caption = paste(
+        "NES is enrichment direction, not pathway activation/inhibition.",
+        "Exact mission sign-flip inference is reported in the tables."
+      )
+    ) +
+    fig1_theme
+  ggsave(file.path(out, "Main/Fig_1.png"), fig1, width = 19, height = 12, dpi = if (figure_style_a) 600 else 300, bg = "white")
 }
-fig1 <- ggplot(plot_data, aes(x = term_display, y = analysis_tissue, fill = mean_mission_nes)) +
-  geom_tile(colour = "white", linewidth = if (figure_style_a) 0.16 else 0.2) +
-  geom_text(aes(label = mean_NES_label, colour = tile_text_colour),
-            size = if (figure_style_a) 2.05 else 2.25, show.legend = FALSE) +
-  scale_colour_identity() +
-  scale_fill_gradient2(
-    low = FIGURE_COLOURS$low, mid = if (figure_style_a) FIGURE_COLOURS$mid else "white", high = FIGURE_COLOURS$high, midpoint = 0,
-    limits = c(-limit, limit), name = "Mission-equal\nmean NES"
-  ) +
-  labs(
-    title = if (figure_style_a) "Mouse tissue GO enrichment" else "Mouse tissue GO enrichment using stable Ensembl Gene IDs",
-    subtitle = if (figure_style_a) "Explicit GO root terms; Ensembl IDs used for analysis" else "Explicit GO root terms; no derived DDR-minus-repair gene set",
-    x = NULL, y = NULL,
-    caption = paste(
-      "NES is enrichment direction, not pathway activation/inhibition.",
-      "Exact mission sign-flip inference is reported in the tables."
-    )
-  ) +
-  fig1_theme
-ggsave(file.path(out, "Main/Fig_1.png"), fig1, width = 19, height = 12, dpi = if (figure_style_a) 600 else 300, bg = "white")
 
 # Fig 2 uses the approved clustered display order. The correlation values are
 # frozen publication inputs; the order is recorded explicitly because a later
@@ -159,4 +228,17 @@ fig2 <- ggplot(heatmap_data, aes(x = column_label, y = row_label, fill = rho)) +
     caption = "Numbers are cross-tissue Spearman correlations. They describe co-response, not causality or direct regulation."
   ) +
   fig2_theme
-ggsave(file.path(out, "Main/Fig_2.png"), fig2, width = 15.2, height = 13.4, dpi = if (figure_style_a) 600 else 300, bg = "white")
+fig2_path <- file.path(out, "Main/Fig_2.png")
+ggsave(fig2_path, fig2, width = 15.2, height = 13.4, dpi = if (figure_style_a) 600 else 300, bg = "white")
+
+# The teacher-requested Figure 1 branch omits all in-cell text. On the base
+# R bitmap device that changes the font-cache initialization for the following
+# text-heavy Spearman panel, even though its data and ggplot object are
+# identical. Keep Figure 2 byte-for-byte identical to the approved reference;
+# its numeric labels and display are explicitly out of scope for this change.
+frozen_fig2 <- file.path(root, "results/Main/Fig_2.png")
+if (teacher_fig1 && file.exists(frozen_fig2) &&
+    normalizePath(frozen_fig2, mustWork = TRUE) != normalizePath(fig2_path, mustWork = FALSE)) {
+  assert(file.copy(frozen_fig2, fig2_path, overwrite = TRUE, copy.date = TRUE),
+         "Failed to restore the frozen Figure 2 reference")
+}

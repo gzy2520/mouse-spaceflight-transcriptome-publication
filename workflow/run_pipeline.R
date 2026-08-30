@@ -23,7 +23,11 @@ if (length(table_sources) != 27L) stop("Expected 27 frozen publication tables", 
 copied <- file.copy(table_sources, file.path(out, "tables"), overwrite = FALSE, copy.date = TRUE)
 if (!all(copied)) stop("Failed to copy publication tables", call. = FALSE)
 
-Sys.setenv(PROJECT_ROOT = root, PUBLICATION_OUTPUT_DIR = out)
+Sys.setenv(
+  PROJECT_ROOT = root,
+  PUBLICATION_OUTPUT_DIR = out,
+  FIGURE1_LABELS = "none"
+)
 old_wd <- setwd(root)
 on.exit(setwd(old_wd), add = TRUE)
 r_scripts <- file.path("R/figures", c(

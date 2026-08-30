@@ -24,7 +24,8 @@ if (!all(copied)) stop("Failed to copy publication tables", call. = FALSE)
 Sys.setenv(
   PROJECT_ROOT = root,
   PUBLICATION_OUTPUT_DIR = out,
-  FIGURE_STYLE = "A"
+  FIGURE_STYLE = "A",
+  FIGURE1_LABELS = "numbers"
 )
 old_wd <- setwd(root)
 on.exit(setwd(old_wd), add = TRUE)
