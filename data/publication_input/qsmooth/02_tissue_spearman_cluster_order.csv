@@ -1,0 +1,53 @@
+Figure,OrderTopToBottom,Tissue,ComponentN,ClusteringMethod,DistanceDefinition
+DSB,1,Bone marrow,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,2,Spleen-distal,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,3,Cerebellum,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,4,Eye,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,5,Retina,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,6,Heart,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,7,Heart / Heart right ventricle,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,8,Soleus,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,9,Gastrocnemius,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,10,Quadriceps femoris,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,11,Tibialis anterior,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,12,Extensor digitorum longus,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,13,Kidney,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,14,Left lobe of the liver,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,15,Liver,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,16,Optic nerve,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,17,Lung,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,18,Adrenal gland,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,19,Mammary gland,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,20,Thymus,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,21,Spleen,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,22,Cecum,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,23,Colon,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,24,Dorsal skin,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,25,Femoral lateral skin,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+DSB,26,Femoral skin,29,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,1,Bone marrow,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,2,Spleen,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,3,Thymus,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,4,Heart,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,5,Heart / Heart right ventricle,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,6,Gastrocnemius,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,7,Tibialis anterior,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,8,Quadriceps femoris,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,9,Extensor digitorum longus,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,10,Soleus,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,11,Left lobe of the liver,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,12,Liver,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,13,Kidney,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,14,Adrenal gland,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,15,Mammary gland,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,16,Lung,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,17,Cecum,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,18,Optic nerve,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,19,Eye,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,20,Retina,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,21,Colon,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,22,Dorsal skin,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,23,Femoral lateral skin,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,24,Femoral skin,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,25,Cerebellum,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components
+SSB,26,Spleen-distal,45,average-linkage hierarchical clustering,1 - Spearman rho across displayed components

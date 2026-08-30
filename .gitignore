@@ -1,0 +1,12 @@
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+renv/library/
+reproduced_results/
+work/
+tmp/

@@ -1,0 +1,26 @@
+﻿group_id,column_position,column_id,analysis_tissue,DDR_NES,n_analysis_units,n_missions,group_definition
+A_kidney,1,OSD-163,Kidney,1.01418434875789,1,1,A | Kidney
+A_kidney,2,OSD-253,Kidney,1.01418434875789,4,1,A | Kidney
+A_kidney,3,OSD-462,Kidney,1.01418434875789,1,1,A | Kidney
+A_kidney,4,OSD-513,Kidney,1.01418434875789,1,1,A | Kidney
+A_kidney,5,OSD-771,Kidney,1.01418434875789,2,1,A | Kidney
+B_thymus,1,OSD289_MHU1_thymus,Thymus,-3.19203204186468,1,1,B | Four thymus comparisons
+B_thymus,2,OSD289_MHU2_thymus,Thymus,-3.19203204186468,1,1,B | Four thymus comparisons
+B_thymus,3,OSD421_thymus,Thymus,-3.19203204186468,1,1,B | Four thymus comparisons
+B_thymus,4,OSD515_thymus,Thymus,-3.19203204186468,1,1,B | Four thymus comparisons
+C_NES_lt_minus1_excl_Lung_Thymus,1,Heart / Heart right ventricle,Heart / Heart right ventricle,-1.138316353478,2,1,"C | NES < -1, excluding Lung and Thymus"
+C_NES_lt_minus1_excl_Lung_Thymus,2,Retina,Retina,-1.25029549364973,4,4,"C | NES < -1, excluding Lung and Thymus"
+C_NES_lt_minus1_excl_Lung_Thymus,3,Spleen-distal,Spleen-distal,-1.3077320845389,1,1,"C | NES < -1, excluding Lung and Thymus"
+C_NES_lt_minus1_excl_Lung_Thymus,4,Bone marrow,Bone marrow,-1.61555143448735,1,1,"C | NES < -1, excluding Lung and Thymus"
+C_NES_lt_minus1_excl_Lung_Thymus,5,Femoral skin,Femoral skin,-1.66706334129073,1,1,"C | NES < -1, excluding Lung and Thymus"
+C_NES_lt_minus1_excl_Lung_Thymus,6,Cecum,Cecum,-1.88893558660283,1,1,"C | NES < -1, excluding Lung and Thymus"
+D_NES_gt1_excl_Kidney,1,Quadriceps femoris,Quadriceps femoris,1.52468463744304,1,1,"D | NES > 1, excluding Kidney"
+D_NES_gt1_excl_Kidney,2,Tibialis anterior,Tibialis anterior,1.50931996857433,1,1,"D | NES > 1, excluding Kidney"
+D_NES_gt1_excl_Kidney,3,Optic nerve,Optic nerve,1.50286815241866,1,1,"D | NES > 1, excluding Kidney"
+D_NES_gt1_excl_Kidney,4,Spleen,Spleen,1.27792868534236,1,1,"D | NES > 1, excluding Kidney"
+D_NES_gt1_excl_Kidney,5,Femoral lateral skin,Femoral lateral skin,1.2341511681674,1,1,"D | NES > 1, excluding Kidney"
+D_NES_gt1_excl_Kidney,6,Left lobe of the liver,Left lobe of the liver,1.19478897942653,3,2,"D | NES > 1, excluding Kidney"
+D_NES_gt1_excl_Kidney,7,Colon,Colon,1.05535514408818,1,1,"D | NES > 1, excluding Kidney"
+D_NES_gt1_excl_Kidney,8,Cerebellum,Cerebellum,1.05300323649771,1,1,"D | NES > 1, excluding Kidney"
+D_NES_gt1_excl_Kidney,9,Heart,Heart,1.05087532611825,1,1,"D | NES > 1, excluding Kidney"
+D_NES_gt1_excl_Kidney,10,Eye,Eye,1.00632962062026,2,2,"D | NES > 1, excluding Kidney"

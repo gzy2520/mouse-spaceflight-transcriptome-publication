@@ -1,0 +1,133 @@
+#!/usr/bin/env Rscript
+
+suppressPackageStartupMessages({
+  library(data.table)
+  library(ggplot2)
+})
+
+set.seed(25)
+root <- normalizePath(Sys.getenv("PROJECT_ROOT", unset = getwd()), mustWork = TRUE)
+out <- normalizePath(Sys.getenv("PUBLICATION_OUTPUT_DIR"), mustWork = TRUE)
+input_dir <- file.path(root, "data/publication_input/go")
+assert <- function(x, message) if (!isTRUE(x)) stop(message, call. = FALSE)
+
+tissue <- fread(file.path(input_dir, "04_tissue_statistics_concrete_terms_and_context.csv"))
+term_meta <- unique(tissue[, .(term_key, term_name, go_id, term_order, term_role)])
+setorder(term_meta, term_order)
+assert(nrow(term_meta) == 15L && !anyDuplicated(term_meta$term_key), "Expected 15 unique GO terms")
+assert(uniqueN(tissue$analysis_tissue) == 26L, "Expected 26 tissues")
+
+# Fig 1: the plotting block is retained from the approved analysis script.
+ddr_key <- "DNA_damage_response_GO0006974"
+tissue_order <- tissue[
+  term_key == ddr_key,
+  analysis_tissue[order(-mean_mission_nes, analysis_tissue)]
+]
+plot_data <- copy(tissue)
+plot_data[, analysis_tissue := factor(analysis_tissue, levels = rev(tissue_order))]
+plot_data[, term_display := paste0(term_name, "\n(", go_id, ")")]
+plot_data[, term_display := factor(
+  term_display,
+  levels = paste0(term_meta$term_name, "\n(", term_meta$go_id, ")")
+)]
+limit <- max(abs(plot_data$mean_mission_nes), na.rm = TRUE)
+plot_data[, `:=`(
+  mean_NES_label = sprintf("%.2f", mean_mission_nes),
+  tile_text_colour = ifelse(abs(mean_mission_nes) >= limit * 0.48, "white", "#1A1A1A")
+)]
+fig1 <- ggplot(plot_data, aes(x = term_display, y = analysis_tissue, fill = mean_mission_nes)) +
+  geom_tile(colour = "white", linewidth = 0.2) +
+  geom_text(aes(label = mean_NES_label, colour = tile_text_colour), size = 2.25, show.legend = FALSE) +
+  scale_colour_identity() +
+  scale_fill_gradient2(
+    low = "#2166AC", mid = "white", high = "#B2182B", midpoint = 0,
+    limits = c(-limit, limit), name = "Mission-equal\nmean NES"
+  ) +
+  labs(
+    title = "Mouse tissue GO enrichment using stable Ensembl Gene IDs",
+    subtitle = "Explicit GO root terms; no derived DDR-minus-repair gene set",
+    x = NULL, y = NULL,
+    caption = paste(
+      "NES is enrichment direction, not pathway activation/inhibition.",
+      "Exact mission sign-flip inference is reported in the tables."
+    )
+  ) +
+  theme_minimal(base_family = "Arial", base_size = 9) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 42, hjust = 1, vjust = 1, size = 7.2),
+    axis.text.y = element_text(size = 7.5),
+    plot.title = element_text(face = "bold")
+  )
+ggsave(file.path(out, "Main/Fig_1.png"), fig1, width = 19, height = 12, dpi = 300)
+
+# Fig 2 uses the approved clustered display order. The correlation values are
+# frozen publication inputs; the order is recorded explicitly because a later
+# project-wide term-order refactor changed an hclust tie orientation.
+rho_table <- fread(file.path(input_dir, "13_tissue_pathway_Spearman_rho_matrix.csv"))
+rho <- as.matrix(rho_table[, -"term_key"])
+storage.mode(rho) <- "numeric"
+rownames(rho) <- rho_table$term_key
+colnames(rho) <- names(rho_table)[-1L]
+assert(all(is.finite(rho)) && max(abs(rho - t(rho))) < 1e-12, "Invalid Spearman matrix")
+
+display_name_overrides <- c(
+  DNA_damage_signal_transduction_GO0042770 = "DNA-damage signal transduction",
+  intrinsic_apoptotic_signaling_GO0008630 = "Intrinsic apoptosis",
+  telomere_maintenance_GO0043247 = "Telomere maintenance after DNA damage",
+  telomere_region_GO0000781 = "Telomeric chromosome region",
+  mechanosensation_GO0050954 = "Mechanical stimulus perception"
+)
+term_meta[, short_label := fifelse(
+  nchar(term_name) > 36L, paste0(substr(term_name, 1L, 33L), "..."), term_name
+)]
+term_meta[term_key %chin% names(display_name_overrides), short_label := unname(display_name_overrides[term_key])]
+term_meta[, short_label := paste0(short_label, "\n", go_id)]
+ordered_keys <- c(
+  "cytoskeleton_GO0005856", "cell_death_GO0008219", "mechanosensation_GO0050954",
+  "translation_GO0006412", "mitochondrion_GO0005739", "telomere_maintenance_GO0043247",
+  "intrinsic_apoptotic_signaling_GO0008630", "DNA_templated_transcription_GO0006351",
+  "DNA_damage_tolerance_GO0006301", "telomere_region_GO0000781",
+  "DNA_damage_response_GO0006974", "DNA_repair_GO0006281", "DNA_replication_GO0006260",
+  "DNA_damage_signal_transduction_GO0042770", "cell_cycle_GO0007049"
+)
+assert(setequal(ordered_keys, rownames(rho)), "Fig 2 order does not match the correlation matrix")
+heatmap_data <- CJ(row_key = ordered_keys, column_key = ordered_keys, unique = TRUE)
+heatmap_data[, rho := rho[cbind(row_key, column_key)]]
+heatmap_data <- merge(
+  heatmap_data, term_meta[, .(row_key = term_key, row_label = short_label)],
+  by = "row_key", sort = FALSE
+)
+heatmap_data <- merge(
+  heatmap_data, term_meta[, .(column_key = term_key, column_label = short_label)],
+  by = "column_key", sort = FALSE
+)
+label_order <- term_meta[match(ordered_keys, term_key), short_label]
+heatmap_data[, `:=`(
+  row_label = factor(row_label, levels = rev(label_order)),
+  column_label = factor(column_label, levels = label_order),
+  value_label = sprintf("%.2f", rho)
+)]
+fig2 <- ggplot(heatmap_data, aes(x = column_label, y = row_label, fill = rho)) +
+  geom_tile(colour = "white", linewidth = 0.28) +
+  geom_text(aes(label = value_label), size = 2.2, colour = "#171717") +
+  scale_fill_gradient2(
+    low = "#2C6DB2", mid = "#F7F7F7", high = "#C93335",
+    midpoint = 0, limits = c(-1, 1), name = "Spearman\nrho"
+  ) +
+  labs(
+    title = "Data-derived pathway relationships across mouse tissues",
+    subtitle = "Average-linkage order; distance = (1 - Spearman rho) / 2; 26 tissues, mission-equal NES",
+    x = NULL, y = NULL,
+    caption = "Numbers are cross-tissue Spearman correlations. They describe co-response, not causality or direct regulation."
+  ) +
+  theme_minimal(base_family = "Arial", base_size = 9) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 48, hjust = 1, vjust = 1, size = 6.6),
+    axis.text.y = element_text(size = 6.6),
+    plot.title = element_text(face = "bold", size = 15),
+    plot.subtitle = element_text(size = 9.5),
+    plot.caption = element_text(size = 8, colour = "#4B5563")
+  )
+ggsave(file.path(out, "Main/Fig_2.png"), fig2, width = 15.2, height = 13.4, dpi = 300, bg = "white")

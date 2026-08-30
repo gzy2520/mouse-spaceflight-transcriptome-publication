@@ -1,0 +1,2 @@
+﻿colour_scale,vmin,vmax,calculation
+shared across all four groups and both rank methods,-3.448056518999562,3.448056518999562,"max(1.0, 98th percentile of absolute displayed log2FC values)"
