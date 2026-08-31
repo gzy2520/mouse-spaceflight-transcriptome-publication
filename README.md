@@ -52,7 +52,7 @@ not depend on exploratory style directories.
 Rebuild the complete final set into a new, empty directory:
 
 ```bash
-PYTHON=.venv/bin/python Rscript workflow/run_final_release.R reproduced_final_result
+Rscript workflow/run_final_release.R reproduced_final_result
 ```
 
 Fig. 1a is intentionally excluded while its study schematic is prepared
