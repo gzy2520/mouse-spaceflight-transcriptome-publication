@@ -1,0 +1,183 @@
+﻿Pathway,Group,TissueLabel,TissueOrder,n_samples,n_flight_samples,n_ground_samples,min,q1,median,mean,q3,max,n_unique_Ensembl_genes_in_GO_set
+AEJ,Adrenal gland,Adrenal gland,1,28,14,14,9,9,9,9,9,9,9
+BER,Adrenal gland,Adrenal gland,1,28,14,14,52,52,52,52.3214285714286,53,53,54
+FA,Adrenal gland,Adrenal gland,1,28,14,14,39,39,39,39,39,39,39
+HR,Adrenal gland,Adrenal gland,1,28,14,14,132,133,133,133.607142857143,134.25,135,135
+MMR,Adrenal gland,Adrenal gland,1,28,14,14,26,26,27,26.5714285714286,27,27,27
+NER,Adrenal gland,Adrenal gland,1,28,14,14,52,53,53,52.9642857142857,53,53,53
+NHEJ,Adrenal gland,Adrenal gland,1,28,14,14,17,17,17,17,17,17,18
+AEJ,Bone marrow,Bone marrow,2,12,6,6,9,9,9,9,9,9,9
+BER,Bone marrow,Bone marrow,2,12,6,6,52,53,54,53.5833333333333,54,54,54
+FA,Bone marrow,Bone marrow,2,12,6,6,39,39,39,39,39,39,39
+HR,Bone marrow,Bone marrow,2,12,6,6,133,133,134,133.666666666667,134,134,135
+MMR,Bone marrow,Bone marrow,2,12,6,6,27,27,27,27,27,27,27
+NER,Bone marrow,Bone marrow,2,12,6,6,53,53,53,53,53,53,53
+NHEJ,Bone marrow,Bone marrow,2,12,6,6,17,17,17,17,17,17,18
+AEJ,Cecum,Cecum,3,10,5,5,9,9,9,9,9,9,9
+BER,Cecum,Cecum,3,10,5,5,51,52,52,52.1,52,53,54
+FA,Cecum,Cecum,3,10,5,5,36,38,39,38.4,39,39,39
+HR,Cecum,Cecum,3,10,5,5,126,131.25,132,131.7,133,135,135
+MMR,Cecum,Cecum,3,10,5,5,26,26,26,26.4,27,27,27
+NER,Cecum,Cecum,3,10,5,5,53,53,53,53,53,53,53
+NHEJ,Cecum,Cecum,3,10,5,5,17,17,17,17,17,17,18
+AEJ,Cerebellum,Cerebellum,4,18,9,9,8,9,9,8.88888888888889,9,9,9
+BER,Cerebellum,Cerebellum,4,18,9,9,50,51,51.5,51.4444444444445,52,52,54
+FA,Cerebellum,Cerebellum,4,18,9,9,37,38,38,38.3888888888889,39,39,39
+HR,Cerebellum,Cerebellum,4,18,9,9,130,131,132,131.722222222222,132,133,135
+MMR,Cerebellum,Cerebellum,4,18,9,9,26,27,27,26.9444444444444,27,27,27
+NER,Cerebellum,Cerebellum,4,18,9,9,52,53,53,52.8333333333333,53,53,53
+NHEJ,Cerebellum,Cerebellum,4,18,9,9,17,17,17,17,17,17,18
+AEJ,Colon,Colon,5,9,4,5,9,9,9,9,9,9,9
+BER,Colon,Colon,5,9,4,5,53,53,53,53,53,53,54
+FA,Colon,Colon,5,9,4,5,39,39,39,39,39,39,39
+HR,Colon,Colon,5,9,4,5,133,133,134,133.777777777778,134,135,135
+MMR,Colon,Colon,5,9,4,5,27,27,27,27,27,27,27
+NER,Colon,Colon,5,9,4,5,53,53,53,53,53,53,53
+NHEJ,Colon,Colon,5,9,4,5,17,17,17,17,17,17,18
+AEJ,Dorsal skin,Dorsal skin,6,60,30,30,9,9,9,9,9,9,9
+BER,Dorsal skin,Dorsal skin,6,60,30,30,52,52,53,52.6166666666667,53,53,54
+FA,Dorsal skin,Dorsal skin,6,60,30,30,39,39,39,39,39,39,39
+HR,Dorsal skin,Dorsal skin,6,60,30,30,132,134,134,134.066666666667,135,135,135
+MMR,Dorsal skin,Dorsal skin,6,60,30,30,26,27,27,26.9666666666667,27,27,27
+NER,Dorsal skin,Dorsal skin,6,60,30,30,53,53,53,53,53,53,53
+NHEJ,Dorsal skin,Dorsal skin,6,60,30,30,17,17,17,17,17,17,18
+AEJ,Extensor digitorum longus,Extensor digitorum longus,7,30,15,15,8,9,9,8.93333333333333,9,9,9
+BER,Extensor digitorum longus,Extensor digitorum longus,7,30,15,15,50,52,52,52.1666666666667,53,54,54
+FA,Extensor digitorum longus,Extensor digitorum longus,7,30,15,15,37,37,38,37.9,38,39,39
+HR,Extensor digitorum longus,Extensor digitorum longus,7,30,15,15,127,128.25,130,129.366666666667,130,131,135
+MMR,Extensor digitorum longus,Extensor digitorum longus,7,30,15,15,25,26,27,26.5,27,27,27
+NER,Extensor digitorum longus,Extensor digitorum longus,7,30,15,15,52,53,53,52.9,53,53,53
+NHEJ,Extensor digitorum longus,Extensor digitorum longus,7,30,15,15,17,17,17,17,17,17,18
+AEJ,Eye,Eye,8,22,11,11,9,9,9,9,9,9,9
+BER,Eye,Eye,8,22,11,11,52,53,53,52.7727272727273,53,53,54
+FA,Eye,Eye,8,22,11,11,39,39,39,39,39,39,39
+HR,Eye,Eye,8,22,11,11,133,134,134,134.272727272727,135,135,135
+MMR,Eye,Eye,8,22,11,11,27,27,27,27,27,27,27
+NER,Eye,Eye,8,22,11,11,53,53,53,53,53,53,53
+NHEJ,Eye,Eye,8,22,11,11,17,17,17,17,17,17,18
+AEJ,Femoral lateral skin,Femoral lateral skin,9,19,9,10,9,9,9,9,9,9,9
+BER,Femoral lateral skin,Femoral lateral skin,9,19,9,10,52,53,53,52.8947368421053,53,53,54
+FA,Femoral lateral skin,Femoral lateral skin,9,19,9,10,39,39,39,39,39,39,39
+HR,Femoral lateral skin,Femoral lateral skin,9,19,9,10,132,134,134,133.736842105263,134,134,135
+MMR,Femoral lateral skin,Femoral lateral skin,9,19,9,10,27,27,27,27,27,27,27
+NER,Femoral lateral skin,Femoral lateral skin,9,19,9,10,53,53,53,53,53,53,53
+NHEJ,Femoral lateral skin,Femoral lateral skin,9,19,9,10,17,17,17,17,17,17,18
+AEJ,Femoral skin,Femoral skin,10,5,2,3,9,9,9,9,9,9,9
+BER,Femoral skin,Femoral skin,10,5,2,3,53,53,53,53,53,53,54
+FA,Femoral skin,Femoral skin,10,5,2,3,39,39,39,39,39,39,39
+HR,Femoral skin,Femoral skin,10,5,2,3,134,134,134,134,134,134,135
+MMR,Femoral skin,Femoral skin,10,5,2,3,27,27,27,27,27,27,27
+NER,Femoral skin,Femoral skin,10,5,2,3,53,53,53,53,53,53,53
+NHEJ,Femoral skin,Femoral skin,10,5,2,3,17,17,17,17,17,17,18
+AEJ,Gastrocnemius,Gastrocnemius,11,24,10,14,5,7,8,7.83333333333333,9,9,9
+BER,Gastrocnemius,Gastrocnemius,11,24,10,14,38,44,49,47.875,52.25,53,54
+FA,Gastrocnemius,Gastrocnemius,11,24,10,14,16,20.75,31.5,29.125,37.25,38,39
+HR,Gastrocnemius,Gastrocnemius,11,24,10,14,80,98.5,117.5,112.416666666667,128,129,135
+MMR,Gastrocnemius,Gastrocnemius,11,24,10,14,20,22,24.5,24.2083333333333,27,27,27
+NER,Gastrocnemius,Gastrocnemius,11,24,10,14,39,47,52,49.7916666666667,53,53,53
+NHEJ,Gastrocnemius,Gastrocnemius,11,24,10,14,12,16,17,16.2916666666667,17,17,18
+AEJ,Heart,Heart,12,6,3,3,9,9,9,9,9,9,9
+BER,Heart,Heart,12,6,3,3,51,51.25,52,51.6666666666667,52,52,54
+FA,Heart,Heart,12,6,3,3,38,39,39,38.8333333333333,39,39,39
+HR,Heart,Heart,12,6,3,3,127,127.25,128,128,128.75,129,135
+MMR,Heart,Heart,12,6,3,3,25,25.25,26,25.6666666666667,26,26,27
+NER,Heart,Heart,12,6,3,3,52,52,52,52,52,52,53
+NHEJ,Heart,Heart,12,6,3,3,17,17,17,17,17,17,18
+AEJ,Heart / Heart right ventricle,Heart right ventricle,13,30,10,20,9,9,9,9,9,9,9
+BER,Heart / Heart right ventricle,Heart right ventricle,13,30,10,20,51,51,52,52,53,53,54
+FA,Heart / Heart right ventricle,Heart right ventricle,13,30,10,20,38,39,39,38.9666666666667,39,39,39
+HR,Heart / Heart right ventricle,Heart right ventricle,13,30,10,20,131,132.25,133,132.933333333333,134,134,135
+MMR,Heart / Heart right ventricle,Heart right ventricle,13,30,10,20,26,26,27,26.5333333333333,27,27,27
+NER,Heart / Heart right ventricle,Heart right ventricle,13,30,10,20,52,53,53,52.9666666666667,53,53,53
+NHEJ,Heart / Heart right ventricle,Heart right ventricle,13,30,10,20,17,17,17,17.0333333333333,17,18,18
+AEJ,Kidney,Kidney,14,119,55,64,8,9,9,8.99159663865546,9,9,9
+BER,Kidney,Kidney,14,119,55,64,51,52,52,52.1764705882353,52.5,53,54
+FA,Kidney,Kidney,14,119,55,64,37,39,39,38.8655462184874,39,39,39
+HR,Kidney,Kidney,14,119,55,64,128,132,133,132.563025210084,134,134,135
+MMR,Kidney,Kidney,14,119,55,64,26,26,27,26.5378151260504,27,27,27
+NER,Kidney,Kidney,14,119,55,64,52,53,53,52.8487394957983,53,53,53
+NHEJ,Kidney,Kidney,14,119,55,64,17,17,17,17.0504201680672,17,18,18
+AEJ,Left lobe of the liver,Left lobe of the liver,15,48,24,24,8,9,9,8.89583333333333,9,9,9
+BER,Left lobe of the liver,Left lobe of the liver,15,48,24,24,50,51,52,51.8541666666667,52,53,54
+FA,Left lobe of the liver,Left lobe of the liver,15,48,24,24,37,38,39,38.4583333333333,39,39,39
+HR,Left lobe of the liver,Left lobe of the liver,15,48,24,24,123,128,129,128.9375,130,132,135
+MMR,Left lobe of the liver,Left lobe of the liver,15,48,24,24,25,26,26,26.0833333333333,26,27,27
+NER,Left lobe of the liver,Left lobe of the liver,15,48,24,24,52,52,53,52.6458333333333,53,53,53
+NHEJ,Left lobe of the liver,Left lobe of the liver,15,48,24,24,17,17,17,17,17,17,18
+AEJ,Liver,Liver,16,37,19,18,8,9,9,8.91891891891892,9,9,9
+BER,Liver,Liver,16,37,19,18,49,52,52,51.9459459459459,53,53,54
+FA,Liver,Liver,16,37,19,18,32,38,39,37.6486486486487,39,39,39
+HR,Liver,Liver,16,37,19,18,118,127,130,128.837837837838,131,132,135
+MMR,Liver,Liver,16,37,19,18,25,26,26,26.3243243243243,27,27,27
+NER,Liver,Liver,16,37,19,18,52,52,53,52.5135135135135,53,53,53
+NHEJ,Liver,Liver,16,37,19,18,17,17,17,17,17,17,18
+AEJ,Lung,Lung,17,27,14,13,9,9,9,9,9,9,9
+BER,Lung,Lung,17,27,14,13,51,52,53,52.4444444444444,53,53,54
+FA,Lung,Lung,17,27,14,13,39,39,39,39,39,39,39
+HR,Lung,Lung,17,27,14,13,133,133,134,133.666666666667,134,134,135
+MMR,Lung,Lung,17,27,14,13,26,27,27,26.8888888888889,27,27,27
+NER,Lung,Lung,17,27,14,13,53,53,53,53,53,53,53
+NHEJ,Lung,Lung,17,27,14,13,17,17,17,17,17,17,18
+AEJ,Mammary gland,Mammary gland,18,25,10,15,9,9,9,9,9,9,9
+BER,Mammary gland,Mammary gland,18,25,10,15,52,52,53,52.64,53,53,54
+FA,Mammary gland,Mammary gland,18,25,10,15,39,39,39,39,39,39,39
+HR,Mammary gland,Mammary gland,18,25,10,15,131,133,133,133.12,134,134,135
+MMR,Mammary gland,Mammary gland,18,25,10,15,26,27,27,26.8,27,27,27
+NER,Mammary gland,Mammary gland,18,25,10,15,52,53,53,52.96,53,53,53
+NHEJ,Mammary gland,Mammary gland,18,25,10,15,17,17,17,17,17,17,18
+AEJ,Optic nerve,Optic nerve,19,17,5,12,9,9,9,9,9,9,9
+BER,Optic nerve,Optic nerve,19,17,5,12,53,53,53,53,53,53,54
+FA,Optic nerve,Optic nerve,19,17,5,12,39,39,39,39,39,39,39
+HR,Optic nerve,Optic nerve,19,17,5,12,132,133,133,133.529411764706,134,135,135
+MMR,Optic nerve,Optic nerve,19,17,5,12,27,27,27,27,27,27,27
+NER,Optic nerve,Optic nerve,19,17,5,12,53,53,53,53,53,53,53
+NHEJ,Optic nerve,Optic nerve,19,17,5,12,17,17,17,17,17,17,18
+AEJ,Quadriceps femoris,Quadriceps femoris,20,18,9,9,8,9,9,8.77777777777778,9,9,9
+BER,Quadriceps femoris,Quadriceps femoris,20,18,9,9,51,51,52,51.8888888888889,52.75,53,54
+FA,Quadriceps femoris,Quadriceps femoris,20,18,9,9,36,37,38,37.5555555555556,38,39,39
+HR,Quadriceps femoris,Quadriceps femoris,20,18,9,9,127,128,130,129.611111111111,131,133,135
+MMR,Quadriceps femoris,Quadriceps femoris,20,18,9,9,25,26,26.5,26.3888888888889,27,27,27
+NER,Quadriceps femoris,Quadriceps femoris,20,18,9,9,53,53,53,53,53,53,53
+NHEJ,Quadriceps femoris,Quadriceps femoris,20,18,9,9,17,17,17,17,17,17,18
+AEJ,Retina,Retina,21,58,27,31,9,9,9,9,9,9,9
+BER,Retina,Retina,21,58,27,31,52,52,53,52.6034482758621,53,53,54
+FA,Retina,Retina,21,58,27,31,35,38,38.5,38.2413793103448,39,39,39
+HR,Retina,Retina,21,58,27,31,125,129,131,131.448275862069,134,135,135
+MMR,Retina,Retina,21,58,27,31,25,27,27,26.7586206896552,27,27,27
+NER,Retina,Retina,21,58,27,31,51,52,53,52.6896551724138,53,53,53
+NHEJ,Retina,Retina,21,58,27,31,17,17,17,17,17,17,18
+AEJ,Soleus,Soleus,22,36,18,18,8,9,9,8.88888888888889,9,9,9
+BER,Soleus,Soleus,22,36,18,18,51,52,52,52.2777777777778,53,53,54
+FA,Soleus,Soleus,22,36,18,18,36,38,38,38.1388888888889,39,39,39
+HR,Soleus,Soleus,22,36,18,18,124,128,129,128.666666666667,130,132,135
+MMR,Soleus,Soleus,22,36,18,18,25,26.75,27,26.6944444444444,27,27,27
+NER,Soleus,Soleus,22,36,18,18,52,53,53,52.8611111111111,53,53,53
+NHEJ,Soleus,Soleus,22,36,18,18,17,17,17,17.3055555555556,18,18,18
+AEJ,Spleen,Spleen,23,17,9,8,9,9,9,9,9,9,9
+BER,Spleen,Spleen,23,17,9,8,53,53,53,53,53,53,54
+FA,Spleen,Spleen,23,17,9,8,39,39,39,39,39,39,39
+HR,Spleen,Spleen,23,17,9,8,133,134,134,133.764705882353,134,134,135
+MMR,Spleen,Spleen,23,17,9,8,27,27,27,27,27,27,27
+NER,Spleen,Spleen,23,17,9,8,53,53,53,53,53,53,53
+NHEJ,Spleen,Spleen,23,17,9,8,17,17,17,17,17,17,18
+AEJ,Spleen-distal,Spleen-distal,24,20,10,10,8,9,9,8.8,9,9,9
+BER,Spleen-distal,Spleen-distal,24,20,10,10,46,50,51,50.55,52,52,54
+FA,Spleen-distal,Spleen-distal,24,20,10,10,30,35,37,36.3,38.25,39,39
+HR,Spleen-distal,Spleen-distal,24,20,10,10,113,120.75,124.5,124.1,128,131,135
+MMR,Spleen-distal,Spleen-distal,24,20,10,10,25,25,26,25.7,26,26,27
+NER,Spleen-distal,Spleen-distal,24,20,10,10,49,51.75,52,51.75,52,53,53
+NHEJ,Spleen-distal,Spleen-distal,24,20,10,10,15,17,17,16.8,17,17,18
+AEJ,Thymus,Thymus,25,48,23,25,8,9,9,8.9375,9,9,9
+BER,Thymus,Thymus,25,48,23,25,46,50.75,53,51.4583333333333,53,53,54
+FA,Thymus,Thymus,25,48,23,25,31,37,39,37.6666666666667,39,39,39
+HR,Thymus,Thymus,25,48,23,25,114,125,133,129.708333333333,134,134,135
+MMR,Thymus,Thymus,25,48,23,25,22,26,27,26.25,27,27,27
+NER,Thymus,Thymus,25,48,23,25,48,52,53,52.3958333333333,53,53,53
+NHEJ,Thymus,Thymus,25,48,23,25,16,17,17,17.1666666666667,17,18,18
+AEJ,Tibialis anterior,Tibialis anterior,26,18,9,9,8,9,9,8.94444444444445,9,9,9
+BER,Tibialis anterior,Tibialis anterior,26,18,9,9,52,52.25,53,52.7222222222222,53,53,54
+FA,Tibialis anterior,Tibialis anterior,26,18,9,9,36,37.25,38,37.9444444444444,38.75,39,39
+HR,Tibialis anterior,Tibialis anterior,26,18,9,9,127,129,129.5,130.055555555556,132,133,135
+MMR,Tibialis anterior,Tibialis anterior,26,18,9,9,25,26,27,26.5555555555556,27,27,27
+NER,Tibialis anterior,Tibialis anterior,26,18,9,9,53,53,53,53,53,53,53
+NHEJ,Tibialis anterior,Tibialis anterior,26,18,9,9,17,17,17,17,17,17,18
