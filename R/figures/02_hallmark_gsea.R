@@ -87,3 +87,12 @@ if (figure_style_c) {
     theme(axis.text.y = element_text(size = 8), plot.margin = margin(8, 14, 8, 8))
   save_style_C(fig_s1_c, out, "Suppl/Fig_S1", 10.8, 7.0)
 }
+
+if (figure_style_c && identical(Sys.getenv("FINAL_RELEASE_PALETTE_AUDIT"), "1")) {
+  source(file.path(root, "R/final_figures/helpers.R"))
+  append_final_palette_audit(out, "Fig_S1", c(
+    negative = STYLE_C_COLOURS$blue,
+    positive = STYLE_C_COLOURS$red,
+    segment = STYLE_C_COLOURS$grey_dark
+  ))
+}

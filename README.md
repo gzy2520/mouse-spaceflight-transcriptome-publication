@@ -41,6 +41,46 @@ Rscript tests/validate_publication_contract.R results
 
 The validator checks the exact file list and SHA-256 values, as well as the main stable-ID and scope contracts used by the manuscript tables. A successful run ends with `PUBLICATION_CONTRACT_PASS`.
 
+## Final manuscript figures
+
+`final_result/` is the compact manuscript-facing snapshot: 17 PNG figures (9
+main and 8 supplementary), 27 unchanged CSV tables, and the audits needed to
+trace the final display back to frozen inputs. The final renderers are isolated
+under `R/final_figures/` and `python/render_final_common_direction.py`; they do
+not depend on exploratory style directories.
+
+Rebuild the complete final set into a new, empty directory:
+
+```bash
+PYTHON=.venv/bin/python Rscript workflow/run_final_release.R reproduced_final_result
+```
+
+Fig. 1a is intentionally excluded while its study schematic is prepared
+separately. The build writes PDF versions of the other 17 figures and finishes
+by checking figure dimensions,
+all 27 table hashes, Ensembl-ID membership counts, GO matrix scope, Fig. 3b
+labels, meta-dotplot scope, and the exact dendrogram topology and merge heights.
+Validate an existing full rebuild with:
+
+```bash
+Rscript tests/validate_final_release.R reproduced_final_result full
+```
+
+The same validator accepts the compact checked-in snapshot, which intentionally
+omits the reproducible PDF exports:
+
+```bash
+Rscript tests/validate_final_release.R final_result compact
+```
+
+Display-only wording changes are recorded in
+`provenance/final_figure_sources.csv`. In particular, the fourth GO label is
+shown as “Intrinsic apoptotic signaling” and the seventh as “Telomeric region”;
+their stable GO identifiers and numeric values are unchanged.
+Per-figure colours remain those of the selected source figures and are recorded
+in `provenance/final_palette_contract.csv`; no release-wide replacement palette
+is applied.
+
 ## Figure 6 display convention
 
 `Main/Fig_6_mouse_metadata_bubble.png` (and its PDF companion) is a sample-design
