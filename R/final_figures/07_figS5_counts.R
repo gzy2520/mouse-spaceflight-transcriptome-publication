@@ -152,7 +152,7 @@ make_tissue_plot <- function(idx) {
           axis.text.y = if (show_y_axis) element_text(size = 10.5, colour = "#374151") else element_blank(),
           axis.ticks.y = if (show_y_axis) element_line(colour = "#6B7280", linewidth = 0.35) else element_blank(),
           axis.title.y = if (show_y_title) element_text(size = 13.0, colour = "#374151") else element_blank(),
-          plot.title = element_text(face = "bold", size = 18.5, hjust = 0.5, lineheight = 0.90, colour = "#1F2937", margin = margin(2, 1, 2, 1)),
+          plot.title = element_text(face = "bold", size = 23.0, hjust = 0.5, lineheight = 0.86, colour = "#1F2937", margin = margin(3, 1, 2, 1)),
           plot.background = element_rect(fill = "white", colour = "#374151", linewidth = 1.25),
           panel.border = element_rect(fill = NA, colour = "#CBD5E1", linewidth = 0.55), plot.margin = margin(0.5, 0.5, 0.5, 0.5)
         )
@@ -161,34 +161,35 @@ make_tissue_plot <- function(idx) {
 
 legend_data <- data.table(
   Pathway = factor(pathway_levels, levels = pathway_levels),
-  y = rev(seq_along(pathway_levels)),
+  x_symbol = c(rep(0.20, 4L), rep(4.15, 3L)),
+  x_text = c(rep(0.52, 4L), rep(4.47, 3L)),
+  y = c(5.00, 4.00, 3.00, 2.00, 5.00, 4.00, 3.00),
   label = unname(pathway_legend_labels[pathway_levels])
 )
 status_data <- data.table(
   status = factor(c("Flight", "Ground"), levels = c("Flight", "Ground")),
-  y = c(1.05, 0.62), label = c("Flight sample", "Ground sample")
+  x_point = c(2.55, 5.65), x_text = c(2.88, 5.98),
+  y = c(0.72, 0.72), label = c("Flight sample", "Ground sample")
 )
 legend_plot <- ggplot() +
   geom_point(
-    data = legend_data, aes(x = 0.20, y = y, shape = Pathway),
+    data = legend_data, aes(x = x_symbol, y = y, shape = Pathway),
     size = 7.8, colour = if (figure_style_a) FIGURE_COLOURS$ink else "#374151", fill = NA, show.legend = FALSE
   ) +
-  geom_text(data = legend_data, aes(x = 0.48, y = y, label = label),
+  geom_text(data = legend_data, aes(x = x_text, y = y, label = label),
             hjust = 0, size = 6.0, colour = if (figure_style_a) FIGURE_COLOURS$ink else "#374151") +
-  geom_point(data = status_data, aes(x = 2.22, y = y, colour = status),
+  geom_point(data = status_data, aes(x = x_point, y = y, colour = status),
              shape = 16, size = 7.0, show.legend = FALSE) +
-  geom_text(data = status_data, aes(x = 2.38, y = y, label = label),
+  geom_text(data = status_data, aes(x = x_text, y = y, label = label),
             hjust = 0, size = 5.8, colour = if (figure_style_a) FIGURE_COLOURS$ink else "#374151") +
-  annotate("text", x = 0.04, y = 8.28, label = "Pathway symbols", hjust = 0,
+  annotate("text", x = 0.04, y = 6.05, label = "Pathway symbols", hjust = 0,
            size = 7.2, fontface = "bold", colour = if (figure_style_a) FIGURE_COLOURS$ink else "#111827") +
-  annotate("text", x = 0.04, y = 7.88, label = "Symbol = pathway", hjust = 0,
-           size = 5.2, colour = if (figure_style_a) FIGURE_COLOURS$muted else "#6B7280") +
-  annotate("text", x = 2.07, y = 1.53, label = "Colour = sample status", hjust = 0,
-           size = 5.2, fontface = "bold", colour = if (figure_style_a) FIGURE_COLOURS$ink else "#111827") +
+  annotate("text", x = 0.10, y = 0.72, label = "Sample status", hjust = 0,
+           size = 6.4, fontface = "bold", colour = if (figure_style_a) FIGURE_COLOURS$ink else "#111827") +
   scale_shape_manual(values = pathway_shapes, limits = pathway_levels, drop = FALSE) +
   scale_colour_manual(values = sample_colours) +
-  scale_x_continuous(limits = c(0, 3.75), expand = c(0, 0)) +
-  scale_y_continuous(limits = c(0.25, 8.65), expand = c(0, 0)) +
+  scale_x_continuous(limits = c(0, 9.40), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(0.25, 6.45), expand = c(0, 0)) +
   theme_void(base_size = 10, base_family = FINAL_FONT) +
   theme(
     plot.background = element_rect(fill = "white", colour = if (figure_style_a) "#CBD5E1" else "#9CA3AF", linewidth = 0.55),
@@ -202,7 +203,7 @@ plot <- wrap_plots(plot_list, design = layout_design) +
   plot_annotation(
     title = if (figure_style_a) "Seven DNA-repair pathway member-gene counts" else "Seven DNA-repair pathway member-gene counts per source sample",
     subtitle = paste0(
-      if (figure_style_a) "26 mouse tissues; one point per source sample; symbols encode pathway and colour encodes sample status.\n" else "26 mouse tissues in a 4 × 7 layout; each tissue is framed, and the lower-right two cells contain the symbol legend.\n",
+      if (figure_style_a) "26 mouse tissues; one point per source sample; symbols encode pathway and colour encodes sample status.\n" else "26 mouse tissues in a 4 × 7 layout; each tissue is framed, and the lower-right two cells form a dedicated legend panel.\n",
       "Each point is one source sample column; symbol = pathway, colour = sample status; median labels are shown.\n",
       "Presence = finite source value − 1 > 0; Ensembl Gene IDs are counted once per pathway.\n",
       "Teacher-text/Table S3 catalog sizes: BER 54 | NER 53 | MMR 27 | FA 39 | HR 135 | A-EJ 9 | NHEJ 18."
