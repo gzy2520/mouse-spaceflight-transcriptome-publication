@@ -73,6 +73,32 @@ omits the reproducible PDF exports:
 Rscript tests/validate_final_release.R final_result compact
 ```
 
+## Sample-level log2FC Spearman revision (2026-09-02)
+
+`final_result_log2fc_20260902/` is an isolated revision of Fig. 2. It computes
+sample-level log2FC term values, renders all 26 tissue-level Spearman matrices,
+and combines the tissue correlations with equal-weight Fisher-z averaging;
+the approved `final_result/` snapshot and Fig. 1c are unchanged. Its frozen
+tables are under `data/publication_input/go/log2fc_spearman_20260902/`.
+
+Reproduce the revision into an ignored directory with:
+
+```bash
+bash workflow/run_log2fc_per_tissue_pathway_spearman_20260902.sh
+```
+
+The optional argument selects another output directory. The default output is
+`reproduced_results/log2fc_spearman_20260902/`, so the checked-in dated
+snapshot is never overwritten.
+
+For compact bottom labels (GO IDs only on the horizontal axes and merged term
+key), pass `go_id` as the second argument:
+
+```bash
+bash workflow/run_log2fc_per_tissue_pathway_spearman_20260902.sh \
+  reproduced_results/log2fc_spearman_go_id_20260902 go_id
+```
+
 Display-only wording changes are recorded in
 `provenance/final_figure_sources.csv`. In particular, the fourth GO label is
 shown as “Intrinsic apoptotic signaling” and the seventh as “Telomeric region”;
