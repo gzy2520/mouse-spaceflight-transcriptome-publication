@@ -1,0 +1,2286 @@
+{
+  "accession": "OSD-599",
+  "acknowledgments": "",
+  "added": [],
+  "assays": [
+    {
+      "characteristicCategories": [],
+      "comments": [],
+      "dataFiles": [
+        {
+          "@id": "#data/deriveddatafile-140513332382640",
+          "comments": [],
+          "name": "GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx",
+          "type": "Derived Data File"
+        },
+        {
+          "@id": "#data/rawdatafile-140513332381728",
+          "comments": [],
+          "name": "GLDS-596_rna-seq_GSM6996077_R1_raw.fastq.gz, GLDS-596_rna-seq_GSM6996077_R2_raw.fastq.gz",
+          "type": "Raw Data File"
+        },
+        {
+          "@id": "#data/rawdatafile-140513332383120",
+          "comments": [],
+          "name": "GLDS-596_rna-seq_GSM6996078_R1_raw.fastq.gz, GLDS-596_rna-seq_GSM6996078_R2_raw.fastq.gz",
+          "type": "Raw Data File"
+        },
+        {
+          "@id": "#data/rawdatafile-140513332380432",
+          "comments": [],
+          "name": "GLDS-596_rna-seq_GSM6996079_R1_raw.fastq.gz, GLDS-596_rna-seq_GSM6996079_R2_raw.fastq.gz",
+          "type": "Raw Data File"
+        },
+        {
+          "@id": "#data/rawdatafile-140513332381872",
+          "comments": [],
+          "name": "GLDS-596_rna-seq_GSM6996080_R1_raw.fastq.gz, GLDS-596_rna-seq_GSM6996080_R2_raw.fastq.gz",
+          "type": "Raw Data File"
+        },
+        {
+          "@id": "#data/rawdatafile-140513332382016",
+          "comments": [],
+          "name": "GLDS-596_rna-seq_GSM6996081_R1_raw.fastq.gz, GLDS-596_rna-seq_GSM6996081_R2_raw.fastq.gz",
+          "type": "Raw Data File"
+        },
+        {
+          "@id": "#data/rawdatafile-140513332383312",
+          "comments": [],
+          "name": "GLDS-596_rna-seq_GSM6996082_R1_raw.fastq.gz, GLDS-596_rna-seq_GSM6996082_R2_raw.fastq.gz",
+          "type": "Raw Data File"
+        }
+      ],
+      "filename": "a_OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina.txt",
+      "measurementType": {
+        "@id": "jGo9iA3xprysX2IZmhNYRdsyHQEGg4GuLcAiq5h4",
+        "annotationValue": "transcription profiling",
+        "comments": [],
+        "termAccession": "obo:OBI_0000424",
+        "termSource": "OBI"
+      },
+      "table": {
+        "header": [
+          {
+            "encoded": false,
+            "field": "Sample Name",
+            "title": "Sample Name",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Protocol REF",
+            "title": "Protocol REF",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[QA Instrument]",
+            "title": "Parameter Value: QA Instrument",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[QA Score]",
+            "title": "Parameter Value: QA Score",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Unit",
+            "title": "Unit",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Term Source REF",
+            "title": "Term Source REF",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Term Accession Number",
+            "title": "Term Accession Number",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Extract Name",
+            "title": "Extract Name",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Protocol REF.1",
+            "title": "Protocol REF",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Library Selection]",
+            "title": "Parameter Value: Library Selection",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Library Layout]",
+            "title": "Parameter Value: Library Layout",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Stranded]",
+            "title": "Parameter Value: Stranded",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Library Kit]",
+            "title": "Parameter Value: Library Kit",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Protocol REF.2",
+            "title": "Protocol REF",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Sequencing Instrument]",
+            "title": "Parameter Value: Sequencing Instrument",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Read Length]",
+            "title": "Parameter Value: Read Length",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Unit.1",
+            "title": "Unit",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Term Source REF.1",
+            "title": "Term Source REF",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Term Accession Number.1",
+            "title": "Term Accession Number",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Base Caller]",
+            "title": "Parameter Value: Base Caller",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Assay Name",
+            "title": "Assay Name",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Raw Data File",
+            "title": "Raw Data File",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Protocol REF.3",
+            "title": "Protocol REF",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Derived Data File",
+            "title": "Derived Data File",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Protocol REF.4",
+            "title": "Protocol REF",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Read Depth]",
+            "title": "Parameter Value: Read Depth",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Unit.2",
+            "title": "Unit",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Term Source REF.2",
+            "title": "Term Source REF",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Term Accession Number.2",
+            "title": "Term Accession Number",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[rRNA Contamination]",
+            "title": "Parameter Value: rRNA Contamination",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Unit.3",
+            "title": "Unit",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Term Source REF.3",
+            "title": "Term Source REF",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Term Accession Number.3",
+            "title": "Term Accession Number",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[MultiQC File Names]",
+            "title": "Parameter Value: MultiQC File Names",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Protocol REF.5",
+            "title": "Protocol REF",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[trimmed sequence data]",
+            "title": "Parameter Value: trimmed sequence data",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Trimmed Sequence Data/Trimming Reports]",
+            "title": "Parameter Value: Trimmed Sequence Data/Trimming Reports",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Trimmed Sequence Data/MultiQC Reports]",
+            "title": "Parameter Value: Trimmed Sequence Data/MultiQC Reports",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[aligned sequence data]",
+            "title": "Parameter Value: aligned sequence data",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Aligned Sequence Data/Unmapped Reads]",
+            "title": "Parameter Value: Aligned Sequence Data/Unmapped Reads",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Aligned Sequence Data/Alignment Logs]",
+            "title": "Parameter Value: Aligned Sequence Data/Alignment Logs",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Aligned Sequence Data/MultiQC Reports]",
+            "title": "Parameter Value: Aligned Sequence Data/MultiQC Reports",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[RSeQC/MultiQC Reports]",
+            "title": "Parameter Value: RSeQC/MultiQC Reports",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Raw Counts Data]",
+            "title": "Parameter Value: Raw Counts Data",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Raw Counts Tables]",
+            "title": "Parameter Value: Raw Counts Tables",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Raw Counts Data/MultiQC Reports]",
+            "title": "Parameter Value: Raw Counts Data/MultiQC Reports",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[Normalized Counts Data]",
+            "title": "Parameter Value: Normalized Counts Data",
+            "width": 200
+          },
+          {
+            "encoded": false,
+            "field": "Parameter Value[differential expression analysis data]",
+            "title": "Parameter Value: differential expression analysis data",
+            "width": 200
+          }
+        ],
+        "table": [
+          {
+            "Assay Name": "rna-seq",
+            "Derived Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx</a>",
+            "Extract Name": "GSM6996077",
+            "Parameter Value[Aligned Sequence Data/Alignment Logs]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_Log.final.out&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_Log.final.out</a>",
+            "Parameter Value[Aligned Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Aligned Sequence Data/Unmapped Reads]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_R1_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_R1_unmapped.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_R2_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_R2_unmapped.fastq.gz</a>",
+            "Parameter Value[Base Caller]": "bcl2fastq",
+            "Parameter Value[Library Kit]": "Illumina TrueSeq-stranded-mRNA sample preparation",
+            "Parameter Value[Library Layout]": "PAIRED",
+            "Parameter Value[Library Selection]": "polyA enrichment",
+            "Parameter Value[MultiQC File Names]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Normalized Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[QA Instrument]": "Agilent Technologies 2100 Bioanalyzer, nanodrop and gel electrophoresis",
+            "Parameter Value[QA Score]": "greater than 8",
+            "Parameter Value[RSeQC/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq.genes.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq.isoforms.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq.isoforms.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_rRNArm.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_rRNArm.genes.results</a>",
+            "Parameter Value[Raw Counts Tables]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[Read Depth]": "20799326",
+            "Parameter Value[Read Length]": "148",
+            "Parameter Value[Sequencing Instrument]": "Illumina NovaSeq 6000",
+            "Parameter Value[Stranded]": "STRANDED",
+            "Parameter Value[Trimmed Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Trimmed Sequence Data/Trimming Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_R1_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_R1_GLbulkRNAseq_trimming_report.txt</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_R2_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_R2_GLbulkRNAseq_trimming_report.txt</a>",
+            "Parameter Value[aligned sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_Aligned.toTranscriptome.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_Aligned.toTranscriptome.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_SJ.out.tab&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_SJ.out.tab</a>",
+            "Parameter Value[differential expression analysis data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[rRNA Contamination]": "0.97",
+            "Parameter Value[trimmed sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_R1_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_R1_trimmed.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_R2_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996077_GLbulkRNAseq_R2_trimmed.fastq.gz</a>",
+            "Protocol REF": "Nucleic Acid Extraction",
+            "Protocol REF.1": "Library Construction",
+            "Protocol REF.2": "Nucleic Acid Sequencing",
+            "Protocol REF.3": "Sequence Analysis Data Transformation",
+            "Protocol REF.4": "GeneLab raw data processing protocol",
+            "Protocol REF.5": "GeneLab RNAseq data processing protocol",
+            "Raw Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996077_R1_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996077_R1_raw.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996077_R2_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996077_R2_raw.fastq.gz</a>",
+            "Sample Name": "GSM6996077",
+            "Term Accession Number": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C63637",
+            "Term Accession Number.1": "http://purl.obolibrary.org/obo/UO_0000244",
+            "Term Accession Number.2": "http://purl.obolibrary.org/obo/SO_0000150",
+            "Term Accession Number.3": "http://purl.obolibrary.org/obo/UO_0000187",
+            "Term Source REF": "NCIT",
+            "Term Source REF.1": "UO",
+            "Term Source REF.2": "SO",
+            "Term Source REF.3": "UO",
+            "Unit": "RNA Integrity Number",
+            "Unit.1": "base pair",
+            "Unit.2": "read",
+            "Unit.3": "percent",
+            "index": 0
+          },
+          {
+            "Assay Name": "rna-seq",
+            "Derived Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx</a>",
+            "Extract Name": "GSM6996078",
+            "Parameter Value[Aligned Sequence Data/Alignment Logs]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_Log.final.out&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_Log.final.out</a>",
+            "Parameter Value[Aligned Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Aligned Sequence Data/Unmapped Reads]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_R1_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_R1_unmapped.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_R2_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_R2_unmapped.fastq.gz</a>",
+            "Parameter Value[Base Caller]": "bcl2fastq",
+            "Parameter Value[Library Kit]": "Illumina TrueSeq-stranded-mRNA sample preparation",
+            "Parameter Value[Library Layout]": "PAIRED",
+            "Parameter Value[Library Selection]": "polyA enrichment",
+            "Parameter Value[MultiQC File Names]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Normalized Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[QA Instrument]": "Agilent Technologies 2100 Bioanalyzer, nanodrop and gel electrophoresis",
+            "Parameter Value[QA Score]": "greater than 8",
+            "Parameter Value[RSeQC/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq.genes.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq.isoforms.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq.isoforms.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_rRNArm.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_rRNArm.genes.results</a>",
+            "Parameter Value[Raw Counts Tables]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[Read Depth]": "21901423",
+            "Parameter Value[Read Length]": "148",
+            "Parameter Value[Sequencing Instrument]": "Illumina NovaSeq 6000",
+            "Parameter Value[Stranded]": "STRANDED",
+            "Parameter Value[Trimmed Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Trimmed Sequence Data/Trimming Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_R1_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_R1_GLbulkRNAseq_trimming_report.txt</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_R2_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_R2_GLbulkRNAseq_trimming_report.txt</a>",
+            "Parameter Value[aligned sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_Aligned.toTranscriptome.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_Aligned.toTranscriptome.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_SJ.out.tab&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_SJ.out.tab</a>",
+            "Parameter Value[differential expression analysis data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[rRNA Contamination]": "1.23",
+            "Parameter Value[trimmed sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_R1_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_R1_trimmed.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_R2_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996078_GLbulkRNAseq_R2_trimmed.fastq.gz</a>",
+            "Protocol REF": "Nucleic Acid Extraction",
+            "Protocol REF.1": "Library Construction",
+            "Protocol REF.2": "Nucleic Acid Sequencing",
+            "Protocol REF.3": "Sequence Analysis Data Transformation",
+            "Protocol REF.4": "GeneLab raw data processing protocol",
+            "Protocol REF.5": "GeneLab RNAseq data processing protocol",
+            "Raw Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996078_R1_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996078_R1_raw.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996078_R2_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996078_R2_raw.fastq.gz</a>",
+            "Sample Name": "GSM6996078",
+            "Term Accession Number": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C63637",
+            "Term Accession Number.1": "http://purl.obolibrary.org/obo/UO_0000244",
+            "Term Accession Number.2": "http://purl.obolibrary.org/obo/SO_0000150",
+            "Term Accession Number.3": "http://purl.obolibrary.org/obo/UO_0000187",
+            "Term Source REF": "NCIT",
+            "Term Source REF.1": "UO",
+            "Term Source REF.2": "SO",
+            "Term Source REF.3": "UO",
+            "Unit": "RNA Integrity Number",
+            "Unit.1": "base pair",
+            "Unit.2": "read",
+            "Unit.3": "percent",
+            "index": 1
+          },
+          {
+            "Assay Name": "rna-seq",
+            "Derived Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx</a>",
+            "Extract Name": "GSM6996079",
+            "Parameter Value[Aligned Sequence Data/Alignment Logs]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_Log.final.out&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_Log.final.out</a>",
+            "Parameter Value[Aligned Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Aligned Sequence Data/Unmapped Reads]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_R1_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_R1_unmapped.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_R2_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_R2_unmapped.fastq.gz</a>",
+            "Parameter Value[Base Caller]": "bcl2fastq",
+            "Parameter Value[Library Kit]": "Illumina TrueSeq-stranded-mRNA sample preparation",
+            "Parameter Value[Library Layout]": "PAIRED",
+            "Parameter Value[Library Selection]": "polyA enrichment",
+            "Parameter Value[MultiQC File Names]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Normalized Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[QA Instrument]": "Agilent Technologies 2100 Bioanalyzer, nanodrop and gel electrophoresis",
+            "Parameter Value[QA Score]": "greater than 8",
+            "Parameter Value[RSeQC/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq.genes.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq.isoforms.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq.isoforms.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_rRNArm.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_rRNArm.genes.results</a>",
+            "Parameter Value[Raw Counts Tables]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[Read Depth]": "22592355",
+            "Parameter Value[Read Length]": "148",
+            "Parameter Value[Sequencing Instrument]": "Illumina NovaSeq 6000",
+            "Parameter Value[Stranded]": "STRANDED",
+            "Parameter Value[Trimmed Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Trimmed Sequence Data/Trimming Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_R1_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_R1_GLbulkRNAseq_trimming_report.txt</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_R2_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_R2_GLbulkRNAseq_trimming_report.txt</a>",
+            "Parameter Value[aligned sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_Aligned.toTranscriptome.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_Aligned.toTranscriptome.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_SJ.out.tab&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_SJ.out.tab</a>",
+            "Parameter Value[differential expression analysis data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[rRNA Contamination]": "2.9",
+            "Parameter Value[trimmed sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_R1_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_R1_trimmed.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_R2_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996079_GLbulkRNAseq_R2_trimmed.fastq.gz</a>",
+            "Protocol REF": "Nucleic Acid Extraction",
+            "Protocol REF.1": "Library Construction",
+            "Protocol REF.2": "Nucleic Acid Sequencing",
+            "Protocol REF.3": "Sequence Analysis Data Transformation",
+            "Protocol REF.4": "GeneLab raw data processing protocol",
+            "Protocol REF.5": "GeneLab RNAseq data processing protocol",
+            "Raw Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996079_R1_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996079_R1_raw.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996079_R2_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996079_R2_raw.fastq.gz</a>",
+            "Sample Name": "GSM6996079",
+            "Term Accession Number": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C63637",
+            "Term Accession Number.1": "http://purl.obolibrary.org/obo/UO_0000244",
+            "Term Accession Number.2": "http://purl.obolibrary.org/obo/SO_0000150",
+            "Term Accession Number.3": "http://purl.obolibrary.org/obo/UO_0000187",
+            "Term Source REF": "NCIT",
+            "Term Source REF.1": "UO",
+            "Term Source REF.2": "SO",
+            "Term Source REF.3": "UO",
+            "Unit": "RNA Integrity Number",
+            "Unit.1": "base pair",
+            "Unit.2": "read",
+            "Unit.3": "percent",
+            "index": 2
+          },
+          {
+            "Assay Name": "rna-seq",
+            "Derived Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx</a>",
+            "Extract Name": "GSM6996080",
+            "Parameter Value[Aligned Sequence Data/Alignment Logs]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_Log.final.out&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_Log.final.out</a>",
+            "Parameter Value[Aligned Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Aligned Sequence Data/Unmapped Reads]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_R1_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_R1_unmapped.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_R2_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_R2_unmapped.fastq.gz</a>",
+            "Parameter Value[Base Caller]": "bcl2fastq",
+            "Parameter Value[Library Kit]": "Illumina TrueSeq-stranded-mRNA sample preparation",
+            "Parameter Value[Library Layout]": "PAIRED",
+            "Parameter Value[Library Selection]": "polyA enrichment",
+            "Parameter Value[MultiQC File Names]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Normalized Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[QA Instrument]": "Agilent Technologies 2100 Bioanalyzer, nanodrop and gel electrophoresis",
+            "Parameter Value[QA Score]": "greater than 8",
+            "Parameter Value[RSeQC/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq.genes.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq.isoforms.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq.isoforms.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_rRNArm.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_rRNArm.genes.results</a>",
+            "Parameter Value[Raw Counts Tables]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[Read Depth]": "22717208",
+            "Parameter Value[Read Length]": "148",
+            "Parameter Value[Sequencing Instrument]": "Illumina NovaSeq 6000",
+            "Parameter Value[Stranded]": "STRANDED",
+            "Parameter Value[Trimmed Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Trimmed Sequence Data/Trimming Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_R1_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_R1_GLbulkRNAseq_trimming_report.txt</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_R2_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_R2_GLbulkRNAseq_trimming_report.txt</a>",
+            "Parameter Value[aligned sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_Aligned.toTranscriptome.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_Aligned.toTranscriptome.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_SJ.out.tab&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_SJ.out.tab</a>",
+            "Parameter Value[differential expression analysis data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[rRNA Contamination]": "0.56",
+            "Parameter Value[trimmed sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_R1_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_R1_trimmed.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_R2_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996080_GLbulkRNAseq_R2_trimmed.fastq.gz</a>",
+            "Protocol REF": "Nucleic Acid Extraction",
+            "Protocol REF.1": "Library Construction",
+            "Protocol REF.2": "Nucleic Acid Sequencing",
+            "Protocol REF.3": "Sequence Analysis Data Transformation",
+            "Protocol REF.4": "GeneLab raw data processing protocol",
+            "Protocol REF.5": "GeneLab RNAseq data processing protocol",
+            "Raw Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996080_R1_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996080_R1_raw.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996080_R2_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996080_R2_raw.fastq.gz</a>",
+            "Sample Name": "GSM6996080",
+            "Term Accession Number": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C63637",
+            "Term Accession Number.1": "http://purl.obolibrary.org/obo/UO_0000244",
+            "Term Accession Number.2": "http://purl.obolibrary.org/obo/SO_0000150",
+            "Term Accession Number.3": "http://purl.obolibrary.org/obo/UO_0000187",
+            "Term Source REF": "NCIT",
+            "Term Source REF.1": "UO",
+            "Term Source REF.2": "SO",
+            "Term Source REF.3": "UO",
+            "Unit": "RNA Integrity Number",
+            "Unit.1": "base pair",
+            "Unit.2": "read",
+            "Unit.3": "percent",
+            "index": 3
+          },
+          {
+            "Assay Name": "rna-seq",
+            "Derived Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx</a>",
+            "Extract Name": "GSM6996081",
+            "Parameter Value[Aligned Sequence Data/Alignment Logs]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_Log.final.out&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_Log.final.out</a>",
+            "Parameter Value[Aligned Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Aligned Sequence Data/Unmapped Reads]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_R1_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_R1_unmapped.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_R2_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_R2_unmapped.fastq.gz</a>",
+            "Parameter Value[Base Caller]": "bcl2fastq",
+            "Parameter Value[Library Kit]": "Illumina TrueSeq-stranded-mRNA sample preparation",
+            "Parameter Value[Library Layout]": "PAIRED",
+            "Parameter Value[Library Selection]": "polyA enrichment",
+            "Parameter Value[MultiQC File Names]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Normalized Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[QA Instrument]": "Agilent Technologies 2100 Bioanalyzer, nanodrop and gel electrophoresis",
+            "Parameter Value[QA Score]": "greater than 8",
+            "Parameter Value[RSeQC/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq.genes.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq.isoforms.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq.isoforms.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_rRNArm.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_rRNArm.genes.results</a>",
+            "Parameter Value[Raw Counts Tables]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[Read Depth]": "22677241",
+            "Parameter Value[Read Length]": "148",
+            "Parameter Value[Sequencing Instrument]": "Illumina NovaSeq 6000",
+            "Parameter Value[Stranded]": "STRANDED",
+            "Parameter Value[Trimmed Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Trimmed Sequence Data/Trimming Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_R1_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_R1_GLbulkRNAseq_trimming_report.txt</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_R2_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_R2_GLbulkRNAseq_trimming_report.txt</a>",
+            "Parameter Value[aligned sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_Aligned.toTranscriptome.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_Aligned.toTranscriptome.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_SJ.out.tab&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_SJ.out.tab</a>",
+            "Parameter Value[differential expression analysis data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[rRNA Contamination]": "0.47",
+            "Parameter Value[trimmed sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_R1_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_R1_trimmed.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_R2_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996081_GLbulkRNAseq_R2_trimmed.fastq.gz</a>",
+            "Protocol REF": "Nucleic Acid Extraction",
+            "Protocol REF.1": "Library Construction",
+            "Protocol REF.2": "Nucleic Acid Sequencing",
+            "Protocol REF.3": "Sequence Analysis Data Transformation",
+            "Protocol REF.4": "GeneLab raw data processing protocol",
+            "Protocol REF.5": "GeneLab RNAseq data processing protocol",
+            "Raw Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996081_R1_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996081_R1_raw.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996081_R2_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996081_R2_raw.fastq.gz</a>",
+            "Sample Name": "GSM6996081",
+            "Term Accession Number": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C63637",
+            "Term Accession Number.1": "http://purl.obolibrary.org/obo/UO_0000244",
+            "Term Accession Number.2": "http://purl.obolibrary.org/obo/SO_0000150",
+            "Term Accession Number.3": "http://purl.obolibrary.org/obo/UO_0000187",
+            "Term Source REF": "NCIT",
+            "Term Source REF.1": "UO",
+            "Term Source REF.2": "SO",
+            "Term Source REF.3": "UO",
+            "Unit": "RNA Integrity Number",
+            "Unit.1": "base pair",
+            "Unit.2": "read",
+            "Unit.3": "percent",
+            "index": 4
+          },
+          {
+            "Assay Name": "rna-seq",
+            "Derived Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSE223803_Differentially_Expressed_Transcripts.xlsx</a>",
+            "Extract Name": "GSM6996082",
+            "Parameter Value[Aligned Sequence Data/Alignment Logs]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_Log.final.out&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_Log.final.out</a>",
+            "Parameter Value[Aligned Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_align_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Aligned Sequence Data/Unmapped Reads]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_R1_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_R1_unmapped.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_R2_unmapped.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_R2_unmapped.fastq.gz</a>",
+            "Parameter Value[Base Caller]": "bcl2fastq",
+            "Parameter Value[Library Kit]": "Illumina TrueSeq-stranded-mRNA sample preparation",
+            "Parameter Value[Library Layout]": "PAIRED",
+            "Parameter Value[Library Selection]": "polyA enrichment",
+            "Parameter Value[MultiQC File Names]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_raw_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Normalized Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_Normalized_Counts_rRNArm_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_VST_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[QA Instrument]": "Agilent Technologies 2100 Bioanalyzer, nanodrop and gel electrophoresis",
+            "Parameter Value[QA Score]": "greater than 8",
+            "Parameter Value[RSeQC/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_geneBody_cov_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_infer_exp_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_inner_dist_multiqc_GLbulkRNAseq.html</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_read_dist_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_count_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Raw Counts Data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq.genes.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq.isoforms.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq.isoforms.results</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_rRNArm.genes.results&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_rRNArm.genes.results</a>",
+            "Parameter Value[Raw Counts Tables]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_STAR_Unnormalized_Counts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_RSEM_Unnormalized_Counts_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[Read Depth]": "19666914",
+            "Parameter Value[Read Length]": "148",
+            "Parameter Value[Sequencing Instrument]": "Illumina NovaSeq 6000",
+            "Parameter Value[Stranded]": "STRANDED",
+            "Parameter Value[Trimmed Sequence Data/MultiQC Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq_data.zip</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html&version=1\" target=\"_blank\">GLDS-596_rna_seq_trimmed_multiqc_GLbulkRNAseq.html</a>",
+            "Parameter Value[Trimmed Sequence Data/Trimming Reports]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_R1_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_R1_GLbulkRNAseq_trimming_report.txt</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_R2_GLbulkRNAseq_trimming_report.txt&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_R2_GLbulkRNAseq_trimming_report.txt</a>",
+            "Parameter Value[aligned sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_Aligned.sortedByCoord_sorted.out.bam.bai</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_Aligned.toTranscriptome.out.bam&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_Aligned.toTranscriptome.out.bam</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_SJ.out.tab&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_SJ.out.tab</a>",
+            "Parameter Value[differential expression analysis data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_SampleTable_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_contrasts_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv&version=2\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_GLbulkRNAseq.csv</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv&version=1\" target=\"_blank\">GLDS-596_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv</a>",
+            "Parameter Value[rRNA Contamination]": "0.45",
+            "Parameter Value[trimmed sequence data]": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_R1_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_R1_trimmed.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_R2_trimmed.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna_seq_GSM6996082_GLbulkRNAseq_R2_trimmed.fastq.gz</a>",
+            "Protocol REF": "Nucleic Acid Extraction",
+            "Protocol REF.1": "Library Construction",
+            "Protocol REF.2": "Nucleic Acid Sequencing",
+            "Protocol REF.3": "Sequence Analysis Data Transformation",
+            "Protocol REF.4": "GeneLab raw data processing protocol",
+            "Protocol REF.5": "GeneLab RNAseq data processing protocol",
+            "Raw Data File": "<a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996082_R1_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996082_R1_raw.fastq.gz</a>, <a href=\"/geode-py/ws/studies/OSD-599/download?file=GLDS-596_rna-seq_GSM6996082_R2_raw.fastq.gz&version=1\" target=\"_blank\">GLDS-596_rna-seq_GSM6996082_R2_raw.fastq.gz</a>",
+            "Sample Name": "GSM6996082",
+            "Term Accession Number": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C63637",
+            "Term Accession Number.1": "http://purl.obolibrary.org/obo/UO_0000244",
+            "Term Accession Number.2": "http://purl.obolibrary.org/obo/SO_0000150",
+            "Term Accession Number.3": "http://purl.obolibrary.org/obo/UO_0000187",
+            "Term Source REF": "NCIT",
+            "Term Source REF.1": "UO",
+            "Term Source REF.2": "SO",
+            "Term Source REF.3": "UO",
+            "Unit": "RNA Integrity Number",
+            "Unit.1": "base pair",
+            "Unit.2": "read",
+            "Unit.3": "percent",
+            "index": 5
+          }
+        ]
+      },
+      "technologyPlatform": "Illumina",
+      "technologyType": {
+        "@id": "FGPgUG40RqNJgQ76DppeJCp32q6pDjuTqpVn4qL3",
+        "annotationValue": "RNA Sequencing (RNA-Seq)",
+        "comments": [],
+        "termAccession": "obo:OBI_0001271",
+        "termSource": "OBI"
+      },
+      "totalRecords": 6,
+      "unitCategories": [
+        {
+          "@id": "TMJwwCnkdlOdaWbRT7O53722QOw05KSv85lzqWY4",
+          "annotationValue": "RNA Integrity Number",
+          "comments": [],
+          "termAccession": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C63637",
+          "termSource": "NCIT"
+        },
+        {
+          "@id": "sJbGAkjkD6jwhrV8MacFsE0v7k6kCW66ygCcyFUf",
+          "annotationValue": "base pair",
+          "comments": [],
+          "termAccession": "http://purl.obolibrary.org/obo/UO_0000244",
+          "termSource": ""
+        },
+        {
+          "@id": "QzsdOSD19kEspoFDZ7FXPfWP017I6qBWqwvSvjPe",
+          "annotationValue": "percent",
+          "comments": [],
+          "termAccession": "http://purl.obolibrary.org/obo/UO_0000187",
+          "termSource": ""
+        },
+        {
+          "@id": "wlRETTZuaJv8SbT4KZfCNYaSK5G9d7CuW5MGgCrg",
+          "annotationValue": "read",
+          "comments": [],
+          "termAccession": "http://purl.obolibrary.org/obo/SO_0000150",
+          "termSource": ""
+        }
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "@id": "",
+      "address": "",
+      "affiliation": "",
+      "comments": [],
+      "email": "",
+      "fax": "",
+      "firstName": "Alicia L",
+      "lastName": "Veliz",
+      "midInitials": "",
+      "phone": "",
+      "roles": [
+        {
+          "@id": "asP5P3FTC2GPYBrPl2fdDgnpPyUkTQ5ZAS42LmrD",
+          "annotationValue": "Author",
+          "comments": [],
+          "termAccession": "http://purl.obolibrary.org/obo/NCIT_C42781",
+          "termSource": ""
+        }
+      ]
+    },
+    {
+      "@id": "",
+      "address": "",
+      "affiliation": "",
+      "comments": [],
+      "email": "",
+      "fax": "",
+      "firstName": "Lana",
+      "lastName": "Mamoun",
+      "midInitials": "",
+      "phone": "",
+      "roles": [
+        {
+          "@id": "asP5P3FTC2GPYBrPl2fdDgnpPyUkTQ5ZAS42LmrD",
+          "annotationValue": "Author",
+          "comments": [],
+          "termAccession": "http://purl.obolibrary.org/obo/NCIT_C42781",
+          "termSource": ""
+        }
+      ]
+    },
+    {
+      "@id": "",
+      "address": "",
+      "affiliation": "",
+      "comments": [],
+      "email": "loreleihughes@students.llu.edu",
+      "fax": "",
+      "firstName": "Lorelei",
+      "lastName": "Hughes",
+      "midInitials": "",
+      "phone": "",
+      "roles": [
+        {
+          "@id": "UHZg0eYBBdIzr8CL74JxFdnocNNtHzi0jGnOlr5l",
+          "annotationValue": "Author",
+          "comments": [],
+          "termAccession": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl",
+          "termSource": "NCIT"
+        }
+      ]
+    },
+    {
+      "@id": "",
+      "address": "",
+      "affiliation": "",
+      "comments": [],
+      "email": "",
+      "fax": "",
+      "firstName": "Richard",
+      "lastName": "Vega",
+      "midInitials": "",
+      "phone": "",
+      "roles": [
+        {
+          "@id": "asP5P3FTC2GPYBrPl2fdDgnpPyUkTQ5ZAS42LmrD",
+          "annotationValue": "Author",
+          "comments": [],
+          "termAccession": "http://purl.obolibrary.org/obo/NCIT_C42781",
+          "termSource": ""
+        }
+      ]
+    },
+    {
+      "@id": "",
+      "address": "",
+      "affiliation": "",
+      "comments": [],
+      "email": "",
+      "fax": "",
+      "firstName": "Bailey",
+      "lastName": "Holmes",
+      "midInitials": "",
+      "phone": "",
+      "roles": [
+        {
+          "@id": "asP5P3FTC2GPYBrPl2fdDgnpPyUkTQ5ZAS42LmrD",
+          "annotationValue": "Author",
+          "comments": [],
+          "termAccession": "http://purl.obolibrary.org/obo/NCIT_C42781",
+          "termSource": ""
+        }
+      ]
+    },
+    {
+      "@id": "",
+      "address": "",
+      "affiliation": "",
+      "comments": [],
+      "email": "",
+      "fax": "",
+      "firstName": "Andrea",
+      "lastName": "Monteon",
+      "midInitials": "",
+      "phone": "",
+      "roles": [
+        {
+          "@id": "asP5P3FTC2GPYBrPl2fdDgnpPyUkTQ5ZAS42LmrD",
+          "annotationValue": "Author",
+          "comments": [],
+          "termAccession": "http://purl.obolibrary.org/obo/NCIT_C42781",
+          "termSource": ""
+        }
+      ]
+    },
+    {
+      "@id": "",
+      "address": "",
+      "affiliation": "",
+      "comments": [],
+      "email": "",
+      "fax": "",
+      "firstName": "Jillian",
+      "lastName": "Bray",
+      "midInitials": "",
+      "phone": "",
+      "roles": [
+        {
+          "@id": "asP5P3FTC2GPYBrPl2fdDgnpPyUkTQ5ZAS42LmrD",
+          "annotationValue": "Author",
+          "comments": [],
+          "termAccession": "http://purl.obolibrary.org/obo/NCIT_C42781",
+          "termSource": ""
+        }
+      ]
+    },
+    {
+      "@id": "",
+      "address": "",
+      "affiliation": "",
+      "comments": [],
+      "email": "mpecaut@llu.edu",
+      "fax": "",
+      "firstName": "Michael J",
+      "lastName": "Pecaut",
+      "midInitials": "",
+      "phone": "",
+      "roles": [
+        {
+          "@id": "HJPRq6x6GhRrWvebUJbKqTYWJMttZH85UbFKx2NQ",
+          "annotationValue": "conceptualization role",
+          "comments": [],
+          "termAccession": "http://purl.org/credit/ontology",
+          "termSource": "CRO"
+        }
+      ]
+    },
+    {
+      "@id": "",
+      "address": "",
+      "affiliation": "",
+      "comments": [],
+      "email": "mkearnsjonker@llu.edu",
+      "fax": "",
+      "firstName": "Mary",
+      "lastName": "Kearns-Jonker",
+      "midInitials": "",
+      "phone": "",
+      "roles": [
+        {
+          "@id": "HJPRq6x6GhRrWvebUJbKqTYWJMttZH85UbFKx2NQ",
+          "annotationValue": "conceptualization role",
+          "comments": [],
+          "termAccession": "http://purl.org/credit/ontology",
+          "termSource": "CRO"
+        }
+      ]
+    }
+  ],
+  "description": "Efforts to understand the impact of spaceflight on the human body stem from growing interest in long-term space travel. Multiple organ systems are affected by microgravity and radiation, including the cardiovascular system. Previous transcriptomic studies have sought to reveal the changes in gene expression after spaceflight. However, little is known about the impact of long-term spaceflight on the mouse heart in vivo. This study focuses on the transcriptomic changes in the hearts of female C57BL/6J mice flown on the International Space Station (ISS) for 30 days. RNA was isolated from the hearts of three flight and three comparable ground control mice and RNA sequencing was performed. Our analyses showed that 1147 transcripts were significantly regulated after spaceflight. The MAPK, PI3K-Akt, and GPCR signaling pathways were predicted to be activated. Transcripts related to cytoskeleton breakdown and organization were upregulated, but no significant change in the expression of extracellular matrix (ECM) components or oxidative stress pathway-associated transcripts occurred. Our results indicate an absence of cellular senescence, and a significant upregulation of transcripts associated with the cell cycle. Transcripts related to cellular maintenance and survival were most affected by spaceflight, suggesting that cardiovascular transcriptome initiates an adaptive response to long-term spaceflight.",
+  "dirty": false,
+  "doi": "10.26030/ev5t-0604",
+  "experimentPlatform": "Rodent Flight Hardware (Transporter and Habitat)",
+  "experiments": [],
+  "factors": [
+    {
+      "@id": "rrAHixexWAdqOKNaj15Ezk66kWZSMcprcBRZfg1k",
+      "comments": [],
+      "factorName": "Spaceflight",
+      "factorType": {
+        "@id": "XJ2x9G5FYOhyGGbYDO0xkevuzcPxPnzdf1nFa9fv",
+        "annotationValue": "Space Flight",
+        "comments": [],
+        "termAccession": "http://purl.bioontology.org/ontology/MESH/D013026",
+        "termSource": "MESH"
+      }
+    }
+  ],
+  "filesDisabled": null,
+  "flightProgram": "International Space Station (ISS)",
+  "funding": "This research was funded by NASA grant number NNX13AN34G (to MP) and by the Dept of Pathology and Human Anatomy at Loma Linda University.",
+  "identifiers": [
+    "GLDS-596"
+  ],
+  "licenseIdentifier": "",
+  "licenseLink": "",
+  "licenseName": "",
+  "managingNasaCenter": "Kennedy Space Center (KSC)",
+  "metadataZip": "OSD-599_metadata_OSD-599-ISA.zip",
+  "missionEnd": "",
+  "missionLink": "https://osdr.nasa.gov/bio/repo/data/missions/NG-11",
+  "missionName": "NG-11",
+  "missionStart": "04/17/2019",
+  "modified": [
+    {
+      "bucket": "genelab-shared-repo-prod",
+      "date_created": {
+        "$date": 1761945482295
+      },
+      "date_modified": {
+        "$date": 1761945482295
+      },
+      "file_name": "OSD-599_metadata_OSD-599-ISA.zip",
+      "file_size": 45468,
+      "organization": "OSD",
+      "remote_path": "/Home/genelab-data/OSD-599/metadata/OSD-599_metadata_OSD-599-ISA.zip",
+      "remote_url": "/datamanager/file/Home/genelab-data/OSD-599/metadata/OSD-599_metadata_OSD-599-ISA.zip",
+      "resource_id": {
+        "$oid": "59c440aae2d6f8d9822f2a9b"
+      },
+      "restricted": false,
+      "s3_path": "osd-data/OSD-599/metadata/OSD-599_metadata_OSD-599-ISA.zip",
+      "s3_version_id": "uBNIylzlIasdP60iRf.6lX72xNL6Izxx",
+      "study_id": "69052792ad8797eeb788f122",
+      "version": 5,
+      "visible": true
+    }
+  ],
+  "modifiedDate": "18-Feb-2026",
+  "organisms": {
+    "links": {
+      "Mus musculus": {
+        "Mus musculus": "http://purl.bioontology.org/ontology/NCBITAXON/10090"
+      }
+    },
+    "ontologies": {
+      "Mus musculus": {
+        "@id": "http://purl.bioontology.org/ontology/NCBITAXON/10090",
+        "prefLabel": "Mus musculus"
+      }
+    }
+  },
+  "organizations": [
+    "genelab"
+  ],
+  "payloads": [
+    {
+      "description": "Rodent Research-12 (RR-12), Tetanus Antibody Response by B cells in Space (TARBIS), examines the effects of spaceflight on the function of antibody production and immune memory. Spaceflight is known to have a dramatic influence on immune response, but there is little research on its effect following an actual challenge to the body’s immune system. Using a mouse model makes this possible, as the mouse immune system closely parallels that of humans.  This investigation was sponsored by NASA Space Life and Physical Science-Space Biology.\n\n\nThe mission objectives of the validation flight:\n\n•\tThe goal of Rodent Research-12, Tetanus Antibody Response by B cells in Space (TARBIS), is to determine the functional level at which spaceflight impacts antibody production. Given that spaceflight disrupts innate population distributions and function ex vivo, it is hypothesized that the spaceflight environment is detrimental to an immune response essential for host resistance during flight.\n•\tThese studies seek to establish a link between exposure to the spaceflight environment, and a reduction in immune system activation. This is significant because this shows how the host’s immunological health can be compromised.\n•\tThere have been very few studies characterizing the impact of the spaceflight environment on antibody responses. Spaceflight studies are inconclusive with respect to the response to an actual in vivo immune challenge.\n•\tPreliminary studies indicate that the impact on humoral immunity is time-dependent, with decrements occurring mostly after short-duration flights, and enhancements occurring after long-duration flights. Further study is required to confirm this hypothesis.\n\nSpecific Aim 1: To determine the impact of the spaceflight environment on primary and secondary antibody responses. C57BL/6J mice are challenged with a TT vaccine either before launch (secondary antibody response in space), or during their stay on the ISS (primary antibody response). Blood and spleen are collected on-orbit from mice euthanized ~two weeks after primary or secondary immunization. Vaccination and assessment schedules are to be matched in ground-based controls.\n \nWorking Hypothesis: Based on preliminary data, serum and splenic antibody and splenic antigen-specific B cell idiotype levels in response to an in-flight vaccination will be significantly lower than in ground controls. Furthermore, there will be greater decline in the secondary response when the primary exposure is given in-flight, compared to when given preflight. It is hypothesized that these decrements will be due to changes in the distribution and frequency of antigen-specific B cell idiotypes. \n \nSpecific Aim 2: Establish that adjuvants that function through Tlr9 receptors are effective during spaceflight.\n \nHypothesis: Spaceflight diminishes many of the cell populations involved in the antibody response (e.g. macrophages, T cells and B cells). Cytosinephosphorothioate-guanine oligodeoxynucleotide (CpG ODN) adjuvants function by stimulating toll-like receptor 9 (Tlr9) to activate and expand these populations. Rodent Research-12 tests the hypothesis that activating Tlr9 signaling reverses the negative impacts of spaceflight on the immune response. \n \nFollowing sample return, overall levels of IgG, IgA, IgE, and IgM in the plasma is quantified using multiplexed bead arrays, as well as antigen-specific IgG levels via enzyme-linked immunosorbent assay (ELISA). Stress markers in the blood are assessed (corticosterone and catecholoamines). Antigen-specific B cell idiotypes in the spleen are assessed via RNA sequencing (RNASeq) to determine if changes in the humoral response are due to changes in the frequency, or distribution of B cells that are generated following antigen challenge.\n\n\nNG-11, previously known as OA-11, is the twelfth flight of the Northrop Grumman robotic resupply spacecraft Cygnus and its eleventh flight to the International Space Station under the Commercial Resupply Services (CRS-1) contract with NASA. NG-11 launched from NASA Wallop's Flight Facility. Research Highlights: The Rodent Research 12 (RR-12) investigation is to study the immune system response of mice to tetanus vaccinations and examine the effects of spaceflight on both the primary and secondary immune responses. When the immune system of an individual animal encounters a particular toxin or pathogen for the first time, it triggers the primary immune response, activating production of early antibodies and memory cells that later \"remember\" the toxin or pathogen. Subsequent encounters with the same toxin or pathogen trigger the secondary immune response. This consists of a more accelerated response to infection, in which previously activated memory cells quickly respond and produce antibodies that target antigens, the identifying markers on infected cells. Since the NG vehicle does not return to earth RR-12 transporters and samples were returned on SpX-18.\n\nIACUC Protocol Number:  NA\n\n\nNASA Space Biology Biospecimen Sharing Program Activities\n\nMice were allocated into four groups: 40 Flight, 80 Ground Control, 80 Vivarium, and 50 Baseline, for a total of 250 animals. Flight animals were dissected/preserved on-orbit by the crew, and the Ground Control, Vivarium, and Baseline animals were dissected/preserved by the PI team at Kennedy Space Center (KSC). Baseline animals were processed on April 19, 2019, two days after launch. The Ground Control animals received the same treatments as the Flight animals on a 3-day delay, whereas the Vivarium groups were processed on a 4-day delay from Flight. All carcasses will be further dissected by the PI and BSP teams during an integrated dissection at LLU. The PI has received the following tissues from all animals: 1. Blood 2. Spleen.  Additionally, the following tissues will be collected by the BSP team, shipped to ARC, and stored in the ISC until tissue recipients are awarded:\n\n1. Brown Adipose Tissue \n2. Duodenum\n3. Ileum (GeneLab)\n4. Jejunum\n5. Kidneys (GeneLab) \n6. Lungs(GeneLab) \n7. Pancreas\n8. Reproductive tract (GeneLab)\n9. Stomach\n10.White Adipose Tissue (GeneLab) \n\n\nAvailable Data\n\nThe RR-12 payload produced the following Data (from checklist Excel file):\n\n-\tAnimal enclosure temperature and relative humidity flight and ground data\n-\tLive Animal Return sensor accelerometer data \n-\tISS cabin and ground simulation chamber environmental monitoring data  \n-\tRodent data including preflight data, operations time logs, sample shipment data.\n",
+      "files": [],
+      "hardware": [],
+      "id": "6375b4f7313d542fb5edad79",
+      "identifier": "RR-12",
+      "missions": [],
+      "payloadName": "Rodent Research 12",
+      "payloadType": null,
+      "people": [],
+      "subjectGroups": [],
+      "type": {
+        "annotationValue": "Space Flight",
+        "annotationValueLower": "space flight",
+        "branch": [
+          ""
+        ],
+        "definition": "",
+        "freeOntology": true,
+        "id": "6410a75057491be2d48c417c",
+        "mapping": [],
+        "termAccession": "",
+        "termSource": ""
+      }
+    }
+  ],
+  "projectIdentifier": "RR-12",
+  "projectLink": "",
+  "projectTitle": "",
+  "projectType": "Spaceflight Study",
+  "protocols": [
+    {
+      "@id": "#140513304234976",
+      "comments": [],
+      "components": [],
+      "description": "The extraction of RNA from cardiac tissue was conducted using the miRNeasy Mini Kit (Qiagen, Valencia, CA, USA) following the manufacturer’s protocol. A total of 25 mg of cardiac tissue was homogenized with QIAzol (Qiagen) and centrifuged. The aqueous layer was extracted, and then filtered using RNeasy Mini Spin columns provided in the kit. RNA was eluted using 30 uL of RNase-free water. RNA quality was assessed using nanodrop and gel electrophoresis, and RIN greater than 8 was verified prior to sequencing.",
+      "name": "Nucleic Acid Extraction",
+      "parameters": [
+        {
+          "@id": "#140513304232768",
+          "parameterName": {
+            "@id": "Hop5C9AJDN9g3VYqtIJtB2A611oQjKFpzG6shAoZ",
+            "annotationValue": "QA Instrument",
+            "comments": [],
+            "termAccession": "",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140513304233152",
+          "parameterName": {
+            "@id": "HzDLlLTGaZjIbBNDIQmjCNLDXJ93jptTzCf2uo5X",
+            "annotationValue": "QA Score",
+            "comments": [],
+            "termAccession": "",
+            "termSource": ""
+          }
+        }
+      ],
+      "protocolType": {
+        "@id": "hvmnimkOSUuDnRXoMCmOVO622eV9H3rhB5Orz2Zc",
+        "annotationValue": "Nucleic Acid Extraction",
+        "comments": [],
+        "termAccession": "",
+        "termSource": ""
+      },
+      "uri": "",
+      "usage": [
+        "a_OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina.txt"
+      ],
+      "version": ""
+    },
+    {
+      "@id": "#140513304235120",
+      "comments": [],
+      "components": [],
+      "description": "Poly(A) RNA sequencing was performed by LC Sciences (Houston, Texas) using RNA from three ground control mice and three spaceflight mice. The Poly(A) sequencing library was prepared using Illumina’s TrueSeq-stranded-mRNA sample preparation protocol. An Agilent Technologies 2100 Bioanalyzer was utilized to validate RNA integrity. An Agilent Technologies 2100 Bioanalyzer High Sensitivity DNA Chip was used to conduct quality control analyses and quantification of the sequencing library.",
+      "name": "Library Construction",
+      "parameters": [
+        {
+          "@id": "#140513304234496",
+          "parameterName": {
+            "@id": "SXpkstgzgf9WOhn8BRUImqf5kbHf1TJ3GjkLiaMg",
+            "annotationValue": "Library Selection",
+            "comments": [],
+            "termAccession": "",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140513304235312",
+          "parameterName": {
+            "@id": "rlzTK2chbZkUcaCWHWpzFmlVUzKNZ7DXWAzUXMTb",
+            "annotationValue": "Library Layout",
+            "comments": [],
+            "termAccession": "",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140513304233008",
+          "parameterName": {
+            "@id": "FgvdSWC3uI17LsXvErGgSgUHhsklR2Ok3RnEeJgE",
+            "annotationValue": "Stranded",
+            "comments": [],
+            "termAccession": "",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140513304232672",
+          "parameterName": {
+            "@id": "8WYoCyz2C7EHCUeJopWqPTSkwz6WD98uPi77l4Ik",
+            "annotationValue": "Library Kit",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        }
+      ],
+      "protocolType": {
+        "@id": "jlgnONtnl1cbnUwKKehnj9aCWkaf8ZPvhHTdzhV8",
+        "annotationValue": "Library Construction",
+        "comments": [],
+        "termAccession": "",
+        "termSource": ""
+      },
+      "uri": "",
+      "usage": [
+        "a_OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina.txt"
+      ],
+      "version": ""
+    },
+    {
+      "@id": "#140513304235840",
+      "comments": [],
+      "components": [],
+      "description": "Paired-end sequencing was performed on an Illumina’s NovaSeq 6000 system.",
+      "name": "Nucleic Acid Sequencing",
+      "parameters": [
+        {
+          "@id": "#140513304233104",
+          "parameterName": {
+            "@id": "QZv3O6FfjrX7Rj1AdVBpE7MMkvX0gDPFNyhTgsul",
+            "annotationValue": "Sequencing Instrument",
+            "comments": [],
+            "termAccession": "",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140513304235024",
+          "parameterName": {
+            "@id": "CtQ18ML4iL8up3q8jIQxtenGoYSNWw4i3XMQYFwU",
+            "annotationValue": "Base Caller",
+            "comments": [],
+            "termAccession": "",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140513304235744",
+          "parameterName": {
+            "@id": "DOWz9RyvfMoltYGyC7An2WqtHdVXvLLJU32JiRbM",
+            "annotationValue": "Read Length",
+            "comments": [],
+            "termAccession": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl",
+            "termSource": "NCIT"
+          }
+        }
+      ],
+      "protocolType": {
+        "@id": "vbHeywu5lMpfsh3jNyY18mRWy5aZupc8gVSXD5Uh",
+        "annotationValue": "Nucleic Acid Sequencing",
+        "comments": [],
+        "termAccession": "",
+        "termSource": ""
+      },
+      "uri": "",
+      "usage": [
+        "a_OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina.txt"
+      ],
+      "version": ""
+    },
+    {
+      "@id": "#140513304234592",
+      "comments": [],
+      "components": [],
+      "description": "To conduct transcript assembly, Cutadapt and perl scripts in house were used to remove reads with adaptor contamination, low-quality bases, and undetermined bases. Sequence quality was verified using FastQC (http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) version 0.10.1 (accessed on 01 September 2022). HISAT2 was utilized to map the genome of ftp://ftp.ensembl.org/pub/release-101/fasta/mus_musculus/dna/ v101 (accessed on 01 September 2022), while StringTie was used for transcript assembly. The comprehensive transcriptome was generated from merged transcriptomes via perl scripts and gffcompare (<a href=\"https://github.com/gpertea/gffcompare/\" target=\"_\" >https://github.com/gpertea/gffcompare/</a>) (accessed on 01 September 2022). To conduct mRNA expression profiling, LC Sciences utilized StringTie and Ballgown (http://www.bioconductor.org/packages/release/bioc/html/ballgown.html) (accessed on 01 September 2022). StringTie specifically was used to calculate FPKM. R package DESeq and edgeR were used to determine differentially expressed mRNAs. A p-value of 0.05 and a fold change cutoff of 2 were chosen for this analysis. This subsequent data was analyzed u\\sing Ingenuity Pathway Analysis (IPA) (Qiagen, <a href=\"https://www.qiagenbioinformatics.com/products/ingenuitypathway-analysis),\" target=\"_\" >https://www.qiagenbioinformatics.com/products/ingenuitypathway-analysis),</a> (accessed 27 October 2022). RNA sequencing data was additionally uploaded to STRING and David Gene Ontology to determine significantly affected pathways and functions.",
+      "name": "Sequence Analysis Data Transformation",
+      "parameters": [
+        {
+          "@id": "#140513304235216",
+          "parameterName": {
+            "@id": "3Hq6ViAPdhnUQVpmPN4g5qe1Sc2CIbQALaTc3jdF",
+            "annotationValue": "",
+            "comments": [],
+            "termAccession": "",
+            "termSource": ""
+          }
+        }
+      ],
+      "protocolType": {
+        "@id": "JHw0T66kqato3yTJAp7ZS9m9McpCcF7TjYBOE28Q",
+        "annotationValue": "Sequence Analysis Data Transformation",
+        "comments": [],
+        "termAccession": "",
+        "termSource": ""
+      },
+      "uri": "",
+      "usage": [
+        "a_OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina.txt"
+      ],
+      "version": ""
+    },
+    {
+      "@id": "#140513304234304",
+      "comments": [],
+      "components": [],
+      "description": "Fastq format was checked with fastq_utils v0.25.1. Quality assessment of reads was performed with FastQC v0.12.1 and reports were combined with MultiQC v1.26. rRNA percentages of reads were estimated with the 'hts_SeqScreener' program of htstream v1.3.3 screened against a fasta file of Mus-musculus rRNA sequences retrieved from NCBI on 01-Sep-2021.",
+      "name": "GeneLab raw data processing protocol",
+      "parameters": [
+        {
+          "@id": "#140511484839104",
+          "parameterName": {
+            "@id": "Ohs1BbENFJo4CWnwszKmpZ4g1nZJNqqJv60k0wyP",
+            "annotationValue": "Read Depth",
+            "comments": [],
+            "termAccession": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl",
+            "termSource": "NCIT"
+          }
+        },
+        {
+          "@id": "#140511484839680",
+          "parameterName": {
+            "@id": "RaWNd099ZqS9NO9TqfvpU9arANv1Do2iAJueQJMm",
+            "annotationValue": "rRNA Contamination",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140511484839488",
+          "parameterName": {
+            "@id": "WoqQnOe0wYp5oJdMtNlLbe7bcXgG6P1BgtOCncYd",
+            "annotationValue": "MultiQC File Names",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        }
+      ],
+      "protocolType": {
+        "@id": "gHRCpX8ZCZrvMb1jv0PpSihU4DurynDUUnkOSfet",
+        "annotationValue": "data transformation",
+        "comments": [],
+        "termAccession": "http://purl.obolibrary.org/obo/OBI_0200000",
+        "termSource": "OBI"
+      },
+      "uri": "",
+      "usage": [
+        "a_OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina.txt"
+      ],
+      "version": ""
+    },
+    {
+      "@id": "#140513304235648",
+      "comments": [],
+      "components": [],
+      "description": "Data were processed as described in GL-DPPD-7101-G (<a href=\"https://github.com/nasa/GeneLab_Data_Processing/blob/master/RNAseq/Pipeline_GL-DPPD-7101_Versions/GL-DPPD-7101-G.md\" target=\"_\" >https://github.com/nasa/GeneLab_Data_Processing/blob/master/RNAseq/Pipeline_GL-DPPD-7101_Versions/GL-DPPD-7101-G.md</a>), using NF_RCP version 2.0.2 (https://github.com/nasa/GeneLab_Data_Processing/tree/NF_RCP-2.0.2/RNAseq/Workflow_Documentation/NF_RCP). In short, raw fastq files were filtered using Trim Galore! (version 0.6.10) powered by Cutadapt (version 4.2). Trimmed fastq file quality was evaluated with FastQC (version 0.12.1), and MultiQC (version 1.26) was used to generate MultiQC reports. Mus Musculus STAR and RSEM references were built using STAR (version 2.7.11b) and RSEM (version 1.3.3), respectively, Ensembl release 112, genome assembly GRCm39 (Mus_musculus.GRCm39.dna.primary_assembly.fa) and the following gtf annotation file: Mus_musculus.GRCm39.112.gtf. Trimmed reads were aligned to the Mus Musculus STAR reference with STAR (version 2.7.11b) and alignment log files were compiled with MultiQC (version 1.26). Aligned reads were assessed for strandedness using RSeQC infer_experiment.py (version 5.0.4), gene body coverage using RSeQC geneBody_coverage.py (version 5.0.4), inner distance was assessed using RSeQC inner_distance.py (version 5.0.4), and distribution of RNA features using RSeQC read_distribution.py (version 5.0.4). Aligned reads from all samples were quantified using RSEM (version 1.3.3), with strandedness set to reverse and RSEM count log files were compiled with MultiQC (version 1.26). To create a set of rRNA-removed quantification data, Ensembl IDs mapping to ribosomal RNA (rRNA) were removed from the RSEM gene count data. Both the original set of RSEM quantification data and the rRNA-removed data were subject to differential gene expression analysis as follows. A runsheet was generated with dp_tools (version 1.3.8) and the runsheet and quantification data were imported to R (version 4.4.2) with tximport (version 1.34.0) and normalized with DESeq2 (version 1.46.0) median of ratios method. Normalized gene counts were subject to differential expression analysis. Differential expression analysis was performed in R (version 4.4.2) using DESeq2 (version 1.46.0); all groups were compared pairwise using the Wald test and the likelihood ratio test was used to generate the F statistic p-value. Gene annotations were assigned using the custom annotation tables generated in-house as detailed in GL-DPPD-7110-A (<a href=\"https://github.com/nasa/GeneLab_Data_Processing/blob/GL_RefAnnotTable-A_1.1.0/GeneLab_Reference_Annotations/Pipeline_GL-DPPD-7110_Versions/GL-DPPD-7110-A/GL-DPPD-7110-A.md\" target=\"_\" >https://github.com/nasa/GeneLab_Data_Processing/blob/GL_RefAnnotTable-A_1.1.0/GeneLab_Reference_Annotations/Pipeline_GL-DPPD-7110_Versions/GL-DPPD-7110-A/GL-DPPD-7110-A.md</a>), with STRINGdb (version 2.16.4), PANTHER.db (version 1.0.12), and org.Mm.eg.db (version 3.19.1).",
+      "name": "GeneLab RNAseq data processing protocol",
+      "parameters": [
+        {
+          "@id": "#140511484838288",
+          "parameterName": {
+            "@id": "W9tes96RPBkIuuA0eNexPPFOXF4m5lLPOIBTnVsM",
+            "annotationValue": "trimmed sequence data",
+            "comments": [],
+            "termAccession": "http://purl.obolibrary.org/obo/OBI_0002569",
+            "termSource": "OBI"
+          }
+        },
+        {
+          "@id": "#140511484838048",
+          "parameterName": {
+            "@id": "s2HskUjUzSQmahcRYDfv1xBVjYScvewE8EO773hd",
+            "annotationValue": "Trimmed Sequence Data/Trimming Reports",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140511484840976",
+          "parameterName": {
+            "@id": "Paz4Pjo6sV6E66RG3a9xuZDjKKpk7ywwq3VwmAwn",
+            "annotationValue": "Trimmed Sequence Data/MultiQC Reports",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140511484839536",
+          "parameterName": {
+            "@id": "lqpWRJZ7O2rPhdA4uPNANCqeFig4cQhw07RfB2f5",
+            "annotationValue": "aligned sequence data",
+            "comments": [],
+            "termAccession": "http://purl.obolibrary.org/obo/OBI_0002580",
+            "termSource": "OBI"
+          }
+        },
+        {
+          "@id": "#140511484839920",
+          "parameterName": {
+            "@id": "SPhWEr1D3r2VJ9OKO5b94MEY02Ipod6UwkLtQaRk",
+            "annotationValue": "Aligned Sequence Data/Unmapped Reads",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140511484838096",
+          "parameterName": {
+            "@id": "3AwnKZQDUPRaMntinM9bvBrGHpnb8qc6GaaZRIQh",
+            "annotationValue": "Aligned Sequence Data/Alignment Logs",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140511484840928",
+          "parameterName": {
+            "@id": "ib7AEGeVUoAruCpz91Qn6GXdO3E5d8k0DSeT2EQR",
+            "annotationValue": "Aligned Sequence Data/MultiQC Reports",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140511484840160",
+          "parameterName": {
+            "@id": "QcbiokEiY9OO2PO8IXfNhCwNUeMq4JM2ugyguLO3",
+            "annotationValue": "RSeQC/MultiQC Reports",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140511484838000",
+          "parameterName": {
+            "@id": "CzV3xNixKDCRnULWE97WbT9v456v77sgf4dPZG0Y",
+            "annotationValue": "Raw Counts Data",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140511484841744",
+          "parameterName": {
+            "@id": "WXhsQG8JLZ5oK8kUYbPxGSfXi520yz8A4dEHcBKs",
+            "annotationValue": "Raw Counts Tables",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140511484839632",
+          "parameterName": {
+            "@id": "w31o7Q91WYOVYIwRCqOCvdUs4H84WG2M5y8Qgu1N",
+            "annotationValue": "Raw Counts Data/MultiQC Reports",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140513325155904",
+          "parameterName": {
+            "@id": "Lns3jxVPjBQ2dUuFO7KyPzSqST1hCHcuYbzwld4i",
+            "annotationValue": "Normalized Counts Data",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140513325157056",
+          "parameterName": {
+            "@id": "c4UoiNar4sA4ty0VawH08rhaf4AR7F8drWBP91tt",
+            "annotationValue": "differential expression analysis data",
+            "comments": [],
+            "termAccession": "http://purl.obolibrary.org/obo/OBI_0002584",
+            "termSource": "OBI"
+          }
+        }
+      ],
+      "protocolType": {
+        "@id": "gHRCpX8ZCZrvMb1jv0PpSihU4DurynDUUnkOSfet",
+        "annotationValue": "data transformation",
+        "comments": [],
+        "termAccession": "http://purl.obolibrary.org/obo/OBI_0200000",
+        "termSource": "OBI"
+      },
+      "uri": "",
+      "usage": [
+        "a_OSD-599_transcription-profiling_rna-sequencing-(rna-seq)_Illumina.txt"
+      ],
+      "version": ""
+    },
+    {
+      "@id": "#140513304234640",
+      "comments": [],
+      "components": [],
+      "description": "Female C57BL/6J mice aged 8–9 weeks old were obtained from The Jackson Laboratory (Bar Harbor, ME). Mice were shipped to the Kennedy Space Center (KSC) Space Life Sciences Laboratory (SLSL). Although there were several groups in this study, this report focuses on the transcriptomic changes in the heart when mice are housed in the spaceflight environment for 30 days. Mice were acclimatized for 1–2 weeks prior to the initiation of the study. Their living conditions were controlled for temperature and humidity and included a 12:12 h light–dark cycle. Food and water were provided ad libitum. During this adaptation period, the mice were adapted to the flight hardware (Rodent Research Hardware System). Mice flown on the International Space Station (ISS) and comparable ground control mice were maintained under identical conditions, including a single injection of saline. At 30 days, flight mice were transferred into the ISS Microgravity Sciences Glovebox (MSG), were euthanized via intraperitoneal (IP) injection of Ketamine/Xylazine (150/45 mg/kg) anesthesia followed by closed-cardiac puncture exsanguination and cervical dislocation. After removal of the spleen, mice were wrapped in foil, frozen and stored in the Minus Eighty Laboratory Freezer for ISS (MELFI) at −96 C until sample return. NASA GLACIER and Cold Bag lockers were used to transport samples back to the ground following mission completion.",
+      "name": "Animal Husbandry",
+      "parameters": [
+        {
+          "@id": "#140513325154368",
+          "parameterName": {
+            "@id": "wU8HV0MjusT6E4b8LvZKgeUuQFCbtMBF5AoRz4Ts",
+            "annotationValue": "light cycle",
+            "comments": [],
+            "termAccession": "http://purl.obolibrary.org/obo/NCIT_C90419",
+            "termSource": "NCIT"
+          }
+        },
+        {
+          "@id": "#140513325154848",
+          "parameterName": {
+            "@id": "dLYAVygHOh0kgkpNueBLjd61fJm88B7XuVf9mcXt",
+            "annotationValue": "habitat",
+            "comments": [],
+            "termAccession": "http://purl.obolibrary.org/obo/ENVO_01000739",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140513325157728",
+          "parameterName": {
+            "@id": "QraHOmTwDKeoAzQ4qV8YkHG42OwaUEmQEmnFZeeT",
+            "annotationValue": "Diet",
+            "comments": [],
+            "termAccession": "http://purl.bioontology.org/ontology/MESH/D004032",
+            "termSource": "MESH"
+          }
+        },
+        {
+          "@id": "#140513325158064",
+          "parameterName": {
+            "@id": "5rwTh6c63aAm9zauPOpJJV7IjyAjc5woSpwEDT72",
+            "annotationValue": "Euthanasia Method",
+            "comments": [],
+            "termAccession": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl",
+            "termSource": "NCIT"
+          }
+        },
+        {
+          "@id": "#140513325158256",
+          "parameterName": {
+            "@id": "ZjmSSbPuCF9KW9S9qrQGc9mjnHs9TzHb1bMgnKcX",
+            "annotationValue": "duration",
+            "comments": [],
+            "termAccession": "http://www.ebi.ac.uk/efo/EFO_0000433",
+            "termSource": "EFO"
+          }
+        },
+        {
+          "@id": "#140513325156576",
+          "parameterName": {
+            "@id": "wnjgyTd8rj1O0Oqecf2wG5bXCMq8VGJ9M4evlXyk",
+            "annotationValue": "Feeding Schedule",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        }
+      ],
+      "protocolType": {
+        "@id": "xdSNat2IkKnJlRzuwlV3pkvbSnb5E5nexrMWWYZF",
+        "annotationValue": "Animal Husbandry",
+        "comments": [],
+        "termAccession": "http://purl.bioontology.org/ontology/MESH/D000822",
+        "termSource": "MESH"
+      },
+      "uri": "",
+      "usage": [
+        "sample"
+      ],
+      "version": ""
+    },
+    {
+      "@id": "#140513304235072",
+      "comments": [],
+      "components": [],
+      "description": "The frozen ground control and spaceflight mice were slightly thawed, dissected on ice, and the inferior two-thirds of the hearts were extracted. Cardiac tissue sections were stored in RNALater, RNAProtect, or were flash-frozen in liquid nitrogen. RNAProtect samples were stored at −20C. The RNALater and flash-frozen samples were stored at −80C. RNA was isolated from the hearts of three mice flown on the ISS and three hearts from comparable hardware- and age-matched ground control mice.",
+      "name": "sample collection",
+      "parameters": [
+        {
+          "@id": "#140513325156144",
+          "parameterName": {
+            "@id": "eUm691aR7an5kII9bYi7JOSQEcghOzzbVfEjAtOG",
+            "annotationValue": "Sample Preservation Method",
+            "comments": [],
+            "termAccession": "https://genelab-data.ndc.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140513325157392",
+          "parameterName": {
+            "@id": "vbrzINCaNhslTc1WulmcigpF6afqM7x3H1PCAdm0",
+            "annotationValue": "Sample Storage Temperature",
+            "comments": [],
+            "termAccession": "https://genelab-data.ndc.nasa.gov/",
+            "termSource": ""
+          }
+        },
+        {
+          "@id": "#140513325154992",
+          "parameterName": {
+            "@id": "JRHoXOkT0oxW6HgLbr31LTr80voLA1FOzTfF74hn",
+            "annotationValue": "age at euthanasia",
+            "comments": [],
+            "termAccession": "https://osdr.nasa.gov/",
+            "termSource": ""
+          }
+        }
+      ],
+      "protocolType": {
+        "@id": "zaKRMPLXOBudyE1ROMNBjnZXViwkiB6PT7wea0yd",
+        "annotationValue": "sample collection",
+        "comments": [],
+        "termAccession": "",
+        "termSource": ""
+      },
+      "uri": "",
+      "usage": [
+        "sample"
+      ],
+      "version": ""
+    }
+  ],
+  "public": true,
+  "publications": [
+    {
+      "authorList": "Veliz AL, Mamoun L, Hughes L, Vega R, Holmes B, Monteon A, Bray J, Pecaut MJ, Kearns-Jonker M.",
+      "comments": [],
+      "doi": "10.3390/biom13020371",
+      "pubMedID": "36830740",
+      "status": {
+        "@id": "LmdAvi3HYaAIgsfwpY1sWHGrDR5sHm3luQJDg1Ay",
+        "annotationValue": "published",
+        "comments": [],
+        "termAccession": "http://www.ebi.ac.uk/efo/EFO_0001796",
+        "termSource": "EFO"
+      },
+      "title": "Transcriptomic Effects on the Mouse Heart Following 30 Days on the International Space Station."
+    }
+  ],
+  "related_glds": "",
+  "releaseDate": "22-Feb-2024",
+  "removed": [],
+  "restricted": false,
+  "restrictedFilesDisabled": null,
+  "samples": {
+    "header": [
+      {
+        "encoded": false,
+        "field": "Source Name",
+        "title": "Source Name",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Sample Name",
+        "title": "Sample Name",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Characteristics[Organism]",
+        "title": "Characteristics: Organism",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Characteristics[Strain]",
+        "title": "Characteristics: Strain",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.1",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.1",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Characteristics[Genotype]",
+        "title": "Characteristics: Genotype",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.2",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.2",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Characteristics[Sex]",
+        "title": "Characteristics: Sex",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.3",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.3",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Characteristics[Animal Source]",
+        "title": "Characteristics: Animal Source",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.4",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.4",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Characteristics[Material Type]",
+        "title": "Characteristics: Material Type",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.5",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.5",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Factor Value[Spaceflight]",
+        "title": "Factor Value: Spaceflight",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.6",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.6",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Characteristics[Age at Launch]",
+        "title": "Characteristics: Age at Launch",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Unit",
+        "title": "Unit",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.7",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.7",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Protocol REF",
+        "title": "Protocol REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Parameter Value[light cycle]",
+        "title": "Parameter Value: light cycle",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.8",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.8",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Parameter Value[habitat]",
+        "title": "Parameter Value: habitat",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.9",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.9",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Parameter Value[Diet]",
+        "title": "Parameter Value: Diet",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.10",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.10",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Parameter Value[Feeding Schedule]",
+        "title": "Parameter Value: Feeding Schedule",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.11",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.11",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Parameter Value[Euthanasia Method]",
+        "title": "Parameter Value: Euthanasia Method",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.12",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.12",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Parameter Value[duration]",
+        "title": "Parameter Value: duration",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Unit.1",
+        "title": "Unit",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.13",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.13",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Protocol REF.1",
+        "title": "Protocol REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Parameter Value[Sample Preservation Method]",
+        "title": "Parameter Value: Sample Preservation Method",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.14",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.14",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Parameter Value[Sample Storage Temperature]",
+        "title": "Parameter Value: Sample Storage Temperature",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Unit.2",
+        "title": "Unit",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.15",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.15",
+        "title": "Term Accession Number",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Parameter Value[age at euthanasia]",
+        "title": "Parameter Value: age at euthanasia",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Unit.3",
+        "title": "Unit",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Source REF.16",
+        "title": "Term Source REF",
+        "width": 200
+      },
+      {
+        "encoded": false,
+        "field": "Term Accession Number.16",
+        "title": "Term Accession Number",
+        "width": 200
+      }
+    ],
+    "table": [
+      {
+        "Characteristics[Age at Launch]": "9 - 11",
+        "Characteristics[Animal Source]": "Jackson Laboratory",
+        "Characteristics[Genotype]": "Wild Type",
+        "Characteristics[Material Type]": "Heart",
+        "Characteristics[Organism]": "Mus musculus",
+        "Characteristics[Sex]": "Female",
+        "Characteristics[Strain]": "C57BL/6J",
+        "Factor Value[Spaceflight]": "Ground Control",
+        "Parameter Value[Diet]": "Nutrient Upgraded Rodent Food Bar (NuRFB)",
+        "Parameter Value[Euthanasia Method]": "intraperitoneal (IP) injection of Ketamine/Xylazine (150/45 mg/kg) anesthesia",
+        "Parameter Value[Feeding Schedule]": "ad libitum",
+        "Parameter Value[Sample Preservation Method]": "RNALater or RNAProtect or Liquid Nitrogen",
+        "Parameter Value[Sample Storage Temperature]": "-80",
+        "Parameter Value[age at euthanasia]": "13-15",
+        "Parameter Value[duration]": "30",
+        "Parameter Value[habitat]": "Rodent Flight Hardware (Transporter and Habitat)",
+        "Parameter Value[light cycle]": "12 h light/dark cycle",
+        "Protocol REF": "Animal Husbandry",
+        "Protocol REF.1": "sample collection",
+        "Sample Name": "GSM6996077",
+        "Source Name": "RR-12_GC25",
+        "Term Accession Number": "http://purl.bioontology.org/ontology/NCBITAXON/10090",
+        "Term Accession Number.1": "http://www.ebi.ac.uk/efo/EFO_0000606",
+        "Term Accession Number.10": "https://osdr.nasa.gov/",
+        "Term Accession Number.11": "https://osdr.nasa.gov/",
+        "Term Accession Number.12": "https://osdr.nasa.gov/",
+        "Term Accession Number.13": "http://purl.obolibrary.org/obo/UO_0000033",
+        "Term Accession Number.14": "https://osdr.nasa.gov/",
+        "Term Accession Number.15": "http://purl.obolibrary.org/obo/UO_0000027",
+        "Term Accession Number.16": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.2": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C62195",
+        "Term Accession Number.3": "http://purl.bioontology.org/ontology/MESH/D005260",
+        "Term Accession Number.4": "https://osdr.nasa.gov/",
+        "Term Accession Number.5": "http://purl.org/sig/ont/fma/fma7088",
+        "Term Accession Number.6": "https://osdr.nasa.gov/",
+        "Term Accession Number.7": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.8": "https://osdr.nasa.gov/",
+        "Term Accession Number.9": "https://osdr.nasa.gov/",
+        "Term Source REF": "NCBITAXON",
+        "Term Source REF.1": "EFO",
+        "Term Source REF.10": "OSD",
+        "Term Source REF.11": "OSD",
+        "Term Source REF.12": "OSD",
+        "Term Source REF.13": "UO",
+        "Term Source REF.14": "OSD",
+        "Term Source REF.15": "UO",
+        "Term Source REF.16": "UO",
+        "Term Source REF.2": "NCIT",
+        "Term Source REF.3": "MESH",
+        "Term Source REF.4": "OSD",
+        "Term Source REF.5": "FMA",
+        "Term Source REF.6": "OSD",
+        "Term Source REF.7": "UO",
+        "Term Source REF.8": "OSD",
+        "Term Source REF.9": "OSD",
+        "Unit": "week",
+        "Unit.1": "day",
+        "Unit.2": "degree Celsius",
+        "Unit.3": "week",
+        "index": 0
+      },
+      {
+        "Characteristics[Age at Launch]": "9 - 11",
+        "Characteristics[Animal Source]": "Jackson Laboratory",
+        "Characteristics[Genotype]": "Wild Type",
+        "Characteristics[Material Type]": "Heart",
+        "Characteristics[Organism]": "Mus musculus",
+        "Characteristics[Sex]": "Female",
+        "Characteristics[Strain]": "C57BL/6J",
+        "Factor Value[Spaceflight]": "Ground Control",
+        "Parameter Value[Diet]": "Nutrient Upgraded Rodent Food Bar (NuRFB)",
+        "Parameter Value[Euthanasia Method]": "intraperitoneal (IP) injection of Ketamine/Xylazine (150/45 mg/kg) anesthesia",
+        "Parameter Value[Feeding Schedule]": "ad libitum",
+        "Parameter Value[Sample Preservation Method]": "RNALater or RNAProtect or Liquid Nitrogen",
+        "Parameter Value[Sample Storage Temperature]": "-80",
+        "Parameter Value[age at euthanasia]": "13-15",
+        "Parameter Value[duration]": "30",
+        "Parameter Value[habitat]": "Rodent Flight Hardware (Transporter and Habitat)",
+        "Parameter Value[light cycle]": "12 h light/dark cycle",
+        "Protocol REF": "Animal Husbandry",
+        "Protocol REF.1": "sample collection",
+        "Sample Name": "GSM6996078",
+        "Source Name": "RR-12_GC2",
+        "Term Accession Number": "http://purl.bioontology.org/ontology/NCBITAXON/10090",
+        "Term Accession Number.1": "http://www.ebi.ac.uk/efo/EFO_0000606",
+        "Term Accession Number.10": "https://osdr.nasa.gov/",
+        "Term Accession Number.11": "https://osdr.nasa.gov/",
+        "Term Accession Number.12": "https://osdr.nasa.gov/",
+        "Term Accession Number.13": "http://purl.obolibrary.org/obo/UO_0000033",
+        "Term Accession Number.14": "https://osdr.nasa.gov/",
+        "Term Accession Number.15": "http://purl.obolibrary.org/obo/UO_0000027",
+        "Term Accession Number.16": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.2": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C62195",
+        "Term Accession Number.3": "http://purl.bioontology.org/ontology/MESH/D005260",
+        "Term Accession Number.4": "https://osdr.nasa.gov/",
+        "Term Accession Number.5": "http://purl.org/sig/ont/fma/fma7088",
+        "Term Accession Number.6": "https://osdr.nasa.gov/",
+        "Term Accession Number.7": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.8": "https://osdr.nasa.gov/",
+        "Term Accession Number.9": "https://osdr.nasa.gov/",
+        "Term Source REF": "NCBITAXON",
+        "Term Source REF.1": "EFO",
+        "Term Source REF.10": "OSD",
+        "Term Source REF.11": "OSD",
+        "Term Source REF.12": "OSD",
+        "Term Source REF.13": "UO",
+        "Term Source REF.14": "OSD",
+        "Term Source REF.15": "UO",
+        "Term Source REF.16": "UO",
+        "Term Source REF.2": "NCIT",
+        "Term Source REF.3": "MESH",
+        "Term Source REF.4": "OSD",
+        "Term Source REF.5": "FMA",
+        "Term Source REF.6": "OSD",
+        "Term Source REF.7": "UO",
+        "Term Source REF.8": "OSD",
+        "Term Source REF.9": "OSD",
+        "Unit": "week",
+        "Unit.1": "day",
+        "Unit.2": "degree Celsius",
+        "Unit.3": "week",
+        "index": 1
+      },
+      {
+        "Characteristics[Age at Launch]": "9 - 11",
+        "Characteristics[Animal Source]": "Jackson Laboratory",
+        "Characteristics[Genotype]": "Wild Type",
+        "Characteristics[Material Type]": "Heart",
+        "Characteristics[Organism]": "Mus musculus",
+        "Characteristics[Sex]": "Female",
+        "Characteristics[Strain]": "C57BL/6J",
+        "Factor Value[Spaceflight]": "Ground Control",
+        "Parameter Value[Diet]": "Nutrient Upgraded Rodent Food Bar (NuRFB)",
+        "Parameter Value[Euthanasia Method]": "intraperitoneal (IP) injection of Ketamine/Xylazine (150/45 mg/kg) anesthesia",
+        "Parameter Value[Feeding Schedule]": "ad libitum",
+        "Parameter Value[Sample Preservation Method]": "RNALater or RNAProtect or Liquid Nitrogen",
+        "Parameter Value[Sample Storage Temperature]": "-80",
+        "Parameter Value[age at euthanasia]": "13-15",
+        "Parameter Value[duration]": "30",
+        "Parameter Value[habitat]": "Rodent Flight Hardware (Transporter and Habitat)",
+        "Parameter Value[light cycle]": "12 h light/dark cycle",
+        "Protocol REF": "Animal Husbandry",
+        "Protocol REF.1": "sample collection",
+        "Sample Name": "GSM6996079",
+        "Source Name": "RR-12_GC3",
+        "Term Accession Number": "http://purl.bioontology.org/ontology/NCBITAXON/10090",
+        "Term Accession Number.1": "http://www.ebi.ac.uk/efo/EFO_0000606",
+        "Term Accession Number.10": "https://osdr.nasa.gov/",
+        "Term Accession Number.11": "https://osdr.nasa.gov/",
+        "Term Accession Number.12": "https://osdr.nasa.gov/",
+        "Term Accession Number.13": "http://purl.obolibrary.org/obo/UO_0000033",
+        "Term Accession Number.14": "https://osdr.nasa.gov/",
+        "Term Accession Number.15": "http://purl.obolibrary.org/obo/UO_0000027",
+        "Term Accession Number.16": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.2": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C62195",
+        "Term Accession Number.3": "http://purl.bioontology.org/ontology/MESH/D005260",
+        "Term Accession Number.4": "https://osdr.nasa.gov/",
+        "Term Accession Number.5": "http://purl.org/sig/ont/fma/fma7088",
+        "Term Accession Number.6": "https://osdr.nasa.gov/",
+        "Term Accession Number.7": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.8": "https://osdr.nasa.gov/",
+        "Term Accession Number.9": "https://osdr.nasa.gov/",
+        "Term Source REF": "NCBITAXON",
+        "Term Source REF.1": "EFO",
+        "Term Source REF.10": "OSD",
+        "Term Source REF.11": "OSD",
+        "Term Source REF.12": "OSD",
+        "Term Source REF.13": "UO",
+        "Term Source REF.14": "OSD",
+        "Term Source REF.15": "UO",
+        "Term Source REF.16": "UO",
+        "Term Source REF.2": "NCIT",
+        "Term Source REF.3": "MESH",
+        "Term Source REF.4": "OSD",
+        "Term Source REF.5": "FMA",
+        "Term Source REF.6": "OSD",
+        "Term Source REF.7": "UO",
+        "Term Source REF.8": "OSD",
+        "Term Source REF.9": "OSD",
+        "Unit": "week",
+        "Unit.1": "day",
+        "Unit.2": "degree Celsius",
+        "Unit.3": "week",
+        "index": 2
+      },
+      {
+        "Characteristics[Age at Launch]": "9 - 11",
+        "Characteristics[Animal Source]": "Jackson Laboratory",
+        "Characteristics[Genotype]": "Wild Type",
+        "Characteristics[Material Type]": "Heart",
+        "Characteristics[Organism]": "Mus musculus",
+        "Characteristics[Sex]": "Female",
+        "Characteristics[Strain]": "C57BL/6J",
+        "Factor Value[Spaceflight]": "Space Flight",
+        "Parameter Value[Diet]": "Nutrient Upgraded Rodent Food Bar (NuRFB)",
+        "Parameter Value[Euthanasia Method]": "intraperitoneal (IP) injection of Ketamine/Xylazine (150/45 mg/kg) anesthesia",
+        "Parameter Value[Feeding Schedule]": "ad libitum",
+        "Parameter Value[Sample Preservation Method]": "RNALater or RNAProtect or Liquid Nitrogen",
+        "Parameter Value[Sample Storage Temperature]": "-80",
+        "Parameter Value[age at euthanasia]": "13-15",
+        "Parameter Value[duration]": "30",
+        "Parameter Value[habitat]": "Rodent Flight Hardware (Transporter and Habitat)",
+        "Parameter Value[light cycle]": "12 h light/dark cycle",
+        "Protocol REF": "Animal Husbandry",
+        "Protocol REF.1": "sample collection",
+        "Sample Name": "GSM6996080",
+        "Source Name": "RR-12_F11",
+        "Term Accession Number": "http://purl.bioontology.org/ontology/NCBITAXON/10090",
+        "Term Accession Number.1": "http://www.ebi.ac.uk/efo/EFO_0000606",
+        "Term Accession Number.10": "https://osdr.nasa.gov/",
+        "Term Accession Number.11": "https://osdr.nasa.gov/",
+        "Term Accession Number.12": "https://osdr.nasa.gov/",
+        "Term Accession Number.13": "http://purl.obolibrary.org/obo/UO_0000033",
+        "Term Accession Number.14": "https://osdr.nasa.gov/",
+        "Term Accession Number.15": "http://purl.obolibrary.org/obo/UO_0000027",
+        "Term Accession Number.16": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.2": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C62195",
+        "Term Accession Number.3": "http://purl.bioontology.org/ontology/MESH/D005260",
+        "Term Accession Number.4": "https://osdr.nasa.gov/",
+        "Term Accession Number.5": "http://purl.org/sig/ont/fma/fma7088",
+        "Term Accession Number.6": "http://purl.bioontology.org/ontology/MESH/D013026",
+        "Term Accession Number.7": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.8": "https://osdr.nasa.gov/",
+        "Term Accession Number.9": "https://osdr.nasa.gov/",
+        "Term Source REF": "NCBITAXON",
+        "Term Source REF.1": "EFO",
+        "Term Source REF.10": "OSD",
+        "Term Source REF.11": "OSD",
+        "Term Source REF.12": "OSD",
+        "Term Source REF.13": "UO",
+        "Term Source REF.14": "OSD",
+        "Term Source REF.15": "UO",
+        "Term Source REF.16": "UO",
+        "Term Source REF.2": "NCIT",
+        "Term Source REF.3": "MESH",
+        "Term Source REF.4": "OSD",
+        "Term Source REF.5": "FMA",
+        "Term Source REF.6": "MESH",
+        "Term Source REF.7": "UO",
+        "Term Source REF.8": "OSD",
+        "Term Source REF.9": "OSD",
+        "Unit": "week",
+        "Unit.1": "day",
+        "Unit.2": "degree Celsius",
+        "Unit.3": "week",
+        "index": 3
+      },
+      {
+        "Characteristics[Age at Launch]": "9 - 11",
+        "Characteristics[Animal Source]": "Jackson Laboratory",
+        "Characteristics[Genotype]": "Wild Type",
+        "Characteristics[Material Type]": "Heart",
+        "Characteristics[Organism]": "Mus musculus",
+        "Characteristics[Sex]": "Female",
+        "Characteristics[Strain]": "C57BL/6J",
+        "Factor Value[Spaceflight]": "Space Flight",
+        "Parameter Value[Diet]": "Nutrient Upgraded Rodent Food Bar (NuRFB)",
+        "Parameter Value[Euthanasia Method]": "intraperitoneal (IP) injection of Ketamine/Xylazine (150/45 mg/kg) anesthesia",
+        "Parameter Value[Feeding Schedule]": "ad libitum",
+        "Parameter Value[Sample Preservation Method]": "RNALater or RNAProtect or Liquid Nitrogen",
+        "Parameter Value[Sample Storage Temperature]": "-80",
+        "Parameter Value[age at euthanasia]": "13-15",
+        "Parameter Value[duration]": "30",
+        "Parameter Value[habitat]": "Rodent Flight Hardware (Transporter and Habitat)",
+        "Parameter Value[light cycle]": "12 h light/dark cycle",
+        "Protocol REF": "Animal Husbandry",
+        "Protocol REF.1": "sample collection",
+        "Sample Name": "GSM6996081",
+        "Source Name": "RR-12_F12",
+        "Term Accession Number": "http://purl.bioontology.org/ontology/NCBITAXON/10090",
+        "Term Accession Number.1": "http://www.ebi.ac.uk/efo/EFO_0000606",
+        "Term Accession Number.10": "https://osdr.nasa.gov/",
+        "Term Accession Number.11": "https://osdr.nasa.gov/",
+        "Term Accession Number.12": "https://osdr.nasa.gov/",
+        "Term Accession Number.13": "http://purl.obolibrary.org/obo/UO_0000033",
+        "Term Accession Number.14": "https://osdr.nasa.gov/",
+        "Term Accession Number.15": "http://purl.obolibrary.org/obo/UO_0000027",
+        "Term Accession Number.16": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.2": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C62195",
+        "Term Accession Number.3": "http://purl.bioontology.org/ontology/MESH/D005260",
+        "Term Accession Number.4": "https://osdr.nasa.gov/",
+        "Term Accession Number.5": "http://purl.org/sig/ont/fma/fma7088",
+        "Term Accession Number.6": "http://purl.bioontology.org/ontology/MESH/D013026",
+        "Term Accession Number.7": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.8": "https://osdr.nasa.gov/",
+        "Term Accession Number.9": "https://osdr.nasa.gov/",
+        "Term Source REF": "NCBITAXON",
+        "Term Source REF.1": "EFO",
+        "Term Source REF.10": "OSD",
+        "Term Source REF.11": "OSD",
+        "Term Source REF.12": "OSD",
+        "Term Source REF.13": "UO",
+        "Term Source REF.14": "OSD",
+        "Term Source REF.15": "UO",
+        "Term Source REF.16": "UO",
+        "Term Source REF.2": "NCIT",
+        "Term Source REF.3": "MESH",
+        "Term Source REF.4": "OSD",
+        "Term Source REF.5": "FMA",
+        "Term Source REF.6": "MESH",
+        "Term Source REF.7": "UO",
+        "Term Source REF.8": "OSD",
+        "Term Source REF.9": "OSD",
+        "Unit": "week",
+        "Unit.1": "day",
+        "Unit.2": "degree Celsius",
+        "Unit.3": "week",
+        "index": 4
+      },
+      {
+        "Characteristics[Age at Launch]": "9 - 11",
+        "Characteristics[Animal Source]": "Jackson Laboratory",
+        "Characteristics[Genotype]": "Wild Type",
+        "Characteristics[Material Type]": "Heart",
+        "Characteristics[Organism]": "Mus musculus",
+        "Characteristics[Sex]": "Female",
+        "Characteristics[Strain]": "C57BL/6J",
+        "Factor Value[Spaceflight]": "Space Flight",
+        "Parameter Value[Diet]": "Nutrient Upgraded Rodent Food Bar (NuRFB)",
+        "Parameter Value[Euthanasia Method]": "intraperitoneal (IP) injection of Ketamine/Xylazine (150/45 mg/kg) anesthesia",
+        "Parameter Value[Feeding Schedule]": "ad libitum",
+        "Parameter Value[Sample Preservation Method]": "RNALater or RNAProtect or Liquid Nitrogen",
+        "Parameter Value[Sample Storage Temperature]": "-80",
+        "Parameter Value[age at euthanasia]": "13-15",
+        "Parameter Value[duration]": "30",
+        "Parameter Value[habitat]": "Rodent Flight Hardware (Transporter and Habitat)",
+        "Parameter Value[light cycle]": "12 h light/dark cycle",
+        "Protocol REF": "Animal Husbandry",
+        "Protocol REF.1": "sample collection",
+        "Sample Name": "GSM6996082",
+        "Source Name": "RR-12_F13",
+        "Term Accession Number": "http://purl.bioontology.org/ontology/NCBITAXON/10090",
+        "Term Accession Number.1": "http://www.ebi.ac.uk/efo/EFO_0000606",
+        "Term Accession Number.10": "https://osdr.nasa.gov/",
+        "Term Accession Number.11": "https://osdr.nasa.gov/",
+        "Term Accession Number.12": "https://osdr.nasa.gov/",
+        "Term Accession Number.13": "http://purl.obolibrary.org/obo/UO_0000033",
+        "Term Accession Number.14": "https://osdr.nasa.gov/",
+        "Term Accession Number.15": "http://purl.obolibrary.org/obo/UO_0000027",
+        "Term Accession Number.16": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.2": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C62195",
+        "Term Accession Number.3": "http://purl.bioontology.org/ontology/MESH/D005260",
+        "Term Accession Number.4": "https://osdr.nasa.gov/",
+        "Term Accession Number.5": "http://purl.org/sig/ont/fma/fma7088",
+        "Term Accession Number.6": "http://purl.bioontology.org/ontology/MESH/D013026",
+        "Term Accession Number.7": "http://purl.obolibrary.org/obo/UO_0000034",
+        "Term Accession Number.8": "https://osdr.nasa.gov/",
+        "Term Accession Number.9": "https://osdr.nasa.gov/",
+        "Term Source REF": "NCBITAXON",
+        "Term Source REF.1": "EFO",
+        "Term Source REF.10": "OSD",
+        "Term Source REF.11": "OSD",
+        "Term Source REF.12": "OSD",
+        "Term Source REF.13": "UO",
+        "Term Source REF.14": "OSD",
+        "Term Source REF.15": "UO",
+        "Term Source REF.16": "UO",
+        "Term Source REF.2": "NCIT",
+        "Term Source REF.3": "MESH",
+        "Term Source REF.4": "OSD",
+        "Term Source REF.5": "FMA",
+        "Term Source REF.6": "MESH",
+        "Term Source REF.7": "UO",
+        "Term Source REF.8": "OSD",
+        "Term Source REF.9": "OSD",
+        "Unit": "week",
+        "Unit.1": "day",
+        "Unit.2": "degree Celsius",
+        "Unit.3": "week",
+        "index": 5
+      }
+    ],
+    "totalRecords": 6
+  },
+  "sourceAccession": "GSE223803",
+  "sourceLink": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE223803",
+  "spaceProgram": "NASA",
+  "submissionDate": "26-Jan-2023",
+  "title": "Transcriptomic Effects on the Mouse Heart Following 30 Days on the International Space Station",
+  "totalFileSize": 72348815311,
+  "version": 6,
+  "versionMessage": null,
+  "versionMessageLevel": null,
+  "versionMessageLocations": [],
+  "versionReason": "Metadata update"
+}
