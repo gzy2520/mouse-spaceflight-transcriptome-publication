@@ -1,0 +1,57 @@
+figure_id,kind,analysis_tissue,n_flight_samples,path,palette,label_mode
+Fig_2_log2fc_fisher_z_overall,overall,ALL_INCLUDED_TISSUES,360,<temporary-render-output>/Fig_2_log2fc_fisher_z_overall.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_2_log2fc_fisher_z_overall,overall,ALL_INCLUDED_TISSUES,360,<temporary-render-output>/Fig_2_log2fc_fisher_z_overall.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Adrenal gland,14,<temporary-render-output>/Spearman_log2FC_Adrenal_gland.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Adrenal gland,14,<temporary-render-output>/Spearman_log2FC_Adrenal_gland.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Bone marrow,6,<temporary-render-output>/Spearman_log2FC_Bone_marrow.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Bone marrow,6,<temporary-render-output>/Spearman_log2FC_Bone_marrow.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Cecum,5,<temporary-render-output>/Spearman_log2FC_Cecum.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Cecum,5,<temporary-render-output>/Spearman_log2FC_Cecum.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Cerebellum,9,<temporary-render-output>/Spearman_log2FC_Cerebellum.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Cerebellum,9,<temporary-render-output>/Spearman_log2FC_Cerebellum.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Colon,4,<temporary-render-output>/Spearman_log2FC_Colon.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Colon,4,<temporary-render-output>/Spearman_log2FC_Colon.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Dorsal skin,30,<temporary-render-output>/Spearman_log2FC_Dorsal_skin.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Dorsal skin,30,<temporary-render-output>/Spearman_log2FC_Dorsal_skin.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Extensor digitorum longus,15,<temporary-render-output>/Spearman_log2FC_Extensor_digitorum_longus.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Extensor digitorum longus,15,<temporary-render-output>/Spearman_log2FC_Extensor_digitorum_longus.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Eye,11,<temporary-render-output>/Spearman_log2FC_Eye.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Eye,11,<temporary-render-output>/Spearman_log2FC_Eye.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Femoral lateral skin,9,<temporary-render-output>/Spearman_log2FC_Femoral_lateral_skin.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Femoral lateral skin,9,<temporary-render-output>/Spearman_log2FC_Femoral_lateral_skin.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Femoral skin,2,<temporary-render-output>/Spearman_log2FC_Femoral_skin.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Femoral skin,2,<temporary-render-output>/Spearman_log2FC_Femoral_skin.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Gastrocnemius,10,<temporary-render-output>/Spearman_log2FC_Gastrocnemius.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Gastrocnemius,10,<temporary-render-output>/Spearman_log2FC_Gastrocnemius.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Heart,3,<temporary-render-output>/Spearman_log2FC_Heart.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Heart,3,<temporary-render-output>/Spearman_log2FC_Heart.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Heart / Heart right ventricle,10,<temporary-render-output>/Spearman_log2FC_Heart_Heart_right_ventricle.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Heart / Heart right ventricle,10,<temporary-render-output>/Spearman_log2FC_Heart_Heart_right_ventricle.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Kidney,55,<temporary-render-output>/Spearman_log2FC_Kidney.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Kidney,55,<temporary-render-output>/Spearman_log2FC_Kidney.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Left lobe of the liver,24,<temporary-render-output>/Spearman_log2FC_Left_lobe_of_the_liver.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Left lobe of the liver,24,<temporary-render-output>/Spearman_log2FC_Left_lobe_of_the_liver.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Liver,19,<temporary-render-output>/Spearman_log2FC_Liver.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Liver,19,<temporary-render-output>/Spearman_log2FC_Liver.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Lung,14,<temporary-render-output>/Spearman_log2FC_Lung.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Lung,14,<temporary-render-output>/Spearman_log2FC_Lung.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Mammary gland,10,<temporary-render-output>/Spearman_log2FC_Mammary_gland.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Mammary gland,10,<temporary-render-output>/Spearman_log2FC_Mammary_gland.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Optic nerve,5,<temporary-render-output>/Spearman_log2FC_Optic_nerve.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Optic nerve,5,<temporary-render-output>/Spearman_log2FC_Optic_nerve.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Quadriceps femoris,9,<temporary-render-output>/Spearman_log2FC_Quadriceps_femoris.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Quadriceps femoris,9,<temporary-render-output>/Spearman_log2FC_Quadriceps_femoris.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Retina,27,<temporary-render-output>/Spearman_log2FC_Retina.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Retina,27,<temporary-render-output>/Spearman_log2FC_Retina.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Soleus,18,<temporary-render-output>/Spearman_log2FC_Soleus.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Soleus,18,<temporary-render-output>/Spearman_log2FC_Soleus.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Spleen,9,<temporary-render-output>/Spearman_log2FC_Spleen.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Spleen,9,<temporary-render-output>/Spearman_log2FC_Spleen.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Spleen-distal,10,<temporary-render-output>/Spearman_log2FC_Spleen_distal.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Spleen-distal,10,<temporary-render-output>/Spearman_log2FC_Spleen_distal.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Thymus,23,<temporary-render-output>/Spearman_log2FC_Thymus.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Thymus,23,<temporary-render-output>/Spearman_log2FC_Thymus.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Tibialis anterior,9,<temporary-render-output>/Spearman_log2FC_Tibialis_anterior.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_per_tissue_spearman_log2fc,per_tissue,Tibialis anterior,9,<temporary-render-output>/Spearman_log2FC_Tibialis_anterior.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_log2fc_fisher_z_per_tissue_merged,merged_per_tissue,ALL_26_TISSUES,360,<temporary-render-output>/Fig_S6_log2fc_fisher_z_per_tissue_merged.png,#3B6FB6 | #FFFFFF | #C65A5A,name_only
+Fig_S6_log2fc_fisher_z_per_tissue_merged,merged_per_tissue,ALL_26_TISSUES,360,<temporary-render-output>/Fig_S6_log2fc_fisher_z_per_tissue_merged.pdf,#3B6FB6 | #FFFFFF | #C65A5A,name_only

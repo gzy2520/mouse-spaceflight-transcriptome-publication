@@ -1,0 +1,5 @@
+figure,n_sets,n_membership_rows,union_n,core_n,n_nonzero_intersections,membership_file,sizes_file
+Fig_3a,4,893,884,855,4,data/publication_input/venn/04_membership_matrix_thymus_four_comparisons.csv,data/publication_input/venn/07_set_sizes_thymus_four_comparisons.csv
+Fig_S2a,5,893,886,870,8,data/publication_input/venn/04_membership_matrix_kidney_five_datasets.csv,data/publication_input/venn/07_set_sizes_kidney_five_datasets.csv
+Fig_S3a,10,893,886,834,25,results/tables/04_membership_matrix_up_tissues.csv,results/tables/07_set_sizes_up_tissues.csv
+Fig_S4a,6,893,888,850,18,results/tables/04_membership_matrix_down_tissues.csv,results/tables/07_set_sizes_down_tissues.csv

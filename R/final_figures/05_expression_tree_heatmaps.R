@@ -135,16 +135,8 @@ make_heatmap_plot <- function(plot_data, ordered_tissues) {
     PlotPathwayDisplay, levels = c("NHEJ", "HR", "HR–A-EJ", "A-EJ", "BER", "NER", "MMR", "FA")
   )]
   plot_data[, TissueKey := factor(Group, levels = rev(ordered_tissues))]
-  plot_data[, CellTextColour := fifelse(
-    TissueYARNNormalizedLog2 <= yarn_min + 0.16 * (yarn_max - yarn_min) |
-      TissueYARNNormalizedLog2 >= yarn_min + 0.84 * (yarn_max - yarn_min),
-    "white", "#263238"
-  )]
   ggplot(plot_data, aes(x = DisplayComponent, y = TissueKey, fill = TissueYARNNormalizedLog2)) +
     geom_tile(colour = "white", linewidth = 0.14) +
-    geom_text(aes(label = sprintf("%.1f", TissueYARNNormalizedLog2), colour = CellTextColour),
-              size = 2.75, family = FINAL_FONT, na.rm = TRUE, show.legend = FALSE) +
-    scale_colour_identity() +
     facet_grid(. ~ PlotPathwayDisplay, scales = "free_x", space = "free_x", switch = "x", drop = TRUE) +
     scale_x_discrete(expand = expansion(add = 0)) +
     scale_y_discrete(drop = FALSE, labels = function(x) rep("", length(x))) +
@@ -203,7 +195,7 @@ render_combined <- function(cluster, pathways, title, subtitle, output_file) {
       )
     ) & theme(legend.position = "top")
   save_final_figure(combined, out, sub("[.]png$", "", output_file),
-                    width = 31.0, height = 11.8, dpi = 400)
+                    width = 31.0, height = 13.0, dpi = 400)
 }
 
 render_combined(

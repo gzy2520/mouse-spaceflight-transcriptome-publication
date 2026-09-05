@@ -1,0 +1,3 @@
+﻿family,n_sets,n_union,n_all_set_intersection,n_intersections_displayed,set_bar_fill,geometry,png,pdf
+up_tissues,10,886,834,25,#F1C4BB,UpSet,figures/Fig_S3a_NES_gt1_Kidney_excluded_dataset_UpSet_pale_warm.png,figures/Fig_S3a_NES_gt1_Kidney_excluded_dataset_UpSet_pale_warm.pdf
+down_tissues,6,888,850,18,#F1C4BB,UpSet,figures/Fig_S4a_NES_lt_minus1_Lung_Thymus_excluded_dataset_UpSet_pale_warm.png,figures/Fig_S4a_NES_lt_minus1_Lung_Thymus_excluded_dataset_UpSet_pale_warm.pdf

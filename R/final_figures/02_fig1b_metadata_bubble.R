@@ -11,10 +11,20 @@ suppressPackageStartupMessages({
   library(scales)
 })
 
-script_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
-if (!length(script_arg)) stop("Cannot locate 08_mouse_metadata_bubble.R", call. = FALSE)
-script_path <- normalizePath(sub("^--file=", "", script_arg[[1L]]), mustWork = TRUE)
-repo_root <- normalizePath(file.path(dirname(script_path), "../.."), mustWork = TRUE)
+requested_root <- Sys.getenv("PROJECT_ROOT", unset = "")
+if (nzchar(requested_root)) {
+  repo_root <- normalizePath(requested_root, mustWork = TRUE)
+} else {
+  script_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+  if (!length(script_arg)) stop("Cannot locate 02_fig1b_metadata_bubble.R", call. = FALSE)
+  script_path <- sub("^--file=", "", script_arg[[1L]])
+  # Some R front ends encode spaces in --file paths as ~+~.  Decode only when
+  # the supplied path is absent and the decoded local path exists.
+  decoded_path <- gsub("~[+]~", " ", script_path)
+  if (!file.exists(script_path) && file.exists(decoded_path)) script_path <- decoded_path
+  script_path <- normalizePath(script_path, mustWork = TRUE)
+  repo_root <- normalizePath(file.path(dirname(script_path), "../.."), mustWork = TRUE)
+}
 out <- Sys.getenv("PUBLICATION_OUTPUT_DIR", unset = file.path(repo_root, "results"))
 if (!grepl("^/", out)) out <- file.path(repo_root, out)
 out <- normalizePath(out, mustWork = FALSE)
@@ -118,12 +128,16 @@ mission_bands <- merge(mission_bands, mission_centres[, .(mission_cluster, band)
 age_levels <- unique(grouped[, .(age_label, age_order_weeks)])
 setorder(age_levels, age_order_weeks, age_label)
 age_levels <- age_levels$age_label
+# Reference Fig. 1b age palette supplied for the final release.  These exact
+# chronological values retain the intended yellow -> green -> blue -> purple
+# progression while keeping age as a discrete source variable.
 age_palette <- c(
-  "#2B3C8C", "#325CA8", "#347DB7", "#3B9AB2", "#4BAE98",
-  "#70B96E", "#A6C55B", "#D1C44E", "#E7B93E", "#F0A33A",
-  "#EF823A", "#E96849", "#D95159", "#B24468", "#8F3F6D"
+  "#FDE333", "#D4E02D", "#A6DA42", "#73D25B", "#25C771",
+  "#00BA82", "#00AC8E", "#009B95", "#008A98", "#007796",
+  "#006290", "#1E4D85", "#3C3777", "#471D67", "#4B0055"
 )
-assert(length(age_levels) <= length(age_palette), "Add a discrete colour before adding another age level")
+assert(length(age_levels) <= length(age_palette), "Add an audited discrete colour before adding another age level")
+age_palette <- age_palette[seq_along(age_levels)]
 names(age_palette) <- age_levels
 grouped[, age_colour := unname(age_palette[age_label])]
 assert(!anyNA(grouped$age_colour), "Every age stratum must have a fixed colour")
@@ -202,7 +216,7 @@ fig <- ggplot() +
     name = "Age reported by OSDR (discrete)"
   ) +
   scale_size_area(
-    max_size = 10,
+    max_size = 14,
     breaks = size_breaks,
     limits = c(0, max_mice),
     name = "Unique mice"
@@ -210,7 +224,7 @@ fig <- ggplot() +
   guides(
     fill = guide_legend(
       order = 1, nrow = 2, byrow = TRUE,
-      override.aes = list(shape = 21, size = 4.2, colour = "white", alpha = 1)
+      override.aes = list(shape = 21, size = 5.5, colour = "white", alpha = 1)
     ),
     size = guide_legend(order = 2, override.aes = list(shape = 21, fill = "#718096", colour = "white"))
   ) +
@@ -237,8 +251,8 @@ fig <- ggplot() +
     legend.position = "top",
     legend.box = "vertical",
     legend.box.just = "left",
-    legend.title = element_text(colour = ink, face = "bold", size = 15.5),
-    legend.text = element_text(colour = ink, size = 14.0),
+    legend.title = element_text(colour = ink, face = "bold", size = 22),
+    legend.text = element_text(colour = ink, size = 20),
     legend.key = element_blank(),
     legend.margin = margin(0, 0, 2, 0),
     plot.margin = margin(10, 14, 12, 14)

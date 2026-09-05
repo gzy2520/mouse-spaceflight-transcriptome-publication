@@ -275,7 +275,7 @@ def draw_single(
     fig.text(
         0.01,
         0.006,
-        "Sample-level log2FC; cells with undefined rho are left blank. GO IDs are shown for stable term identification.",
+        "Sample-level log2FC; cells with undefined rho are left blank. Stable GO IDs are retained in frozen metadata.",
         ha="left",
         va="bottom",
         fontsize=10.2,
@@ -399,9 +399,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--out-dir", default=None, help="Figure output directory (default: <input-dir>/figures)")
     parser.add_argument(
         "--label-mode",
-        choices=("name_go_id", "go_id"),
+        choices=("name_go_id", "go_id", "name_only"),
         default="name_go_id",
-        help="Axis/term-key display mode: full compact name plus GO ID, or GO IDs only",
+        help="Axis/term-key display mode: compact name plus GO ID, GO IDs only, or compact names only",
     )
     args = parser.parse_args(argv)
     root = Path(args.root).resolve()
@@ -420,9 +420,16 @@ def main(argv: list[str] | None = None) -> int:
     order = read_cluster_order(input_dir / "07_cluster_order_overall_log2fc.csv", term_keys)
     labels_by_key = {row.term_key: display_name(row) for _, row in meta.iterrows()}
     ordered_labels = [labels_by_key[key] for key in order]
+    names_by_key = {key: label.rsplit("\n", 1)[0] for key, label in labels_by_key.items()}
     meta_by_key = meta.set_index("term_key")
     x_labels_by_key = {
-        key: (str(meta_by_key.loc[key, "go_id"]) if args.label_mode == "go_id" else labels_by_key[key])
+        key: (
+            str(meta_by_key.loc[key, "go_id"])
+            if args.label_mode == "go_id"
+            else names_by_key[key]
+            if args.label_mode == "name_only"
+            else labels_by_key[key]
+        )
         for key in term_keys
     }
     ordered_x_labels = [x_labels_by_key[key] for key in order]
@@ -487,7 +494,7 @@ def main(argv: list[str] | None = None) -> int:
         order,
         x_labels_by_key,
         figure_dir / "Fig_S6_log2fc_fisher_z_per_tissue_merged",
-        legend_columns=8 if args.label_mode == "go_id" else 5,
+        legend_columns=8 if args.label_mode == "go_id" else 3 if args.label_mode == "name_only" else 5,
     )
     for path in merged_outputs:
         manifest_rows.append(
@@ -504,11 +511,11 @@ def main(argv: list[str] | None = None) -> int:
 
     manifest = pd.DataFrame(manifest_rows)
     manifest.to_csv(figure_dir / "figure_manifest.csv", index=False)
-    label_description = (
-        "横轴和合并图 term key 只显示 GO ID；纵轴保留简短 term 名称。"
-        if args.label_mode == "go_id"
-        else "横轴显示简短 term 名称与 GO ID；纵轴显示简短 term 名称。"
-    )
+    label_description = {
+        "go_id": "横轴和合并图 term key 只显示 GO ID；纵轴保留简短 term 名称。",
+        "name_only": "横轴、纵轴和合并图 term key 均显示相同的简短 GO 名称；GO ID 保留在冻结元数据中。",
+        "name_go_id": "横轴显示简短 term 名称与 GO ID；纵轴显示简短 term 名称。",
+    }[args.label_mode]
     readme = f"""# log2FC 逐组织 Spearman 图（2026-09-02）
 
 本目录只读取同目录的冻结计算表，不重新计算表达量或相关性。输入方法是：每个 Flight
@@ -520,7 +527,7 @@ def main(argv: list[str] | None = None) -> int:
 输出：
 
 - `Fig_2_log2fc_fisher_z_overall.png/pdf`：整体跨组织矩阵（蓝—白—红配色保持原 Fig. 2）。
-- `per_tissue/Spearman_log2FC_*.png/pdf`：26 个组织的完整单图，含数值和 GO ID。
+- `per_tissue/Spearman_log2FC_*.png/pdf`：26 个组织的完整单图，含相关系数数值和所选 term 标签。
 - `Fig_S6_log2fc_fisher_z_per_tissue_merged.png/pdf`：26 个组织的合并小 multiples 图。
 - `figure_manifest.csv`：每个文件、组织、样本数和配色的审计清单。
 

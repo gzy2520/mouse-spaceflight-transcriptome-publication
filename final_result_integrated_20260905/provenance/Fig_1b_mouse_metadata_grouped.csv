@@ -1,0 +1,53 @@
+mission_cluster,Group,tissue_order,sex,age_label,age_order_weeks,age_is_range,source_age_values,age_source_fields,age_colour,n_age_levels,n_samples,n_mice,n_technical_replicates,n_flight,n_ground,n_accessions,accessions,n_analysis_units,analysis_units
+NG-11,Heart,9,Female,9–11 wk,10,TRUE,9 - 11 {week},Characteristics[Age at Launch],#73D25B,1,6,6,0,3,3,1,OSD-599,1,OSD-599
+SpaceX-11,Femoral lateral skin,5,Female,30 wk,30,FALSE,30 {week},Characteristics[Age at Launch],#3C3777,1,19,19,0,9,10,1,OSD-241,1,OSD-241
+SpaceX-11,Dorsal skin,12,Female,30 wk,30,FALSE,30 {week},Characteristics[Age at Launch],#3C3777,1,20,20,0,10,10,1,OSD-240,1,OSD-240
+SpaceX-12,Liver,18,Male,9 wk,9,FALSE,9 {week},Characteristics[Age at Launch],#D4E02D,2,6,6,0,3,3,1,OSD-686,1,OSD-686
+SpaceX-12,Liver,18,Male,10 wk,10,FALSE,10 {week},Characteristics[Age at Launch],#A6DA42,2,9,9,0,5,4,1,OSD-242,1,OSD-242
+SpaceX-12,Retina,21,Male,10 wk,10,FALSE,10 {week},Characteristics[Age at Launch],#A6DA42,1,16,16,0,8,8,1,OSD-255,1,OSD-255
+SpaceX-12,Spleen-distal,22,Male,10 wk,10,FALSE,10 {week},Characteristics[Age at Launch],#A6DA42,1,20,20,0,10,10,1,OSD-420,1,OSD-420
+SpaceX-12,Femoral skin,24,Male,9 wk,9,FALSE,9 {week},Characteristics[Age at Launch],#D4E02D,1,5,5,0,2,3,1,OSD-239,1,OSD-239
+SpaceX-12,Thymus,26,Male,9 wk,9,FALSE,9 {week},Characteristics[Age at Launch],#D4E02D,2,6,6,0,3,3,1,OSD-289,1,OSD-289__MHU2
+SpaceX-12,Thymus,26,Male,10 wk,10,FALSE,10 {week},Characteristics[Age at Launch],#A6DA42,2,20,20,0,10,10,1,OSD-421,1,OSD-421
+SpaceX-14,Bone marrow,23,Male,12 wk,12,FALSE,12 {week},Characteristics[Age at Launch],#009B95,1,12,12,0,6,6,1,OSD-690,1,OSD-690
+SpaceX-15,Kidney,10,Female,11 wk,11,FALSE,11 {week},Characteristics[Age at Launch],#00BA82,1,39,39,0,20,19,1,OSD-253,4,OSD-253;OSD-253__C3H_25;OSD-253__C3H_75;OSD-253__C57BL_75
+SpaceX-15,Dorsal skin,12,Female,11 wk,11,FALSE,11 {week},Characteristics[Age at Launch],#00BA82,1,40,40,0,20,20,1,OSD-254,4,OSD-254;OSD-254__C3H_25;OSD-254__C3H_75;OSD-254__C57BL_75
+SpaceX-16,Left lobe of the liver,6,Female,10–12 wk,11,TRUE,10 to 12 {week},Factor Value[Age],#25C771,2,16,16,0,8,8,1,OSD-379,1,OSD-379
+SpaceX-16,Left lobe of the liver,6,Female,32 wk,32,FALSE,32 {week},Factor Value[Age],#471D67,2,14,14,0,7,7,1,OSD-379,1,OSD-379__age_32w
+SpaceX-16,Mammary gland,16,Female,10–12 wk,11,TRUE,10 to 12 {week},Factor Value[Age],#25C771,2,13,13,0,5,8,1,OSD-511,1,OSD-511
+SpaceX-16,Mammary gland,16,Female,32 wk,32,FALSE,32 {week},Factor Value[Age],#471D67,2,12,12,0,5,7,1,OSD-511,1,OSD-511__age_32w
+SpaceX-18,Kidney,10,Female,12 wk,12,FALSE,12 {week},Factor Value[Age],#009B95,2,15,15,0,5,10,1,OSD-771,1,OSD-771
+SpaceX-18,Kidney,10,Female,29 wk,29,FALSE,29 {week},Factor Value[Age],#1E4D85,2,15,15,0,5,10,1,OSD-771,1,OSD-771__age_29w
+SpaceX-18,Heart / Heart right ventricle,20,Female,12 wk,12,FALSE,12 {week},Factor Value[Age],#009B95,2,15,15,0,5,10,1,OSD-580,1,OSD-580
+SpaceX-18,Heart / Heart right ventricle,20,Female,29 wk,29,FALSE,29 {week},Factor Value[Age],#1E4D85,2,15,15,0,5,10,1,OSD-580,1,OSD-580__age_29w
+SpaceX-21,Quadriceps femoris,1,Male,16–17 wk,16.5,TRUE,16-17 {week},Characteristics[Age at Launch],#006290,1,18,18,2,9,9,1,OSD-666,1,OSD-666
+SpaceX-21,Tibialis anterior,2,Male,16–17 wk,16.5,TRUE,16-17 {week},Characteristics[Age at Launch],#006290,1,18,18,0,9,9,1,OSD-576,1,OSD-576
+SpaceX-21,Spleen,4,Male,16–17 wk,16.5,TRUE,16-17 {week},Characteristics[Age at Launch],#006290,1,17,17,1,9,8,1,OSD-506,1,OSD-506
+SpaceX-21,Left lobe of the liver,6,Male,16–17 wk,16.5,TRUE,16-17 {week},Characteristics[Age at Launch],#006290,1,18,18,3,9,9,1,OSD-463,1,OSD-463
+SpaceX-21,Colon,7,Female,14–15 wk,14.5,TRUE,14-15 {week},Characteristics[Age at Launch],#008A98,1,9,9,0,4,5,1,OSD-667,1,OSD-667
+SpaceX-21,Cerebellum,8,Male,16–17 wk,16.5,TRUE,16-17 {week},Characteristics[Age at Launch],#006290,1,18,18,2,9,9,1,OSD-525,1,OSD-525
+SpaceX-21,Kidney,10,Female,14–15 wk,14.5,TRUE,14 - 15 {week},Characteristics[Age at Launch],#008A98,1,20,20,3,10,10,1,OSD-462,1,OSD-462
+SpaceX-21,Kidney,10,Male,16–17 wk,16.5,TRUE,16-17 {week},Characteristics[Age at Launch],#006290,1,18,18,2,9,9,1,OSD-513,1,OSD-513
+SpaceX-21,Extensor digitorum longus,13,Male,16–17 wk,16.5,TRUE,16-17 {week},Characteristics[Age at Launch],#006290,1,18,18,2,9,9,1,OSD-665,1,OSD-665
+SpaceX-21,Adrenal gland,14,Male,16–17 wk,16.5,TRUE,16-17 {week},Characteristics[Age at Launch],#006290,1,18,18,2,9,9,1,OSD-512,1,OSD-512
+SpaceX-21,Soleus,17,Male,16–17 wk,16.5,TRUE,16 - 17 {week},Characteristics[Age at Launch],#006290,1,18,18,2,9,9,1,OSD-770,1,OSD-770
+SpaceX-21,Lung,19,Female,14–15 wk,14.5,TRUE,14-15 {week},Characteristics[Age at Launch],#008A98,1,10,10,0,5,5,1,OSD-900,1,OSD-900
+SpaceX-21,Lung,19,Male,16–17 wk,16.5,TRUE,16-17 {week},Characteristics[Age at Launch],#006290,1,17,17,2,9,8,1,OSD-464,1,OSD-464
+SpaceX-21,Cecum,25,Female,14–15 wk,14.5,TRUE,14-15 {week},Characteristics[Age at Launch],#008A98,1,10,10,0,5,5,1,OSD-899,1,OSD-899
+SpaceX-21,Thymus,26,Male,16–17 wk,16.5,TRUE,16-17 {week},Characteristics[Age at Launch],#006290,1,16,16,1,7,9,1,OSD-515,1,OSD-515
+SpaceX-27,Optic nerve,3,Male,11–12 wk,11.5,TRUE,11 - 12 {week},Characteristics[Age at Launch],#00AC8E,1,17,17,0,5,12,1,OSD-759,1,OSD-759
+SpaceX-27,Retina,21,Male,11–12 wk,11.5,TRUE,11 - 12 {week},Characteristics[Age at Launch],#00AC8E,1,17,17,0,5,12,1,OSD-758,1,OSD-758
+SpaceX-4,Eye,11,Female,16 wk,16,FALSE,16 {week},Characteristics[Age at Launch],#007796,1,12,12,0,6,6,1,OSD-100,1,OSD-100
+SpaceX-4,Extensor digitorum longus,13,Female,16 wk,16,FALSE,16 {week},Characteristics[Age at Launch],#007796,1,12,12,0,6,6,1,OSD-99,1,OSD-99
+SpaceX-4,Gastrocnemius,15,Female,16 wk,16,FALSE,16 {week},Characteristics[Age at Launch],#007796,1,24,24,0,10,14,2,OSD-101;OSD-419,2,OSD-101;OSD-419
+SpaceX-4,Soleus,17,Female,16 wk,16,FALSE,16 {week},Characteristics[Age at Launch],#007796,1,12,12,0,6,6,1,OSD-104,1,OSD-104
+SpaceX-4,Liver,18,Female,16 wk,16,FALSE,16 {week},Characteristics[Age at Launch],#007796,2,4,4,0,2,2,1,OSD-48,1,OSD-48
+SpaceX-4,Liver,18,Female,8 mo,34.785,FALSE,8 {month},Characteristics[Age at Launch],#4B0055,2,6,6,0,3,3,1,OSD-47,1,OSD-47
+SpaceX-4,Retina,21,Female,16 wk,16,FALSE,16 {week},Characteristics[Age at Launch],#007796,1,16,16,0,9,7,1,OSD-397,1,OSD-397
+SpaceX-8,Kidney,10,Female,12 wk,12,FALSE,12 {week},Characteristics[Age at Launch],#009B95,1,12,12,0,6,6,1,OSD-163,1,OSD-163
+SpaceX-8,Eye,11,Female,12 wk,12,FALSE,12 {week},Characteristics[Age at launch],#009B95,1,10,10,0,5,5,1,OSD-162,1,OSD-162
+SpaceX-8,Adrenal gland,14,Female,12 wk,12,FALSE,12 {week},Characteristics[Age at Launch],#009B95,1,10,10,0,5,5,1,OSD-161,1,OSD-161
+SpaceX-8,Liver,18,Female,12 wk,12,FALSE,12 {week},Characteristics[Age at Launch],#009B95,1,12,12,0,6,6,1,OSD-137,1,OSD-137
+SpaceX-8,Retina,21,Female,12 wk,12,FALSE,12 {week},Characteristics[Age at Launch],#009B95,1,9,9,0,5,4,1,OSD-194,1,OSD-194
+SpaceX-9,Soleus,17,Male,8 wk,8,FALSE,8 {week},Characteristics[Age at Launch],#FDE333,1,6,6,0,3,3,1,OSD-714,1,OSD-714
+SpaceX-9,Thymus,26,Male,8 wk,8,FALSE,8 {week},Characteristics[Age at Launch],#FDE333,1,6,6,0,3,3,1,OSD-289,1,OSD-289
