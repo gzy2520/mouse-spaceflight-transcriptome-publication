@@ -78,7 +78,7 @@ dt[, YARNLinear := 2^YARNNormalizedLog2 - 1]
 pathway_defs <- list(
   NER = list(
     title = "Nucleotide Excision Repair (NER)",
-    caption_note = "Color coding: XPC/RAD23B/CETN2 (GG-NER surveillance; Amber), DDB1/2 (UV lesion detection; Teal), ERCC6/8 (TC-NER; Blue).",
+    caption_note = "Shapes: Square (\u25a0), Triangle (\u25b2), Circle (\u25cf). Color coding: XPC/RAD23B/CETN2 (GG-NER surveillance; Amber), DDB1/2 (UV lesion detection; Teal), ERCC6/8 (TC-NER; Blue).",
     genes = c(
       Xpc = "ENSMUSG00000030094",
       Rad23b = "ENSMUSG00000028426",
@@ -97,6 +97,16 @@ pathway_defs <- list(
       Xpc = "dashed", Rad23b = "dotted", Cetn2 = "dotdash",
       Ddb1 = "dashed", Ddb2 = "dotted",
       Ercc6 = "dashed", Ercc8 = "dotted"
+    ),
+    shapes = c(
+      Xpc = 15, Rad23b = 17, Cetn2 = 16,
+      Ddb1 = 15, Ddb2 = 17,
+      Ercc6 = 15, Ercc8 = 17
+    ),
+    labels = c(
+      Xpc = "Xpc (\u25a0)", Rad23b = "Rad23b (\u25b2)", Cetn2 = "Cetn2 (\u25cf)",
+      Ddb1 = "Ddb1 (\u25a0)", Ddb2 = "Ddb2 (\u25b2)",
+      Ercc6 = "Ercc6 (\u25a0)", Ercc8 = "Ercc8 (\u25b2)"
     )
   ),
   MMR = list(
@@ -152,30 +162,24 @@ pathway_defs <- list(
   ),
   HR = list(
     title = "Homologous Recombination (HR)",
-    caption_note = "Genes: BRCA1, BARD1, BLM, RAD51, RAD54L, and EXO1.",
+    caption_note = "Genes: BRCA1, BARD1, BLM, and RAD51.",
     genes = c(
       Brca1 = "ENSMUSG00000017146",
       Bard1 = "ENSMUSG00000026196",
       Blm = "ENSMUSG00000030528",
-      Rad51 = "ENSMUSG00000027323",
-      Rad54l = "ENSMUSG00000028702",
-      Exo1 = "ENSMUSG00000039748"
+      Rad51 = "ENSMUSG00000027323"
     ),
     colors = c(
       Brca1 = "#D55E00",
       Bard1 = "#E69F00",
       Blm = "#009E73",
-      Rad51 = "#0072B2",
-      Rad54l = "#CC79A7",
-      Exo1 = "#7570B3"
+      Rad51 = "#0072B2"
     ),
     linetypes = c(
       Brca1 = "dashed",
       Bard1 = "dashed",
       Blm = "dashed",
-      Rad51 = "dashed",
-      Rad54l = "dashed",
-      Exo1 = "dashed"
+      Rad51 = "dashed"
     )
   ),
   NHEJ = list(
@@ -318,21 +322,55 @@ for (pw_name in names(pathway_defs)) {
       data = box_stats,
       aes(x = Group, ymin = ymin, lower = lower, middle = middle, upper = upper, ymax = ymax, fill = Gene, color = Gene),
       stat = "identity", position = dodge, width = box_w, alpha = 0.38, linewidth = 0.65
-    ) +
-    geom_point(
-      data = sub_dt_points,
-      aes(x = Group, y = YARNLinear, color = Gene),
-      position = position_jitterdodge(jitter.width = 0.11, dodge.width = dodge_w, seed = 25),
-      size = 1.05, alpha = 0.62
-    ) +
-    geom_line(
-      data = box_stats,
-      aes(x = Group, y = middle, group = Gene, color = Gene, linetype = Gene),
-      position = dodge, linewidth = 0.82
-    ) +
-    scale_fill_manual(values = pw_info$colors) +
-    scale_color_manual(values = pw_info$colors) +
-    scale_linetype_manual(values = pw_info$linetypes) +
+    )
+  
+  if (!is.null(pw_info$shapes)) {
+    p <- p +
+      geom_point(
+        data = sub_dt_points,
+        aes(x = Group, y = YARNLinear, color = Gene, shape = Gene),
+        position = position_jitterdodge(jitter.width = 0.11, dodge.width = dodge_w, seed = 25),
+        size = 1.35, alpha = 0.65
+      ) +
+      geom_line(
+        data = box_stats,
+        aes(x = Group, y = middle, group = Gene, color = Gene, linetype = Gene),
+        position = dodge, linewidth = 0.82
+      ) +
+      geom_point(
+        data = box_stats,
+        aes(x = Group, y = middle, color = Gene, shape = Gene),
+        position = dodge, size = 2.8, stroke = 0.9, fill = "white"
+      ) +
+      scale_fill_manual(values = pw_info$colors, labels = pw_info$labels) +
+      scale_color_manual(values = pw_info$colors, labels = pw_info$labels) +
+      scale_linetype_manual(values = pw_info$linetypes, labels = pw_info$labels) +
+      scale_shape_manual(values = pw_info$shapes, labels = pw_info$labels) +
+      guides(
+        color = guide_legend(override.aes = list(shape = pw_info$shapes, fill = pw_info$colors, alpha = 1, size = 3.5), nrow = 2),
+        fill = guide_legend(nrow = 2),
+        shape = guide_legend(nrow = 2),
+        linetype = guide_legend(nrow = 2)
+      )
+  } else {
+    p <- p +
+      geom_point(
+        data = sub_dt_points,
+        aes(x = Group, y = YARNLinear, color = Gene),
+        position = position_jitterdodge(jitter.width = 0.11, dodge.width = dodge_w, seed = 25),
+        size = 1.05, alpha = 0.62
+      ) +
+      geom_line(
+        data = box_stats,
+        aes(x = Group, y = middle, group = Gene, color = Gene, linetype = Gene),
+        position = dodge, linewidth = 0.82
+      ) +
+      scale_fill_manual(values = pw_info$colors) +
+      scale_color_manual(values = pw_info$colors) +
+      scale_linetype_manual(values = pw_info$linetypes)
+  }
+  
+  p <- p +
     scale_y_continuous(labels = scales::comma, expand = expansion(mult = c(0.02, 0.05))) +
     labs(
       title = paste0(pw_info$title, " Expression across 26 Tissues (Linear Scale)"),
