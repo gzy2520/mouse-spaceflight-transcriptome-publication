@@ -55,7 +55,7 @@ render_meta_dot <- function(data, pathways, output_stem, title, subtitle,
   assert_final(nrow(sig) > 0L, paste(output_stem, "has no significant cells"))
 
   fig <- ggplot(plot_data, aes(ComponentFinal, TissueFinal)) +
-    geom_tile(fill = FINAL_COLOURS$panel, colour = FINAL_COLOURS$white, linewidth = 0.17) +
+    geom_tile(fill = FINAL_COLOURS$white, colour = FINAL_COLOURS$grid, linewidth = 0.18) +
     geom_point(
       data = sig, aes(colour = Effect, size = abs(Effect)), alpha = 0.96
     ) +
@@ -66,9 +66,13 @@ render_meta_dot <- function(data, pathways, output_stem, title, subtitle,
       name = "Meta log2FC (P < 0.05)", guide = vertical_meta_guide()
     ) +
     scale_size_continuous(
-      range = c(2.2, 7.0), name = "|log2FC|",
+      range = c(4.0, 12.0), name = "|log2FC|",
       breaks = pretty(c(0, max(abs(sig$Effect))), n = 3),
-      guide = guide_legend(title.position = "top", title.hjust = 0.5)
+      guide = guide_legend(
+        title.position = "top", title.hjust = 0.5,
+        keyheight = unit(1.5, "lines"),
+        keywidth = unit(1.5, "lines")
+      )
     ) +
     labs(
       title = title, subtitle = subtitle, x = NULL, y = NULL,
@@ -79,12 +83,15 @@ render_meta_dot <- function(data, pathways, output_stem, title, subtitle,
       axis.text.x = element_text(angle = 52, hjust = 1, vjust = 1, size = 12.8),
       axis.text.y = element_text(size = 13.8),
       strip.placement = "outside",
+      strip.background = element_rect(fill = FINAL_COLOURS$white, colour = NA),
       strip.text.x.bottom = element_text(size = 19.5, face = "bold",
                                          margin = margin(t = 5, b = 4)),
       panel.spacing.x = unit(0.52, "lines"),
+      panel.background = element_rect(fill = FINAL_COLOURS$white, colour = NA),
+      plot.background = element_rect(fill = FINAL_COLOURS$white, colour = NA),
       legend.position = "right",
-      legend.title = element_text(size = 15.0),
-      legend.text = element_text(size = 13.2),
+      legend.title = element_text(size = 15.5, face = "bold"),
+      legend.text = element_text(size = 13.5),
       plot.title = element_text(size = 25),
       plot.subtitle = element_text(size = 15.5),
       plot.caption = element_text(size = 12.0),
