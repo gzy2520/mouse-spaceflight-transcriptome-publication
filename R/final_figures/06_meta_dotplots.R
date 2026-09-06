@@ -115,7 +115,7 @@ dsb_audit <- render_meta_dot(
   "Dots mark nominal tissue-meta P < 0.05; colour is direction and size is effect magnitude",
   p_col = "tissue_meta_p", fc_col = "Log2FCDisplayed", tissue_col = "Group",
   component_col = "OfficialMouseSymbol", pathway_col = "PathwayDisplay",
-  width = 24.0, height = 13.5
+  width = 31.0, height = 13.0
 )
 
 ssb <- fread(file.path(root, "results/tables/01_SSB_tissue_meta_log2FC_pvalue_matrix_without_Neil2.csv"))
@@ -130,7 +130,7 @@ ssb_audit <- render_meta_dot(
   component_col = "DisplayComponent", pathway_col = "PathwayDisplay",
   tissue_order_col = "TissueOrder",
   colour_limit = as.numeric(run_audit$common_symmetric_fc_limit[[1L]]),
-  width = 31.0, height = 14.5
+  width = 31.0, height = 13.0
 )
 
 audit <- rbindlist(list(dsb_audit, ssb_audit), fill = TRUE)
