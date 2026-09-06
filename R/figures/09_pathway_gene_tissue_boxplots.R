@@ -74,7 +74,7 @@ stopifnot(length(tissue_order) == 26L, setequal(unique(dt$Group), tissue_order))
 pathway_defs <- list(
   NER = list(
     title = "Nucleotide Excision Repair (NER)",
-    caption_note = "Shapes: Square (\u25a0), Triangle (\u25b2), Circle (\u25cf). Color coding: XPC/RAD23B/CETN2 (GG-NER surveillance; Amber), DDB1/2 (UV lesion detection; Teal), ERCC6/8 (TC-NER; Blue).",
+    caption_note = "Shapes: Cross (\u2715), Triangle (\u25b2), Circle (\u25cf). Color coding: XPC/RAD23B/CETN2 (GG-NER surveillance; Amber), DDB1/2 (UV lesion detection; Teal), ERCC6/8 (TC-NER; Blue).",
     genes = c(
       Xpc = "ENSMUSG00000030094",
       Rad23b = "ENSMUSG00000028426",
@@ -95,14 +95,14 @@ pathway_defs <- list(
       Ercc6 = "dashed", Ercc8 = "dotted"
     ),
     shapes = c(
-      Xpc = 15, Rad23b = 17, Cetn2 = 16,
-      Ddb1 = 15, Ddb2 = 17,
-      Ercc6 = 15, Ercc8 = 17
+      Xpc = 4, Rad23b = 17, Cetn2 = 16,
+      Ddb1 = 4, Ddb2 = 17,
+      Ercc6 = 4, Ercc8 = 17
     ),
     labels = c(
-      Xpc = "Xpc (\u25a0)", Rad23b = "Rad23b (\u25b2)", Cetn2 = "Cetn2 (\u25cf)",
-      Ddb1 = "Ddb1 (\u25a0)", Ddb2 = "Ddb2 (\u25b2)",
-      Ercc6 = "Ercc6 (\u25a0)", Ercc8 = "Ercc8 (\u25b2)"
+      Xpc = "Xpc (\u2715)", Rad23b = "Rad23b (\u25b2)", Cetn2 = "Cetn2 (\u25cf)",
+      Ddb1 = "Ddb1 (\u2715)", Ddb2 = "Ddb2 (\u25b2)",
+      Ercc6 = "Ercc6 (\u2715)", Ercc8 = "Ercc8 (\u25b2)"
     )
   ),
   MMR = list(
@@ -325,7 +325,7 @@ for (pw_name in names(pathway_defs)) {
         data = sub_dt_points,
         aes(x = Group, y = YARNNormalizedLog2, color = Gene, shape = Gene),
         position = position_jitterdodge(jitter.width = 0.11, dodge.width = dodge_w, seed = 25),
-        size = 1.35, alpha = 0.65
+        size = 1.45, alpha = 0.65
       ) +
       geom_line(
         data = box_stats,
@@ -335,17 +335,25 @@ for (pw_name in names(pathway_defs)) {
       geom_point(
         data = box_stats,
         aes(x = Group, y = middle, color = Gene, shape = Gene),
-        position = dodge, size = 2.8, stroke = 0.9, fill = "white"
+        position = dodge, size = 3.0, stroke = 1.0
       ) +
-      scale_fill_manual(values = pw_info$colors, labels = pw_info$labels) +
+      scale_fill_manual(values = pw_info$colors, labels = pw_info$labels, guide = "none") +
       scale_color_manual(values = pw_info$colors, labels = pw_info$labels) +
       scale_linetype_manual(values = pw_info$linetypes, labels = pw_info$labels) +
       scale_shape_manual(values = pw_info$shapes, labels = pw_info$labels) +
       guides(
-        color = guide_legend(override.aes = list(shape = pw_info$shapes, fill = pw_info$colors, alpha = 1, size = 3.5), nrow = 2),
-        fill = guide_legend(nrow = 2),
-        shape = guide_legend(nrow = 2),
-        linetype = guide_legend(nrow = 2)
+        color = guide_legend(
+          override.aes = list(
+            shape = pw_info$shapes,
+            linetype = pw_info$linetypes,
+            size = 3.6,
+            stroke = 1.1,
+            alpha = 1
+          ),
+          nrow = 2
+        ),
+        shape = "none",
+        linetype = "none"
       )
   } else {
     p <- p +
