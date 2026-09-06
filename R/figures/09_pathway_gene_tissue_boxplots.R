@@ -38,6 +38,20 @@ tbl_dir <- file.path(out_dir, "tables")
 dir.create(fig_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(tbl_dir, recursive = TRUE, showWarnings = FALSE)
 
+format_sci <- function(p) {
+  if (is.na(p)) return("NA")
+  if (p >= 0.01) return(sprintf("%.3f", p))
+  sci_str <- sprintf("%.2e", p)
+  parts <- strsplit(sci_str, "e")[[1]]
+  base_part <- parts[1]
+  exp_int <- as.integer(parts[2])
+  digits <- c("0" = "\u2070", "1" = "\u00b9", "2" = "\u00b2", "3" = "\u00b3", "4" = "\u2074",
+              "5" = "\u2075", "6" = "\u2076", "7" = "\u2077", "8" = "\u2078", "9" = "\u2079", "-" = "\u207b")
+  exp_str <- as.character(exp_int)
+  exp_unicode <- paste0(sapply(strsplit(exp_str, "")[[1]], function(ch) digits[[ch]]), collapse = "")
+  sprintf("%s \u00d7 10%s", base_part, exp_unicode)
+}
+
 # Input data paths
 qsmooth_path <- file.path(repo_root, "data/publication_input/qsmooth/06_component_flight_sample_yarn_qsmooth_values.csv.gz")
 upstream_fallback <- "/Users/gzy2520/Desktop/graduate design/03_analysis_results/22_essential_components_yarn_qsmooth_no_Neil2_attached_row_dendrogram_20260828/tables/06_component_flight_sample_yarn_qsmooth_values.csv.gz"
@@ -246,6 +260,7 @@ for (pw_name in names(pathway_defs)) {
   summary_mean_list[[pw_name]] <- box_stats[, .(Pathway = pw_name, Group, Gene, Mean = middle, SD, Q1 = lower, Q3 = upper, Ymin = ymin, Ymax = ymax, N)]
   
   # One-way ANOVA per gene
+  gene_p_strs <- c()
   for (sym in gene_symbols) {
     g_data <- sub_dt[Gene == sym]
     fit_g <- aov(YARNNormalizedLog2 ~ Group, data = g_data)
@@ -260,6 +275,7 @@ for (pw_name in names(pathway_defs)) {
       Pathway = pw_name, EnsemblID = gene_ids[[sym]], Symbol = sym,
       Df_group = df_g, Df_residual = df_r, F_value = f_g, P_value = p_g, Significance = sig_g
     )
+    gene_p_strs <- c(gene_p_strs, sprintf("%s (P = %s)", sym, format_sci(p_g)))
   }
   
   # Overall Pathway One-way ANOVA
@@ -315,8 +331,8 @@ for (pw_name in names(pathway_defs)) {
     labs(
       title = paste0(pw_info$title, " Expression across 26 Tissues"),
       subtitle = sprintf(
-        "One-way ANOVA (across 26 tissues): F(%d, %d) = %.2f, P < 0.001 (***)  |  All individual genes: P < 0.001 (***)",
-        df_pw, df_pwr, f_pw
+        "One-way ANOVA (across 26 tissues): Pathway F(%d, %d) = %.2f, P = %s\nIndividual gene ANOVA: %s",
+        df_pw, df_pwr, f_pw, format_sci(p_pw), paste(gene_p_strs, collapse = "  |  ")
       ),
       caption = paste0(
         "Boxes represent Q1, Mean (middle solid bar), and Q3; whiskers extend to 1.5 * IQR. Points represent individual flight mice (n = 360).\n",
@@ -333,7 +349,7 @@ for (pw_name in names(pathway_defs)) {
       axis.text.x = element_text(angle = 50, hjust = 1, vjust = 1, face = "bold", colour = "#222222", size = 11.5),
       axis.title.y = element_text(face = "bold", margin = margin(r = 10)),
       plot.title = element_text(face = "bold", size = 17, colour = "#1A202C"),
-      plot.subtitle = element_text(colour = "#4A5568", size = 12.5, margin = margin(b = 8)),
+      plot.subtitle = element_text(colour = "#334155", size = 11.5, lineheight = 1.3, margin = margin(b = 8)),
       plot.caption = element_text(colour = "#718096", size = 10, lineheight = 1.25, margin = margin(t = 10)),
       legend.position = "top",
       legend.box = "horizontal",
@@ -347,8 +363,8 @@ for (pw_name in names(pathway_defs)) {
   png_file <- file.path(fig_dir, sprintf("Fig_%s_tissue_boxplot.png", safe_name))
   pdf_file <- file.path(fig_dir, sprintf("Fig_%s_tissue_boxplot.pdf", safe_name))
   
-  ggsave(png_file, p, width = 18, height = 8.2, dpi = 300, bg = "white")
-  ggsave(pdf_file, p, width = 18, height = 8.2, device = grDevices::cairo_pdf, bg = "white")
+  ggsave(png_file, p, width = 18, height = 8.5, dpi = 300, bg = "white")
+  ggsave(pdf_file, p, width = 18, height = 8.5, device = grDevices::cairo_pdf, bg = "white")
   
   message("Generated: ", png_file, " and ", pdf_file)
 }
