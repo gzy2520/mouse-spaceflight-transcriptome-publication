@@ -234,14 +234,9 @@ def draw_single(
     ticks = np.arange(n)
     ax.set_xticks(ticks)
     ax.set_yticks(ticks)
-    # Horizontal labels are staggered over two rows.  This keeps the requested
-    # normal reading direction while allowing the enlarged type to remain
-    # separated at all 15 positions.
-    ax.set_xticklabels([])
-    # Keep the y-axis compact by showing the readable term name there; the
-    # GO identifier remains on every x-axis label and in the frozen metadata.
-    y_labels = [label.rsplit("\n", 1)[0] for label in labels]
-    ax.set_yticklabels(y_labels, fontsize=10.4, linespacing=0.84)
+    # Keep the y-axis compact with readable single-line term names
+    y_labels = [label.rsplit("\n", 1)[0].replace("\n", " ") for label in labels]
+    ax.set_yticklabels(y_labels, fontsize=10.4, linespacing=0.88)
     ax.tick_params(axis="both", length=0, pad=8)
     ax.set_xlim(-0.5, n - 0.5)
     ax.set_ylim(n - 0.5, -0.5)
@@ -252,37 +247,33 @@ def draw_single(
     if x_labels is None:
         x_labels = labels
     _assert(len(x_labels) == n, "x-axis label count does not match matrix size")
-    _assert(x_label_rows >= 1, "x_label_rows must be positive")
-    for j, label in enumerate(x_labels):
-        ax.text(
-            j,
-            -0.045 - 0.145 * (j % x_label_rows),
-            label,
-            transform=ax.get_xaxis_transform(),
-            ha="center",
-            va="top",
-            fontsize=9.7,
-            linespacing=0.90,
-            color=PALETTE["ink"],
-            clip_on=False,
-        )
+    clean_x_labels = [lbl.replace("\n", " ") if "\nGO:" not in lbl else lbl for lbl in x_labels]
+    ax.set_xticklabels(
+        clean_x_labels,
+        rotation=55,
+        ha="right",
+        rotation_mode="anchor",
+        fontsize=10.8,
+        linespacing=0.88,
+        color=PALETTE["ink"],
+    )
+    ax.tick_params(axis="x", length=0, pad=6)
     add_heatmap_text(ax, display_matrix)
     fig.suptitle(title, x=0.27, y=0.978, ha="left", fontweight="bold", fontsize=19, color=PALETTE["ink"])
-    fig.text(0.27, 0.918, subtitle, ha="left", va="bottom", fontsize=12.2, color=PALETTE["muted"])
+    fig.text(0.27, 0.938, subtitle, ha="left", va="bottom", fontsize=12.2, color=PALETTE["muted"])
     cbar = fig.colorbar(im, ax=ax, fraction=0.038, pad=0.04, ticks=[-1, -0.5, 0, 0.5, 1])
     cbar.set_label("Spearman rho", fontsize=13.5, fontweight="bold", labelpad=12)
     cbar.ax.tick_params(labelsize=11, length=3)
     fig.text(
         0.01,
-        0.006,
+        0.008,
         "Sample-level log2FC; cells with undefined rho are left blank. Stable GO IDs are retained in frozen metadata.",
         ha="left",
         va="bottom",
         fontsize=10.2,
         color=PALETTE["muted"],
     )
-    bottom_margin = {1: 0.22, 2: 0.29, 3: 0.36}.get(x_label_rows, 0.22 + 0.07 * x_label_rows)
-    fig.subplots_adjust(left=0.27, right=0.90, top=0.855, bottom=bottom_margin)
+    fig.subplots_adjust(left=0.27, right=0.90, top=0.88, bottom=0.24)
     outputs = []
     for suffix, kwargs in ((".png", {"dpi": 400}), (".pdf", {})):
         path = output_stem.with_suffix(suffix)
@@ -420,7 +411,7 @@ def main(argv: list[str] | None = None) -> int:
     order = read_cluster_order(input_dir / "07_cluster_order_overall_log2fc.csv", term_keys)
     labels_by_key = {row.term_key: display_name(row) for _, row in meta.iterrows()}
     ordered_labels = [labels_by_key[key] for key in order]
-    names_by_key = {key: label.rsplit("\n", 1)[0] for key, label in labels_by_key.items()}
+    names_by_key = {key: label.rsplit("\n", 1)[0].replace("\n", " ") for key, label in labels_by_key.items()}
     meta_by_key = meta.set_index("term_key")
     x_labels_by_key = {
         key: (
