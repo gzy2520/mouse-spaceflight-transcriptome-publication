@@ -110,7 +110,7 @@ dsb <- fread(file.path(root, "data/publication_input/meta/08_essential_component
 assert_final(nrow(dsb) == 26L * 29L && uniqueN(dsb$EnsemblID) == 29L,
              "Invalid DSB meta matrix")
 dsb_audit <- render_meta_dot(
-  dsb, c("NHEJ", "HR", "HR–A-EJ", "A-EJ"), "Main/Fig_4b",
+  dsb, c("NHEJ", "HR", "HR–A-EJ", "A-EJ"), "Main/Fig_4e",
   "Double-strand break response across tissues",
   "Dots mark nominal tissue-meta P < 0.05; colour is direction and size is effect magnitude",
   p_col = "tissue_meta_p", fc_col = "Log2FCDisplayed", tissue_col = "Group",
@@ -123,7 +123,7 @@ run_audit <- fread(file.path(root, "results/tables/04_run_audit.csv"))
 assert_final(nrow(ssb) == 26L * 45L && uniqueN(ssb$EnsemblID) == 45L,
              "Invalid Neil2-excluded SSB meta matrix")
 ssb_audit <- render_meta_dot(
-  ssb, c("BER", "NER", "MMR", "FA"), "Main/Fig_5b",
+  ssb, c("BER", "NER", "MMR", "FA"), "Main/Fig_5f",
   "Single-strand break response across tissues",
   "45 components; Neil2 excluded; dots mark nominal tissue-meta P < 0.05",
   p_col = "tissue_meta_p", fc_col = "Log2FCDisplayed", tissue_col = "Group",
@@ -136,6 +136,6 @@ ssb_audit <- render_meta_dot(
 audit <- rbindlist(list(dsb_audit, ssb_audit), fill = TRUE)
 dir.create(file.path(out, "provenance"), recursive = TRUE, showWarnings = FALSE)
 fwrite(audit, file.path(out, "provenance/meta_dotplot_scope_audit.csv"))
-append_final_palette_audit(out, "Fig_4b", meta_palette)
-append_final_palette_audit(out, "Fig_5b", meta_palette)
-message("FINAL_META_DOTPLOT_PASS: Fig 4b and Fig 5b")
+append_final_palette_audit(out, "Fig_4e", meta_palette)
+append_final_palette_audit(out, "Fig_5f", meta_palette)
+message("FINAL_META_DOTPLOT_PASS: Fig 4e and Fig 5f")

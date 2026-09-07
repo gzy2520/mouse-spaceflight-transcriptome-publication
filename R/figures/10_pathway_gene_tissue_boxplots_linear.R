@@ -74,9 +74,112 @@ stopifnot(length(tissue_order) == 26L, setequal(unique(dt$Group), tissue_order))
 # Compute linear values: 2^log2 - 1
 dt[, YARNLinear := 2^YARNNormalizedLog2 - 1]
 
-# Define pathway gene definitions with stable Ensembl IDs
+# Define pathway gene definitions with stable Ensembl IDs, mapped to final publication figure panels
 pathway_defs <- list(
+  # Double-Strand Break (DSB) Repair -> Figure 4 (panels b to d)
+  NHEJ = list(
+    fig_panel = "Fig_4b",
+    fig_letter = "b",
+    fig_group = "DSB",
+    title = "Non-Homologous End Joining (NHEJ)",
+    caption_note = "Genes: NHEJ1 (XLF), PAXX, XRCC6 (Ku70), and XRCC5 (Ku80).",
+    genes = c(
+      Nhej1 = "ENSMUSG00000026162",
+      Paxx = "ENSMUSG00000047617",
+      Xrcc6 = "ENSMUSG00000022471",
+      Xrcc5 = "ENSMUSG00000026187"
+    ),
+    colors = c(
+      Nhej1 = "#E69F00",
+      Paxx = "#56B4E9",
+      Xrcc6 = "#009E73",
+      Xrcc5 = "#D55E00"
+    ),
+    linetypes = c(
+      Nhej1 = "dashed",
+      Paxx = "dashed",
+      Xrcc6 = "dashed",
+      Xrcc5 = "dashed"
+    )
+  ),
+  HR = list(
+    fig_panel = "Fig_4c",
+    fig_letter = "c",
+    fig_group = "DSB",
+    title = "Homologous Recombination (HR)",
+    caption_note = "Genes: BRCA1, BARD1, BLM, and RAD51.",
+    genes = c(
+      Brca1 = "ENSMUSG00000017146",
+      Bard1 = "ENSMUSG00000026196",
+      Blm = "ENSMUSG00000030528",
+      Rad51 = "ENSMUSG00000027323"
+    ),
+    colors = c(
+      Brca1 = "#D55E00",
+      Bard1 = "#E69F00",
+      Blm = "#009E73",
+      Rad51 = "#0072B2"
+    ),
+    linetypes = c(
+      Brca1 = "dashed",
+      Bard1 = "dashed",
+      Blm = "dashed",
+      Rad51 = "dashed"
+    )
+  ),
+  "A-EJ" = list(
+    fig_panel = "Fig_4d",
+    fig_letter = "d",
+    fig_group = "DSB",
+    title = "Alternative End Joining (A-EJ / MMEJ)",
+    caption_note = "Genes: PARP1, POLQ, LIG1, and LIG3.",
+    genes = c(
+      Parp1 = "ENSMUSG00000026496",
+      Polq = "ENSMUSG00000034206",
+      Lig1 = "ENSMUSG00000056394",
+      Lig3 = "ENSMUSG00000020697"
+    ),
+    colors = c(
+      Parp1 = "#E69F00",
+      Polq = "#56B4E9",
+      Lig1 = "#009E73",
+      Lig3 = "#CC79A7"
+    ),
+    linetypes = c(
+      Parp1 = "dashed",
+      Polq = "dashed",
+      Lig1 = "dashed",
+      Lig3 = "dashed"
+    )
+  ),
+
+  # Single-Strand Break (SSB) Repair -> Figure 5 (panels b to e)
+  BER = list(
+    fig_panel = "Fig_5b",
+    fig_letter = "b",
+    fig_group = "SSB",
+    title = "Base Excision Repair (BER)",
+    caption_note = "Genes: UNG (uracil sensor), OGG1 (8-oxoG glycosylase), and NEIL1 (oxidized base repair).",
+    genes = c(
+      Ung = "ENSMUSG00000029591",
+      Ogg1 = "ENSMUSG00000030271",
+      Neil1 = "ENSMUSG00000032298"
+    ),
+    colors = c(
+      Ung = "#E69F00",
+      Ogg1 = "#009E73",
+      Neil1 = "#CC79A7"
+    ),
+    linetypes = c(
+      Ung = "dashed",
+      Ogg1 = "dashed",
+      Neil1 = "dashed"
+    )
+  ),
   NER = list(
+    fig_panel = "Fig_5c",
+    fig_letter = "c",
+    fig_group = "SSB",
     title = "Nucleotide Excision Repair (NER)",
     caption_note = "Shapes: Cross (\u2715), Triangle (\u25b2), Circle (\u25cf). Color coding: XPC/RAD23B/CETN2 (GG-NER surveillance; Amber), DDB1/2 (UV lesion detection; Teal), ERCC6/8 (TC-NER; Blue).",
     genes = c(
@@ -110,6 +213,9 @@ pathway_defs <- list(
     )
   ),
   MMR = list(
+    fig_panel = "Fig_5d",
+    fig_letter = "d",
+    fig_group = "SSB",
     title = "Mismatch Repair (MMR)",
     caption_note = "Genes: MSH2 and MSH3 (MutS\u03b2 complex).",
     genes = c(
@@ -125,26 +231,10 @@ pathway_defs <- list(
       Msh3 = "dashed"
     )
   ),
-  BER = list(
-    title = "Base Excision Repair (BER)",
-    caption_note = "Genes: UNG (uracil sensor), OGG1 (8-oxoG glycosylase), and NEIL1 (oxidized base repair).",
-    genes = c(
-      Ung = "ENSMUSG00000029591",
-      Ogg1 = "ENSMUSG00000030271",
-      Neil1 = "ENSMUSG00000032298"
-    ),
-    colors = c(
-      Ung = "#E69F00",
-      Ogg1 = "#009E73",
-      Neil1 = "#CC79A7"
-    ),
-    linetypes = c(
-      Ung = "dashed",
-      Ogg1 = "dashed",
-      Neil1 = "dashed"
-    )
-  ),
   FA = list(
+    fig_panel = "Fig_5e",
+    fig_letter = "e",
+    fig_group = "SSB",
     title = "Fanconi Anemia (FA) Pathway",
     caption_note = "Genes: FANCD2 and FANCI (central ID complex essential for interstrand crosslink repair).",
     genes = c(
@@ -158,72 +248,6 @@ pathway_defs <- list(
     linetypes = c(
       Fancd2 = "dashed",
       Fanci = "dashed"
-    )
-  ),
-  HR = list(
-    title = "Homologous Recombination (HR)",
-    caption_note = "Genes: BRCA1, BARD1, BLM, and RAD51.",
-    genes = c(
-      Brca1 = "ENSMUSG00000017146",
-      Bard1 = "ENSMUSG00000026196",
-      Blm = "ENSMUSG00000030528",
-      Rad51 = "ENSMUSG00000027323"
-    ),
-    colors = c(
-      Brca1 = "#D55E00",
-      Bard1 = "#E69F00",
-      Blm = "#009E73",
-      Rad51 = "#0072B2"
-    ),
-    linetypes = c(
-      Brca1 = "dashed",
-      Bard1 = "dashed",
-      Blm = "dashed",
-      Rad51 = "dashed"
-    )
-  ),
-  NHEJ = list(
-    title = "Non-Homologous End Joining (NHEJ)",
-    caption_note = "Genes: NHEJ1 (XLF), PAXX, XRCC6 (Ku70), and XRCC5 (Ku80).",
-    genes = c(
-      Nhej1 = "ENSMUSG00000026162",
-      Paxx = "ENSMUSG00000047617",
-      Xrcc6 = "ENSMUSG00000022471",
-      Xrcc5 = "ENSMUSG00000026187"
-    ),
-    colors = c(
-      Nhej1 = "#E69F00",
-      Paxx = "#56B4E9",
-      Xrcc6 = "#009E73",
-      Xrcc5 = "#D55E00"
-    ),
-    linetypes = c(
-      Nhej1 = "dashed",
-      Paxx = "dashed",
-      Xrcc6 = "dashed",
-      Xrcc5 = "dashed"
-    )
-  ),
-  "A-EJ" = list(
-    title = "Alternative End Joining (A-EJ / MMEJ)",
-    caption_note = "Genes: PARP1, POLQ, LIG1, and LIG3.",
-    genes = c(
-      Parp1 = "ENSMUSG00000026496",
-      Polq = "ENSMUSG00000034206",
-      Lig1 = "ENSMUSG00000056394",
-      Lig3 = "ENSMUSG00000020697"
-    ),
-    colors = c(
-      Parp1 = "#E69F00",
-      Polq = "#56B4E9",
-      Lig1 = "#009E73",
-      Lig3 = "#CC79A7"
-    ),
-    linetypes = c(
-      Parp1 = "dashed",
-      Polq = "dashed",
-      Lig1 = "dashed",
-      Lig3 = "dashed"
     )
   )
 )
@@ -310,6 +334,10 @@ for (pw_name in names(pathway_defs)) {
   
   sub_dt_points <- sub_dt[!is.na(YARNLinear)]
   
+  # Assign shapes and labels for unified point legend across all pathways
+  pw_shapes <- if (!is.null(pw_info$shapes)) pw_info$shapes else setNames(rep(16, n_genes), gene_symbols)
+  pw_labels <- if (!is.null(pw_info$labels)) pw_info$labels else setNames(gene_symbols, gene_symbols)
+  
   # Plot assembly
   p <- ggplot() +
     geom_rect(
@@ -321,64 +349,53 @@ for (pw_name in names(pathway_defs)) {
     geom_boxplot(
       data = box_stats,
       aes(x = Group, ymin = ymin, lower = lower, middle = middle, upper = upper, ymax = ymax, fill = Gene, color = Gene),
-      stat = "identity", position = dodge, width = box_w, alpha = 0.38, linewidth = 0.65
+      stat = "identity", position = dodge, width = box_w, alpha = 0.38, linewidth = 0.65,
+      show.legend = FALSE
+    ) +
+    geom_point(
+      data = sub_dt_points,
+      aes(x = Group, y = YARNLinear, color = Gene, shape = Gene),
+      position = position_jitterdodge(jitter.width = 0.11, dodge.width = dodge_w, seed = 25),
+      size = if (!is.null(pw_info$shapes)) 1.45 else 1.20,
+      alpha = 0.65,
+      show.legend = TRUE
+    ) +
+    geom_line(
+      data = box_stats,
+      aes(x = Group, y = middle, group = Gene, color = Gene, linetype = Gene),
+      position = dodge, linewidth = 0.82,
+      show.legend = FALSE
     )
   
   if (!is.null(pw_info$shapes)) {
     p <- p +
       geom_point(
-        data = sub_dt_points,
-        aes(x = Group, y = YARNLinear, color = Gene, shape = Gene),
-        position = position_jitterdodge(jitter.width = 0.11, dodge.width = dodge_w, seed = 25),
-        size = 1.45, alpha = 0.65
-      ) +
-      geom_line(
-        data = box_stats,
-        aes(x = Group, y = middle, group = Gene, color = Gene, linetype = Gene),
-        position = dodge, linewidth = 0.82
-      ) +
-      geom_point(
         data = box_stats,
         aes(x = Group, y = middle, color = Gene, shape = Gene),
-        position = dodge, size = 3.0, stroke = 1.0
-      ) +
-      scale_fill_manual(values = pw_info$colors, labels = pw_info$labels, guide = "none") +
-      scale_color_manual(values = pw_info$colors, labels = pw_info$labels) +
-      scale_linetype_manual(values = pw_info$linetypes, labels = pw_info$labels) +
-      scale_shape_manual(values = pw_info$shapes, labels = pw_info$labels) +
-      guides(
-        color = guide_legend(
-          override.aes = list(
-            shape = pw_info$shapes,
-            linetype = pw_info$linetypes,
-            size = 3.6,
-            stroke = 1.1,
-            alpha = 1
-          ),
-          nrow = 2
-        ),
-        shape = "none",
-        linetype = "none"
+        position = dodge, size = 3.0, stroke = 1.0,
+        show.legend = FALSE
       )
-  } else {
-    p <- p +
-      geom_point(
-        data = sub_dt_points,
-        aes(x = Group, y = YARNLinear, color = Gene),
-        position = position_jitterdodge(jitter.width = 0.11, dodge.width = dodge_w, seed = 25),
-        size = 1.05, alpha = 0.62
-      ) +
-      geom_line(
-        data = box_stats,
-        aes(x = Group, y = middle, group = Gene, color = Gene, linetype = Gene),
-        position = dodge, linewidth = 0.82
-      ) +
-      scale_fill_manual(values = pw_info$colors) +
-      scale_color_manual(values = pw_info$colors) +
-      scale_linetype_manual(values = pw_info$linetypes)
   }
   
   p <- p +
+    scale_fill_manual(values = pw_info$colors, guide = "none") +
+    scale_color_manual(values = pw_info$colors, labels = pw_labels) +
+    scale_shape_manual(values = pw_shapes, labels = pw_labels) +
+    scale_linetype_manual(values = pw_info$linetypes, guide = "none") +
+    guides(
+      color = guide_legend(
+        title = "Gene",
+        override.aes = list(
+          shape = pw_shapes,
+          size = 5.0,
+          stroke = 1.2,
+          alpha = 1,
+          linetype = 0
+        ),
+        nrow = if (n_genes >= 6) 2 else 1
+      ),
+      shape = "none"
+    ) +
     scale_y_continuous(labels = scales::comma, expand = expansion(mult = c(0.02, 0.05))) +
     labs(
       title = paste0(pw_info$title, " Expression across 26 Tissues (Linear Scale)"),
@@ -412,13 +429,46 @@ for (pw_name in names(pathway_defs)) {
   
   # File export (PNG and PDF)
   safe_name <- gsub("[^A-Za-z0-9_]", "-", pw_name)
-  png_file <- file.path(fig_dir, sprintf("Fig_%s_tissue_boxplot_linear.png", safe_name))
-  pdf_file <- file.path(fig_dir, sprintf("Fig_%s_tissue_boxplot_linear.pdf", safe_name))
+  panel_id <- pw_info$fig_panel
   
+  # 1. Output to results figures
+  png_file <- file.path(fig_dir, sprintf("%s.png", panel_id))
+  pdf_file <- file.path(fig_dir, sprintf("%s.pdf", panel_id))
   ggsave(png_file, p, width = 18, height = 8.5, dpi = 300, bg = "white")
   ggsave(pdf_file, p, width = 18, height = 8.5, device = grDevices::cairo_pdf, bg = "white")
   
-  message("Generated: ", png_file, " and ", pdf_file)
+  # Also write descriptive names in results
+  file.copy(png_file, file.path(fig_dir, sprintf("%s_%s_tissue_boxplot_linear.png", panel_id, safe_name)), overwrite = TRUE)
+  file.copy(pdf_file, file.path(fig_dir, sprintf("%s_%s_tissue_boxplot_linear.pdf", panel_id, safe_name)), overwrite = TRUE)
+  file.copy(png_file, file.path(fig_dir, sprintf("Fig_%s_tissue_boxplot_linear.png", safe_name)), overwrite = TRUE)
+  file.copy(pdf_file, file.path(fig_dir, sprintf("Fig_%s_tissue_boxplot_linear.pdf", safe_name)), overwrite = TRUE)
+  
+  # 2. Sync to final_figures_acceptance_20260906/01_Main_Figures
+  accept_main_dir <- file.path(repo_root, "final_figures_acceptance_20260906/01_Main_Figures")
+  if (dir.exists(accept_main_dir)) {
+    file.copy(png_file, file.path(accept_main_dir, sprintf("%s.png", panel_id)), overwrite = TRUE)
+    file.copy(pdf_file, file.path(accept_main_dir, sprintf("%s.pdf", panel_id)), overwrite = TRUE)
+  }
+  
+  # 3. Sync to final_figures_acceptance_20260906/03_Pathway_Tissue_Boxplots_Linear
+  accept_linear_dir <- file.path(repo_root, "final_figures_acceptance_20260906/03_Pathway_Tissue_Boxplots_Linear")
+  if (dir.exists(accept_linear_dir)) {
+    file.copy(png_file, file.path(accept_linear_dir, sprintf("%s.png", panel_id)), overwrite = TRUE)
+    file.copy(pdf_file, file.path(accept_linear_dir, sprintf("%s.pdf", panel_id)), overwrite = TRUE)
+    file.copy(png_file, file.path(accept_linear_dir, sprintf("%s_%s_tissue_boxplot_linear.png", panel_id, safe_name)), overwrite = TRUE)
+    file.copy(pdf_file, file.path(accept_linear_dir, sprintf("%s_%s_tissue_boxplot_linear.pdf", panel_id, safe_name)), overwrite = TRUE)
+    file.copy(png_file, file.path(accept_linear_dir, sprintf("Fig_%s_tissue_boxplot_linear.png", safe_name)), overwrite = TRUE)
+    file.copy(pdf_file, file.path(accept_linear_dir, sprintf("Fig_%s_tissue_boxplot_linear.pdf", safe_name)), overwrite = TRUE)
+  }
+  
+  # 4. Sync to final_result_integrated_20260905/Main
+  integrated_main_dir <- file.path(repo_root, "final_result_integrated_20260905/Main")
+  if (dir.exists(integrated_main_dir)) {
+    file.copy(png_file, file.path(integrated_main_dir, sprintf("%s.png", panel_id)), overwrite = TRUE)
+    file.copy(pdf_file, file.path(integrated_main_dir, sprintf("%s.pdf", panel_id)), overwrite = TRUE)
+  }
+  
+  message("Generated ", panel_id, " (", pw_name, "): ", png_file)
 }
 
 # Export summary tables

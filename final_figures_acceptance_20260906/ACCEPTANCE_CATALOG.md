@@ -22,9 +22,16 @@ final_figures_acceptance_20260906/
 │   ├── Fig_3a.png                               # 差异表达基因 (DEGs) 跨组织分布 UpSet 图
 │   ├── Fig_3b.png                               # 差异表达基因集合成员重叠矩阵图
 │   ├── Fig_4a.png & Fig_4a.pdf                  # DSB相关通路 Qsmooth 层次聚类系统树热图 (英文标签, 极简高对比)
-│   ├── Fig_4b.png                               # DSB相关通路 Qsmooth 组织特异性 Meta Dotplot
+│   ├── Fig_4b.png & Fig_4b.pdf                  # DSB通路: NHEJ 组织小鼠个体表达箱线图 (线性表达尺度, 样本点纯净图例)
+│   ├── Fig_4c.png & Fig_4c.pdf                  # DSB通路: HR 组织小鼠个体表达箱线图 (线性表达尺度, 4核心基因)
+│   ├── Fig_4d.png & Fig_4d.pdf                  # DSB通路: A-EJ 组织小鼠个体表达箱线图 (线性表达尺度, 4基因)
+│   ├── Fig_4e.png & Fig_4e.pdf                  # DSB相关通路 Qsmooth 组织特异性 Meta Dotplot (排至末尾)
 │   ├── Fig_5a.png & Fig_5a.pdf                  # SSB相关通路 Log2FC 层次聚类系统树热图 (英文标签, 极简高对比)
-│   └── Fig_5b.png                               # SSB相关通路 Log2FC 组织特异性 Meta Dotplot
+│   ├── Fig_5b.png & Fig_5b.pdf                  # SSB通路: BER 组织小鼠个体表达箱线图 (线性表达尺度, 3基因)
+│   ├── Fig_5c.png & Fig_5c.pdf                  # SSB通路: NER 组织小鼠个体表达箱线图 (线性表达尺度, 几何形状编码)
+│   ├── Fig_5d.png & Fig_5d.pdf                  # SSB通路: MMR 组织小鼠个体表达箱线图 (线性表达尺度, 2基因)
+│   ├── Fig_5e.png & Fig_5e.pdf                  # SSB通路: FA 组织小鼠个体表达箱线图 (线性表达尺度, 2基因)
+│   └── Fig_5f.png & Fig_5f.pdf                  # SSB相关通路 Log2FC 组织特异性 Meta Dotplot (排至末尾)
 │
 ├── 02_Supplementary_Figures/                    # 文章发表级补充材料图表 (Supplementary Figures)
 │   ├── Fig_S1.png                               # Hallmark 基因集 GSEA 富集分析概览图
@@ -35,23 +42,14 @@ final_figures_acceptance_20260906/
 │   ├── Fig_S6_log2fc_per_tissue_merged.png & .pdf # 26组织样本级 log2FC Spearman 相关性整合大图
 │   └── Fig_S6_per_tissue/                       # 26个独立组织的 log2FC Spearman 矩阵热图 (26对 PNG+PDF)
 │
-├── 03_Pathway_Tissue_Boxplots_Linear/           # 【最新版重点成果】7条DNA损伤修复通路小鼠层级组织表达箱线图 (线性表达尺度)
-│   ├── Fig_NER_tissue_boxplot_linear.png & .pdf # 核苷酸切除修复 (NER): 引入对角叉✕/三角▲/圆● 区分同色基因; 显式精确 ANOVA P值
-│   ├── Fig_HR_tissue_boxplot_linear.png & .pdf  # 同源重组 (HR): 精简4核心基因 (Brca1, Bard1, Blm, Rad51); 显式精确 ANOVA P值
-│   ├── Fig_NHEJ_tissue_boxplot_linear.png & .pdf# 非同源末端连接 (NHEJ): 4基因; 显式精确 ANOVA P值
-│   ├── Fig_A-EJ_tissue_boxplot_linear.png & .pdf# 替代末端连接 (A-EJ): 4基因; 显式精确 ANOVA P值
-│   ├── Fig_BER_tissue_boxplot_linear.png & .pdf # 碱基切除修复 (BER): 3基因; 显式精确 ANOVA P值
-│   ├── Fig_MMR_tissue_boxplot_linear.png & .pdf # 错配修复 (MMR): 2基因; 显式精确 ANOVA P值
-│   └── Fig_FA_tissue_boxplot_linear.png & .pdf  # 范可尼贫血 (FA): 2基因; 显式精确 ANOVA P值
-│
-├── 04_Pathway_Tissue_Boxplots_Log2/             # 【对照基准】7条DNA损伤修复通路小鼠层级组织表达箱线图 (Log2表达尺度)
-│   ├── Fig_NER_tissue_boxplot.png & .pdf        # NER 对数表达箱线图 (同步最新版对角叉✕编码与显式 ANOVA P值)
-│   ├── Fig_HR_tissue_boxplot.png & .pdf         # HR 对数表达箱线图 (同步4核心基因精简与显式 ANOVA P值)
-│   ├── Fig_NHEJ_tissue_boxplot.png & .pdf       # NHEJ 对数表达箱线图
-│   ├── Fig_A-EJ_tissue_boxplot.png & .pdf       # A-EJ 对数表达箱线图
-│   ├── Fig_BER_tissue_boxplot.png & .pdf        # BER 对数表达箱线图
-│   ├── Fig_MMR_tissue_boxplot.png & .pdf        # MMR 对数表达箱线图
-│   └── Fig_FA_tissue_boxplot.png & .pdf         # FA 对数表达箱线图
+├── 03_Pathway_Tissue_Boxplots_Linear/           # 【最终正式版】7条DNA损伤修复通路小鼠层级组织表达箱线图 (仅保留线性表达尺度)
+│   ├── Fig_4b_NHEJ_tissue_boxplot_linear.png & .pdf # 非同源末端连接 (NHEJ, 对应 Fig_4b)
+│   ├── Fig_4c_HR_tissue_boxplot_linear.png & .pdf   # 同源重组 (HR, 对应 Fig_4c)
+│   ├── Fig_4d_A-EJ_tissue_boxplot_linear.png & .pdf # 替代末端连接 (A-EJ, 对应 Fig_4d)
+│   ├── Fig_5b_BER_tissue_boxplot_linear.png & .pdf  # 碱基切除修复 (BER, 对应 Fig_5b)
+│   ├── Fig_5c_NER_tissue_boxplot_linear.png & .pdf  # 核苷酸切除修复 (NER, 对应 Fig_5c)
+│   ├── Fig_5d_MMR_tissue_boxplot_linear.png & .pdf  # 错配修复 (MMR, 对应 Fig_5d)
+│   └── Fig_5e_FA_tissue_boxplot_linear.png & .pdf   # 范可尼贫血 (FA, 对应 Fig_5e)
 │
 ├── 05_Statistical_Tables_and_Audits/            # 统计汇总与数据审计底表 (Data Audits)
 │   ├── 01_pathway_one_way_anova_linear_summary.csv # 线性尺度下7通路整体 One-way ANOVA 跨组织统计检验表
@@ -85,20 +83,20 @@ final_figures_acceptance_20260906/
   * 冻结 YARN qsmooth 表达矩阵与 Spearman 拓扑距离；
   * 右侧组织标签全部采用标准英文全称；移除单元格内冗余数字，纯净呈现层次聚类色块。
 
-### 2. 7条DNA损伤修复通路小鼠层级组织表达箱线图（03_Pathway_Tissue_Boxplots_Linear & 04_Pathway_Tissue_Boxplots_Log2）
+### 2. 7条DNA损伤修复通路小鼠层级组织表达箱线图（03_Pathway_Tissue_Boxplots_Linear，仅保留线性版为最终版）
 * **数值模型严格性**：
-  * **线性版（Linear Scale, 最新版）**：公式为 $\text{Expression}_{\text{linear}} = 2^{\text{YARNNormalizedLog2}} - 1$，直观呈现绝对丰度差异。
-  * **对数版（Log2 Scale, 对照版）**：保留 $\text{YARNNormalizedLog2}$，保证连续性对比。
+  * **仅保留线性版（Linear Scale, 最终正式发表版）**：公式为 $\text{Expression}_{\text{linear}} = 2^{\text{YARNNormalizedLog2}} - 1$，直观呈现基因绝对丰度跨组织差异（已按要求移除对数版 04 目录）。
 * **箱体统计结构（导师指定方式 1）**：
   * 箱体中间粗横线为该组织内该基因的**样本均值（Mean）**；箱体上下边界为 **Q1（25%）与 Q3（75%）**；须线延伸至 $1.5 \times \text{IQR}$；
   * 单只飞行小鼠（$n = 360$）作为抖动半透明散点叠加于箱体之上（`seed = 25`）。
-* **跨组织均值连线（Dashed Mean Lines）**：
-  * 每个基因的 26 组织均值由对应专属颜色的虚线贯穿相连，极值与组织间丰度起伏一目了然。
-* **NER 通路复合体颜色分组与几何形状区分（彻底解决混淆）**：
-  * 琥珀色组：`Xpc`（**对角叉 ✕**, pch 4）、`Rad23b`（**实心三角 ▲**, pch 17）、`Cetn2`（**实心圆 ●**, pch 16）；
-  * 青绿色组：`Ddb1`（**对角叉 ✕**, pch 4）、`Ddb2`（**实心三角 ▲**, pch 17）；
-  * 深蓝色组：`Ercc6`（**对角叉 ✕**, pch 4）、`Ercc8`（**实心三角 ▲**, pch 17）；
-  * 彻底移除了图例项背景的箱线填充方框（`guide = "none"`），图例项直接展示清晰的“虚线 + 符号”，无任何方框遮挡。
+* **图例优化（彻底去除柱体方框，放大实际样本点）**：
+  * **完全移除图例中的柱状箱体（`geom_boxplot(..., show.legend = FALSE)`）与贯穿连线**；
+  * **纯净样本点图标呈现**：图例项仅展示放大的基因专属实际散点符号（圆圈 `●`, size 5.0；三角 `▲`, size 5.0；叉号 `✕`, size 5.0），与图中散点形态严格对应；
+  * NER 通路：琥珀色组（`Xpc` ✕, `Rad23b` ▲, `Cetn2` ●）、青绿色组（`Ddb1` ✕, `Ddb2` ▲）、深蓝色组（`Ercc6` ✕, `Ercc8` ▲）；
+  * NHEJ / HR / A-EJ / BER / MMR / FA 通路：统一采用高分辨率清晰实心圆（●, size 5.0）。
+* **编号与主图整合结构**：
+  * **DSB 相关通路整合至 Figure 4**：`Fig_4b` (NHEJ), `Fig_4c` (HR), `Fig_4d` (A-EJ)，原组织 Meta dotplot 顺延至末尾为 `Fig_4e`；
+  * **SSB 相关通路整合至 Figure 5**：`Fig_5b` (BER), `Fig_5c` (NER), `Fig_5d` (MMR), `Fig_5e` (FA)，原组织 Meta dotplot 顺延至末尾为 `Fig_5f`。
 * **HR 通路精简**：
   * 移除了密集重叠的次要因子 `Rad54l` 与 `Exo1`，保留核心 4 基因：`Brca1`（朱红）、`Bard1`（琥珀）、`Blm`（青绿）、`Rad51`（深蓝）。
 * **副标题显式精确单因素方差分析检验（Explicit ANOVA P-values）**：
@@ -126,9 +124,8 @@ final_figures_acceptance_20260906/
 
 ## 四、 验收文件审计与校验摘要
 
-1. **主图文件数**：9 种主图（全部含 300/400 DPI 高清 PNG，关键主图含矢量 PDF）。
+1. **主图文件数**：共 16 组正文主图面板（Fig_1b, Fig_1c, Fig_2, Fig_3a, Fig_3b, Fig_4a-e, Fig_5a-f，全部含高分 PNG 与矢量 PDF）。
 2. **补充图文件数**：8 种补充图大项（含 26 组织独立热图 52 个 PNG/PDF，以及整合大图）。
 3. **DNA修复通路箱线图文件数**：
-   * 线性版：7 个 300 DPI PNG + 7 个出版级矢量 PDF。
-   * 对数版：7 个 300 DPI PNG + 7 个出版级矢量 PDF。
-4. **统计审计底表**：共 9 份 CSV/CSV.GZ 底表，完整支撑从小鼠原始读段到终图的穿透式审计。
+   * 仅保留线性版正式归档：7 组 300 DPI PNG + 7 组出版级矢量 PDF。
+4. **统计审计底表**：完整支撑从小鼠原始读段到终图的穿透式审计（含 `04_sample_linear_qsmooth_values_used.csv` 等个体级底表）。
