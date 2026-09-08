@@ -1,0 +1,365 @@
+﻿Group,TissueLabel,TissueOrder,sample_status,Pathway,n_samples,n_technical_replicate_columns,min,q1,median,mean,q3,max
+Adrenal gland,Adrenal gland,1,Flight,BER,14,1,52,52,52,52.3571428571429,53,53
+Adrenal gland,Adrenal gland,1,Flight,NER,14,1,53,53,53,53,53,53
+Adrenal gland,Adrenal gland,1,Flight,MMR,14,1,26,26,26,26.4285714285714,27,27
+Adrenal gland,Adrenal gland,1,Flight,FA,14,1,39,39,39,39,39,39
+Adrenal gland,Adrenal gland,1,Flight,HR,14,1,133,133,133,133.571428571429,134,135
+Adrenal gland,Adrenal gland,1,Flight,AEJ,14,1,9,9,9,9,9,9
+Adrenal gland,Adrenal gland,1,Flight,NHEJ,14,1,17,17,17,17,17,17
+Adrenal gland,Adrenal gland,1,Ground,BER,14,1,52,52,52,52.2857142857143,52.75,53
+Adrenal gland,Adrenal gland,1,Ground,NER,14,1,52,53,53,52.9285714285714,53,53
+Adrenal gland,Adrenal gland,1,Ground,MMR,14,1,26,26.25,27,26.7142857142857,27,27
+Adrenal gland,Adrenal gland,1,Ground,FA,14,1,39,39,39,39,39,39
+Adrenal gland,Adrenal gland,1,Ground,HR,14,1,132,133,133.5,133.642857142857,134.75,135
+Adrenal gland,Adrenal gland,1,Ground,AEJ,14,1,9,9,9,9,9,9
+Adrenal gland,Adrenal gland,1,Ground,NHEJ,14,1,17,17,17,17,17,17
+Bone marrow,Bone marrow,2,Flight,BER,6,0,52,53.25,54,53.5,54,54
+Bone marrow,Bone marrow,2,Flight,NER,6,0,53,53,53,53,53,53
+Bone marrow,Bone marrow,2,Flight,MMR,6,0,27,27,27,27,27,27
+Bone marrow,Bone marrow,2,Flight,FA,6,0,39,39,39,39,39,39
+Bone marrow,Bone marrow,2,Flight,HR,6,0,133,133.25,134,133.666666666667,134,134
+Bone marrow,Bone marrow,2,Flight,AEJ,6,0,9,9,9,9,9,9
+Bone marrow,Bone marrow,2,Flight,NHEJ,6,0,17,17,17,17,17,17
+Bone marrow,Bone marrow,2,Ground,BER,6,0,53,53.25,54,53.6666666666667,54,54
+Bone marrow,Bone marrow,2,Ground,NER,6,0,53,53,53,53,53,53
+Bone marrow,Bone marrow,2,Ground,MMR,6,0,27,27,27,27,27,27
+Bone marrow,Bone marrow,2,Ground,FA,6,0,39,39,39,39,39,39
+Bone marrow,Bone marrow,2,Ground,HR,6,0,133,133.25,134,133.666666666667,134,134
+Bone marrow,Bone marrow,2,Ground,AEJ,6,0,9,9,9,9,9,9
+Bone marrow,Bone marrow,2,Ground,NHEJ,6,0,17,17,17,17,17,17
+Cecum,Cecum,3,Flight,BER,5,0,51,52,52,52,52,53
+Cecum,Cecum,3,Flight,NER,5,0,53,53,53,53,53,53
+Cecum,Cecum,3,Flight,MMR,5,0,26,26,26,26.4,27,27
+Cecum,Cecum,3,Flight,FA,5,0,36,38,38,38,39,39
+Cecum,Cecum,3,Flight,HR,5,0,126,132,133,131.8,133,135
+Cecum,Cecum,3,Flight,AEJ,5,0,9,9,9,9,9,9
+Cecum,Cecum,3,Flight,NHEJ,5,0,17,17,17,17,17,17
+Cecum,Cecum,3,Ground,BER,5,0,52,52,52,52.2,52,53
+Cecum,Cecum,3,Ground,NER,5,0,53,53,53,53,53,53
+Cecum,Cecum,3,Ground,MMR,5,0,26,26,26,26.4,27,27
+Cecum,Cecum,3,Ground,FA,5,0,38,39,39,38.8,39,39
+Cecum,Cecum,3,Ground,HR,5,0,129,131,132,131.6,132,134
+Cecum,Cecum,3,Ground,AEJ,5,0,9,9,9,9,9,9
+Cecum,Cecum,3,Ground,NHEJ,5,0,17,17,17,17,17,17
+Cerebellum,Cerebellum,4,Flight,BER,9,1,51,51,52,51.5555555555556,52,52
+Cerebellum,Cerebellum,4,Flight,NER,9,1,52,52,53,52.6666666666667,53,53
+Cerebellum,Cerebellum,4,Flight,MMR,9,1,27,27,27,27,27,27
+Cerebellum,Cerebellum,4,Flight,FA,9,1,38,38,39,38.5555555555556,39,39
+Cerebellum,Cerebellum,4,Flight,HR,9,1,131,131,132,131.777777777778,132,133
+Cerebellum,Cerebellum,4,Flight,AEJ,9,1,8,9,9,8.88888888888889,9,9
+Cerebellum,Cerebellum,4,Flight,NHEJ,9,1,17,17,17,17,17,17
+Cerebellum,Cerebellum,4,Ground,BER,9,1,50,51,51,51.3333333333333,52,52
+Cerebellum,Cerebellum,4,Ground,NER,9,1,53,53,53,53,53,53
+Cerebellum,Cerebellum,4,Ground,MMR,9,1,26,27,27,26.8888888888889,27,27
+Cerebellum,Cerebellum,4,Ground,FA,9,1,37,38,38,38.2222222222222,39,39
+Cerebellum,Cerebellum,4,Ground,HR,9,1,130,131,132,131.666666666667,132,133
+Cerebellum,Cerebellum,4,Ground,AEJ,9,1,8,9,9,8.88888888888889,9,9
+Cerebellum,Cerebellum,4,Ground,NHEJ,9,1,17,17,17,17,17,17
+Colon,Colon,5,Flight,BER,4,0,53,53,53,53,53,53
+Colon,Colon,5,Flight,NER,4,0,53,53,53,53,53,53
+Colon,Colon,5,Flight,MMR,4,0,27,27,27,27,27,27
+Colon,Colon,5,Flight,FA,4,0,39,39,39,39,39,39
+Colon,Colon,5,Flight,HR,4,0,133,133.75,134,133.75,134,134
+Colon,Colon,5,Flight,AEJ,4,0,9,9,9,9,9,9
+Colon,Colon,5,Flight,NHEJ,4,0,17,17,17,17,17,17
+Colon,Colon,5,Ground,BER,5,0,53,53,53,53,53,53
+Colon,Colon,5,Ground,NER,5,0,53,53,53,53,53,53
+Colon,Colon,5,Ground,MMR,5,0,27,27,27,27,27,27
+Colon,Colon,5,Ground,FA,5,0,39,39,39,39,39,39
+Colon,Colon,5,Ground,HR,5,0,133,133,134,133.8,134,135
+Colon,Colon,5,Ground,AEJ,5,0,9,9,9,9,9,9
+Colon,Colon,5,Ground,NHEJ,5,0,17,17,17,17,17,17
+Dorsal skin,Dorsal skin,6,Flight,BER,30,0,52,52,53,52.5333333333333,53,53
+Dorsal skin,Dorsal skin,6,Flight,NER,30,0,53,53,53,53,53,53
+Dorsal skin,Dorsal skin,6,Flight,MMR,30,0,27,27,27,27,27,27
+Dorsal skin,Dorsal skin,6,Flight,FA,30,0,39,39,39,39,39,39
+Dorsal skin,Dorsal skin,6,Flight,HR,30,0,132,134,134,134.133333333333,135,135
+Dorsal skin,Dorsal skin,6,Flight,AEJ,30,0,9,9,9,9,9,9
+Dorsal skin,Dorsal skin,6,Flight,NHEJ,30,0,17,17,17,17,17,17
+Dorsal skin,Dorsal skin,6,Ground,BER,30,0,52,52,53,52.7,53,53
+Dorsal skin,Dorsal skin,6,Ground,NER,30,0,53,53,53,53,53,53
+Dorsal skin,Dorsal skin,6,Ground,MMR,30,0,26,27,27,26.9333333333333,27,27
+Dorsal skin,Dorsal skin,6,Ground,FA,30,0,39,39,39,39,39,39
+Dorsal skin,Dorsal skin,6,Ground,HR,30,0,132,134,134,134,134.75,135
+Dorsal skin,Dorsal skin,6,Ground,AEJ,30,0,9,9,9,9,9,9
+Dorsal skin,Dorsal skin,6,Ground,NHEJ,30,0,17,17,17,17,17,17
+Extensor digitorum longus,Extensor digitorum longus,7,Flight,BER,15,1,50,52,53,52.5333333333333,53,54
+Extensor digitorum longus,Extensor digitorum longus,7,Flight,NER,15,1,52,53,53,52.8,53,53
+Extensor digitorum longus,Extensor digitorum longus,7,Flight,MMR,15,1,25,26,27,26.4,27,27
+Extensor digitorum longus,Extensor digitorum longus,7,Flight,FA,15,1,37,37.5,38,38.0666666666667,39,39
+Extensor digitorum longus,Extensor digitorum longus,7,Flight,HR,15,1,128,128.5,130,129.533333333333,130,131
+Extensor digitorum longus,Extensor digitorum longus,7,Flight,AEJ,15,1,8,9,9,8.86666666666667,9,9
+Extensor digitorum longus,Extensor digitorum longus,7,Flight,NHEJ,15,1,17,17,17,17,17,17
+Extensor digitorum longus,Extensor digitorum longus,7,Ground,BER,15,1,50,52,52,51.8,52,53
+Extensor digitorum longus,Extensor digitorum longus,7,Ground,NER,15,1,53,53,53,53,53,53
+Extensor digitorum longus,Extensor digitorum longus,7,Ground,MMR,15,1,26,26,27,26.6,27,27
+Extensor digitorum longus,Extensor digitorum longus,7,Ground,FA,15,1,37,37,38,37.7333333333333,38,39
+Extensor digitorum longus,Extensor digitorum longus,7,Ground,HR,15,1,127,128.5,129,129.2,130,131
+Extensor digitorum longus,Extensor digitorum longus,7,Ground,AEJ,15,1,9,9,9,9,9,9
+Extensor digitorum longus,Extensor digitorum longus,7,Ground,NHEJ,15,1,17,17,17,17,17,17
+Eye,Eye,8,Flight,BER,11,0,52,53,53,52.8181818181818,53,53
+Eye,Eye,8,Flight,NER,11,0,53,53,53,53,53,53
+Eye,Eye,8,Flight,MMR,11,0,27,27,27,27,27,27
+Eye,Eye,8,Flight,FA,11,0,39,39,39,39,39,39
+Eye,Eye,8,Flight,HR,11,0,133,134,134,134.272727272727,135,135
+Eye,Eye,8,Flight,AEJ,11,0,9,9,9,9,9,9
+Eye,Eye,8,Flight,NHEJ,11,0,17,17,17,17,17,17
+Eye,Eye,8,Ground,BER,11,0,52,52.5,53,52.7272727272727,53,53
+Eye,Eye,8,Ground,NER,11,0,53,53,53,53,53,53
+Eye,Eye,8,Ground,MMR,11,0,27,27,27,27,27,27
+Eye,Eye,8,Ground,FA,11,0,39,39,39,39,39,39
+Eye,Eye,8,Ground,HR,11,0,133,134,134,134.272727272727,135,135
+Eye,Eye,8,Ground,AEJ,11,0,9,9,9,9,9,9
+Eye,Eye,8,Ground,NHEJ,11,0,17,17,17,17,17,17
+Femoral lateral skin,Femoral lateral skin,9,Flight,BER,9,0,52,53,53,52.7777777777778,53,53
+Femoral lateral skin,Femoral lateral skin,9,Flight,NER,9,0,53,53,53,53,53,53
+Femoral lateral skin,Femoral lateral skin,9,Flight,MMR,9,0,27,27,27,27,27,27
+Femoral lateral skin,Femoral lateral skin,9,Flight,FA,9,0,39,39,39,39,39,39
+Femoral lateral skin,Femoral lateral skin,9,Flight,HR,9,0,133,134,134,133.777777777778,134,134
+Femoral lateral skin,Femoral lateral skin,9,Flight,AEJ,9,0,9,9,9,9,9,9
+Femoral lateral skin,Femoral lateral skin,9,Flight,NHEJ,9,0,17,17,17,17,17,17
+Femoral lateral skin,Femoral lateral skin,9,Ground,BER,10,0,53,53,53,53,53,53
+Femoral lateral skin,Femoral lateral skin,9,Ground,NER,10,0,53,53,53,53,53,53
+Femoral lateral skin,Femoral lateral skin,9,Ground,MMR,10,0,27,27,27,27,27,27
+Femoral lateral skin,Femoral lateral skin,9,Ground,FA,10,0,39,39,39,39,39,39
+Femoral lateral skin,Femoral lateral skin,9,Ground,HR,10,0,132,134,134,133.7,134,134
+Femoral lateral skin,Femoral lateral skin,9,Ground,AEJ,10,0,9,9,9,9,9,9
+Femoral lateral skin,Femoral lateral skin,9,Ground,NHEJ,10,0,17,17,17,17,17,17
+Femoral skin,Femoral skin,10,Flight,BER,2,0,53,53,53,53,53,53
+Femoral skin,Femoral skin,10,Flight,NER,2,0,53,53,53,53,53,53
+Femoral skin,Femoral skin,10,Flight,MMR,2,0,27,27,27,27,27,27
+Femoral skin,Femoral skin,10,Flight,FA,2,0,39,39,39,39,39,39
+Femoral skin,Femoral skin,10,Flight,HR,2,0,134,134,134,134,134,134
+Femoral skin,Femoral skin,10,Flight,AEJ,2,0,9,9,9,9,9,9
+Femoral skin,Femoral skin,10,Flight,NHEJ,2,0,17,17,17,17,17,17
+Femoral skin,Femoral skin,10,Ground,BER,3,0,53,53,53,53,53,53
+Femoral skin,Femoral skin,10,Ground,NER,3,0,53,53,53,53,53,53
+Femoral skin,Femoral skin,10,Ground,MMR,3,0,27,27,27,27,27,27
+Femoral skin,Femoral skin,10,Ground,FA,3,0,39,39,39,39,39,39
+Femoral skin,Femoral skin,10,Ground,HR,3,0,134,134,134,134,134,134
+Femoral skin,Femoral skin,10,Ground,AEJ,3,0,9,9,9,9,9,9
+Femoral skin,Femoral skin,10,Ground,NHEJ,3,0,17,17,17,17,17,17
+Gastrocnemius,Gastrocnemius,11,Flight,BER,10,0,45,46,52,49.8,52.75,53
+Gastrocnemius,Gastrocnemius,11,Flight,NER,10,0,44,48.25,53,50.6,53,53
+Gastrocnemius,Gastrocnemius,11,Flight,MMR,10,0,22,23,25.5,24.9,27,27
+Gastrocnemius,Gastrocnemius,11,Flight,FA,10,0,20,23,36.5,31.1,38,38
+Gastrocnemius,Gastrocnemius,11,Flight,HR,10,0,97,101,125,116.3,128,129
+Gastrocnemius,Gastrocnemius,11,Flight,AEJ,10,0,6,7,9,8.1,9,9
+Gastrocnemius,Gastrocnemius,11,Flight,NHEJ,10,0,16,17,17,16.8,17,17
+Gastrocnemius,Gastrocnemius,11,Ground,BER,14,0,38,42.25,45,46.5,52,53
+Gastrocnemius,Gastrocnemius,11,Ground,NER,14,0,39,46.25,50,49.2142857142857,53,53
+Gastrocnemius,Gastrocnemius,11,Ground,MMR,14,0,20,21.25,24,23.7142857142857,26.75,27
+Gastrocnemius,Gastrocnemius,11,Ground,FA,14,0,16,20.25,24.5,27.7142857142857,37,38
+Gastrocnemius,Gastrocnemius,11,Ground,HR,14,0,80,95.25,107.5,109.642857142857,126.75,129
+Gastrocnemius,Gastrocnemius,11,Ground,AEJ,14,0,5,7,7,7.64285714285714,9,9
+Gastrocnemius,Gastrocnemius,11,Ground,NHEJ,14,0,12,16,16.5,15.9285714285714,17,17
+Heart,Heart,12,Flight,BER,3,0,51,51,51,51.3333333333333,51.5,52
+Heart,Heart,12,Flight,NER,3,0,52,52,52,52,52,52
+Heart,Heart,12,Flight,MMR,3,0,26,26,26,26,26,26
+Heart,Heart,12,Flight,FA,3,0,39,39,39,39,39,39
+Heart,Heart,12,Flight,HR,3,0,127,127.5,128,128,128.5,129
+Heart,Heart,12,Flight,AEJ,3,0,9,9,9,9,9,9
+Heart,Heart,12,Flight,NHEJ,3,0,17,17,17,17,17,17
+Heart,Heart,12,Ground,BER,3,0,52,52,52,52,52,52
+Heart,Heart,12,Ground,NER,3,0,52,52,52,52,52,52
+Heart,Heart,12,Ground,MMR,3,0,25,25,25,25.3333333333333,25.5,26
+Heart,Heart,12,Ground,FA,3,0,38,38.5,39,38.6666666666667,39,39
+Heart,Heart,12,Ground,HR,3,0,127,127.5,128,128,128.5,129
+Heart,Heart,12,Ground,AEJ,3,0,9,9,9,9,9,9
+Heart,Heart,12,Ground,NHEJ,3,0,17,17,17,17,17,17
+Heart / Heart right ventricle,Heart right ventricle,13,Flight,BER,10,0,51,52,52,52,52,53
+Heart / Heart right ventricle,Heart right ventricle,13,Flight,NER,10,0,52,53,53,52.9,53,53
+Heart / Heart right ventricle,Heart right ventricle,13,Flight,MMR,10,0,26,26,26,26.3,26.75,27
+Heart / Heart right ventricle,Heart right ventricle,13,Flight,FA,10,0,39,39,39,39,39,39
+Heart / Heart right ventricle,Heart right ventricle,13,Flight,HR,10,0,132,133,133,133,133,134
+Heart / Heart right ventricle,Heart right ventricle,13,Flight,AEJ,10,0,9,9,9,9,9,9
+Heart / Heart right ventricle,Heart right ventricle,13,Flight,NHEJ,10,0,17,17,17,17,17,17
+Heart / Heart right ventricle,Heart right ventricle,13,Ground,BER,20,0,51,51,52,52,53,53
+Heart / Heart right ventricle,Heart right ventricle,13,Ground,NER,20,0,53,53,53,53,53,53
+Heart / Heart right ventricle,Heart right ventricle,13,Ground,MMR,20,0,26,26,27,26.65,27,27
+Heart / Heart right ventricle,Heart right ventricle,13,Ground,FA,20,0,38,39,39,38.95,39,39
+Heart / Heart right ventricle,Heart right ventricle,13,Ground,HR,20,0,131,132,133,132.9,134,134
+Heart / Heart right ventricle,Heart right ventricle,13,Ground,AEJ,20,0,9,9,9,9,9,9
+Heart / Heart right ventricle,Heart right ventricle,13,Ground,NHEJ,20,0,17,17,17,17.05,17,18
+Kidney,Kidney,14,Flight,BER,55,3,51,52,52,52.3272727272727,53,53
+Kidney,Kidney,14,Flight,NER,55,3,52,53,53,52.8545454545455,53,53
+Kidney,Kidney,14,Flight,MMR,55,3,26,26,26,26.4727272727273,27,27
+Kidney,Kidney,14,Flight,FA,55,3,38,39,39,38.9090909090909,39,39
+Kidney,Kidney,14,Flight,HR,55,3,128,132,133,132.509090909091,134,134
+Kidney,Kidney,14,Flight,AEJ,55,3,9,9,9,9,9,9
+Kidney,Kidney,14,Flight,NHEJ,55,3,17,17,17,17.0181818181818,17,18
+Kidney,Kidney,14,Ground,BER,64,2,51,52,52,52.046875,52,53
+Kidney,Kidney,14,Ground,NER,64,2,52,53,53,52.84375,53,53
+Kidney,Kidney,14,Ground,MMR,64,2,26,26,27,26.59375,27,27
+Kidney,Kidney,14,Ground,FA,64,2,37,39,39,38.828125,39,39
+Kidney,Kidney,14,Ground,HR,64,2,128,132,133,132.609375,134,134
+Kidney,Kidney,14,Ground,AEJ,64,2,8,9,9,8.984375,9,9
+Kidney,Kidney,14,Ground,NHEJ,64,2,17,17,17,17.078125,17,18
+Left lobe of the liver,Left lobe of the liver,15,Flight,BER,24,2,50,51,52,51.6666666666667,52,53
+Left lobe of the liver,Left lobe of the liver,15,Flight,NER,24,2,52,52,53,52.5833333333333,53,53
+Left lobe of the liver,Left lobe of the liver,15,Flight,MMR,24,2,25,26,26,26.125,26,27
+Left lobe of the liver,Left lobe of the liver,15,Flight,FA,24,2,37,38,39,38.4166666666667,39,39
+Left lobe of the liver,Left lobe of the liver,15,Flight,HR,24,2,123,127.75,129,128.458333333333,130,132
+Left lobe of the liver,Left lobe of the liver,15,Flight,AEJ,24,2,8,9,9,8.83333333333333,9,9
+Left lobe of the liver,Left lobe of the liver,15,Flight,NHEJ,24,2,17,17,17,17,17,17
+Left lobe of the liver,Left lobe of the liver,15,Ground,BER,24,1,50,52,52,52.0416666666667,53,53
+Left lobe of the liver,Left lobe of the liver,15,Ground,NER,24,1,52,52,53,52.7083333333333,53,53
+Left lobe of the liver,Left lobe of the liver,15,Ground,MMR,24,1,25,26,26,26.0416666666667,26,27
+Left lobe of the liver,Left lobe of the liver,15,Ground,FA,24,1,37,38,39,38.5,39,39
+Left lobe of the liver,Left lobe of the liver,15,Ground,HR,24,1,126,128,130,129.416666666667,131,132
+Left lobe of the liver,Left lobe of the liver,15,Ground,AEJ,24,1,8,9,9,8.95833333333333,9,9
+Left lobe of the liver,Left lobe of the liver,15,Ground,NHEJ,24,1,17,17,17,17,17,17
+Liver,Liver,16,Flight,BER,19,0,49,51.5,52,51.7368421052632,52,53
+Liver,Liver,16,Flight,NER,19,0,52,52,53,52.5263157894737,53,53
+Liver,Liver,16,Flight,MMR,19,0,25,26,26,26.2631578947368,27,27
+Liver,Liver,16,Flight,FA,19,0,32,36.5,38,37.2105263157895,39,39
+Liver,Liver,16,Flight,HR,19,0,118,126.5,129,127.789473684211,130.5,132
+Liver,Liver,16,Flight,AEJ,19,0,8,9,9,8.89473684210526,9,9
+Liver,Liver,16,Flight,NHEJ,19,0,17,17,17,17,17,17
+Liver,Liver,16,Ground,BER,18,0,49,52,52.5,52.1666666666667,53,53
+Liver,Liver,16,Ground,NER,18,0,52,52,52.5,52.5,53,53
+Liver,Liver,16,Ground,MMR,18,0,25,26,27,26.3888888888889,27,27
+Liver,Liver,16,Ground,FA,18,0,32,39,39,38.1111111111111,39,39
+Liver,Liver,16,Ground,HR,18,0,124,129.25,131,129.944444444444,132,132
+Liver,Liver,16,Ground,AEJ,18,0,8,9,9,8.94444444444445,9,9
+Liver,Liver,16,Ground,NHEJ,18,0,17,17,17,17,17,17
+Lung,Lung,17,Flight,BER,14,1,51,52,53,52.5,53,53
+Lung,Lung,17,Flight,NER,14,1,53,53,53,53,53,53
+Lung,Lung,17,Flight,MMR,14,1,26,27,27,26.9285714285714,27,27
+Lung,Lung,17,Flight,FA,14,1,39,39,39,39,39,39
+Lung,Lung,17,Flight,HR,14,1,133,134,134,133.785714285714,134,134
+Lung,Lung,17,Flight,AEJ,14,1,9,9,9,9,9,9
+Lung,Lung,17,Flight,NHEJ,14,1,17,17,17,17,17,17
+Lung,Lung,17,Ground,BER,13,1,51,52,52,52.3846153846154,53,53
+Lung,Lung,17,Ground,NER,13,1,53,53,53,53,53,53
+Lung,Lung,17,Ground,MMR,13,1,26,27,27,26.8461538461539,27,27
+Lung,Lung,17,Ground,FA,13,1,39,39,39,39,39,39
+Lung,Lung,17,Ground,HR,13,1,133,133,134,133.538461538462,134,134
+Lung,Lung,17,Ground,AEJ,13,1,9,9,9,9,9,9
+Lung,Lung,17,Ground,NHEJ,13,1,17,17,17,17,17,17
+Mammary gland,Mammary gland,18,Flight,BER,10,0,52,52,53,52.6,53,53
+Mammary gland,Mammary gland,18,Flight,NER,10,0,52,53,53,52.9,53,53
+Mammary gland,Mammary gland,18,Flight,MMR,10,0,26,26.25,27,26.7,27,27
+Mammary gland,Mammary gland,18,Flight,FA,10,0,39,39,39,39,39,39
+Mammary gland,Mammary gland,18,Flight,HR,10,0,131,133,133,133.1,134,134
+Mammary gland,Mammary gland,18,Flight,AEJ,10,0,9,9,9,9,9,9
+Mammary gland,Mammary gland,18,Flight,NHEJ,10,0,17,17,17,17,17,17
+Mammary gland,Mammary gland,18,Ground,BER,15,0,52,52,53,52.6666666666667,53,53
+Mammary gland,Mammary gland,18,Ground,NER,15,0,53,53,53,53,53,53
+Mammary gland,Mammary gland,18,Ground,MMR,15,0,26,27,27,26.8666666666667,27,27
+Mammary gland,Mammary gland,18,Ground,FA,15,0,39,39,39,39,39,39
+Mammary gland,Mammary gland,18,Ground,HR,15,0,132,132.5,133,133.133333333333,134,134
+Mammary gland,Mammary gland,18,Ground,AEJ,15,0,9,9,9,9,9,9
+Mammary gland,Mammary gland,18,Ground,NHEJ,15,0,17,17,17,17,17,17
+Optic nerve,Optic nerve,19,Flight,BER,5,0,53,53,53,53,53,53
+Optic nerve,Optic nerve,19,Flight,NER,5,0,53,53,53,53,53,53
+Optic nerve,Optic nerve,19,Flight,MMR,5,0,27,27,27,27,27,27
+Optic nerve,Optic nerve,19,Flight,FA,5,0,39,39,39,39,39,39
+Optic nerve,Optic nerve,19,Flight,HR,5,0,132,133,133,133,133,134
+Optic nerve,Optic nerve,19,Flight,AEJ,5,0,9,9,9,9,9,9
+Optic nerve,Optic nerve,19,Flight,NHEJ,5,0,17,17,17,17,17,17
+Optic nerve,Optic nerve,19,Ground,BER,12,0,53,53,53,53,53,53
+Optic nerve,Optic nerve,19,Ground,NER,12,0,53,53,53,53,53,53
+Optic nerve,Optic nerve,19,Ground,MMR,12,0,27,27,27,27,27,27
+Optic nerve,Optic nerve,19,Ground,FA,12,0,39,39,39,39,39,39
+Optic nerve,Optic nerve,19,Ground,HR,12,0,132,133,134,133.75,134.25,135
+Optic nerve,Optic nerve,19,Ground,AEJ,12,0,9,9,9,9,9,9
+Optic nerve,Optic nerve,19,Ground,NHEJ,12,0,17,17,17,17,17,17
+Quadriceps femoris,Quadriceps femoris,20,Flight,BER,9,1,51,51,52,51.6666666666667,52,53
+Quadriceps femoris,Quadriceps femoris,20,Flight,NER,9,1,53,53,53,53,53,53
+Quadriceps femoris,Quadriceps femoris,20,Flight,MMR,9,1,25,26,27,26.4444444444444,27,27
+Quadriceps femoris,Quadriceps femoris,20,Flight,FA,9,1,37,37,38,37.7777777777778,38,39
+Quadriceps femoris,Quadriceps femoris,20,Flight,HR,9,1,127,127,129,128.888888888889,130,131
+Quadriceps femoris,Quadriceps femoris,20,Flight,AEJ,9,1,8,8,9,8.55555555555556,9,9
+Quadriceps femoris,Quadriceps femoris,20,Flight,NHEJ,9,1,17,17,17,17,17,17
+Quadriceps femoris,Quadriceps femoris,20,Ground,BER,9,1,51,51,52,52.1111111111111,53,53
+Quadriceps femoris,Quadriceps femoris,20,Ground,NER,9,1,53,53,53,53,53,53
+Quadriceps femoris,Quadriceps femoris,20,Ground,MMR,9,1,25,26,26,26.3333333333333,27,27
+Quadriceps femoris,Quadriceps femoris,20,Ground,FA,9,1,36,37,37,37.3333333333333,38,39
+Quadriceps femoris,Quadriceps femoris,20,Ground,HR,9,1,127,130,130,130.333333333333,131,133
+Quadriceps femoris,Quadriceps femoris,20,Ground,AEJ,9,1,9,9,9,9,9,9
+Quadriceps femoris,Quadriceps femoris,20,Ground,NHEJ,9,1,17,17,17,17,17,17
+Retina,Retina,21,Flight,BER,27,0,52,52,53,52.5925925925926,53,53
+Retina,Retina,21,Flight,NER,27,0,52,52,53,52.6666666666667,53,53
+Retina,Retina,21,Flight,MMR,27,0,26,26.5,27,26.7407407407407,27,27
+Retina,Retina,21,Flight,FA,27,0,36,38,38,38.1851851851852,39,39
+Retina,Retina,21,Flight,HR,27,0,127,129,130,131.148148148148,133,135
+Retina,Retina,21,Flight,AEJ,27,0,9,9,9,9,9,9
+Retina,Retina,21,Flight,NHEJ,27,0,17,17,17,17,17,17
+Retina,Retina,21,Ground,BER,31,0,52,52,53,52.6129032258065,53,53
+Retina,Retina,21,Ground,NER,31,0,51,52.5,53,52.7096774193548,53,53
+Retina,Retina,21,Ground,MMR,31,0,25,27,27,26.7741935483871,27,27
+Retina,Retina,21,Ground,FA,31,0,35,38,39,38.2903225806452,39,39
+Retina,Retina,21,Ground,HR,31,0,125,129.5,132,131.709677419355,134,135
+Retina,Retina,21,Ground,AEJ,31,0,9,9,9,9,9,9
+Retina,Retina,21,Ground,NHEJ,31,0,17,17,17,17,17,17
+Soleus,Soleus,22,Flight,BER,18,1,51,52,52,52,52,53
+Soleus,Soleus,22,Flight,NER,18,1,52,53,53,52.8333333333333,53,53
+Soleus,Soleus,22,Flight,MMR,18,1,25,27,27,26.7222222222222,27,27
+Soleus,Soleus,22,Flight,FA,18,1,36,38,38,38.0555555555556,39,39
+Soleus,Soleus,22,Flight,HR,18,1,125,128,129,128.833333333333,130,132
+Soleus,Soleus,22,Flight,AEJ,18,1,8,9,9,8.83333333333333,9,9
+Soleus,Soleus,22,Flight,NHEJ,18,1,17,17,17,17.4444444444444,18,18
+Soleus,Soleus,22,Ground,BER,18,1,51,52,53,52.5555555555556,53,53
+Soleus,Soleus,22,Ground,NER,18,1,52,53,53,52.8888888888889,53,53
+Soleus,Soleus,22,Ground,MMR,18,1,25,26.25,27,26.6666666666667,27,27
+Soleus,Soleus,22,Ground,FA,18,1,36,38,38,38.2222222222222,39,39
+Soleus,Soleus,22,Ground,HR,18,1,124,127.25,128.5,128.5,130,131
+Soleus,Soleus,22,Ground,AEJ,18,1,8,9,9,8.94444444444445,9,9
+Soleus,Soleus,22,Ground,NHEJ,18,1,17,17,17,17.1666666666667,17,18
+Spleen,Spleen,23,Flight,BER,9,0,53,53,53,53,53,53
+Spleen,Spleen,23,Flight,NER,9,0,53,53,53,53,53,53
+Spleen,Spleen,23,Flight,MMR,9,0,27,27,27,27,27,27
+Spleen,Spleen,23,Flight,FA,9,0,39,39,39,39,39,39
+Spleen,Spleen,23,Flight,HR,9,0,133,134,134,133.888888888889,134,134
+Spleen,Spleen,23,Flight,AEJ,9,0,9,9,9,9,9,9
+Spleen,Spleen,23,Flight,NHEJ,9,0,17,17,17,17,17,17
+Spleen,Spleen,23,Ground,BER,8,1,53,53,53,53,53,53
+Spleen,Spleen,23,Ground,NER,8,1,53,53,53,53,53,53
+Spleen,Spleen,23,Ground,MMR,8,1,27,27,27,27,27,27
+Spleen,Spleen,23,Ground,FA,8,1,39,39,39,39,39,39
+Spleen,Spleen,23,Ground,HR,8,1,133,133,134,133.625,134,134
+Spleen,Spleen,23,Ground,AEJ,8,1,9,9,9,9,9,9
+Spleen,Spleen,23,Ground,NHEJ,8,1,17,17,17,17,17,17
+Spleen-distal,Spleen-distal,24,Flight,BER,10,0,46,50.25,51,50.3,51.75,52
+Spleen-distal,Spleen-distal,24,Flight,NER,10,0,50,52,52,51.9,52,53
+Spleen-distal,Spleen-distal,24,Flight,MMR,10,0,25,25.25,26,25.7,26,26
+Spleen-distal,Spleen-distal,24,Flight,FA,10,0,31,35,36,36,38.5,39
+Spleen-distal,Spleen-distal,24,Flight,HR,10,0,113,120.25,124.5,123.9,129,131
+Spleen-distal,Spleen-distal,24,Flight,AEJ,10,0,8,8.25,9,8.7,9,9
+Spleen-distal,Spleen-distal,24,Flight,NHEJ,10,0,15,17,17,16.7,17,17
+Spleen-distal,Spleen-distal,24,Ground,BER,10,0,49,50,51,50.8,52,52
+Spleen-distal,Spleen-distal,24,Ground,NER,10,0,49,51.25,52,51.6,52,53
+Spleen-distal,Spleen-distal,24,Ground,MMR,10,0,25,25.25,26,25.7,26,26
+Spleen-distal,Spleen-distal,24,Ground,FA,10,0,30,36.25,38,36.6,38,39
+Spleen-distal,Spleen-distal,24,Ground,HR,10,0,115,123.25,125,124.3,127.75,131
+Spleen-distal,Spleen-distal,24,Ground,AEJ,10,0,8,9,9,8.9,9,9
+Spleen-distal,Spleen-distal,24,Ground,NHEJ,10,0,16,17,17,16.9,17,17
+Thymus,Thymus,25,Flight,BER,23,0,46,49,53,50.8260869565218,53,53
+Thymus,Thymus,25,Flight,NER,23,0,48,51.5,53,52.1739130434783,53,53
+Thymus,Thymus,25,Flight,MMR,23,0,22,25.5,26,25.8695652173913,27,27
+Thymus,Thymus,25,Flight,FA,23,0,31,34,39,36.6956521739131,39,39
+Thymus,Thymus,25,Flight,HR,23,0,114,122.5,132,128.04347826087,134,134
+Thymus,Thymus,25,Flight,AEJ,23,0,8,9,9,8.86956521739131,9,9
+Thymus,Thymus,25,Flight,NHEJ,23,0,16,17,17,17.0434782608696,17,18
+Thymus,Thymus,25,Ground,BER,25,1,49,51,53,52.04,53,53
+Thymus,Thymus,25,Ground,NER,25,1,51,53,53,52.6,53,53
+Thymus,Thymus,25,Ground,MMR,25,1,25,26,27,26.6,27,27
+Thymus,Thymus,25,Ground,FA,25,1,34,39,39,38.56,39,39
+Thymus,Thymus,25,Ground,HR,25,1,122,129,133,131.24,134,134
+Thymus,Thymus,25,Ground,AEJ,25,1,9,9,9,9,9,9
+Thymus,Thymus,25,Ground,NHEJ,25,1,17,17,17,17.28,18,18
+Tibialis anterior,Tibialis anterior,26,Flight,BER,9,0,52,53,53,52.7777777777778,53,53
+Tibialis anterior,Tibialis anterior,26,Flight,NER,9,0,53,53,53,53,53,53
+Tibialis anterior,Tibialis anterior,26,Flight,MMR,9,0,25,26,27,26.5555555555556,27,27
+Tibialis anterior,Tibialis anterior,26,Flight,FA,9,0,36,38,38,38,38,39
+Tibialis anterior,Tibialis anterior,26,Flight,HR,9,0,127,129,132,130.444444444444,132,133
+Tibialis anterior,Tibialis anterior,26,Flight,AEJ,9,0,9,9,9,9,9,9
+Tibialis anterior,Tibialis anterior,26,Flight,NHEJ,9,0,17,17,17,17,17,17
+Tibialis anterior,Tibialis anterior,26,Ground,BER,9,0,52,52,53,52.6666666666667,53,53
+Tibialis anterior,Tibialis anterior,26,Ground,NER,9,0,53,53,53,53,53,53
+Tibialis anterior,Tibialis anterior,26,Ground,MMR,9,0,25,26,27,26.5555555555556,27,27
+Tibialis anterior,Tibialis anterior,26,Ground,FA,9,0,37,37,38,37.8888888888889,39,39
+Tibialis anterior,Tibialis anterior,26,Ground,HR,9,0,128,129,129,129.666666666667,130,132
+Tibialis anterior,Tibialis anterior,26,Ground,AEJ,9,0,8,9,9,8.88888888888889,9,9
+Tibialis anterior,Tibialis anterior,26,Ground,NHEJ,9,0,17,17,17,17,17,17

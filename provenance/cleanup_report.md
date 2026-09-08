@@ -4,6 +4,13 @@ Baseline: `0cfd9d7` (744 tracked files, 387.00 MiB). The final publication
 entry point is `workflow/run_final_release.R`; selected outputs live only in
 `release/`. Git history is retained, not rewritten or purged.
 
+Final tracked package: **321 files, 106.07 MiB**, a **72.6% size reduction**
+from the baseline (excluding Git objects, the local Python environment and
+the recovery archive). Scripts/helpers/tests decreased from 35 to 19 files.
+The clean-directory build and subsequent independent validation both passed:
+`FINAL_RELEASE_BUILD_PASS` and `FINAL_RELEASE_CONTRACT_PASS`.
+The complete output SHA-256 manifest and all gallery links were verified.
+
 ## Removed from the working release
 
 - Alternative Style A/C render pipelines, their validators and result copies.
