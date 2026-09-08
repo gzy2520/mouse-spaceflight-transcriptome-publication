@@ -57,28 +57,6 @@ theme_style_C <- function(base_size = 9, base_family = STYLE_C_FONT) {
     )
 }
 
-scale_style_C_signed <- function(limits = NULL, name = "Effect") {
-  scale_fill_gradient2(
-    low = STYLE_C_COLOURS$blue,
-    mid = STYLE_C_COLOURS$white,
-    high = STYLE_C_COLOURS$red,
-    midpoint = 0,
-    limits = limits,
-    oob = scales::squish,
-    name = name
-  )
-}
-
-scale_style_C_expression <- function(limits = NULL, name = "Expression") {
-  scale_fill_gradientn(
-    colours = c(STYLE_C_COLOURS$blue_dark, STYLE_C_COLOURS$teal,
-                "#F1E2B5", STYLE_C_COLOURS$gold),
-    limits = limits,
-    oob = scales::squish,
-    name = name
-  )
-}
-
 save_style_C <- function(plot, out_dir, relative_stem, width, height, dpi = 600) {
   png_path <- file.path(out_dir, paste0(relative_stem, ".png"))
   pdf_path <- file.path(out_dir, paste0(relative_stem, ".pdf"))
@@ -92,29 +70,6 @@ save_style_C <- function(plot, out_dir, relative_stem, width, height, dpi = 600)
     device = grDevices::cairo_pdf, bg = "white", limitsize = FALSE
   )
   invisible(c(png = png_path, pdf = pdf_path))
-}
-
-save_style_C_base <- function(plot, out_dir, relative_stem, width, height, dpi = 600) {
-  save_style_C(plot, out_dir, relative_stem, width, height, dpi)
-}
-
-short_tissue_name <- function(x) {
-  x <- as.character(x)
-  x[x == "Heart / Heart right ventricle"] <- "Heart right ventricle"
-  x
-}
-
-short_go_label <- function(term_name, go_id) {
-  overrides <- c(
-    "Signal transduction in response to DNA damage" = "DNA-damage signal transduction",
-    "Telomere maintenance in response to DNA damage" = "Telomere maintenance",
-    "Chromosome, telomeric region" = "Telomeric chromosome region",
-    "DNA-templated transcription" = "DNA-templated transcription",
-    "Sensory perception of mechanical stimulus" = "Mechanical stimulus perception"
-  )
-  label <- ifelse(term_name %in% names(overrides), unname(overrides[term_name]), term_name)
-  label <- ifelse(nchar(label) > 34L, paste0(substr(label, 1L, 31L), "…"), label)
-  paste0(label, "\n", go_id)
 }
 
 message("C-story figure helpers loaded")

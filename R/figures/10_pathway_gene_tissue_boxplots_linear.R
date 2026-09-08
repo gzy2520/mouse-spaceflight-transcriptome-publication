@@ -33,9 +33,9 @@ if (length(script_arg)) {
   repo_root <- getwd()
 }
 
-out_dir <- file.path(repo_root, "results/pathway_gene_tissue_boxplots_linear")
-fig_dir <- file.path(out_dir, "figures")
-tbl_dir <- file.path(out_dir, "tables")
+out_dir <- normalizePath(Sys.getenv("PUBLICATION_OUTPUT_DIR"), mustWork = TRUE)
+fig_dir <- file.path(out_dir, "Main")
+tbl_dir <- file.path(out_dir, "tables/linear")
 dir.create(fig_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(tbl_dir, recursive = TRUE, showWarnings = FALSE)
 
@@ -55,10 +55,6 @@ format_sci <- function(p) {
 
 # Input data paths
 qsmooth_path <- file.path(repo_root, "data/publication_input/qsmooth/06_component_flight_sample_yarn_qsmooth_values.csv.gz")
-upstream_fallback <- "/Users/gzy2520/Desktop/graduate design/03_analysis_results/22_essential_components_yarn_qsmooth_no_Neil2_attached_row_dendrogram_20260828/tables/06_component_flight_sample_yarn_qsmooth_values.csv.gz"
-if (!file.exists(qsmooth_path) && file.exists(upstream_fallback)) {
-  qsmooth_path <- upstream_fallback
-}
 go_path <- file.path(repo_root, "data/publication_input/go/04_tissue_statistics_concrete_terms_and_context.csv")
 
 if (!file.exists(qsmooth_path)) stop("Missing qsmooth sample table: ", qsmooth_path, call. = FALSE)
@@ -271,7 +267,8 @@ for (pw_name in names(pathway_defs)) {
   gene_symbols <- names(gene_ids)
   
   sub_dt <- dt[EnsemblID %in% gene_ids]
-  sub_dt[, Gene := factor(OfficialMouseSymbol, levels = gene_symbols)]
+  stopifnot(setequal(unique(sub_dt$EnsemblID), unname(gene_ids)))
+  sub_dt[, Gene := factor(names(gene_ids)[match(EnsemblID, gene_ids)], levels = gene_symbols)]
   sub_dt[, Group := factor(Group, levels = tissue_order)]
   sub_dt[, Pathway := pw_name]
   
@@ -288,14 +285,14 @@ for (pw_name in names(pathway_defs)) {
     ymin <- max(min(valid_vals), q[1] - 1.5 * iqr)
     ymax <- min(max(valid_vals), q[2] + 1.5 * iqr)
     .(ymin = ymin, lower = q[1], middle = m, upper = q[2], ymax = ymax, SD = sd_val, N = n_mice)
-  }, by = .(Group, Gene)]
+  }, by = .(Group, EnsemblID, Gene)]
   
-  summary_mean_list[[pw_name]] <- box_stats[, .(Pathway = pw_name, Group, Gene, Mean = middle, SD, Q1 = lower, Q3 = upper, Ymin = ymin, Ymax = ymax, N)]
+  summary_mean_list[[pw_name]] <- box_stats[, .(Pathway = pw_name, Group, EnsemblID, Gene, Mean = middle, SD, Q1 = lower, Q3 = upper, Ymin = ymin, Ymax = ymax, N)]
   
   # One-way ANOVA per gene on linear values
   gene_p_strs <- character()
   for (sym in gene_symbols) {
-    g_data <- sub_dt[Gene == sym & !is.na(YARNLinear)]
+    g_data <- sub_dt[EnsemblID == gene_ids[[sym]] & !is.na(YARNLinear)]
     fit_g <- aov(YARNLinear ~ Group, data = g_data)
     s_g <- summary(fit_g)[[1]]
     f_g <- s_g["Group", "F value"]
@@ -428,7 +425,6 @@ for (pw_name in names(pathway_defs)) {
     )
   
   # File export (PNG and PDF)
-  safe_name <- gsub("[^A-Za-z0-9_]", "-", pw_name)
   panel_id <- pw_info$fig_panel
   
   # 1. Output to results figures
@@ -436,37 +432,6 @@ for (pw_name in names(pathway_defs)) {
   pdf_file <- file.path(fig_dir, sprintf("%s.pdf", panel_id))
   ggsave(png_file, p, width = 18, height = 8.5, dpi = 300, bg = "white")
   ggsave(pdf_file, p, width = 18, height = 8.5, device = grDevices::cairo_pdf, bg = "white")
-  
-  # Also write descriptive names in results
-  file.copy(png_file, file.path(fig_dir, sprintf("%s_%s_tissue_boxplot_linear.png", panel_id, safe_name)), overwrite = TRUE)
-  file.copy(pdf_file, file.path(fig_dir, sprintf("%s_%s_tissue_boxplot_linear.pdf", panel_id, safe_name)), overwrite = TRUE)
-  file.copy(png_file, file.path(fig_dir, sprintf("Fig_%s_tissue_boxplot_linear.png", safe_name)), overwrite = TRUE)
-  file.copy(pdf_file, file.path(fig_dir, sprintf("Fig_%s_tissue_boxplot_linear.pdf", safe_name)), overwrite = TRUE)
-  
-  # 2. Sync to final_figures_acceptance_20260906/01_Main_Figures
-  accept_main_dir <- file.path(repo_root, "final_figures_acceptance_20260906/01_Main_Figures")
-  if (dir.exists(accept_main_dir)) {
-    file.copy(png_file, file.path(accept_main_dir, sprintf("%s.png", panel_id)), overwrite = TRUE)
-    file.copy(pdf_file, file.path(accept_main_dir, sprintf("%s.pdf", panel_id)), overwrite = TRUE)
-  }
-  
-  # 3. Sync to final_figures_acceptance_20260906/03_Pathway_Tissue_Boxplots_Linear
-  accept_linear_dir <- file.path(repo_root, "final_figures_acceptance_20260906/03_Pathway_Tissue_Boxplots_Linear")
-  if (dir.exists(accept_linear_dir)) {
-    file.copy(png_file, file.path(accept_linear_dir, sprintf("%s.png", panel_id)), overwrite = TRUE)
-    file.copy(pdf_file, file.path(accept_linear_dir, sprintf("%s.pdf", panel_id)), overwrite = TRUE)
-    file.copy(png_file, file.path(accept_linear_dir, sprintf("%s_%s_tissue_boxplot_linear.png", panel_id, safe_name)), overwrite = TRUE)
-    file.copy(pdf_file, file.path(accept_linear_dir, sprintf("%s_%s_tissue_boxplot_linear.pdf", panel_id, safe_name)), overwrite = TRUE)
-    file.copy(png_file, file.path(accept_linear_dir, sprintf("Fig_%s_tissue_boxplot_linear.png", safe_name)), overwrite = TRUE)
-    file.copy(pdf_file, file.path(accept_linear_dir, sprintf("Fig_%s_tissue_boxplot_linear.pdf", safe_name)), overwrite = TRUE)
-  }
-  
-  # 4. Sync to final_result_integrated_20260905/Main
-  integrated_main_dir <- file.path(repo_root, "final_result_integrated_20260905/Main")
-  if (dir.exists(integrated_main_dir)) {
-    file.copy(png_file, file.path(integrated_main_dir, sprintf("%s.png", panel_id)), overwrite = TRUE)
-    file.copy(pdf_file, file.path(integrated_main_dir, sprintf("%s.pdf", panel_id)), overwrite = TRUE)
-  }
   
   message("Generated ", panel_id, " (", pw_name, "): ", png_file)
 }
@@ -481,9 +446,5 @@ fwrite(anova_pw_dt, file.path(tbl_dir, "01_pathway_one_way_anova_linear_summary.
 fwrite(anova_gene_dt, file.path(tbl_dir, "02_gene_one_way_anova_linear_summary.csv"))
 fwrite(summary_mean_dt, file.path(tbl_dir, "03_tissue_gene_mean_linear_qsmooth_summary.csv"))
 fwrite(used_data_dt, file.path(tbl_dir, "04_sample_linear_qsmooth_values_used.csv.gz"))
-
-# Clean up prototype if present
-proto_file <- file.path(fig_dir, "prototype_HR_linear.png")
-if (file.exists(proto_file)) file.remove(proto_file)
 
 message("All 7 linear pathway figures and tables successfully generated under: ", out_dir)

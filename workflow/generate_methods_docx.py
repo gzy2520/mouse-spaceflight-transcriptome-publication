@@ -294,13 +294,13 @@ def build_docx(output_path):
         "To examine shared and tissue-specific responsive elements within the core DDR machinery (GO:0006974), overlapping DEG repertoires "
         "were evaluated across multi-dataset organs, specifically Thymus (4 flight comparisons, Figure 3a) and Kidney (5 independent OSDR datasets, "
         "Supplementary Figure S2a) using ggVennDiagram. Organ-wide intersection topology across NES > 1 tissues (excluding Kidney, Supplementary Figure S3a) "
-        "and NES < -1 tissues (excluding Lung and Thymus, Supplementary Figure S4a) was resolved using UpSet intersection geometry (R/figures/06_go_upsets.R).",
+        "and NES < -1 tissues (excluding Lung and Thymus, Supplementary Figure S4a) was resolved using UpSet intersection geometry (R/final_figures/04_upset_membership.R).",
         bold_prefix="Repertoire Overlap and UpSet Topology: "
     )
     
     add_body_p(
         "To prioritize core genes demonstrating conserved responsiveness independent of mission idiosyncrasies, common-direction filtering "
-        "was executed (python/plot_common_direction_heatmaps.py; Figure 3b, Supplementary Figure S2b, S3b, S4b). Candidate DEGs were required to demonstrate "
+        "was executed (python/render_final_common_direction.py; Figure 3b, Supplementary Figure S2b, S3b, S4b). Candidate DEGs were required to demonstrate "
         "uniform directional concordance (all log2FC > 0 or all log2FC < 0) across all parallel dataset comparisons at nominal P < 0.05 (or P < 0.10 for global "
         "NES-stratified cohorts). Qualifying genes were ranked by their minimum absolute fold change across comparisons:\n"
         "        Score_g = min_c |log2FC_{g, c}|\n"
@@ -432,29 +432,29 @@ def build_docx(output_path):
     
     table_data = [
         ["Figure / Table", "Analytical Scope", "Input Cohort / Sample Size", "Statistical Model / Algorithm", "Source Script"],
-        ["Fig. 1b / Fig. 6", "Experimental Design Atlas", "761 samples, 48 accessions, 26 tissues", "Stratified categorical bubble matrix (15 discrete age colors)", "R/figures/08_mouse_metadata_bubble.R"],
-        ["Fig. 1c", "Cross-Tissue GO Profiling", "26 tissues × 15 GO biological terms", "Mission-equal unweighted mean NES, exact sign-flip P", "R/figures/01_go_overview.R"],
+        ["Fig. 1b / Fig. 6", "Experimental Design Atlas", "761 samples, 48 accessions, 26 tissues", "Stratified categorical bubble matrix (15 discrete age colors)", "R/final_figures/02_fig1b_metadata_bubble.R"],
+        ["Fig. 1c", "Cross-Tissue GO Profiling", "26 tissues × 15 GO biological terms", "Mission-equal unweighted mean NES, exact sign-flip P", "R/final_figures/03_fig1c_fig2_go.R"],
         ["Fig. 2", "Cross-Tissue Co-Regulation", "23 eligible tissues (n_flight ≥ 5)", "Sample-level log2FC, intra-tissue Spearman ρ, Fisher-z pooling", "python/plot_log2fc_per_tissue_pathway_spearman_20260902.py"],
-        ["Fig. 3a", "Thymus Repertoire Overlap", "Thymus (4 flight comparisons)", "Set intersection membership, ggVennDiagram", "R/figures/03_kidney_thymus_venn.R"],
-        ["Fig. 3b", "Thymus Common-Direction DEGs", "Thymus (4 flight comparisons)", "Concordant directionality, ranked by min |log2FC|", "python/plot_common_direction_heatmaps.py"],
-        ["Fig. 4a", "DSB Baseline Clustering", "26 tissues, 29 DSB components", "YARN qsmooth baseline, 1 - Spearman ρ, average linkage", "R/figures/04_qsmooth_tree_heatmaps.R"],
+        ["Fig. 3a", "Thymus Repertoire Overlap", "Thymus (4 flight comparisons)", "Set intersection membership, ggVennDiagram", "R/final_figures/04_upset_membership.R"],
+        ["Fig. 3b", "Thymus Common-Direction DEGs", "Thymus (4 flight comparisons)", "Concordant directionality, ranked by min |log2FC|", "python/render_final_common_direction.py"],
+        ["Fig. 4a", "DSB Baseline Clustering", "26 tissues, 29 DSB components", "YARN qsmooth baseline, 1 - Spearman ρ, average linkage", "R/final_figures/05_expression_tree_heatmaps.R"],
         ["Fig. 4b", "NHEJ Linear Boxplot", "360 flight mice × 4 genes (26 tissues)", "Linear scale 2^log2 - 1, Mean hinge, Gene & Pathway ANOVA", "R/figures/10_pathway_gene_tissue_boxplots_linear.R"],
         ["Fig. 4c", "HR Linear Boxplot", "360 flight mice × 4 genes (26 tissues)", "Linear scale 2^log2 - 1, Mean hinge, Gene & Pathway ANOVA", "R/figures/10_pathway_gene_tissue_boxplots_linear.R"],
         ["Fig. 4d", "A-EJ Linear Boxplot", "360 flight mice × 4 genes (26 tissues)", "Linear scale 2^log2 - 1, Mean hinge, Gene & Pathway ANOVA", "R/figures/10_pathway_gene_tissue_boxplots_linear.R"],
-        ["Fig. 4e", "DSB Spaceflight Meta-Analysis", "26 tissues × 29 DSB components", "Median of mission medians log2FC, signed Stouffer meta-Z", "R/figures/05_meta_log2fc_heatmaps.R"],
-        ["Fig. 5a", "SSB Baseline Clustering", "26 tissues, 45 SSB components", "YARN qsmooth baseline (Neil2 excluded), 1 - ρ, average linkage", "R/figures/04_qsmooth_tree_heatmaps.R"],
+        ["Fig. 4e", "DSB Spaceflight Meta-Analysis", "26 tissues × 29 DSB components", "Median of mission medians log2FC, signed Stouffer meta-Z", "R/final_figures/06_meta_dotplots.R"],
+        ["Fig. 5a", "SSB Baseline Clustering", "26 tissues, 45 SSB components", "YARN qsmooth baseline (Neil2 excluded), 1 - ρ, average linkage", "R/final_figures/05_expression_tree_heatmaps.R"],
         ["Fig. 5b", "BER Linear Boxplot", "360 flight mice × 3 genes (26 tissues)", "Linear scale 2^log2 - 1, Mean hinge, Gene & Pathway ANOVA", "R/figures/10_pathway_gene_tissue_boxplots_linear.R"],
         ["Fig. 5c", "NER Linear Boxplot", "360 flight mice × 7 genes (26 tissues)", "Linear scale 2^log2 - 1, Glyphic coding, Gene & Pathway ANOVA", "R/figures/10_pathway_gene_tissue_boxplots_linear.R"],
         ["Fig. 5d", "MMR Linear Boxplot", "360 flight mice × 2 genes (26 tissues)", "Linear scale 2^log2 - 1, Mean hinge, Gene & Pathway ANOVA", "R/figures/10_pathway_gene_tissue_boxplots_linear.R"],
         ["Fig. 5e", "FA Linear Boxplot", "360 flight mice × 2 genes (26 tissues)", "Linear scale 2^log2 - 1, Mean hinge, Gene & Pathway ANOVA", "R/figures/10_pathway_gene_tissue_boxplots_linear.R"],
-        ["Fig. 5f", "SSB Spaceflight Meta-Analysis", "26 tissues × 45 SSB components", "Median of mission medians log2FC, signed Stouffer meta-Z", "R/figures/05_meta_log2fc_heatmaps.R"],
+        ["Fig. 5f", "SSB Spaceflight Meta-Analysis", "26 tissues × 45 SSB components", "Median of mission medians log2FC, signed Stouffer meta-Z", "R/final_figures/06_meta_dotplots.R"],
         ["Fig. S1", "Hallmark GSEA Overview", "13 missions with complete coverage", "Top 12 global Hallmark terms (6 positive, 6 negative NES)", "R/figures/02_hallmark_gsea.R"],
-        ["Fig. S2a / S2b", "Kidney Overlap & Common-Dir", "Kidney (5 OSDR accessions)", "Venn intersection & common-direction top 30 DEGs", "R/figures/03_kidney_thymus_venn.R"],
-        ["Fig. S3a / S3b", "NES > 1 UpSet & Common-Dir", "NES > 1 tissues (excl. Kidney)", "UpSet binary membership & common-direction top 30", "R/figures/06_go_upsets.R"],
-        ["Fig. S4a / S4b", "NES < -1 UpSet & Common-Dir", "NES < -1 tissues (excl. Lung/Thymus)", "UpSet binary membership & common-direction top 30", "R/figures/06_go_upsets.R"],
-        ["Fig. S5", "Pathway Gene Coverage", "761 samples × 7 pathways (335 genes)", "Per-sample member gene library detection tracking", "R/figures/07_seven_pathway_counts.R"],
+        ["Fig. S2a / S2b", "Kidney Overlap & Common-Dir", "Kidney (5 OSDR accessions)", "Venn intersection & common-direction top 30 DEGs", "R/final_figures/04_upset_membership.R"],
+        ["Fig. S3a / S3b", "NES > 1 UpSet & Common-Dir", "NES > 1 tissues (excl. Kidney)", "UpSet binary membership & common-direction top 30", "R/final_figures/04_upset_membership.R"],
+        ["Fig. S4a / S4b", "NES < -1 UpSet & Common-Dir", "NES < -1 tissues (excl. Lung/Thymus)", "UpSet binary membership & common-direction top 30", "R/final_figures/04_upset_membership.R"],
+        ["Fig. S5", "Pathway Gene Coverage", "761 samples × 7 pathways (335 genes)", "Per-sample member gene library detection tracking", "R/final_figures/07_figS5_counts.R"],
         ["Fig. S6", "Per-Tissue Co-Regulation", "26 individual tissue matrices", "Sample-level 15 × 15 Spearman rank correlation matrices", "python/plot_log2fc_per_tissue_pathway_spearman_20260902.py"],
-        ["Tables 01–04", "Statistical Audit Tables", "9,360 sample observations, 26 tissues", "Pathway ANOVA, Gene ANOVA, Tissue Means, Sample Linear Values", "results/pathway_gene_tissue_boxplots_linear/tables/"]
+        ["Tables 01–04", "Statistical Audit Tables", "9,360 sample observations, 26 tissues", "Pathway ANOVA, Gene ANOVA, Tissue Means, Sample Linear Values", "release/tables/linear/"]
     ]
     
     table = doc.add_table(rows=len(table_data), cols=5)
@@ -510,6 +510,4 @@ def build_docx(output_path):
 if __name__ == "__main__":
     repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     out1 = os.path.join(repo_root, "manuscript_methods_mouse_spaceflight_transcriptome.docx")
-    out2 = os.path.join(repo_root, "final_figures_acceptance_20260906/05_Statistical_Tables_and_Audits/manuscript_methods_mouse_spaceflight_transcriptome.docx")
     build_docx(out1)
-    build_docx(out2)

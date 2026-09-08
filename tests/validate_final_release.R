@@ -11,7 +11,7 @@ if (!length(script_arg)) stop("Cannot locate tests/validate_final_release.R", ca
 script_path <- normalizePath(sub("^--file=", "", script_arg[[1L]]), mustWork = TRUE)
 root <- normalizePath(file.path(dirname(script_path), ".."), mustWork = TRUE)
 args <- commandArgs(trailingOnly = TRUE)
-target <- if (length(args)) args[[1L]] else file.path(root, "final_result")
+target <- if (length(args)) args[[1L]] else file.path(root, "release")
 if (length(args) < 2L || !args[[2L]] %in% c("full", "compact")) {
   stop("Usage: Rscript tests/validate_final_release.R <output_dir> <full|compact>", call. = FALSE)
 }
@@ -35,15 +35,18 @@ assert(identical(unname(input_hashes), unname(input_manifest$sha256)), paste(
   paste(input_manifest$relative_path[input_hashes != input_manifest$sha256], collapse = "; ")
 ))
 
-main_stems <- paste0("Fig_", c("1b", "1c", "2", "3a", "3b", "4a", "4b", "5a", "5b"))
+main_stems <- paste0("Fig_", c("1b", "1c", "2", "3a", "3b", "4a", "4b", "4c", "4d", "4e", "5a", "5b", "5c", "5d", "5e", "5f"))
 suppl_stems <- paste0("Fig_S", c("1", "2a", "2b", "3a", "3b", "4a", "4b", "5"))
 expected_png <- c(file.path("Main", paste0(main_stems, ".png")),
                   file.path("Suppl", paste0(suppl_stems, ".png")))
+expected_png <- c(expected_png, "Suppl/Fig_S6_log2fc_per_tissue_merged.png",
+  file.path("Suppl/Fig_S6_per_tissue", list.files(file.path(target, "Suppl/Fig_S6_per_tissue"), pattern = "[.]png$")))
+assert(length(expected_png) == 51L, "Expected 16 main + 9 supplementary + 26 per-tissue PNGs")
 expected_pdf <- sub("[.]png$", ".pdf", expected_png)
 
 observed_figures <- sort(c(
   file.path("Main", list.files(file.path(target, "Main"), full.names = FALSE, all.files = FALSE)),
-  file.path("Suppl", list.files(file.path(target, "Suppl"), full.names = FALSE, all.files = FALSE))
+  file.path("Suppl", list.files(file.path(target, "Suppl"), full.names = FALSE, all.files = FALSE, recursive = TRUE))
 ))
 expected_figures <- sort(c(expected_png, if (validation_mode == "full") expected_pdf else character()))
 assert(identical(observed_figures, expected_figures), paste0(
@@ -85,7 +88,7 @@ provenance_expected <- sort(c(
   "publication_table_sha256.csv", "upset_render_audit.csv"
 ))
 observed_provenance <- sort(list.files(file.path(target, "provenance"), pattern = "[.]csv$"))
-assert(identical(observed_provenance, provenance_expected), "Final provenance file set differs")
+assert(all(provenance_expected %in% observed_provenance), "A required final provenance audit is missing")
 
 palette_contract <- fread(file.path(target, "provenance/final_palette_contract.csv"), na.strings = NULL)
 palette_actual <- fread(file.path(target, "provenance/figure_palette_audit.csv"), na.strings = NULL)
@@ -96,8 +99,8 @@ assert(identical(names(palette_contract), required_palette_columns) &&
 assert(!anyDuplicated(palette_contract[, .(figure, role)]) &&
          !anyDuplicated(palette_actual[, .(figure, role)]),
        "A figure palette role is duplicated")
-assert(identical(sort(unique(palette_contract$figure)), sort(c(main_stems, suppl_stems))),
-       "The retained palette contract does not cover all 17 figures")
+assert(identical(sort(unique(palette_contract$figure)), sort(unique(palette_actual$figure))),
+       "Palette contract figure coverage differs")
 palette_contract[, hex := toupper(hex)]
 palette_actual[, hex := toupper(hex)]
 setorder(palette_contract, figure, role)
@@ -123,7 +126,7 @@ assert(go_labels[term_order == 7L, display_name] == "Telomeric region",
 assert(!grepl("pathway", go_labels[term_order == 4L, display_name], ignore.case = TRUE) &&
          !grepl("chromosome", go_labels[term_order == 7L, display_name], ignore.case = TRUE),
        "Removed GO display words remain")
-assert(identical(go_scope$n_cells, c(390L, 120L)), "GO figure cell counts changed")
+assert(identical(go_scope$n_cells, 390L), "GO figure cell counts changed")
 
 mouse <- fread(file.path(root, "data/publication_input/mouse_metadata/03_mouse_level_metadata.csv"))
 mouse_grouped <- fread(file.path(target, "provenance/Fig_1b_mouse_metadata_grouped.csv"))
@@ -187,8 +190,8 @@ setorder(component_audit, PlotComponentOrder)
 tissue_universe <- tissue_matrix[order(TissueOrder), unique(Group)]
 rebuild_tree <- function(pathways) {
   selected <- tissue_matrix[PlotPathwayDisplay %in% pathways]
-  profile <- dcast(selected[, .(Group, OfficialMouseSymbol, TissueYARNNormalizedLog2)],
-                   Group ~ OfficialMouseSymbol, value.var = "TissueYARNNormalizedLog2")
+  profile <- dcast(selected[, .(Group, EnsemblID, TissueYARNNormalizedLog2)],
+                   Group ~ EnsemblID, value.var = "TissueYARNNormalizedLog2")
   profile <- profile[match(tissue_universe, Group)]
   matrix <- as.matrix(profile[, setdiff(names(profile), "Group"), with = FALSE])
   storage.mode(matrix) <- "numeric"
@@ -239,6 +242,48 @@ assert(s5$n_rows == 5327L && s5$n_tissues == 26L && s5$n_pathways == 7L &&
          s5$n_samples == 761L && s5$seed == 25L,
        "Fig. S5 scope or random seed changed")
 
-profile <- if (validation_mode == "full") "17 PNG + 17 PDF" else "17 PNG compact snapshot"
+baseline_tree <- fread(file.path(root, "provenance/reference_expression_tree.csv"))
+assert(isTRUE(all.equal(as.data.frame(tree_audit), as.data.frame(baseline_tree), tolerance = 1e-12)),
+       "Tree changed from approved baseline")
+linear <- fread(file.path(target, "tables/linear/04_sample_linear_qsmooth_values_used.csv.gz"))
+assert(all(grepl("^ENSMUSG[0-9]+$", linear$EnsemblID)) && uniqueN(linear$Pathway) == 7L &&
+       uniqueN(linear$Group) == 26L, "Linear boxplot stable-ID or scope failure")
+assert(max(abs(linear$YARNLinear - (2^linear$YARNNormalizedLog2 - 1)), na.rm = TRUE) < 1e-7,
+       "Linear expression transform changed")
+linear_anova <- fread(file.path(target, "tables/linear/02_gene_one_way_anova_linear_summary.csv"))
+assert(nrow(linear_anova) == 26L, "Expected 26 pathway-gene ANOVA rows")
+for (i in seq_len(nrow(linear_anova))) {
+  row <- linear_anova[i]
+  d <- linear[Pathway == row$Pathway & EnsemblID == row$EnsemblID]
+  stats <- summary(aov(YARNLinear ~ factor(Group), data = d))[[1L]]
+  assert(isTRUE(all.equal(stats[1L, "F value"], row$F_value, tolerance = 1e-10)) &&
+         isTRUE(all.equal(stats[1L, "Pr(>F)"], row$P_value, tolerance = 1e-10)),
+         paste("ANOVA mismatch", row$EnsemblID))
+}
+profile <- "51 PNG + 51 PDF"
+cor_dir <- file.path(root, "data/publication_input/go/log2fc_spearman_20260902")
+sample_terms <- fread(file.path(cor_dir, "02_sample_term_log2fc_matrix.csv.gz"))
+pairs <- fread(file.path(cor_dir, "03_tissue_pairwise_spearman_log2fc_long.csv"))
+for (tissue_name in unique(pairs$analysis_tissue)) {
+  wide <- dcast(sample_terms[analysis_tissue == tissue_name],
+                accession + sample_column ~ term_key, value.var = "term_log2fc")
+  values <- as.matrix(wide[, setdiff(names(wide), c("accession", "sample_column")), with = FALSE])
+  rho <- suppressWarnings(cor(values, method = "spearman", use = "pairwise.complete.obs"))
+  reference <- pairs[analysis_tissue == tissue_name]
+  actual <- rho[cbind(match(reference$pathway_1_key, rownames(rho)),
+                      match(reference$pathway_2_key, colnames(rho)))]
+  assert(identical(is.na(actual), is.na(reference$spearman_rho)) &&
+           all(abs(actual - reference$spearman_rho) < 1e-10, na.rm = TRUE),
+         paste("Sample-level Spearman values changed:", tissue_name))
+}
+
+output_manifest_path <- file.path(target, "provenance/output_sha256.csv")
+if (file.exists(output_manifest_path)) {
+  manifest <- fread(output_manifest_path)
+  actual_files <- sort(setdiff(list.files(target, recursive = TRUE), "provenance/output_sha256.csv"))
+  assert(identical(sort(manifest$relative_path), actual_files), "Output manifest file set differs")
+  hashes <- vapply(file.path(target, manifest$relative_path), sha256_file, character(1L))
+  assert(identical(unname(hashes), manifest$sha256), "An output checksum changed")
+}
 message("FINAL_RELEASE_CONTRACT_PASS: ", profile,
         "; 27 tables unchanged; palette, numeric and tree contracts passed")

@@ -22,21 +22,12 @@ assert(nrow(component_audit) == 74L, "Expected 74 Neil2-excluded components")
 assert(nrow(tissue_matrix) == 26L * 74L && all(is.finite(tissue_matrix$TissueYARNNormalizedLog2)),
        "Invalid 26 x 74 YARN matrix")
 
-tissue_labels <- c(
-  "Adrenal gland" = "肾上腺", "Bone marrow" = "骨髓", "Cecum" = "盲肠", "Cerebellum" = "小脑",
-  "Colon" = "结肠", "Dorsal skin" = "背部皮肤", "Extensor digitorum longus" = "趾长伸肌", "Eye" = "眼",
-  "Femoral lateral skin" = "股外侧皮肤", "Femoral skin" = "股部皮肤", "Gastrocnemius" = "腓肠肌",
-  "Heart" = "心脏", "Heart / Heart right ventricle" = "右心室", "Kidney" = "肾脏",
-  "Left lobe of the liver" = "肝左叶", "Liver" = "肝脏", "Lung" = "肺", "Mammary gland" = "乳腺",
-  "Optic nerve" = "视神经", "Quadriceps femoris" = "股四头肌", "Retina" = "视网膜", "Soleus" = "比目鱼肌",
-  "Spleen" = "脾脏", "Spleen-distal" = "脾脏（远端）", "Thymus" = "胸腺", "Tibialis anterior" = "胫骨前肌"
-)
 tissue_universe <- tissue_matrix[order(TissueOrder), unique(Group)]
 
 spearman_cluster <- function(plot_data, figure_name) {
   profile <- dcast(
-    plot_data[, .(Group, OfficialMouseSymbol, TissueYARNNormalizedLog2)],
-    Group ~ OfficialMouseSymbol, value.var = "TissueYARNNormalizedLog2"
+    plot_data[, .(Group, EnsemblID, TissueYARNNormalizedLog2)],
+    Group ~ EnsemblID, value.var = "TissueYARNNormalizedLog2"
   )
   profile <- profile[match(tissue_universe, Group)]
   component_columns <- setdiff(names(profile), "Group")

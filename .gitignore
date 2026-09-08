@@ -11,3 +11,6 @@ reproduced_results/
 work/
 tmp/
 data/.cache/
+
+# Rebuild destinations; the selected release/ is versioned.
+reproduced_final_result*/

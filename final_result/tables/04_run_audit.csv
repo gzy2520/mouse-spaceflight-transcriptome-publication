@@ -1,2 +1,0 @@
-﻿component_count,tissue_count,cell_count,excluded_component,excluded_ensembl_id,display_rule,common_symmetric_fc_limit,png,pdf
-45,26,1170,Neil2,ENSMUSG00000035121,unadjusted tissue_meta_p < 0.05,1.04256918298094,figures/Fig_5b_SSB_essential_components_tissue_meta_log2FC_P_lt_0.05_without_Neil2.png,figures/Fig_5b_SSB_essential_components_tissue_meta_log2FC_P_lt_0.05_without_Neil2.pdf
