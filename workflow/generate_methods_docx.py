@@ -188,8 +188,9 @@ def build_docx(output_path):
     
     add_body_p(
         "Biological and study metadata were programmatically curated from the NASA OSDR RESTful API and ISA-Tab archive files. "
-        "The finalized analytical dataset encompasses 360 spaceflight biospecimens and 401 ground control records (including vivarium and "
-        "ground-centrifuge controls). To capture mission-specific environmental dynamics across spaceflight missions, the cohort comprises "
+        "The finalized analytical dataset encompasses 360 spaceflight biospecimens and 401 ground control records "
+        "(comprising flight-matched habitat ground controls and vivarium controls). To capture mission-specific environmental dynamics "
+        "across spaceflight missions, the cohort comprises "
         "13 distinct mission-level comparisons across 12 mission clusters (retaining SpaceX-8 and SpaceX-9 comparisons within OSD-162 as separate "
         "analytical units). Crucial biological attributes, including anatomical tissue (26 distinct tissues), biological sex (paired male and "
         "female cohorts), chronological age (15 discrete age brackets), and technical replicate designations, were harmonized into an audited reference "
