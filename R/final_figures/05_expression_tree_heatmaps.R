@@ -22,21 +22,12 @@ assert(nrow(component_audit) == 74L, "Expected 74 Neil2-excluded components")
 assert(nrow(tissue_matrix) == 26L * 74L && all(is.finite(tissue_matrix$TissueYARNNormalizedLog2)),
        "Invalid 26 x 74 YARN matrix")
 
-tissue_labels <- c(
-  "Adrenal gland" = "肾上腺", "Bone marrow" = "骨髓", "Cecum" = "盲肠", "Cerebellum" = "小脑",
-  "Colon" = "结肠", "Dorsal skin" = "背部皮肤", "Extensor digitorum longus" = "趾长伸肌", "Eye" = "眼",
-  "Femoral lateral skin" = "股外侧皮肤", "Femoral skin" = "股部皮肤", "Gastrocnemius" = "腓肠肌",
-  "Heart" = "心脏", "Heart / Heart right ventricle" = "右心室", "Kidney" = "肾脏",
-  "Left lobe of the liver" = "肝左叶", "Liver" = "肝脏", "Lung" = "肺", "Mammary gland" = "乳腺",
-  "Optic nerve" = "视神经", "Quadriceps femoris" = "股四头肌", "Retina" = "视网膜", "Soleus" = "比目鱼肌",
-  "Spleen" = "脾脏", "Spleen-distal" = "脾脏（远端）", "Thymus" = "胸腺", "Tibialis anterior" = "胫骨前肌"
-)
 tissue_universe <- tissue_matrix[order(TissueOrder), unique(Group)]
 
 spearman_cluster <- function(plot_data, figure_name) {
   profile <- dcast(
-    plot_data[, .(Group, OfficialMouseSymbol, TissueYARNNormalizedLog2)],
-    Group ~ OfficialMouseSymbol, value.var = "TissueYARNNormalizedLog2"
+    plot_data[, .(Group, EnsemblID, TissueYARNNormalizedLog2)],
+    Group ~ EnsemblID, value.var = "TissueYARNNormalizedLog2"
   )
   profile <- profile[match(tissue_universe, Group)]
   component_columns <- setdiff(names(profile), "Group")
@@ -135,16 +126,8 @@ make_heatmap_plot <- function(plot_data, ordered_tissues) {
     PlotPathwayDisplay, levels = c("NHEJ", "HR", "HR–A-EJ", "A-EJ", "BER", "NER", "MMR", "FA")
   )]
   plot_data[, TissueKey := factor(Group, levels = rev(ordered_tissues))]
-  plot_data[, CellTextColour := fifelse(
-    TissueYARNNormalizedLog2 <= yarn_min + 0.16 * (yarn_max - yarn_min) |
-      TissueYARNNormalizedLog2 >= yarn_min + 0.84 * (yarn_max - yarn_min),
-    "white", "#263238"
-  )]
   ggplot(plot_data, aes(x = DisplayComponent, y = TissueKey, fill = TissueYARNNormalizedLog2)) +
     geom_tile(colour = "white", linewidth = 0.14) +
-    geom_text(aes(label = sprintf("%.1f", TissueYARNNormalizedLog2), colour = CellTextColour),
-              size = 2.75, family = FINAL_FONT, na.rm = TRUE, show.legend = FALSE) +
-    scale_colour_identity() +
     facet_grid(. ~ PlotPathwayDisplay, scales = "free_x", space = "free_x", switch = "x", drop = TRUE) +
     scale_x_discrete(expand = expansion(add = 0)) +
     scale_y_discrete(drop = FALSE, labels = function(x) rep("", length(x))) +
@@ -203,7 +186,7 @@ render_combined <- function(cluster, pathways, title, subtitle, output_file) {
       )
     ) & theme(legend.position = "top")
   save_final_figure(combined, out, sub("[.]png$", "", output_file),
-                    width = 31.0, height = 11.8, dpi = 400)
+                    width = 31.0, height = 13.0, dpi = 400)
 }
 
 render_combined(

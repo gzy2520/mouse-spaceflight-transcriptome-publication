@@ -1,0 +1,27 @@
+analysis_tissue,n_flight_samples,n_ground_samples,included_in_overall,exclusion_reason,n_pairs_na,n_pairs_z_capped
+Adrenal gland,14,14,True,,0,0
+Bone marrow,6,6,True,,0,1
+Cecum,5,5,True,,0,13
+Cerebellum,9,9,True,,0,0
+Colon,4,5,False,n_flight < 5,0,0
+Dorsal skin,30,30,True,,0,0
+Extensor digitorum longus,15,15,True,,0,0
+Eye,11,11,True,,0,0
+Femoral lateral skin,9,10,True,,0,1
+Femoral skin,2,3,False,n_flight < 5,0,0
+Gastrocnemius,10,14,True,,0,0
+Heart,3,3,False,n_flight < 5,0,0
+Heart / Heart right ventricle,10,20,True,,0,0
+Kidney,55,64,True,,0,0
+Left lobe of the liver,24,24,True,,0,0
+Liver,19,18,True,,0,0
+Lung,14,13,True,,0,0
+Mammary gland,10,15,True,,0,1
+Optic nerve,5,12,True,,0,12
+Quadriceps femoris,9,9,True,,0,0
+Retina,27,31,True,,0,0
+Soleus,18,18,True,,0,0
+Spleen,9,8,True,,0,1
+Spleen-distal,10,10,True,,0,0
+Thymus,23,25,True,,0,0
+Tibialis anterior,9,9,True,,0,0

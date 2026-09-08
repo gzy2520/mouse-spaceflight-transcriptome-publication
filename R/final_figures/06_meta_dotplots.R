@@ -55,7 +55,7 @@ render_meta_dot <- function(data, pathways, output_stem, title, subtitle,
   assert_final(nrow(sig) > 0L, paste(output_stem, "has no significant cells"))
 
   fig <- ggplot(plot_data, aes(ComponentFinal, TissueFinal)) +
-    geom_tile(fill = FINAL_COLOURS$panel, colour = FINAL_COLOURS$white, linewidth = 0.17) +
+    geom_tile(fill = FINAL_COLOURS$white, colour = FINAL_COLOURS$grid, linewidth = 0.18) +
     geom_point(
       data = sig, aes(colour = Effect, size = abs(Effect)), alpha = 0.96
     ) +
@@ -66,9 +66,13 @@ render_meta_dot <- function(data, pathways, output_stem, title, subtitle,
       name = "Meta log2FC (P < 0.05)", guide = vertical_meta_guide()
     ) +
     scale_size_continuous(
-      range = c(2.2, 7.0), name = "|log2FC|",
+      range = c(4.0, 12.0), name = "|log2FC|",
       breaks = pretty(c(0, max(abs(sig$Effect))), n = 3),
-      guide = guide_legend(title.position = "top", title.hjust = 0.5)
+      guide = guide_legend(
+        title.position = "top", title.hjust = 0.5,
+        keyheight = unit(1.5, "lines"),
+        keywidth = unit(1.5, "lines")
+      )
     ) +
     labs(
       title = title, subtitle = subtitle, x = NULL, y = NULL,
@@ -79,12 +83,15 @@ render_meta_dot <- function(data, pathways, output_stem, title, subtitle,
       axis.text.x = element_text(angle = 52, hjust = 1, vjust = 1, size = 12.8),
       axis.text.y = element_text(size = 13.8),
       strip.placement = "outside",
+      strip.background = element_rect(fill = FINAL_COLOURS$white, colour = NA),
       strip.text.x.bottom = element_text(size = 19.5, face = "bold",
                                          margin = margin(t = 5, b = 4)),
       panel.spacing.x = unit(0.52, "lines"),
+      panel.background = element_rect(fill = FINAL_COLOURS$white, colour = NA),
+      plot.background = element_rect(fill = FINAL_COLOURS$white, colour = NA),
       legend.position = "right",
-      legend.title = element_text(size = 15.0),
-      legend.text = element_text(size = 13.2),
+      legend.title = element_text(size = 15.5, face = "bold"),
+      legend.text = element_text(size = 13.5),
       plot.title = element_text(size = 25),
       plot.subtitle = element_text(size = 15.5),
       plot.caption = element_text(size = 12.0),
@@ -103,12 +110,12 @@ dsb <- fread(file.path(root, "data/publication_input/meta/08_essential_component
 assert_final(nrow(dsb) == 26L * 29L && uniqueN(dsb$EnsemblID) == 29L,
              "Invalid DSB meta matrix")
 dsb_audit <- render_meta_dot(
-  dsb, c("NHEJ", "HR", "HR–A-EJ", "A-EJ"), "Main/Fig_4b",
+  dsb, c("NHEJ", "HR", "HR–A-EJ", "A-EJ"), "Main/Fig_4e",
   "Double-strand break response across tissues",
   "Dots mark nominal tissue-meta P < 0.05; colour is direction and size is effect magnitude",
   p_col = "tissue_meta_p", fc_col = "Log2FCDisplayed", tissue_col = "Group",
   component_col = "OfficialMouseSymbol", pathway_col = "PathwayDisplay",
-  width = 24.0, height = 13.5
+  width = 31.0, height = 13.0
 )
 
 ssb <- fread(file.path(root, "results/tables/01_SSB_tissue_meta_log2FC_pvalue_matrix_without_Neil2.csv"))
@@ -116,19 +123,19 @@ run_audit <- fread(file.path(root, "results/tables/04_run_audit.csv"))
 assert_final(nrow(ssb) == 26L * 45L && uniqueN(ssb$EnsemblID) == 45L,
              "Invalid Neil2-excluded SSB meta matrix")
 ssb_audit <- render_meta_dot(
-  ssb, c("BER", "NER", "MMR", "FA"), "Main/Fig_5b",
+  ssb, c("BER", "NER", "MMR", "FA"), "Main/Fig_5f",
   "Single-strand break response across tissues",
   "45 components; Neil2 excluded; dots mark nominal tissue-meta P < 0.05",
   p_col = "tissue_meta_p", fc_col = "Log2FCDisplayed", tissue_col = "Group",
   component_col = "DisplayComponent", pathway_col = "PathwayDisplay",
   tissue_order_col = "TissueOrder",
   colour_limit = as.numeric(run_audit$common_symmetric_fc_limit[[1L]]),
-  width = 31.0, height = 14.5
+  width = 31.0, height = 13.0
 )
 
 audit <- rbindlist(list(dsb_audit, ssb_audit), fill = TRUE)
 dir.create(file.path(out, "provenance"), recursive = TRUE, showWarnings = FALSE)
 fwrite(audit, file.path(out, "provenance/meta_dotplot_scope_audit.csv"))
-append_final_palette_audit(out, "Fig_4b", meta_palette)
-append_final_palette_audit(out, "Fig_5b", meta_palette)
-message("FINAL_META_DOTPLOT_PASS: Fig 4b and Fig 5b")
+append_final_palette_audit(out, "Fig_4e", meta_palette)
+append_final_palette_audit(out, "Fig_5f", meta_palette)
+message("FINAL_META_DOTPLOT_PASS: Fig 4e and Fig 5f")
