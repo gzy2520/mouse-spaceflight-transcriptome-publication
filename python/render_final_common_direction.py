@@ -18,9 +18,6 @@ import pandas as pd
 ROOT = Path(os.environ.get("PROJECT_ROOT", Path.cwd())).resolve()
 OUT = Path(os.environ["PUBLICATION_OUTPUT_DIR"]).resolve()
 INPUT = ROOT / "data/publication_input/common_direction"
-STYLE_FINAL = os.environ.get("FIGURE_STYLE", "approved") == "FINAL_RELEASE"
-STYLE_C = os.environ.get("FIGURE_STYLE", "approved") == "C" or STYLE_FINAL
-STYLE_A = os.environ.get("FIGURE_STYLE", "approved") == "A"
 
 SPECS = {
     "A_kidney": {
@@ -59,7 +56,6 @@ SPECS = {
 }
 
 SELECTED_CMAP = {"low": "#3775BA", "mid": "#F7F7F7", "high": "#B64342"}
-STYLE_A_CMAP = {"low": "#3B6FB6", "mid": "#F7F7F5", "high": "#C65A5A"}
 
 
 def apply_style() -> None:
@@ -67,8 +63,8 @@ def apply_style() -> None:
         {
             "font.family": ["Arial", "Helvetica", "DejaVu Sans", "sans-serif"],
             # Keep the selected supplementary heatmap typography unchanged;
-            # Fig. 3b receives its larger sizes explicitly in render_one_c().
-            "font.size": 9 if not STYLE_A else 9.4,
+            # Fig. 3b receives its larger sizes explicitly in render_final_matrix().
+            "font.size": 9,
             "axes.spines.top": False,
             "axes.spines.right": False,
             "axes.linewidth": 1.0,
@@ -80,7 +76,7 @@ def apply_style() -> None:
 
 
 def signed_cmap() -> LinearSegmentedColormap:
-    palette = STYLE_A_CMAP if STYLE_A else SELECTED_CMAP
+    palette = SELECTED_CMAP
     cmap = LinearSegmentedColormap.from_list(
         "negative_blue_positive_red",
         [palette["low"], palette["mid"], palette["high"]],
@@ -90,28 +86,6 @@ def signed_cmap() -> LinearSegmentedColormap:
 
 
 def row_labels(selected: pd.DataFrame) -> list[str]:
-    symbols = selected["display_symbol"].where(
-        selected["display_symbol"].ne(""), selected["ensembl_id"]
-    )
-    arrows = selected["common_direction"].map(
-        {"common_up": "↑", "common_down": "↓"}
-    ).fillna("")
-    if STYLE_A:
-        return [
-            f"{symbol} {arrow}  q={q:.2g}  min|FC|={score:.2f}"
-            for symbol, arrow, q, score in zip(
-                symbols, arrows, selected["final_fdr"], selected["ranking_score"]
-            )
-        ]
-    return [
-        f"{symbol} {arrow} | q={q:.2g} | minimum |log2FC|={score:.2f}"
-        for symbol, arrow, q, score in zip(
-            symbols, arrows, selected["final_fdr"], selected["ranking_score"]
-        )
-    ]
-
-
-def row_labels_c(selected: pd.DataFrame) -> list[str]:
     symbols = selected["display_symbol"].where(
         selected["display_symbol"].ne(""), selected["ensembl_id"]
     )
@@ -137,66 +111,10 @@ def render_one(group_id: str, columns: pd.DataFrame, norm: Normalize) -> None:
             for row in columns.itertuples(index=False)
         }
     values = selected[[f"log2fc__{unit}" for unit in unit_order]].to_numpy(float)
-    n_rows, n_cols = values.shape
-    if STYLE_C:
-        render_one_c(group_id, selected, columns, values, norm, labels)
-        return
-    fig, ax = plt.subplots(
-        figsize=(max(10.5, 1.25 * n_cols + 4.5), max(7.2, 3.0 + 0.30 * n_rows))
-    )
-    cmap = signed_cmap()
-    ax.imshow(
-        np.ma.masked_invalid(values), aspect="auto", interpolation="none",
-        cmap=cmap, norm=norm
-    )
-    ax.set_xticks(np.arange(n_cols))
-    ax.set_xticklabels([labels[unit] for unit in unit_order], rotation=35, ha="right")
-    ax.set_yticks(np.arange(n_rows))
-    ax.set_yticklabels(row_labels(selected), fontsize=6.2 if n_rows > 30 else 7.2)
-    ax.set_xticks(np.arange(-0.5, n_cols, 1), minor=True)
-    ax.set_yticks(np.arange(-0.5, n_rows, 1), minor=True)
-    ax.grid(which="minor", color="white", linewidth=0.35)
-    ax.tick_params(which="minor", bottom=False, left=False)
-    ax.tick_params(axis="x", labelsize=8)
-    ax.tick_params(axis="y", length=1.8, pad=1.5)
-    ax.set_xlabel("")
-    ax.set_ylabel("")
-    up_n = int(selected["common_direction"].eq("common_up").sum())
-    down_n = int(selected["common_direction"].eq("common_down").sum())
-    if STYLE_A:
-        title = (
-            f"{spec['title']}\nq < {spec['cutoff']:.2f} · pooled Top 30 · "
-            f"direction ordered (up {up_n}, down {down_n})"
-        )
-    else:
-        title = (
-            f"{spec['title']}\nq < {spec['cutoff']:.2f}; same pooled Top 30 ordered by common direction "
-            f"(up {up_n}, down {down_n}), then minimum |log2FC|"
-        )
-    ax.set_title(title, loc="left", weight="bold", pad=8)
-    for row in range(n_rows):
-        for column in range(n_cols):
-            value = values[row, column]
-            if np.isfinite(value):
-                ax.text(
-                    column, row, "0.00" if abs(value) < 0.005 else f"{value:.2f}",
-                    ha="center", va="center", fontsize=5.7 if n_rows > 30 else 6.2,
-                    color="white" if abs(value) > 0.65 * norm.vmax else "#222222",
-                )
-    fig.tight_layout(pad=1.0, rect=(0.01, 0.02, 0.86, 0.96))
-    colorbar_axis = fig.add_axes([0.89, 0.24, 0.018, 0.52])
-    colorbar = fig.colorbar(ScalarMappable(norm=norm, cmap=cmap), cax=colorbar_axis)
-    colorbar.set_label("Unified log2FC: spaceflight - ground/control")
-    fig.savefig(
-        OUT / spec["output"], dpi=600 if STYLE_A else 300, bbox_inches="tight", pad_inches=0.08,
-        facecolor="white",
-        # Keep the approved archive metadata stable across matplotlib patch versions.
-        metadata={"Software": "Matplotlib version3.10.8, https://matplotlib.org/"},
-    )
-    plt.close(fig)
+    render_final_matrix(group_id, selected, columns, values, norm, labels)
 
 
-def render_one_c(
+def render_final_matrix(
     group_id: str,
     selected: pd.DataFrame,
     columns: pd.DataFrame,
@@ -204,9 +122,9 @@ def render_one_c(
     norm: Normalize,
     labels: dict[str, str],
 ) -> None:
-    """C-story heatmap: concise gene labels and a quieter cell layer."""
+    """Final heatmap with concise display labels and paired PNG/PDF export."""
     n_rows, n_cols = values.shape
-    is_final_fig3b = STYLE_FINAL and group_id == "B_thymus"
+    is_final_fig3b = group_id == "B_thymus"
     fig, ax = plt.subplots(
         figsize=(
             13.2 if is_final_fig3b else max(9.5, 1.12 * n_cols + 3.8),
@@ -233,7 +151,7 @@ def render_one_c(
         ax.set_xticklabels(displayed_labels, rotation=38, ha="right")
     ax.set_yticks(np.arange(n_rows))
     ax.set_yticklabels(
-        row_labels_c(selected),
+        row_labels(selected),
         fontsize=(12.8 if is_final_fig3b else (7.1 if n_rows > 30 else 7.6)),
     )
     ax.set_xticks(np.arange(-0.5, n_cols, 1), minor=True)
@@ -280,7 +198,7 @@ def main() -> None:
         if group_columns.empty:
             raise ValueError(f"Missing column order for {group_id}")
         render_one(group_id, group_columns, norm)
-        if STYLE_FINAL and group_id == "B_thymus":
+        if group_id == "B_thymus":
             final_labels = [
                 "OSD-289 MHU-1 / Flight-Ground",
                 "OSD-289 MHU-2 / Flight-Ground (vivarium)",
@@ -293,26 +211,25 @@ def main() -> None:
                 label_audit.append(
                     {"position": str(position), "column_id": column_id, "display_label": display_label}
                 )
-    if STYLE_FINAL:
-        provenance = OUT / "provenance"
-        provenance.mkdir(parents=True, exist_ok=True)
-        pd.DataFrame(label_audit).to_csv(
-            provenance / "Fig_3b_column_label_audit.csv", index=False
-        )
-        palette_path = provenance / "figure_palette_audit.csv"
-        current = pd.read_csv(palette_path) if palette_path.exists() else pd.DataFrame(
-            columns=["figure", "role", "hex"]
-        )
-        figure_ids = [Path(spec["output"]).stem for spec in SPECS.values()]
-        current = current.loc[~current["figure"].isin(figure_ids)]
-        palette_rows = [
-            {"figure": figure_id, "role": role, "hex": value.upper()}
-            for figure_id in figure_ids
-            for role, value in SELECTED_CMAP.items()
-        ]
-        pd.concat([current, pd.DataFrame(palette_rows)], ignore_index=True).sort_values(
-            ["figure", "role"]
-        ).to_csv(palette_path, index=False)
+    provenance = OUT / "provenance"
+    provenance.mkdir(parents=True, exist_ok=True)
+    pd.DataFrame(label_audit).to_csv(
+        provenance / "Fig_3b_column_label_audit.csv", index=False
+    )
+    palette_path = provenance / "figure_palette_audit.csv"
+    current = pd.read_csv(palette_path) if palette_path.exists() else pd.DataFrame(
+        columns=["figure", "role", "hex"]
+    )
+    figure_ids = [Path(spec["output"]).stem for spec in SPECS.values()]
+    current = current.loc[~current["figure"].isin(figure_ids)]
+    palette_rows = [
+        {"figure": figure_id, "role": role, "hex": value.upper()}
+        for figure_id in figure_ids
+        for role, value in SELECTED_CMAP.items()
+    ]
+    pd.concat([current, pd.DataFrame(palette_rows)], ignore_index=True).sort_values(
+        ["figure", "role"]
+    ).to_csv(palette_path, index=False)
 
 
 if __name__ == "__main__":
