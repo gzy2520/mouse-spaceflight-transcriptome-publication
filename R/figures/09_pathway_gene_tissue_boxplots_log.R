@@ -35,16 +35,26 @@ if (length(script_arg)) {
 }
 
 args <- commandArgs(trailingOnly = TRUE)
-out_dir <- if (length(args)) {
-  args[[1L]]
+pub_dir <- Sys.getenv("PUBLICATION_OUTPUT_DIR", unset = "")
+
+if (nzchar(pub_dir)) {
+  out_dir <- normalizePath(pub_dir, mustWork = TRUE)
+  fig_dir <- file.path(out_dir, "Main")
+  tbl_dir <- file.path(out_dir, "tables/log")
+} else if (length(args)) {
+  out_dir <- if (!grepl("^/", args[[1L]])) file.path(repo_root, args[[1L]]) else args[[1L]]
+  fig_dir <- file.path(out_dir, "figures")
+  tbl_dir <- file.path(out_dir, "tables")
 } else if (nzchar(Sys.getenv("LOG_OUTPUT_DIR"))) {
-  Sys.getenv("LOG_OUTPUT_DIR")
+  out_dir <- Sys.getenv("LOG_OUTPUT_DIR")
+  if (!grepl("^/", out_dir)) out_dir <- file.path(repo_root, out_dir)
+  fig_dir <- file.path(out_dir, "figures")
+  tbl_dir <- file.path(out_dir, "tables")
 } else {
-  file.path(repo_root, "results/log_scale")
+  out_dir <- file.path(repo_root, "results/log_scale")
+  fig_dir <- file.path(out_dir, "figures")
+  tbl_dir <- file.path(out_dir, "tables")
 }
-if (!grepl("^/", out_dir)) out_dir <- file.path(repo_root, out_dir)
-fig_dir <- file.path(out_dir, "figures")
-tbl_dir <- file.path(out_dir, "tables")
 dir.create(fig_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(tbl_dir, recursive = TRUE, showWarnings = FALSE)
 
@@ -201,7 +211,7 @@ pathway_defs <- list(
     fig_letter = "c",
     fig_group = "SSB",
     title = "Nucleotide Excision Repair (NER)",
-    caption_note = "Genes: XPC, RAD23B, CETN2 (GG-NER surveillance), DDB1, DDB2 (UV lesion detection), ERCC6, and ERCC8 (TC-NER).",
+    caption_note = "Shapes: Cross (\u2715), Triangle (\u25b2), Circle (\u25cf). Color coding: XPC/RAD23B/CETN2 (GG-NER surveillance; Blue), DDB1/2 (UV lesion detection; Purple), ERCC6/8 (TC-NER; Vermilion).",
     genes = c(
       Xpc = "ENSMUSG00000030094",
       Rad23b = "ENSMUSG00000028426",
@@ -212,22 +222,40 @@ pathway_defs <- list(
       Ercc8 = "ENSMUSG00000021694"
     ),
     colors = c(
-      Xpc = "#003366",
+      Xpc = "#0072B2",
       Rad23b = "#0072B2",
-      Cetn2 = "#56B4E9",
-      Ddb1 = "#542788",
+      Cetn2 = "#0072B2",
+      Ddb1 = "#AA4499",
       Ddb2 = "#AA4499",
-      Ercc6 = "#B2182B",
+      Ercc6 = "#D55E00",
       Ercc8 = "#D55E00"
     ),
     linetypes = c(
       Xpc = "dashed",
-      Rad23b = "dashed",
-      Cetn2 = "dashed",
+      Rad23b = "dotted",
+      Cetn2 = "dotdash",
       Ddb1 = "dashed",
-      Ddb2 = "dashed",
+      Ddb2 = "dotted",
       Ercc6 = "dashed",
-      Ercc8 = "dashed"
+      Ercc8 = "dotted"
+    ),
+    shapes = c(
+      Xpc = 4,
+      Rad23b = 17,
+      Cetn2 = 16,
+      Ddb1 = 4,
+      Ddb2 = 17,
+      Ercc6 = 4,
+      Ercc8 = 17
+    ),
+    labels = c(
+      Xpc = "Xpc",
+      Rad23b = "Rad23b",
+      Cetn2 = "Cetn2",
+      Ddb1 = "Ddb1",
+      Ddb2 = "Ddb2",
+      Ercc6 = "Ercc6",
+      Ercc8 = "Ercc8"
     )
   ),
   MMR = list(
@@ -366,8 +394,8 @@ for (pw_name in names(pathway_defs)) {
   dodge <- position_dodge(width = dodge_w)
   
   sub_dt_points <- sub_dt[!is.na(YARNNormalizedLog2)]
-  pw_shapes <- setNames(rep(16, n_genes), gene_symbols)
-  pw_labels <- setNames(gene_symbols, gene_symbols)
+  pw_shapes <- if (!is.null(pw_info$shapes)) pw_info$shapes else setNames(rep(16, n_genes), gene_symbols)
+  pw_labels <- if (!is.null(pw_info$labels)) pw_info$labels else setNames(gene_symbols, gene_symbols)
   
   # Plot assembly
   p <- ggplot() +
@@ -387,7 +415,7 @@ for (pw_name in names(pathway_defs)) {
       data = sub_dt_points,
       aes(x = Group, y = YARNNormalizedLog2, color = Gene, shape = Gene),
       position = position_jitterdodge(jitter.width = 0.11, dodge.width = dodge_w, seed = 25),
-      size = 1.20,
+      size = if (!is.null(pw_info$shapes)) 1.45 else 1.20,
       alpha = 0.65,
       show.legend = TRUE
     ) +
@@ -396,7 +424,19 @@ for (pw_name in names(pathway_defs)) {
       aes(x = Group, y = middle, group = Gene, color = Gene, linetype = Gene),
       position = dodge, linewidth = 0.82,
       show.legend = FALSE
-    ) +
+    )
+  
+  if (!is.null(pw_info$shapes)) {
+    p <- p +
+      geom_point(
+        data = box_stats,
+        aes(x = Group, y = middle, color = Gene, shape = Gene),
+        position = dodge, size = 3.0, stroke = 1.0,
+        show.legend = FALSE
+      )
+  }
+  
+  p <- p +
     scale_fill_manual(values = pw_info$colors, guide = "none") +
     scale_color_manual(values = pw_info$colors, labels = pw_labels) +
     scale_shape_manual(values = pw_shapes, labels = pw_labels) +
@@ -407,8 +447,8 @@ for (pw_name in names(pathway_defs)) {
         title = "Gene",
         override.aes = list(
           shape = pw_shapes,
-          size = 5.0,
-          stroke = 1.2,
+          size = 8.5,
+          stroke = 1.8,
           alpha = 1,
           linetype = 0
         ),
@@ -419,10 +459,6 @@ for (pw_name in names(pathway_defs)) {
     scale_y_continuous(expand = expansion(mult = c(0.04, 0.06))) +
     labs(
       title = paste0(pw_info$title, " Expression across 26 Tissues (Log2 Scale)"),
-      subtitle = sprintf(
-        "One-way ANOVA (across 26 tissues): Pathway F(%d, %d) = %.2f, P = %s\nIndividual gene ANOVA: %s",
-        df_pw, df_pwr, f_pw, format_sci(p_pw), paste(gene_p_strs, collapse = "  |  ")
-      ),
       caption = paste0(
         "Boxes represent Q1, Mean (middle solid bar), and Q3; whiskers extend to 1.5 * IQR. Points represent individual flight mice (n = 360).\n",
         "Dashed lines connect tissue-level mean values for each gene. Values shown on log2 scale (YARN qsmooth). ", pw_info$caption_note
@@ -437,14 +473,14 @@ for (pw_name in names(pathway_defs)) {
       panel.grid.major.y = element_line(colour = "#E8ECEF", linewidth = 0.5),
       axis.text.x = element_text(angle = 50, hjust = 1, vjust = 1, face = "bold", colour = "#222222", size = 11.5),
       axis.title.y = element_text(face = "bold", margin = margin(r = 10)),
-      plot.title = element_text(face = "bold", size = 17, colour = "#1A202C"),
-      plot.subtitle = element_text(colour = "#334155", size = 11.5, lineheight = 1.3, margin = margin(b = 8)),
+      plot.title = element_text(face = "bold", size = 22, colour = "#1A202C", margin = margin(b = 14)),
       plot.caption = element_text(colour = "#718096", size = 10, lineheight = 1.25, margin = margin(t = 10)),
       legend.position = "top",
       legend.box = "horizontal",
-      legend.title = element_text(face = "bold"),
-      legend.text = element_text(size = 11.5),
-      plot.margin = margin(12, 16, 12, 16)
+      legend.title = element_text(face = "bold", size = 23),
+      legend.text = element_text(size = 23),
+      legend.key.size = unit(1.0, "cm"),
+      plot.margin = margin(16, 20, 16, 20)
     )
   
   # File export (PNG and PDF)
@@ -457,11 +493,13 @@ for (pw_name in names(pathway_defs)) {
   ggsave(png_file, p, width = 18, height = 8.5, dpi = 300, bg = "white")
   ggsave(pdf_file, p, width = 18, height = 8.5, device = grDevices::cairo_pdf, bg = "white")
   
-  # Also export descriptive name copy
-  desc_png <- file.path(fig_dir, sprintf("%s_%s_tissue_boxplot_log2.png", panel_id, safe_name))
-  desc_pdf <- file.path(fig_dir, sprintf("%s_%s_tissue_boxplot_log2.pdf", panel_id, safe_name))
-  file.copy(png_file, desc_png, overwrite = TRUE)
-  file.copy(pdf_file, desc_pdf, overwrite = TRUE)
+  # Also export descriptive name copy if not writing to release Main
+  if (!nzchar(pub_dir)) {
+    desc_png <- file.path(fig_dir, sprintf("%s_%s_tissue_boxplot_log2.png", panel_id, safe_name))
+    desc_pdf <- file.path(fig_dir, sprintf("%s_%s_tissue_boxplot_log2.pdf", panel_id, safe_name))
+    file.copy(png_file, desc_png, overwrite = TRUE)
+    file.copy(pdf_file, desc_pdf, overwrite = TRUE)
+  }
   
   message("Generated ", panel_id, " (", pw_name, " log2): ", png_file)
 }
@@ -476,7 +514,34 @@ fwrite(anova_pw_dt, file.path(tbl_dir, "01_pathway_one_way_anova_log_summary.csv
 fwrite(anova_gene_dt, file.path(tbl_dir, "02_gene_one_way_anova_log_summary.csv"))
 fwrite(summary_mean_dt, file.path(tbl_dir, "03_tissue_gene_mean_log_qsmooth_summary.csv"))
 fwrite(used_data_dt, file.path(tbl_dir, "04_sample_log_qsmooth_values_used.csv.gz"))
-fwrite(axis_order_audit, file.path(out_dir, "pathway_boxplot_x_axis_order.csv"))
+
+if (nzchar(pub_dir)) {
+  provenance_dir <- file.path(out_dir, "provenance")
+  dir.create(provenance_dir, recursive = TRUE, showWarnings = FALSE)
+  fwrite(axis_order_audit, file.path(provenance_dir, "pathway_boxplot_x_axis_order.csv"))
+  
+  # Also sync to results/log_scale
+  results_log_dir <- file.path(repo_root, "results/log_scale")
+  res_fig_dir <- file.path(results_log_dir, "figures")
+  res_tbl_dir <- file.path(results_log_dir, "tables")
+  dir.create(res_fig_dir, recursive = TRUE, showWarnings = FALSE)
+  dir.create(res_tbl_dir, recursive = TRUE, showWarnings = FALSE)
+  for (pw_name in names(pathway_defs)) {
+    p_id <- pathway_defs[[pw_name]]$fig_panel
+    s_name <- gsub("[^A-Za-z0-9_]", "-", pw_name)
+    file.copy(file.path(fig_dir, sprintf("%s.png", p_id)), file.path(res_fig_dir, sprintf("%s.png", p_id)), overwrite = TRUE)
+    file.copy(file.path(fig_dir, sprintf("%s.pdf", p_id)), file.path(res_fig_dir, sprintf("%s.pdf", p_id)), overwrite = TRUE)
+    file.copy(file.path(fig_dir, sprintf("%s.png", p_id)), file.path(res_fig_dir, sprintf("%s_%s_tissue_boxplot_log2.png", p_id, s_name)), overwrite = TRUE)
+    file.copy(file.path(fig_dir, sprintf("%s.pdf", p_id)), file.path(res_fig_dir, sprintf("%s_%s_tissue_boxplot_log2.pdf", p_id, s_name)), overwrite = TRUE)
+  }
+  file.copy(file.path(tbl_dir, "01_pathway_one_way_anova_log_summary.csv"), file.path(res_tbl_dir, "01_pathway_one_way_anova_log_summary.csv"), overwrite = TRUE)
+  file.copy(file.path(tbl_dir, "02_gene_one_way_anova_log_summary.csv"), file.path(res_tbl_dir, "02_gene_one_way_anova_log_summary.csv"), overwrite = TRUE)
+  file.copy(file.path(tbl_dir, "03_tissue_gene_mean_log_qsmooth_summary.csv"), file.path(res_tbl_dir, "03_tissue_gene_mean_log_qsmooth_summary.csv"), overwrite = TRUE)
+  file.copy(file.path(tbl_dir, "04_sample_log_qsmooth_values_used.csv.gz"), file.path(res_tbl_dir, "04_sample_log_qsmooth_values_used.csv.gz"), overwrite = TRUE)
+  fwrite(axis_order_audit, file.path(results_log_dir, "pathway_boxplot_x_axis_order.csv"))
+} else {
+  fwrite(axis_order_audit, file.path(out_dir, "pathway_boxplot_x_axis_order.csv"))
+}
 
 # Generate HTML gallery for quick viewing
 html_cards <- paste0(vapply(names(pathway_defs), function(pw_name) {
@@ -508,6 +573,10 @@ main{display:grid;grid-template-columns:repeat(auto-fit,minmax(500px,1fr));gap:2
 </main>
 </html>', html_cards
 )
-writeLines(html_content, file.path(out_dir, "index.html"))
+if (nzchar(pub_dir)) {
+  writeLines(html_content, file.path(results_log_dir, "index.html"))
+} else {
+  writeLines(html_content, file.path(out_dir, "index.html"))
+}
 
 message("All 7 log2 pathway figures and tables successfully generated under: ", out_dir)

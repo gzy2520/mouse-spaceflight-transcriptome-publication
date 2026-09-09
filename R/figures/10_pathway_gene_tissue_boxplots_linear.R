@@ -195,7 +195,7 @@ pathway_defs <- list(
     fig_letter = "c",
     fig_group = "SSB",
     title = "Nucleotide Excision Repair (NER)",
-    caption_note = "Genes: XPC, RAD23B, CETN2 (GG-NER surveillance), DDB1, DDB2 (UV lesion detection), ERCC6, and ERCC8 (TC-NER).",
+    caption_note = "Shapes: Cross (\u2715), Triangle (\u25b2), Circle (\u25cf). Color coding: XPC/RAD23B/CETN2 (GG-NER surveillance; Blue), DDB1/2 (UV lesion detection; Purple), ERCC6/8 (TC-NER; Vermilion).",
     genes = c(
       Xpc = "ENSMUSG00000030094",
       Rad23b = "ENSMUSG00000028426",
@@ -206,22 +206,40 @@ pathway_defs <- list(
       Ercc8 = "ENSMUSG00000021694"
     ),
     colors = c(
-      Xpc = "#003366",
+      Xpc = "#0072B2",
       Rad23b = "#0072B2",
-      Cetn2 = "#56B4E9",
-      Ddb1 = "#542788",
+      Cetn2 = "#0072B2",
+      Ddb1 = "#AA4499",
       Ddb2 = "#AA4499",
-      Ercc6 = "#B2182B",
+      Ercc6 = "#D55E00",
       Ercc8 = "#D55E00"
     ),
     linetypes = c(
       Xpc = "dashed",
-      Rad23b = "dashed",
-      Cetn2 = "dashed",
+      Rad23b = "dotted",
+      Cetn2 = "dotdash",
       Ddb1 = "dashed",
-      Ddb2 = "dashed",
+      Ddb2 = "dotted",
       Ercc6 = "dashed",
-      Ercc8 = "dashed"
+      Ercc8 = "dotted"
+    ),
+    shapes = c(
+      Xpc = 4,
+      Rad23b = 17,
+      Cetn2 = 16,
+      Ddb1 = 4,
+      Ddb2 = 17,
+      Ercc6 = 4,
+      Ercc8 = 17
+    ),
+    labels = c(
+      Xpc = "Xpc",
+      Rad23b = "Rad23b",
+      Cetn2 = "Cetn2",
+      Ddb1 = "Ddb1",
+      Ddb2 = "Ddb2",
+      Ercc6 = "Ercc6",
+      Ercc8 = "Ercc8"
     )
   ),
   MMR = list(
@@ -417,8 +435,8 @@ for (pw_name in names(pathway_defs)) {
         title = "Gene",
         override.aes = list(
           shape = pw_shapes,
-          size = 5.0,
-          stroke = 1.2,
+          size = 8.5,
+          stroke = 1.8,
           alpha = 1,
           linetype = 0
         ),
@@ -429,10 +447,6 @@ for (pw_name in names(pathway_defs)) {
     scale_y_continuous(labels = scales::comma, expand = expansion(mult = c(0.02, 0.05))) +
     labs(
       title = paste0(pw_info$title, " Expression across 26 Tissues (Linear Scale)"),
-      subtitle = sprintf(
-        "One-way ANOVA (across 26 tissues): Pathway F(%d, %d) = %.2f, P = %s\nIndividual gene ANOVA: %s",
-        df_pw, df_pwr, f_pw, format_sci(p_pw), paste(gene_p_strs, collapse = "  |  ")
-      ),
       caption = paste0(
         "Boxes represent Q1, Mean (middle solid bar), and Q3; whiskers extend to 1.5 * IQR. Points represent individual flight mice (n = 360).\n",
         "Dashed lines connect tissue-level mean values for each gene. Values shown on linear scale (2^log2 - 1). ", pw_info$caption_note
@@ -447,14 +461,14 @@ for (pw_name in names(pathway_defs)) {
       panel.grid.major.y = element_line(colour = "#E8ECEF", linewidth = 0.5),
       axis.text.x = element_text(angle = 50, hjust = 1, vjust = 1, face = "bold", colour = "#222222", size = 11.5),
       axis.title.y = element_text(face = "bold", margin = margin(r = 10)),
-      plot.title = element_text(face = "bold", size = 17, colour = "#1A202C"),
-      plot.subtitle = element_text(colour = "#334155", size = 11.5, lineheight = 1.3, margin = margin(b = 8)),
+      plot.title = element_text(face = "bold", size = 22, colour = "#1A202C", margin = margin(b = 14)),
       plot.caption = element_text(colour = "#718096", size = 10, lineheight = 1.25, margin = margin(t = 10)),
       legend.position = "top",
       legend.box = "horizontal",
-      legend.title = element_text(face = "bold"),
-      legend.text = element_text(size = 11.5),
-      plot.margin = margin(12, 16, 12, 16)
+      legend.title = element_text(face = "bold", size = 23),
+      legend.text = element_text(size = 23),
+      legend.key.size = unit(1.0, "cm"),
+      plot.margin = margin(16, 20, 16, 20)
     )
   
   # File export (PNG and PDF)

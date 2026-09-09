@@ -3,7 +3,7 @@
 Open `release/index.html` for the clickable figure review gallery.
 The single final output is `release/`. Figures are freshly rendered from frozen
 publication inputs, with the latest manuscript numbering: Fig. 4b–d and 5b–e
-are linear expression boxplots; Fig. 4e and 5f are meta-log2FC dotplots.
+are log2 expression boxplots; Fig. 4e and 5f are meta-log2FC dotplots.
 Fig. 1a is prepared separately and is intentionally absent.
 
 ## Rebuild
@@ -21,7 +21,7 @@ Rscript tests/validate_final_release.R reproduced_results/check full
 
 The destination must not exist. The build does not overwrite earlier results.
 This is a frozen-input publication reproduction package: it regenerates figures
-and the seven-pathway linear-expression summaries and ANOVAs. It does not rerun
+and the seven-pathway log2-expression summaries and ANOVAs. It does not rerun
 raw-read processing, differential expression, GO enrichment or YARN normalization.
 
 ## Final outputs
@@ -30,12 +30,13 @@ raw-read processing, differential expression, GO enrichment or YARN normalizatio
 - `release/Suppl/`: 9 supplementary panels, each in PNG and PDF.
 - `release/Suppl/Fig_S6_per_tissue/`: 26 tissue correlation panels, each in PNG and PDF.
 - `release/tables/`: 27 unchanged manuscript tables.
-- `release/tables/linear/`: four regenerated linear-expression statistical tables.
+- `release/tables/log/`: four regenerated log2-expression statistical tables (official formal release).
+- `release/tables/linear/`: four regenerated linear-expression statistical tables (reference).
 - `release/provenance/`: input/output SHA-256 manifests, plotting audits,
   sample metadata audit, runtime and source revision.
 
-No descriptive-name duplicates, alternative style exports or obsolete log-scale
-boxplots are included. Historical versions remain recoverable through Git.
+No descriptive-name duplicates or alternative style exports are included.
+Historical versions remain recoverable through Git.
 See `provenance/cleanup_report.md` for the cleanup scope and verification.
 
 ## Source layout
@@ -65,10 +66,11 @@ tissue trees based on 1 − Spearman rho. Fig. 4e and 5f display tissue meta-log
 (median of mission-level medians) with nominal signed-Stouffer P < 0.05.
 Neil2 (ENSMUSG00000035121) is excluded from the 45-component SSB display.
 
-Linear boxplots use 2^YARNNormalizedLog2 − 1. The central line is the mean;
-box edges are Q1/Q3, with the existing 1.5-IQR whisker convention. Gene and
-pathway one-way ANOVAs describe tissue heterogeneity. Their nominal P values
-are retained; the cleanup does not change the statistical model.
+Pathway boxplots use YARN qsmooth normalized expression on log2 scale (`YARNNormalizedLog2`).
+The central line is the mean; box edges are Q1/Q3, with the existing 1.5-IQR whisker convention.
+Gene and pathway one-way ANOVAs describe tissue heterogeneity. Their nominal P values
+are retained and exported to `release/tables/log/`. Linear-scale tables are also preserved under
+`release/tables/linear/` for numerical cross-reference.
 
 The existing methods Word document is retained as a manuscript draft; its
 historical script references and sample-unit wording need editorial reconciliation

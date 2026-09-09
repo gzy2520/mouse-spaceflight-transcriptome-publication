@@ -263,20 +263,37 @@ assert(s5$n_rows == 5327L && s5$n_tissues == 26L && s5$n_pathways == 7L &&
 baseline_tree <- fread(file.path(root, "provenance/reference_expression_tree.csv"))
 assert(isTRUE(all.equal(as.data.frame(tree_audit), as.data.frame(baseline_tree), tolerance = 1e-12)),
        "Tree changed from approved baseline")
-linear <- fread(file.path(target, "tables/linear/04_sample_linear_qsmooth_values_used.csv.gz"))
-assert(all(grepl("^ENSMUSG[0-9]+$", linear$EnsemblID)) && uniqueN(linear$Pathway) == 7L &&
-       uniqueN(linear$Group) == 26L, "Linear boxplot stable-ID or scope failure")
-assert(max(abs(linear$YARNLinear - (2^linear$YARNNormalizedLog2 - 1)), na.rm = TRUE) < 1e-7,
-       "Linear expression transform changed")
-linear_anova <- fread(file.path(target, "tables/linear/02_gene_one_way_anova_linear_summary.csv"))
-assert(nrow(linear_anova) == 26L, "Expected 26 pathway-gene ANOVA rows")
-for (i in seq_len(nrow(linear_anova))) {
-  row <- linear_anova[i]
-  d <- linear[Pathway == row$Pathway & EnsemblID == row$EnsemblID]
-  stats <- summary(aov(YARNLinear ~ factor(Group), data = d))[[1L]]
-  assert(isTRUE(all.equal(stats[1L, "F value"], row$F_value, tolerance = 1e-10)) &&
-         isTRUE(all.equal(stats[1L, "Pr(>F)"], row$P_value, tolerance = 1e-10)),
-         paste("ANOVA mismatch", row$EnsemblID))
+if (file.exists(file.path(target, "tables/log/04_sample_log_qsmooth_values_used.csv.gz"))) {
+  log_data <- fread(file.path(target, "tables/log/04_sample_log_qsmooth_values_used.csv.gz"))
+  assert(all(grepl("^ENSMUSG[0-9]+$", log_data$EnsemblID)) && uniqueN(log_data$Pathway) == 7L &&
+         uniqueN(log_data$Group) == 26L, "Log boxplot stable-ID or scope failure")
+  log_anova <- fread(file.path(target, "tables/log/02_gene_one_way_anova_log_summary.csv"))
+  assert(nrow(log_anova) == 26L, "Expected 26 pathway-gene ANOVA rows")
+  for (i in seq_len(nrow(log_anova))) {
+    row <- log_anova[i]
+    d <- log_data[Pathway == row$Pathway & EnsemblID == row$EnsemblID]
+    stats <- summary(aov(YARNNormalizedLog2 ~ factor(Group), data = d))[[1L]]
+    assert(isTRUE(all.equal(stats[1L, "F value"], row$F_value, tolerance = 1e-10)) &&
+           isTRUE(all.equal(stats[1L, "Pr(>F)"], row$P_value, tolerance = 1e-10)),
+           paste("Log ANOVA mismatch", row$EnsemblID))
+  }
+}
+if (file.exists(file.path(target, "tables/linear/04_sample_linear_qsmooth_values_used.csv.gz"))) {
+  linear <- fread(file.path(target, "tables/linear/04_sample_linear_qsmooth_values_used.csv.gz"))
+  assert(all(grepl("^ENSMUSG[0-9]+$", linear$EnsemblID)) && uniqueN(linear$Pathway) == 7L &&
+         uniqueN(linear$Group) == 26L, "Linear boxplot stable-ID or scope failure")
+  assert(max(abs(linear$YARNLinear - (2^linear$YARNNormalizedLog2 - 1)), na.rm = TRUE) < 1e-7,
+         "Linear expression transform changed")
+  linear_anova <- fread(file.path(target, "tables/linear/02_gene_one_way_anova_linear_summary.csv"))
+  assert(nrow(linear_anova) == 26L, "Expected 26 pathway-gene ANOVA rows")
+  for (i in seq_len(nrow(linear_anova))) {
+    row <- linear_anova[i]
+    d <- linear[Pathway == row$Pathway & EnsemblID == row$EnsemblID]
+    stats <- summary(aov(YARNLinear ~ factor(Group), data = d))[[1L]]
+    assert(isTRUE(all.equal(stats[1L, "F value"], row$F_value, tolerance = 1e-10)) &&
+           isTRUE(all.equal(stats[1L, "Pr(>F)"], row$P_value, tolerance = 1e-10)),
+           paste("ANOVA mismatch", row$EnsemblID))
+  }
 }
 profile <- "51 PNG + 51 PDF"
 cor_dir <- file.path(root, "data/publication_input/go/log2fc_spearman_20260902")

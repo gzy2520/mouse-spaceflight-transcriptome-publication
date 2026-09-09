@@ -105,7 +105,7 @@ for (script in file.path("R/final_figures", c(
   run_r(script)
 }
 
-run_r("R/figures/10_pathway_gene_tissue_boxplots_linear.R")
+run_r("R/figures/09_pathway_gene_tissue_boxplots_log.R")
 
 status <- system2("bash", c("workflow/run_log2fc_per_tissue_pathway_spearman_20260902.sh", shQuote(out), "name_only"))
 if (!identical(status, 0L)) stop("Sample-level Spearman renderer failed", call. = FALSE)
