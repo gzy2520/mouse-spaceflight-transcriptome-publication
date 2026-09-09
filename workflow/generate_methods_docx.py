@@ -3,12 +3,35 @@
 """Generate the publication Methods Word document (.docx) organized strictly in analytical and Supplementary Table order."""
 
 import os
+import subprocess
+import tempfile
+import zipfile
+import functools
+import lxml.etree as etree
 from docx import Document
 from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT, WD_ALIGN_VERTICAL
 from docx.oxml import parse_xml
 from docx.oxml.ns import nsdecls, qn
+
+@functools.lru_cache(maxsize=None)
+def latex_to_omath(latex_expr):
+    with tempfile.NamedTemporaryFile(suffix='.docx', delete=False) as tmp:
+        tmp_path = tmp.name
+    try:
+        subprocess.run(
+            ['pandoc', '-f', 'markdown', '-t', 'docx', '-o', tmp_path],
+            input=f'${latex_expr}$'.encode('utf-8'),
+            check=True
+        )
+        with zipfile.ZipFile(tmp_path) as z:
+            t = etree.fromstring(z.read('word/document.xml'))
+            m = t.find('.//{http://schemas.openxmlformats.org/officeDocument/2006/math}oMath')
+            return etree.tostring(m, encoding='unicode')
+    finally:
+        if os.path.exists(tmp_path):
+            os.remove(tmp_path)
 
 def insert_in_schema_order(parent, element, tag_order):
     """Insert an OOXML child before the first later-schema child."""
@@ -132,7 +155,7 @@ def build_docx(output_path):
         r.font.color.rgb = COLOR_PRIMARY
         return p
 
-    def add_body_p(text, bold_prefix=None):
+    def add_body_p(content, bold_prefix=None):
         p = doc.add_paragraph()
         p.paragraph_format.line_spacing = 1.22
         p.paragraph_format.space_before = Pt(0)
@@ -143,10 +166,21 @@ def build_docx(output_path):
             r_pre.font.size = Pt(10)
             r_pre.font.bold = True
             r_pre.font.color.rgb = COLOR_BODY
-        r = p.add_run(text)
-        r.font.name = "Calibri"
-        r.font.size = Pt(10)
-        r.font.color.rgb = COLOR_BODY
+        if isinstance(content, list):
+            for item in content:
+                if isinstance(item, str) and item.startswith("<m:oMath"):
+                    m_el = parse_xml(item)
+                    p._p.append(m_el)
+                else:
+                    r = p.add_run(item)
+                    r.font.name = "Calibri"
+                    r.font.size = Pt(10)
+                    r.font.color.rgb = COLOR_BODY
+        else:
+            r = p.add_run(content)
+            r.font.name = "Calibri"
+            r.font.size = Pt(10)
+            r.font.color.rgb = COLOR_BODY
         return p
 
     def add_bullet_p(text, bold_prefix=None):
@@ -212,13 +246,18 @@ def build_docx(output_path):
     add_sec_heading("2. Functional Pathway Enrichment and Cross-Tissue Gene Ontology Profiling")
     
     add_body_p(
-        "To evaluate systemic pathway-level perturbations across anatomical systems under spaceflight environmental stressors, cross-tissue "
-        "functional pathway enrichment was conducted using pre-ranked gene set enrichment analysis via fgseaMultilevel (fgsea package in R 4.4.3; "
-        "random seed = 25). For each accession–tissue comparison, genes were ranked based on flight-versus-ground differential-expression statistics "
-        "curated from OSDR. When available, repository test statistics were used directly; otherwise, signed standard normal deviates were computed from "
-        "nominal two-sided P values and the sign of log2 fold change (log2FC): Z = −Φ^−1(P / 2) × sign(log2FC). For duplicate Ensembl Gene IDs within a comparison, "
-        "statistics were collapsed by median values, and ties were resolved deterministically by Ensembl ID. Gene set enrichment parameters were set to "
-        "minSize = 5 for Gene Ontology terms and minSize = 10 for Hallmark terms, maxSize = 5,000, eps = 10^−10, with the standard score type.",
+        [
+            "To evaluate systemic pathway-level perturbations across anatomical systems under spaceflight environmental stressors, cross-tissue "
+            "functional pathway enrichment was conducted using pre-ranked gene set enrichment analysis via fgseaMultilevel (fgsea package in R 4.4.3; "
+            "random seed = 25). For each accession–tissue comparison, genes were ranked based on flight-versus-ground differential-expression statistics "
+            "curated from OSDR. When available, repository test statistics were used directly; otherwise, signed standard normal deviates were computed from "
+            "nominal two-sided P values and the sign of log2 fold change (log2FC): ",
+            latex_to_omath(r"Z = -\Phi^{-1}\left(\frac{P}{2}\right) \times \operatorname{sign}(\log_2 \mathrm{FC})"),
+            ". For duplicate Ensembl Gene IDs within a comparison, statistics were collapsed by median values, and ties were resolved deterministically by "
+            "Ensembl ID. Gene set enrichment parameters were set to minSize = 5 for Gene Ontology terms and minSize = 10 for Hallmark terms, maxSize = 5,000, eps = ",
+            latex_to_omath(r"10^{-10}"),
+            ", with the standard score type."
+        ],
         bold_prefix="Pre-ranked gene set enrichment analysis. "
     )
     
@@ -251,23 +290,38 @@ def build_docx(output_path):
     add_sec_heading("3. Sample-Level Pathway Association and Cross-Tissue Fisher-z Integration")
     
     add_body_p(
-        "To quantify coordinated pathway co-regulation and evaluate whether DDR and metabolic pathways exhibit shared transcriptional trajectories "
-        "across individual spaceflight animals, a ground-referenced pathway co-response framework was constructed. For each accession–tissue unit, "
-        "flight specimen k was standardized against the baseline mean of matched ground control specimens: Sample_log2FC(g,k) = log2(x_flight(g,k)) − "
-        "mean_j[log2(x_ground(g,j))], where x represents normalized source expression values. Sample-level pathway activity scores were computed as "
-        "the arithmetic mean of log2FC values across all detected member Ensembl IDs for each of the 15 predefined GO terms.",
+        [
+            "To quantify coordinated pathway co-regulation and evaluate whether DDR and metabolic pathways exhibit shared transcriptional trajectories "
+            "across individual spaceflight animals, a ground-referenced pathway co-response framework was constructed. For each accession–tissue unit, "
+            "flight specimen k was standardized against the baseline mean of matched ground control specimens: ",
+            latex_to_omath(r"\mathrm{Sample\_log2FC}(g, k) = \log_2(x_{\mathrm{flight}}(g, k)) - \operatorname{mean}_{j}[\log_2(x_{\mathrm{ground}}(g, j))]"),
+            ", where x represents normalized source expression values. Sample-level pathway activity scores were computed as "
+            "the arithmetic mean of log2FC values across all detected member Ensembl IDs for each of the 15 predefined GO terms."
+        ],
         bold_prefix="Ground-referenced sample pathway scoring. "
     )
     
     add_body_p(
-        "Within each of the 26 anatomical tissues, pairwise Spearman rank correlation coefficients (ρ) were calculated among the 15 pathway scores "
-        "across individual flight specimens (Supplementary Table S5). To synthesize a consensus cross-tissue co-response architecture, correlation "
-        "coefficients were transformed using the Fisher-z transformation: z = arctanh(ρ), with bounded inputs within [-1 + 10^(−12), 1 − 10^(−12)] "
-        "and |z| ≤ 5.0. Cross-tissue integration was performed by computing the equal-weight mean z̄ across the 23 tissues with sufficient flight sample "
-        "sizes (n_flight ≥ 5). Three tissues with limited sample numbers—Colon (n = 4), Heart (n = 3), and Femoral skin (n = 2)—were evaluated in "
-        "tissue-specific correlation profiles (Supplementary Table S5) and excluded from the cross-tissue pooled integration. The consensus correlation "
-        "matrix was obtained by back-transformation: ρ̄ = tanh(z̄), yielding the consensus 15 × 15 cross-tissue pathway co-response matrix compiled "
-        "in Supplementary Table S4.",
+        [
+            "Within each of the 26 anatomical tissues, pairwise Spearman rank correlation coefficients (",
+            latex_to_omath(r"\rho"),
+            ") were calculated among the 15 pathway scores across individual flight specimens (Supplementary Table S5). To synthesize a consensus cross-tissue co-response architecture, correlation "
+            "coefficients were transformed using the Fisher-z transformation: ",
+            latex_to_omath(r"z = \operatorname{arctanh}(\rho)"),
+            ", with bounded inputs within ",
+            latex_to_omath(r"[-1 + 10^{-12},\, 1 - 10^{-12}]"),
+            " and ",
+            latex_to_omath(r"|z| \le 5.0"),
+            ". Cross-tissue integration was performed by computing the equal-weight mean ",
+            latex_to_omath(r"\bar{z}"),
+            " across the 23 tissues with sufficient flight sample sizes (",
+            latex_to_omath(r"n_{\mathrm{flight}} \ge 5"),
+            "). Three tissues with limited sample numbers—Colon (n = 4), Heart (n = 3), and Femoral skin (n = 2)—were evaluated in "
+            "tissue-specific correlation profiles (Supplementary Table S5) and excluded from the cross-tissue pooled integration. The consensus correlation "
+            "matrix was obtained by back-transformation: ",
+            latex_to_omath(r"\bar{\rho} = \tanh(\bar{z})"),
+            ", yielding the consensus 15 × 15 cross-tissue pathway co-response matrix compiled in Supplementary Table S4."
+        ],
         bold_prefix="Intra-tissue correlation and Fisher-z meta-integration. "
     )
 
@@ -277,22 +331,30 @@ def build_docx(output_path):
     add_sec_heading("4. Organ-Specific DDR Member-Gene Repertoires and Common-Direction Prioritization")
     
     add_body_p(
-        "To determine whether shared or tissue-specific gene repertoires drive spaceflight DDR perturbations, binary detection matrices of Ensembl IDs "
-        "belonging to the core DDR term (GO:0006974) were evaluated. A member gene was defined as present when its normalized source expression was finite "
-        "and greater than zero. Combinatorial overlap and intersection sets of expressed DDR genes were quantified across independent flight comparisons "
-        "within Thymus (4 comparisons; Supplementary Table S6), Kidney (5 accessions; Supplementary Table S7), as well as across tissue cohorts "
-        "exhibiting pronounced positive enrichment (NES > 1) and negative enrichment (NES < −1) (Supplementary Table S8).",
+        [
+            "To determine whether shared or tissue-specific gene repertoires drive spaceflight DDR perturbations, binary detection matrices of Ensembl IDs "
+            "belonging to the core DDR term (GO:0006974) were evaluated. A member gene was defined as present when its normalized source expression was finite "
+            "and greater than zero. Combinatorial overlap and intersection sets of expressed DDR genes were quantified across independent flight comparisons "
+            "within Thymus (4 comparisons; Supplementary Table S6), Kidney (5 accessions; Supplementary Table S7), as well as across tissue cohorts "
+            "exhibiting pronounced positive enrichment (",
+            latex_to_omath(r"\mathrm{NES} > 1"),
+            ") and negative enrichment (",
+            latex_to_omath(r"\mathrm{NES} < -1"),
+            ") (Supplementary Table S8)."
+        ],
         bold_prefix="UpSet intersection topology of DDR member genes. "
     )
     
     add_body_p(
-        "To identify core responsive genes exhibiting reproducible, unidirectional regulation under spaceflight stress across parallel studies, candidate "
-        "genes were prioritized based on directional concordance. Mission-level differential expression statistics were corrected using Benjamini–Hochberg "
-        "FDR (threshold FDR ≤ 0.05 for Thymus and Kidney; FDR ≤ 0.10 for the high- and low-NES tissue cohorts). Qualifying genes were required to display "
-        "identical non-zero log2FC signs across all parallel comparisons within the cohort. Concordant genes were then ranked by their minimum effect "
-        "magnitude across comparisons: Score_g = min_c |log2FC(g,c)|. This prioritization identified 30 top concordant genes in Thymus (Supplementary Table S6), "
-        "12 in Kidney (Supplementary Table S7), 5 in high-NES tissues, and 11 in low-NES tissues (Supplementary Table S8), compiling comparison-specific "
-        "log2FC values, FDR significance, and concordance scores.",
+        [
+            "To identify core responsive genes exhibiting reproducible, unidirectional regulation under spaceflight stress across parallel studies, candidate "
+            "genes were prioritized based on directional concordance. Mission-level differential expression statistics were corrected using Benjamini–Hochberg "
+            "FDR (threshold FDR ≤ 0.05 for Thymus and Kidney; FDR ≤ 0.10 for the high- and low-NES tissue cohorts). Qualifying genes were required to display "
+            "identical non-zero log2FC signs across all parallel comparisons within the cohort. Concordant genes were then ranked by their minimum effect "
+            "magnitude across comparisons: ",
+            latex_to_omath(r"\mathrm{Score}_g = \min_{c} |\log_2 \mathrm{FC}(g, c)|"),
+            ". This prioritization identified 30 top concordant genes in Thymus (Supplementary Table S6), 12 in Kidney (Supplementary Table S7), 5 in high-NES tissues, and 11 in low-NES tissues (Supplementary Table S8), compiling comparison-specific log2FC values, FDR significance, and concordance scores."
+        ],
         bold_prefix="Common-direction concordance and candidate prioritization. "
     )
 
@@ -302,21 +364,28 @@ def build_docx(output_path):
     add_sec_heading("5. Double-Strand Break Repair Architecture and Spaceflight Meta-Analysis")
     
     add_body_p(
-        "To characterize baseline expression patterns and tissue divergence in double-strand break (DSB) repair machinery, flight transcriptomic profiles "
-        "were normalized using YARN tissue-aware quantile smoothing (yarn::normalizeTissueAware; groups = tissue, normalizationMethod = 'qsmooth', "
-        "window = 0.05, log = TRUE). Normalization was conducted across a background universe of 12,462 Ensembl genes, 360 flight biospecimens, "
-        "59 analysis units, and 26 tissues. For DSB architecture analysis, 29 curated pathway components were compiled across non-homologous end joining "
-        "(NHEJ, 7 genes), homologous recombination (HR, 14 genes), HR/A-EJ shared components (3 genes), and alternative end joining (A-EJ, 5 genes). "
-        "Expression profiles were sequentially aggregated by biospecimen, analysis unit, mission, and tissue. Pairwise tissue dissimilarity was calculated "
-        "as D(Ta, Tb) = 1 − ρ_Spearman on tissue-mean YARN normalized log2 profiles, followed by average-linkage hierarchical clustering to evaluate "
-        "anatomical relationships and cross-tissue co-expression clustering (Supplementary Table S9).",
+        [
+            "To characterize baseline expression patterns and tissue divergence in double-strand break (DSB) repair machinery, flight transcriptomic profiles "
+            "were normalized using YARN tissue-aware quantile smoothing (yarn::normalizeTissueAware; groups = tissue, normalizationMethod = 'qsmooth', "
+            "window = 0.05, log = TRUE). Normalization was conducted across a background universe of 12,462 Ensembl genes, 360 flight biospecimens, "
+            "59 analysis units, and 26 tissues. For DSB architecture analysis, 29 curated pathway components were compiled across non-homologous end joining "
+            "(NHEJ, 7 genes), homologous recombination (HR, 14 genes), HR/A-EJ shared components (3 genes), and alternative end joining (A-EJ, 5 genes). "
+            "Expression profiles were sequentially aggregated by biospecimen, analysis unit, mission, and tissue. Pairwise tissue dissimilarity was calculated "
+            "as ",
+            latex_to_omath(r"D(T_a, T_b) = 1 - \rho_{\mathrm{Spearman}}"),
+            " on tissue-mean YARN normalized log2 profiles, followed by average-linkage hierarchical clustering to evaluate "
+            "anatomical relationships and cross-tissue co-expression clustering (Supplementary Table S9)."
+        ],
         bold_prefix="Tissue-aware normalization and pathway clustering. "
     )
     
     add_body_p(
-        "To quantify physiological expression distributions and tissue-specific abundance of key DSB repair machinery, representative marker genes were "
-        "quantified on the back-transformed linear normalized expression scale (Expression_linear = 2^(YARNNormalizedLog2) − 1) across 360 flight biospecimens "
-        "in the 26 anatomical tissues (Supplementary Table S10):",
+        [
+            "To quantify physiological expression distributions and tissue-specific abundance of key DSB repair machinery, representative marker genes were "
+            "quantified on the back-transformed linear normalized expression scale (",
+            latex_to_omath(r"\mathrm{Expression}_{\mathrm{linear}} = 2^{\mathrm{YARNNormalizedLog2}} - 1"),
+            ") across 360 flight biospecimens in the 26 anatomical tissues (Supplementary Table S10):"
+        ],
         bold_prefix="Linear-scale baseline expression profiling of DSB machinery. "
     )
     
@@ -354,18 +423,24 @@ def build_docx(output_path):
     add_sec_heading("6. Single-Strand Break Repair Architecture and Spaceflight Meta-Analysis")
     
     add_body_p(
-        "To establish baseline expression architectures across single-strand break (SSB) repair mechanisms, a curated panel of 45 components was compiled "
-        "across the four major SSB pathways: base excision repair (BER, 6 genes), nucleotide excision repair (NER, 18 genes), mismatch repair (MMR, 5 genes), "
-        "and the Fanconi anemia pathway (FA, 16 genes) (Supplementary Table S12, Supplementary Table S14). Biospecimen expression profiles were normalized "
-        "using YARN tissue-aware quantile smoothing (qsmooth), followed by successive aggregation to tissue means. Pairwise tissue distances were computed "
-        "as D(Ta, Tb) = 1 − ρ_Spearman and resolved using average-linkage hierarchical clustering to evaluate cross-tissue organizational relationships "
-        "(Supplementary Table S12).",
+        [
+            "To establish baseline expression architectures across single-strand break (SSB) repair mechanisms, a curated panel of 45 components was compiled "
+            "across the four major SSB pathways: base excision repair (BER, 6 genes), nucleotide excision repair (NER, 18 genes), mismatch repair (MMR, 5 genes), "
+            "and the Fanconi anemia pathway (FA, 16 genes) (Supplementary Table S12, Supplementary Table S14). Biospecimen expression profiles were normalized "
+            "using YARN tissue-aware quantile smoothing (qsmooth), followed by successive aggregation to tissue means. Pairwise tissue distances were computed "
+            "as ",
+            latex_to_omath(r"D(T_a, T_b) = 1 - \rho_{\mathrm{Spearman}}"),
+            " and resolved using average-linkage hierarchical clustering to evaluate cross-tissue organizational relationships (Supplementary Table S12)."
+        ],
         bold_prefix="Pathway definition and tissue-aware clustering. "
     )
     
     add_body_p(
-        "Tissue-specific expression distributions of key SSB components were evaluated on the back-transformed linear scale "
-        "(Expression_linear = 2^(YARNNormalizedLog2) − 1) across 360 flight biospecimens in 26 tissues (Supplementary Table S13):",
+        [
+            "Tissue-specific expression distributions of key SSB components were evaluated on the back-transformed linear scale (",
+            latex_to_omath(r"\mathrm{Expression}_{\mathrm{linear}} = 2^{\mathrm{YARNNormalizedLog2}} - 1"),
+            ") across 360 flight biospecimens in 26 tissues (Supplementary Table S13):"
+        ],
         bold_prefix="Linear-scale baseline expression profiling of SSB machinery. "
     )
     
