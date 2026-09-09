@@ -85,7 +85,7 @@ provenance_expected <- sort(c(
   "GO_figure_scope_audit.csv", "expression_tree_structure_audit.csv",
   "figure_palette_audit.csv", "final_figure_sources.csv", "final_palette_contract.csv",
   "meta_dotplot_scope_audit.csv",
-  "publication_table_sha256.csv", "upset_render_audit.csv"
+  "pathway_boxplot_x_axis_order.csv", "publication_table_sha256.csv", "upset_render_audit.csv"
 ))
 observed_provenance <- sort(list.files(file.path(target, "provenance"), pattern = "[.]csv$"))
 assert(all(provenance_expected %in% observed_provenance), "A required final provenance audit is missing")
@@ -224,6 +224,24 @@ for (figure in names(tree_specs)) {
            identical(hc$labels[hc$order], frozen_order$Tissue) &&
            unique(observed$ordered_tissues) == paste(frozen_order$Tissue, collapse = "|"),
          paste(figure, "tree order differs from the frozen formal order"))
+}
+
+axis_order_audit <- fread(file.path(target, "provenance/pathway_boxplot_x_axis_order.csv"))
+pathway_to_tree <- c(NHEJ = "DSB", HR = "DSB", "A-EJ" = "DSB",
+                     BER = "SSB", NER = "SSB", MMR = "SSB", FA = "SSB")
+assert(
+  nrow(axis_order_audit) == 182L &&
+    identical(sort(unique(axis_order_audit$Pathway)), sort(names(pathway_to_tree))) &&
+    all(axis_order_audit$FigureGroup == unname(pathway_to_tree[axis_order_audit$Pathway])) &&
+    !anyDuplicated(axis_order_audit[, .(Pathway, OrderLeftToRight)]),
+  "Pathway boxplot x-axis audit has an invalid scope"
+)
+for (pathway_name in names(pathway_to_tree)) {
+  figure_group <- pathway_to_tree[[pathway_name]]
+  expected_order <- formal_tree_order[Figure == figure_group][order(OrderTopToBottom)]$Tissue
+  observed_order <- axis_order_audit[Pathway == pathway_name][order(OrderLeftToRight)]$Tissue
+  assert(identical(observed_order, expected_order),
+         paste(pathway_name, "boxplot x-axis order differs from its Fig.", if (figure_group == "DSB") "4a" else "5a", "tree"))
 }
 
 meta_audit <- fread(file.path(target, "provenance/meta_dotplot_scope_audit.csv"))

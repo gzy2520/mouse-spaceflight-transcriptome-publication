@@ -6,14 +6,14 @@
 #          pathways on linear expression scale (2^log2 - 1) highlighting key
 #          genes from manuscript text/images.
 # Features:
-#   - X-axis: 26 tissues (canonical DDR GO order)
+#   - X-axis: 26 tissues in the matching Fig. 4a DSB or Fig. 5a SSB tree order
 #   - Y-axis: mouse-level YARN qsmooth linear expression (2^log2 - 1)
 #   - Points: individual flight mice (n = 360)
 #   - Boxplot: Q1, Mean (middle solid bar), Q3, 1.5 * IQR whiskers
 #   - Dashed lines: connect tissue-level mean values for each gene
 #   - One-way ANOVA: test tissue heterogeneity on linear expression
-#   - Custom coloring: NER grouped (XPC/RAD23B/CETN2; DDB1/2; ERCC6/8);
-#                     all other pathways have unique gene colors.
+#   - Custom coloring: Colorblind-safe palettes avoiding red+green and blue+yellow;
+#                     all pathways have single-row legend and unique gene colors.
 # -----------------------------------------------------------------------------
 
 suppressPackageStartupMessages({
@@ -55,17 +55,35 @@ format_sci <- function(p) {
 
 # Input data paths
 qsmooth_path <- file.path(repo_root, "data/publication_input/qsmooth/06_component_flight_sample_yarn_qsmooth_values.csv.gz")
-go_path <- file.path(repo_root, "data/publication_input/go/04_tissue_statistics_concrete_terms_and_context.csv")
+tree_order_path <- file.path(repo_root, "data/publication_input/qsmooth/02_tissue_spearman_cluster_order.csv")
 
 if (!file.exists(qsmooth_path)) stop("Missing qsmooth sample table: ", qsmooth_path, call. = FALSE)
-if (!file.exists(go_path)) stop("Missing GO tissue table: ", go_path, call. = FALSE)
+if (!file.exists(tree_order_path)) stop("Missing Fig. 4a/5a tree-order contract: ", tree_order_path, call. = FALSE)
 
 dt <- fread(qsmooth_path, showProgress = FALSE)
-go <- fread(go_path, showProgress = FALSE)
+tree_order <- fread(tree_order_path)
+required_tree_columns <- c("Figure", "OrderTopToBottom", "Tissue", "ComponentN")
+stopifnot(all(required_tree_columns %in% names(tree_order)))
 
-# Canonical 26-tissue order
-tissue_order <- go[term_key == "DNA_damage_response_GO0006974" & term_order == 1]$analysis_tissue
-stopifnot(length(tissue_order) == 26L, setequal(unique(dt$Group), tissue_order))
+# The boxplots must follow the displayed top-to-bottom tissue order in their
+# matching Fig. 4a (DSB) or Fig. 5a (SSB) tree, from left to right on the x-axis.
+tree_order_by_group <- lapply(c("DSB", "SSB"), function(figure_group) {
+  ordered <- tree_order[Figure == figure_group][order(OrderTopToBottom)]
+  stopifnot(
+    nrow(ordered) == 26L,
+    identical(ordered$OrderTopToBottom, seq_len(26L)),
+    !anyDuplicated(ordered$Tissue),
+    setequal(ordered$Tissue, unique(dt$Group))
+  )
+  ordered$Tissue
+})
+names(tree_order_by_group) <- c("DSB", "SSB")
+
+display_tissue_name <- function(x) {
+  x <- as.character(x)
+  x[x == "Heart / Heart right ventricle"] <- "Heart right ventricle"
+  x
+}
 
 # Compute linear values: 2^log2 - 1
 dt[, YARNLinear := 2^YARNNormalizedLog2 - 1]
@@ -86,9 +104,9 @@ pathway_defs <- list(
       Xrcc5 = "ENSMUSG00000026187"
     ),
     colors = c(
-      Nhej1 = "#E69F00",
+      Nhej1 = "#0072B2",
       Paxx = "#56B4E9",
-      Xrcc6 = "#009E73",
+      Xrcc6 = "#AA4499",
       Xrcc5 = "#D55E00"
     ),
     linetypes = c(
@@ -111,9 +129,9 @@ pathway_defs <- list(
       Rad51 = "ENSMUSG00000027323"
     ),
     colors = c(
-      Brca1 = "#D55E00",
-      Bard1 = "#E69F00",
-      Blm = "#009E73",
+      Brca1 = "#B2182B",
+      Bard1 = "#D55E00",
+      Blm = "#56B4E9",
       Rad51 = "#0072B2"
     ),
     linetypes = c(
@@ -136,10 +154,10 @@ pathway_defs <- list(
       Lig3 = "ENSMUSG00000020697"
     ),
     colors = c(
-      Parp1 = "#E69F00",
-      Polq = "#56B4E9",
-      Lig1 = "#009E73",
-      Lig3 = "#CC79A7"
+      Parp1 = "#D55E00",
+      Polq = "#AA4499",
+      Lig1 = "#56B4E9",
+      Lig3 = "#0072B2"
     ),
     linetypes = c(
       Parp1 = "dashed",
@@ -162,9 +180,9 @@ pathway_defs <- list(
       Neil1 = "ENSMUSG00000032298"
     ),
     colors = c(
-      Ung = "#E69F00",
-      Ogg1 = "#009E73",
-      Neil1 = "#CC79A7"
+      Ung = "#0072B2",
+      Ogg1 = "#56B4E9",
+      Neil1 = "#D55E00"
     ),
     linetypes = c(
       Ung = "dashed",
@@ -177,7 +195,7 @@ pathway_defs <- list(
     fig_letter = "c",
     fig_group = "SSB",
     title = "Nucleotide Excision Repair (NER)",
-    caption_note = "Shapes: Cross (\u2715), Triangle (\u25b2), Circle (\u25cf). Color coding: XPC/RAD23B/CETN2 (GG-NER surveillance; Amber), DDB1/2 (UV lesion detection; Teal), ERCC6/8 (TC-NER; Blue).",
+    caption_note = "Genes: XPC, RAD23B, CETN2 (GG-NER surveillance), DDB1, DDB2 (UV lesion detection), ERCC6, and ERCC8 (TC-NER).",
     genes = c(
       Xpc = "ENSMUSG00000030094",
       Rad23b = "ENSMUSG00000028426",
@@ -188,24 +206,22 @@ pathway_defs <- list(
       Ercc8 = "ENSMUSG00000021694"
     ),
     colors = c(
-      Xpc = "#E69F00", Rad23b = "#E69F00", Cetn2 = "#E69F00",
-      Ddb1 = "#009E73", Ddb2 = "#009E73",
-      Ercc6 = "#0072B2", Ercc8 = "#0072B2"
+      Xpc = "#003366",
+      Rad23b = "#0072B2",
+      Cetn2 = "#56B4E9",
+      Ddb1 = "#542788",
+      Ddb2 = "#AA4499",
+      Ercc6 = "#B2182B",
+      Ercc8 = "#D55E00"
     ),
     linetypes = c(
-      Xpc = "dashed", Rad23b = "dotted", Cetn2 = "dotdash",
-      Ddb1 = "dashed", Ddb2 = "dotted",
-      Ercc6 = "dashed", Ercc8 = "dotted"
-    ),
-    shapes = c(
-      Xpc = 4, Rad23b = 17, Cetn2 = 16,
-      Ddb1 = 4, Ddb2 = 17,
-      Ercc6 = 4, Ercc8 = 17
-    ),
-    labels = c(
-      Xpc = "Xpc (\u2715)", Rad23b = "Rad23b (\u25b2)", Cetn2 = "Cetn2 (\u25cf)",
-      Ddb1 = "Ddb1 (\u2715)", Ddb2 = "Ddb2 (\u25b2)",
-      Ercc6 = "Ercc6 (\u2715)", Ercc8 = "Ercc8 (\u25b2)"
+      Xpc = "dashed",
+      Rad23b = "dashed",
+      Cetn2 = "dashed",
+      Ddb1 = "dashed",
+      Ddb2 = "dashed",
+      Ercc6 = "dashed",
+      Ercc8 = "dashed"
     )
   ),
   MMR = list(
@@ -238,8 +254,8 @@ pathway_defs <- list(
       Fanci = "ENSMUSG00000039187"
     ),
     colors = c(
-      Fancd2 = "#E69F00",
-      Fanci = "#56B4E9"
+      Fancd2 = "#D55E00",
+      Fanci = "#0072B2"
     ),
     linetypes = c(
       Fancd2 = "dashed",
@@ -261,15 +277,31 @@ anova_pw_list <- list()
 summary_mean_list <- list()
 used_data_list <- list()
 
+# Persist the x-axis contract alongside the rendered figures so the displayed
+# tissue order can be independently checked without re-running the plotting code.
+axis_order_audit <- rbindlist(lapply(names(pathway_defs), function(pw_name) {
+  pw_info <- pathway_defs[[pw_name]]
+  tissue_order <- tree_order_by_group[[pw_info$fig_group]]
+  data.table(
+    FigureGroup = pw_info$fig_group,
+    Pathway = pw_name,
+    FigurePanel = pw_info$fig_panel,
+    OrderLeftToRight = seq_along(tissue_order),
+    Tissue = tissue_order,
+    DisplayTissue = display_tissue_name(tissue_order)
+  )
+}))
+
 for (pw_name in names(pathway_defs)) {
   pw_info <- pathway_defs[[pw_name]]
   gene_ids <- pw_info$genes
   gene_symbols <- names(gene_ids)
+  tissue_order <- tree_order_by_group[[pw_info$fig_group]]
   
   sub_dt <- dt[EnsemblID %in% gene_ids]
   stopifnot(setequal(unique(sub_dt$EnsemblID), unname(gene_ids)))
   sub_dt[, Gene := factor(names(gene_ids)[match(EnsemblID, gene_ids)], levels = gene_symbols)]
-  sub_dt[, Group := factor(Group, levels = tissue_order)]
+  sub_dt[, Group := factor(as.character(Group), levels = tissue_order)]
   sub_dt[, Pathway := pw_name]
   
   used_data_list[[pw_name]] <- sub_dt[, .(Pathway = pw_name, EnsemblID, OfficialMouseSymbol, SampleID, Group, accession, mission_cluster, YARNNormalizedLog2, YARNLinear)]
@@ -379,6 +411,7 @@ for (pw_name in names(pathway_defs)) {
     scale_color_manual(values = pw_info$colors, labels = pw_labels) +
     scale_shape_manual(values = pw_shapes, labels = pw_labels) +
     scale_linetype_manual(values = pw_info$linetypes, guide = "none") +
+    scale_x_discrete(labels = display_tissue_name) +
     guides(
       color = guide_legend(
         title = "Gene",
@@ -389,7 +422,7 @@ for (pw_name in names(pathway_defs)) {
           alpha = 1,
           linetype = 0
         ),
-        nrow = if (n_genes >= 6) 2 else 1
+        nrow = 1
       ),
       shape = "none"
     ) +
@@ -446,5 +479,8 @@ fwrite(anova_pw_dt, file.path(tbl_dir, "01_pathway_one_way_anova_linear_summary.
 fwrite(anova_gene_dt, file.path(tbl_dir, "02_gene_one_way_anova_linear_summary.csv"))
 fwrite(summary_mean_dt, file.path(tbl_dir, "03_tissue_gene_mean_linear_qsmooth_summary.csv"))
 fwrite(used_data_dt, file.path(tbl_dir, "04_sample_linear_qsmooth_values_used.csv.gz"))
+provenance_dir <- file.path(out_dir, "provenance")
+dir.create(provenance_dir, recursive = TRUE, showWarnings = FALSE)
+fwrite(axis_order_audit, file.path(provenance_dir, "pathway_boxplot_x_axis_order.csv"))
 
 message("All 7 linear pathway figures and tables successfully generated under: ", out_dir)
