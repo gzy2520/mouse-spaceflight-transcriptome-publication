@@ -121,8 +121,8 @@ pathway_defs <- list(
     ),
     colors = c(
       Nhej1 = "#0072B2",
-      Paxx = "#56B4E9",
-      Xrcc6 = "#AA4499",
+      Paxx = "#222222",
+      Xrcc6 = "#785EF0",
       Xrcc5 = "#D55E00"
     ),
     linetypes = c(
@@ -145,9 +145,9 @@ pathway_defs <- list(
       Rad51 = "ENSMUSG00000027323"
     ),
     colors = c(
-      Brca1 = "#B2182B",
-      Bard1 = "#D55E00",
-      Blm = "#56B4E9",
+      Brca1 = "#D55E00",
+      Bard1 = "#785EF0",
+      Blm = "#222222",
       Rad51 = "#0072B2"
     ),
     linetypes = c(
@@ -171,8 +171,8 @@ pathway_defs <- list(
     ),
     colors = c(
       Parp1 = "#D55E00",
-      Polq = "#AA4499",
-      Lig1 = "#56B4E9",
+      Polq = "#785EF0",
+      Lig1 = "#222222",
       Lig3 = "#0072B2"
     ),
     linetypes = c(
@@ -197,7 +197,7 @@ pathway_defs <- list(
     ),
     colors = c(
       Ung = "#0072B2",
-      Ogg1 = "#56B4E9",
+      Ogg1 = "#785EF0",
       Neil1 = "#D55E00"
     ),
     linetypes = c(
@@ -225,8 +225,8 @@ pathway_defs <- list(
       Xpc = "#0072B2",
       Rad23b = "#0072B2",
       Cetn2 = "#0072B2",
-      Ddb1 = "#AA4499",
-      Ddb2 = "#AA4499",
+      Ddb1 = "#785EF0",
+      Ddb2 = "#785EF0",
       Ercc6 = "#D55E00",
       Ercc8 = "#D55E00"
     ),
