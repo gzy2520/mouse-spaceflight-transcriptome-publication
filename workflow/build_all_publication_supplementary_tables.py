@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Build publication-ready delivery tables aligned with Teacher's Manuscript & Method citations:
-- Number of tables: Exactly 4 tables (Table S1, Table S2, Table S3, Table S4), matching teacher manuscript.
-- Nomenclature: 'Table S' notation strictly, removing 'Supplementary'.
+Build complete publication delivery tables aligned with Teacher's Manuscript & Methods:
+- S1 to S4: Teacher's designated core tables (Metadata, Overlap/DEGs, 7 Pathways Audit, Core Genes ANOVA).
+- S5 to S8: Analytical results tables for remaining manuscript sections (GO/Hallmark GSEA, Fisher-z Network, DSB Meta, SSB Meta).
+- Nomenclature: Strictly 'Table S' notation, removing 'Supplementary'.
 - Formatting: Streamlined delivery (no internal parameters/audit flags), completely unstyled (no fill colors).
 - Output: /Users/gzy2520/Desktop/Supplementary_Tables/
 """
@@ -128,7 +129,6 @@ def clean_upset_df(df):
     return res
 
 def main():
-    # Re-initialize desktop output directory cleanly
     if os.path.exists(DESKTOP_DIR):
         shutil.rmtree(DESKTOP_DIR)
     os.makedirs(CSV_DIR, exist_ok=True)
@@ -272,7 +272,93 @@ def main():
     write_excel_sheets(s4_path, s4_sheets)
     save_csvs("Table_S4", s4_sheets)
 
-    print("\n=== Step 5: Generating Master Consolidated Table S1-S4 ===")
+    print("\n=== Step 5: Generating Table S5 (Cross-Tissue GO and Hallmark Pathway GSEA Profiling) ===")
+    df_s5_go_raw = pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/go/04_tissue_statistics_concrete_terms_and_context.csv"))
+    df_s5_go = df_s5_go_raw[['analysis_tissue', 'go_id', 'term_name', 'n_missions', 'n_analysis_units', 'mean_mission_nes', 'median_mission_nes', 'n_positive_missions', 'n_negative_missions', 'exact_signflip_p_two_sided', 'exact_signflip_FDR_all_cells', 'stouffer_meta_z', 'stouffer_p_two_sided', 'stouffer_FDR_all_cells']].rename(columns={
+        'analysis_tissue': 'Tissue',
+        'go_id': 'GO_ID',
+        'term_name': 'GO_Term_Name',
+        'mean_mission_nes': 'Mean_Mission_NES',
+        'median_mission_nes': 'Median_Mission_NES',
+        'exact_signflip_p_two_sided': 'Signflip_P_value',
+        'exact_signflip_FDR_all_cells': 'Signflip_FDR',
+        'stouffer_meta_z': 'Stouffer_Meta_Z',
+        'stouffer_p_two_sided': 'Stouffer_P_value',
+        'stouffer_FDR_all_cells': 'Stouffer_FDR'
+    })
+
+    df_s5_hallmark_raw = pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/hallmark/01_global_top_term_figure_selection.csv"))
+    df_s5_hallmark = df_s5_hallmark_raw[['gene_set_name', 'term_display', 'direction', 'n_missions', 'mean_of_mission_mean_NES', 'median_of_mission_mean_NES', 'positive_missions', 'negative_missions']].rename(columns={
+        'gene_set_name': 'Gene_Set_Name',
+        'term_display': 'Pathway_Description',
+        'direction': 'Direction',
+        'mean_of_mission_mean_NES': 'Mean_Mission_NES',
+        'median_of_mission_mean_NES': 'Median_Mission_NES',
+        'positive_missions': 'Positive_Missions_Count',
+        'negative_missions': 'Negative_Missions_Count'
+    })
+
+    s5_sheets = {
+        "GO_Enrichment_Statistics": df_s5_go,
+        "Hallmark_Top12_Pathways": df_s5_hallmark
+    }
+    s5_path = os.path.join(DESKTOP_DIR, "Table_S5_Functional_Pathway_and_Hallmark_GSEA.xlsx")
+    write_excel_sheets(s5_path, s5_sheets)
+    save_csvs("Table_S5", s5_sheets)
+
+    print("\n=== Step 6: Generating Table S6 (Pathway Association and Cross-Tissue Fisher-z Network) ===")
+    df_s6_fz_raw = pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/go/log2fc_spearman_20260902/04_overall_fisher_z_spearman_rho_matrix.csv"))
+    df_s6_fz = df_s6_fz_raw.rename(columns={'term_key': 'Pathway_GO_Term'})
+
+    df_s6_sp_raw = pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/go/log2fc_spearman_20260902/03_tissue_pairwise_spearman_log2fc_long.csv"))
+    df_s6_sp = df_s6_sp_raw[['analysis_tissue', 'n_flight_samples', 'pathway_1_key', 'pathway_2_key', 'spearman_rho']].rename(columns={
+        'analysis_tissue': 'Tissue',
+        'n_flight_samples': 'Flight_Samples_Count',
+        'pathway_1_key': 'Pathway_1',
+        'pathway_2_key': 'Pathway_2',
+        'spearman_rho': 'Spearman_Rho'
+    })
+
+    s6_sheets = {
+        "Cross_Tissue_FisherZ_Matrix": df_s6_fz,
+        "Per_Tissue_Spearman_Profiles": df_s6_sp
+    }
+    s6_path = os.path.join(DESKTOP_DIR, "Table_S6_Pathway_Association_and_FisherZ_Integration.xlsx")
+    write_excel_sheets(s6_path, s6_sheets)
+    save_csvs("Table_S6", s6_sheets)
+
+    print("\n=== Step 7: Generating Table S7 (Double-Strand Break Repair Spaceflight Meta-Analysis) ===")
+    df_s7_raw = pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/meta/08_essential_components_counts_log2FC_tissue_matrix.csv"))
+    df_s7 = df_s7_raw[['TissueLabel', 'Pathway', 'EnsemblID', 'OfficialMouseSymbol', 'EntrezID', 'FlightExpressionLog2NormalizedCount', 'log2FoldChange', 'tissue_meta_p', 'padj', 'n_missions', 'n_analysis_units', 'expression_n_flight_samples']].rename(columns={
+        'TissueLabel': 'Tissue',
+        'OfficialMouseSymbol': 'Gene_Symbol',
+        'FlightExpressionLog2NormalizedCount': 'Baseline_Log2_Expression',
+        'log2FoldChange': 'Spaceflight_Log2FC',
+        'tissue_meta_p': 'Meta_P_value',
+        'padj': 'FDR_padj',
+        'expression_n_flight_samples': 'Flight_Samples_Count'
+    })
+    s7_sheets = {"DSB_Meta_Analysis_26x29": df_s7}
+    s7_path = os.path.join(DESKTOP_DIR, "Table_S7_DSB_Repair_Meta_Analysis_Matrix.xlsx")
+    write_excel_sheets(s7_path, s7_sheets)
+    save_csvs("Table_S7", s7_sheets)
+
+    print("\n=== Step 8: Generating Table S8 (Single-Strand Break Repair Spaceflight Meta-Analysis) ===")
+    df_s8_raw = pd.read_csv(os.path.join(REPO_ROOT, "release/tables/01_SSB_tissue_meta_log2FC_pvalue_matrix_without_Neil2.csv"))
+    df_s8 = df_s8_raw[['TissueLabel', 'Pathway', 'EnsemblID', 'OfficialMouseSymbol', 'EntrezID', 'log2FoldChange', 'tissue_meta_p', 'padj', 'n_missions', 'n_analysis_units', 'expression_n_flight_samples']].rename(columns={
+        'TissueLabel': 'Tissue',
+        'OfficialMouseSymbol': 'Gene_Symbol',
+        'log2FoldChange': 'Spaceflight_Log2FC',
+        'tissue_meta_p': 'Meta_P_value',
+        'padj': 'FDR_padj',
+        'expression_n_flight_samples': 'Flight_Samples_Count'
+    })
+    s8_sheets = {"SSB_Meta_Analysis_26x45": df_s8}
+    s8_path = os.path.join(DESKTOP_DIR, "Table_S8_SSB_Repair_Meta_Analysis_Matrix.xlsx")
+    write_excel_sheets(s8_path, s8_sheets)
+    save_csvs("Table_S8", s8_sheets)
+
+    print("\n=== Step 9: Generating Master Consolidated Table S1-S4 (Teacher Citations) ===")
     master_sheets = {
         "S1_Cohort_Summary": df_s1_cohorts,
         "S1_Sample_Metadata_761": df_s1_samples,
@@ -288,12 +374,16 @@ def main():
     master_path = os.path.join(DESKTOP_DIR, "Table_S1_to_S4_Consolidated.xlsx")
     write_excel_sheets(master_path, master_sheets)
 
-    print("\n=== Step 6: Manifest generation ===")
+    print("\n=== Step 10: Manifest generation ===")
     manifest_rows = [
         {"Table_ID": "Table S1", "Title": "Animal Cohort Compilation and Biospecimen Metadata Atlas", "Teacher_Citation": "Fig. 1a-b, Table S1", "Sheets": "Cohort_Summary_Fig1b (52 cohorts × 12 cols), Sample_Metadata_Audit_761 (761 samples × 12 cols)", "File": "Table_S1_Cohort_and_Sample_Metadata.xlsx"},
         {"Table_ID": "Table S2", "Title": "Spaceflight-Induced Co-Directionally Regulated DDR Genes and Repertoire Overlap", "Teacher_Citation": "Fig. 3a, Fig. S2a, Fig. S3ab, Fig. S4a, Table S2", "Sheets": "Thymus_Top30_DEGs (30), Thymus_Overlap (893), Kidney_DEGs (12), Kidney_Overlap (893), Up_DEGs (5), Up_Overlap (893), Down_DEGs (11), Down_Overlap (893)", "File": "Table_S2_DDR_Overlap_and_Common_DEGs.xlsx"},
         {"Table_ID": "Table S3", "Title": "Seven DNA Damage Repair Pathways Gene Repertoire Sizes and Multi-Tissue Detection Audit", "Teacher_Citation": "Fig. S5, Table S3", "Sheets": "Pathway_Repertoire_Sizes (7 pathways × 2 cols), Tissue_Detection_Summary (182 rows × 12 cols), Sample_Pathway_Counts_761 (761 samples × 12 cols)", "File": "Table_S3_Seven_Pathways_Gene_Repertoires_and_Detection.xlsx"},
         {"Table_ID": "Table S4", "Title": "Baseline Expression Profiles and ANOVA Heterogeneity of Core Repair Genes Across Tissues", "Teacher_Citation": "Fig. 4b,c, Fig. 5c, Fig. 4/5 Legends, Table S4", "Sheets": "ANOVA_Core_Genes (26 genes × 8 cols), ANOVA_Pathways (7 pathways × 6 cols), Tissue_Gene_Mean_Log2 (676 rows × 9 cols), Sample_Log2_Values (9,360 rows × 8 cols)", "File": "Table_S4_Repair_Genes_Expression_and_ANOVA.xlsx"},
+        {"Table_ID": "Table S5", "Title": "Cross-Tissue Gene Ontology Enrichment Profiling and Hallmark GSEA Overview", "Teacher_Citation": "Methods Section 2, Fig. 1c, Fig. S1", "Sheets": "GO_Enrichment_Statistics (390 rows: 26 tissues × 15 GO terms × 14 cols), Hallmark_Top12_Pathways (48 rows × 8 cols)", "File": "Table_S5_Functional_Pathway_and_Hallmark_GSEA.xlsx"},
+        {"Table_ID": "Table S6", "Title": "Sample-Level Pathway Association and Cross-Tissue Fisher-z Network Integration", "Teacher_Citation": "Methods Section 3, Fig. 2, Fig. S6", "Sheets": "Cross_Tissue_FisherZ_Matrix (15 × 15 correlation matrix), Per_Tissue_Spearman_Profiles (2,730 pairwise correlations × 5 cols)", "File": "Table_S6_Pathway_Association_and_FisherZ_Integration.xlsx"},
+        {"Table_ID": "Table S7", "Title": "Double-Strand Break (DSB) Repair Multi-Mission Spaceflight Meta-Analysis Matrix", "Teacher_Citation": "Methods Section 5, Fig. 4e", "Sheets": "DSB_Meta_Analysis_26x29 (754 rows: 26 tissues × 29 components × 12 cols)", "File": "Table_S7_DSB_Repair_Meta_Analysis_Matrix.xlsx"},
+        {"Table_ID": "Table S8", "Title": "Single-Strand Break (SSB) Repair Multi-Mission Spaceflight Meta-Analysis Matrix", "Teacher_Citation": "Methods Section 6, Fig. 5f", "Sheets": "SSB_Meta_Analysis_26x45 (1,170 rows: 26 tissues × 45 components × 11 cols)", "File": "Table_S8_SSB_Repair_Meta_Analysis_Matrix.xlsx"},
     ]
     df_manifest = pd.DataFrame(manifest_rows)
     manifest_path = os.path.join(DESKTOP_DIR, "Table_S_Manifest.csv")
