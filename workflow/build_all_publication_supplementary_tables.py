@@ -203,8 +203,8 @@ def main():
     df_s3_sizes = df_s3_sizes_raw[['Pathway', 'MemberGeneCount']].rename(columns={'MemberGeneCount': 'Member_Gene_Count'})
 
     df_s3_tissue_raw = pd.read_csv(os.path.join(REPO_ROOT, "release/tables/09_Table_S3_per_tissue_sample_summary.csv"))
-    df_s3_tissue = df_s3_tissue_raw[['TissueLabel', 'Pathway', 'n_unique_Ensembl_genes_in_GO_set', 'n_samples', 'n_flight_samples', 'n_ground_samples', 'min', 'q1', 'median', 'mean', 'q3', 'max']].rename(columns={
-        'TissueLabel': 'Tissue',
+    df_s3_tissue = df_s3_tissue_raw[['Group', 'Pathway', 'n_unique_Ensembl_genes_in_GO_set', 'n_samples', 'n_flight_samples', 'n_ground_samples', 'min', 'q1', 'median', 'mean', 'q3', 'max']].rename(columns={
+        'Group': 'Tissue',
         'n_unique_Ensembl_genes_in_GO_set': 'Pathway_Total_Genes',
         'n_samples': 'Total_Samples',
         'n_flight_samples': 'Flight_Samples',
@@ -329,8 +329,8 @@ def main():
 
     print("\n=== Step 7: Generating Table S7 (Double-Strand Break Repair Spaceflight Meta-Analysis) ===")
     df_s7_raw = pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/meta/08_essential_components_counts_log2FC_tissue_matrix.csv"))
-    df_s7 = df_s7_raw[['TissueLabel', 'Pathway', 'EnsemblID', 'OfficialMouseSymbol', 'EntrezID', 'FlightExpressionLog2NormalizedCount', 'log2FoldChange', 'tissue_meta_p', 'padj', 'n_missions', 'n_analysis_units', 'expression_n_flight_samples']].rename(columns={
-        'TissueLabel': 'Tissue',
+    df_s7 = df_s7_raw[['Group', 'Pathway', 'EnsemblID', 'OfficialMouseSymbol', 'EntrezID', 'FlightExpressionLog2NormalizedCount', 'log2FoldChange', 'tissue_meta_p', 'padj', 'n_missions', 'n_analysis_units', 'expression_n_flight_samples']].rename(columns={
+        'Group': 'Tissue',
         'OfficialMouseSymbol': 'Gene_Symbol',
         'FlightExpressionLog2NormalizedCount': 'Baseline_Log2_Expression',
         'log2FoldChange': 'Spaceflight_Log2FC',
@@ -345,8 +345,8 @@ def main():
 
     print("\n=== Step 8: Generating Table S8 (Single-Strand Break Repair Spaceflight Meta-Analysis) ===")
     df_s8_raw = pd.read_csv(os.path.join(REPO_ROOT, "release/tables/01_SSB_tissue_meta_log2FC_pvalue_matrix_without_Neil2.csv"))
-    df_s8 = df_s8_raw[['TissueLabel', 'Pathway', 'EnsemblID', 'OfficialMouseSymbol', 'EntrezID', 'log2FoldChange', 'tissue_meta_p', 'padj', 'n_missions', 'n_analysis_units', 'expression_n_flight_samples']].rename(columns={
-        'TissueLabel': 'Tissue',
+    df_s8 = df_s8_raw[['Group', 'Pathway', 'EnsemblID', 'OfficialMouseSymbol', 'EntrezID', 'log2FoldChange', 'tissue_meta_p', 'padj', 'n_missions', 'n_analysis_units', 'expression_n_flight_samples']].rename(columns={
+        'Group': 'Tissue',
         'OfficialMouseSymbol': 'Gene_Symbol',
         'log2FoldChange': 'Spaceflight_Log2FC',
         'tissue_meta_p': 'Meta_P_value',
