@@ -1,18 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Build publication-ready Supplementary Tables aligned with Teacher's Manuscript & Method citations.
-Outputs streamlined, unstyled .xlsx workbooks and .csv files to /Users/gzy2520/Desktop/Supplementary_Tables/
-and repository release directory.
-
-Key design principles:
-- Streamlined delivery: internal pipeline parameters, audit markers, and rendering artifacts removed.
-- Unstyled presentation: NO color fills (no navy headers, no zebra striping), clean black text on native grid.
-- Primary gene identifier: Ensembl Gene ID retained across all tables.
+Build publication-ready delivery tables aligned with Teacher's Manuscript & Method citations:
+- Number of tables: Exactly 4 tables (Table S1, Table S2, Table S3, Table S4), matching teacher manuscript.
+- Nomenclature: 'Table S' notation strictly, removing 'Supplementary'.
+- Formatting: Streamlined delivery (no internal parameters/audit flags), completely unstyled (no fill colors).
+- Output: /Users/gzy2520/Desktop/Supplementary_Tables/
 """
 
 import os
 import gzip
+import shutil
 import pandas as pd
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border
@@ -21,7 +19,6 @@ from openpyxl.utils import get_column_letter
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DESKTOP_DIR = "/Users/gzy2520/Desktop/Supplementary_Tables"
 CSV_DIR = os.path.join(DESKTOP_DIR, "csv")
-os.makedirs(CSV_DIR, exist_ok=True)
 
 FONT_FAMILY = "Calibri"
 HEADER_FONT = Font(name=FONT_FAMILY, size=11, bold=True, color="000000")
@@ -131,7 +128,12 @@ def clean_upset_df(df):
     return res
 
 def main():
-    print("=== Step 1: Generating Table S1 (Animal Cohort & Sample Metadata) ===")
+    # Re-initialize desktop output directory cleanly
+    if os.path.exists(DESKTOP_DIR):
+        shutil.rmtree(DESKTOP_DIR)
+    os.makedirs(CSV_DIR, exist_ok=True)
+
+    print("=== Step 1: Generating Table S1 (Animal Cohort Compilation & Sample Metadata) ===")
     df_s1_cohorts_raw = pd.read_csv(os.path.join(REPO_ROOT, "reproduced_final_result_20260908_tree_axis_order_complete/provenance/Fig_1b_mouse_metadata_grouped.csv"))
     df_s1_cohorts = df_s1_cohorts_raw[['mission_cluster', 'Group', 'sex', 'age_label', 'n_samples', 'n_mice', 'n_flight', 'n_ground', 'n_accessions', 'accessions', 'n_analysis_units', 'analysis_units']].rename(columns={
         'mission_cluster': 'Mission_Cluster',
@@ -168,11 +170,11 @@ def main():
         "Cohort_Summary_Fig1b": df_s1_cohorts,
         "Sample_Metadata_Audit_761": df_s1_samples
     }
-    s1_path = os.path.join(DESKTOP_DIR, "Supplementary_Table_S1_Cohort_and_Sample_Metadata.xlsx")
+    s1_path = os.path.join(DESKTOP_DIR, "Table_S1_Cohort_and_Sample_Metadata.xlsx")
     write_excel_sheets(s1_path, s1_sheets)
     save_csvs("Table_S1", s1_sheets)
 
-    print("\n=== Step 2: Generating Table S2 (DDR Overlap & Common DEGs) ===")
+    print("\n=== Step 2: Generating Table S2 (Spaceflight DDR Overlap & Common DEGs) ===")
     df_s2_thymus_deg = clean_deg_df(pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/common_direction/B_thymus_DDR_common_direction_top30_min_abs_log2fc_direction_ordered.csv")))
     df_s2_thymus_upset = clean_upset_df(pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/venn/04_membership_matrix_thymus_four_comparisons.csv")))
     df_s2_kidney_deg = clean_deg_df(pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/common_direction/A_kidney_DDR_common_direction_top30_min_abs_log2fc_direction_ordered.csv")))
@@ -192,7 +194,7 @@ def main():
         "Down_Cohort_Common11_DEGs": df_s2_down_deg,
         "Down_Cohort_DDR_Overlap_893": df_s2_down_upset
     }
-    s2_path = os.path.join(DESKTOP_DIR, "Supplementary_Table_S2_DDR_Overlap_and_Common_DEGs.xlsx")
+    s2_path = os.path.join(DESKTOP_DIR, "Table_S2_DDR_Overlap_and_Common_DEGs.xlsx")
     write_excel_sheets(s2_path, s2_sheets)
     save_csvs("Table_S2", s2_sheets)
 
@@ -229,11 +231,11 @@ def main():
         "Tissue_Detection_Summary": df_s3_tissue,
         "Sample_Pathway_Counts_761": df_s3_samples
     }
-    s3_path = os.path.join(DESKTOP_DIR, "Supplementary_Table_S3_Seven_Pathways_Gene_Repertoires_and_Detection.xlsx")
+    s3_path = os.path.join(DESKTOP_DIR, "Table_S3_Seven_Pathways_Gene_Repertoires_and_Detection.xlsx")
     write_excel_sheets(s3_path, s3_sheets)
     save_csvs("Table_S3", s3_sheets)
 
-    print("\n=== Step 4: Generating Table S4 (Core Repair Genes Expression & ANOVA) ===")
+    print("\n=== Step 4: Generating Table S4 (Core Repair Genes Baseline Expression & ANOVA Heterogeneity) ===")
     df_s4_gene_anova_raw = pd.read_csv(os.path.join(REPO_ROOT, "release/tables/log/02_gene_one_way_anova_log_summary.csv"))
     df_s4_gene_anova = df_s4_gene_anova_raw[['Pathway', 'EnsemblID', 'Symbol', 'Df_group', 'Df_residual', 'F_value', 'P_value', 'Significance']].rename(columns={'Symbol': 'Gene_Symbol'})
 
@@ -266,11 +268,11 @@ def main():
         "Tissue_Gene_Mean_Log2": df_s4_tissue_mean,
         "Sample_Log2_Values": df_s4_samples
     }
-    s4_path = os.path.join(DESKTOP_DIR, "Supplementary_Table_S4_Repair_Genes_Expression_and_ANOVA.xlsx")
+    s4_path = os.path.join(DESKTOP_DIR, "Table_S4_Repair_Genes_Expression_and_ANOVA.xlsx")
     write_excel_sheets(s4_path, s4_sheets)
     save_csvs("Table_S4", s4_sheets)
 
-    print("\n=== Step 5: Generating Master Consolidated Table S1-S4 (Teacher Citations) ===")
+    print("\n=== Step 5: Generating Master Consolidated Table S1-S4 ===")
     master_sheets = {
         "S1_Cohort_Summary": df_s1_cohorts,
         "S1_Sample_Metadata_761": df_s1_samples,
@@ -283,113 +285,18 @@ def main():
         "S4_ANOVA_Core_Genes": df_s4_gene_anova,
         "S4_Tissue_Gene_Mean_Log2": df_s4_tissue_mean
     }
-    master_path = os.path.join(DESKTOP_DIR, "Supplementary_Tables_S1_to_S4_Teacher_Citations.xlsx")
+    master_path = os.path.join(DESKTOP_DIR, "Table_S1_to_S4_Consolidated.xlsx")
     write_excel_sheets(master_path, master_sheets)
 
-    print("\n=== Step 6: Generating Additional Manuscript Supplementary Tables (S5 to S10) ===")
-    # Table S5: GO Enrichment Matrix
-    df_s5_raw = pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/go/04_tissue_statistics_concrete_terms_and_context.csv"))
-    df_s5 = df_s5_raw[['analysis_tissue', 'go_id', 'term_name', 'n_missions', 'n_analysis_units', 'mean_mission_nes', 'median_mission_nes', 'n_positive_missions', 'n_negative_missions', 'exact_signflip_p_two_sided', 'exact_signflip_FDR_all_cells', 'stouffer_meta_z', 'stouffer_p_two_sided', 'stouffer_FDR_all_cells']].rename(columns={
-        'analysis_tissue': 'Tissue',
-        'go_id': 'GO_ID',
-        'term_name': 'GO_Term_Name',
-        'mean_mission_nes': 'Mean_Mission_NES',
-        'median_mission_nes': 'Median_Mission_NES',
-        'exact_signflip_p_two_sided': 'Signflip_P_value',
-        'exact_signflip_FDR_all_cells': 'Signflip_FDR',
-        'stouffer_meta_z': 'Stouffer_Meta_Z',
-        'stouffer_p_two_sided': 'Stouffer_P_value',
-        'stouffer_FDR_all_cells': 'Stouffer_FDR'
-    })
-    s5_sheets = {"GO_Enrichment_Statistics": df_s5}
-    s5_path = os.path.join(DESKTOP_DIR, "Supplementary_Table_S5_Cross_Tissue_GO_Enrichment_Matrix.xlsx")
-    write_excel_sheets(s5_path, s5_sheets)
-    save_csvs("Table_S5", s5_sheets)
-
-    # Table S6: Hallmark GSEA
-    df_s6_raw = pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/hallmark/01_global_top_term_figure_selection.csv"))
-    df_s6 = df_s6_raw[['gene_set_name', 'term_display', 'direction', 'n_missions', 'mean_of_mission_mean_NES', 'median_of_mission_mean_NES', 'positive_missions', 'negative_missions']].rename(columns={
-        'gene_set_name': 'Gene_Set_Name',
-        'term_display': 'Pathway_Description',
-        'direction': 'Direction',
-        'mean_of_mission_mean_NES': 'Mean_Mission_NES',
-        'median_of_mission_mean_NES': 'Median_Mission_NES',
-        'positive_missions': 'Positive_Missions_Count',
-        'negative_missions': 'Negative_Missions_Count'
-    })
-    s6_sheets = {"Hallmark_Top12_Pathways": df_s6}
-    s6_path = os.path.join(DESKTOP_DIR, "Supplementary_Table_S6_MSigDB_Hallmark_GSEA_Overview.xlsx")
-    write_excel_sheets(s6_path, s6_sheets)
-    save_csvs("Table_S6", s6_sheets)
-
-    # Table S7: Cross-tissue Fisher-z
-    df_s7_raw = pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/go/log2fc_spearman_20260902/04_overall_fisher_z_spearman_rho_matrix.csv"))
-    df_s7 = df_s7_raw.rename(columns={'term_key': 'Pathway_GO_Term'})
-    s7_sheets = {"Cross_Tissue_FisherZ_Matrix": df_s7}
-    s7_path = os.path.join(DESKTOP_DIR, "Supplementary_Table_S7_Cross_Tissue_Pathway_Association_FisherZ.xlsx")
-    write_excel_sheets(s7_path, s7_sheets)
-    save_csvs("Table_S7", s7_sheets)
-
-    # Table S8: Per-tissue Spearman
-    df_s8_raw = pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/go/log2fc_spearman_20260902/03_tissue_pairwise_spearman_log2fc_long.csv"))
-    df_s8 = df_s8_raw[['analysis_tissue', 'n_flight_samples', 'pathway_1_key', 'pathway_2_key', 'spearman_rho']].rename(columns={
-        'analysis_tissue': 'Tissue',
-        'n_flight_samples': 'Flight_Samples_Count',
-        'pathway_1_key': 'Pathway_1',
-        'pathway_2_key': 'Pathway_2',
-        'spearman_rho': 'Spearman_Rho'
-    })
-    s8_sheets = {"Per_Tissue_Spearman_Long": df_s8}
-    s8_path = os.path.join(DESKTOP_DIR, "Supplementary_Table_S8_Per_Tissue_Pathway_Spearman_Profiles.xlsx")
-    write_excel_sheets(s8_path, s8_sheets)
-    save_csvs("Table_S8", s8_sheets)
-
-    # Table S9: DSB Meta-Analysis Matrix
-    df_s9_raw = pd.read_csv(os.path.join(REPO_ROOT, "data/publication_input/meta/08_essential_components_counts_log2FC_tissue_matrix.csv"))
-    df_s9 = df_s9_raw[['TissueLabel', 'Pathway', 'EnsemblID', 'OfficialMouseSymbol', 'EntrezID', 'FlightExpressionLog2NormalizedCount', 'log2FoldChange', 'tissue_meta_p', 'padj', 'n_missions', 'n_analysis_units', 'expression_n_flight_samples']].rename(columns={
-        'TissueLabel': 'Tissue',
-        'OfficialMouseSymbol': 'Gene_Symbol',
-        'FlightExpressionLog2NormalizedCount': 'Baseline_Log2_Expression',
-        'log2FoldChange': 'Spaceflight_Log2FC',
-        'tissue_meta_p': 'Meta_P_value',
-        'padj': 'FDR_padj',
-        'expression_n_flight_samples': 'Flight_Samples_Count'
-    })
-    s9_sheets = {"DSB_Meta_Analysis_26x29": df_s9}
-    s9_path = os.path.join(DESKTOP_DIR, "Supplementary_Table_S9_DSB_Repair_Meta_Analysis_Matrix.xlsx")
-    write_excel_sheets(s9_path, s9_sheets)
-    save_csvs("Table_S9", s9_sheets)
-
-    # Table S10: SSB Meta-Analysis Matrix
-    df_s10_raw = pd.read_csv(os.path.join(REPO_ROOT, "release/tables/01_SSB_tissue_meta_log2FC_pvalue_matrix_without_Neil2.csv"))
-    df_s10 = df_s10_raw[['TissueLabel', 'Pathway', 'EnsemblID', 'OfficialMouseSymbol', 'EntrezID', 'log2FoldChange', 'tissue_meta_p', 'padj', 'n_missions', 'n_analysis_units', 'expression_n_flight_samples']].rename(columns={
-        'TissueLabel': 'Tissue',
-        'OfficialMouseSymbol': 'Gene_Symbol',
-        'log2FoldChange': 'Spaceflight_Log2FC',
-        'tissue_meta_p': 'Meta_P_value',
-        'padj': 'FDR_padj',
-        'expression_n_flight_samples': 'Flight_Samples_Count'
-    })
-    s10_sheets = {"SSB_Meta_Analysis_26x45": df_s10}
-    s10_path = os.path.join(DESKTOP_DIR, "Supplementary_Table_S10_SSB_Repair_Meta_Analysis_Matrix.xlsx")
-    write_excel_sheets(s10_path, s10_sheets)
-    save_csvs("Table_S10", s10_sheets)
-
-    print("\n=== Manifest generation ===")
+    print("\n=== Step 6: Manifest generation ===")
     manifest_rows = [
-        {"Table_ID": "Supplementary Table S1", "Title": "Animal Cohort Compilation and Biospecimen Metadata Atlas", "Teacher_Citation": "Fig. 1a-b, Table S1", "Sheets": "Cohort_Summary_Fig1b (52 cohorts × 12 cols), Sample_Metadata_Audit_761 (761 samples × 12 cols)", "File": "Supplementary_Table_S1_Cohort_and_Sample_Metadata.xlsx"},
-        {"Table_ID": "Supplementary Table S2", "Title": "Spaceflight-Induced Co-Directionally Regulated DDR Genes and Repertoire Overlap", "Teacher_Citation": "Fig. 3a, Fig. S2a, Fig. S3ab, Fig. S4a, Table S2", "Sheets": "Thymus_Top30_DEGs (30), Thymus_Overlap (893), Kidney_DEGs (12), Kidney_Overlap (893), Up_DEGs (5), Up_Overlap (893), Down_DEGs (11), Down_Overlap (893)", "File": "Supplementary_Table_S2_DDR_Overlap_and_Common_DEGs.xlsx"},
-        {"Table_ID": "Supplementary Table S3", "Title": "Seven DNA Damage Repair Pathways Gene Repertoire Sizes and Multi-Tissue Detection Audit", "Teacher_Citation": "Fig. S5, Table S3", "Sheets": "Pathway_Repertoire_Sizes (7 pathways × 2 cols), Tissue_Detection_Summary (182 rows × 12 cols), Sample_Pathway_Counts_761 (761 samples × 12 cols)", "File": "Supplementary_Table_S3_Seven_Pathways_Gene_Repertoires_and_Detection.xlsx"},
-        {"Table_ID": "Supplementary Table S4", "Title": "Baseline Expression Profiles and ANOVA Heterogeneity of Core Repair Genes Across Tissues", "Teacher_Citation": "Fig. 4b,c, Fig. 5c, Fig. 4/5 Legends, Table S4", "Sheets": "ANOVA_Core_Genes (26 genes × 8 cols), ANOVA_Pathways (7 pathways × 6 cols), Tissue_Gene_Mean_Log2 (676 rows × 9 cols), Sample_Log2_Values (9,360 rows × 8 cols)", "File": "Supplementary_Table_S4_Repair_Genes_Expression_and_ANOVA.xlsx"},
-        {"Table_ID": "Supplementary Table S5", "Title": "Cross-Tissue Gene Ontology Enrichment Profiling Matrix", "Teacher_Citation": "Fig. 1c", "Sheets": "GO_Enrichment_Statistics (390 rows: 26 tissues × 15 GO terms × 14 cols)", "File": "Supplementary_Table_S5_Cross_Tissue_GO_Enrichment_Matrix.xlsx"},
-        {"Table_ID": "Supplementary Table S6", "Title": "MSigDB Hallmark Pathway GSEA Overview Across Missions", "Teacher_Citation": "Fig. S1", "Sheets": "Hallmark_Top12_Pathways (48 rows × 8 cols)", "File": "Supplementary_Table_S6_MSigDB_Hallmark_GSEA_Overview.xlsx"},
-        {"Table_ID": "Supplementary Table S7", "Title": "Cross-Tissue Consensus Pathway Association Matrix (Fisher-z)", "Teacher_Citation": "Fig. 2", "Sheets": "Cross_Tissue_FisherZ_Matrix (15 × 15 correlation matrix)", "File": "Supplementary_Table_S7_Cross_Tissue_Pathway_Association_FisherZ.xlsx"},
-        {"Table_ID": "Supplementary Table S8", "Title": "Per-Tissue Sample-Level Pathway Spearman Correlation Profiles", "Teacher_Citation": "Methods Section 3", "Sheets": "Per_Tissue_Spearman_Long (2,730 pairwise correlations × 5 cols)", "File": "Supplementary_Table_S8_Per_Tissue_Pathway_Spearman_Profiles.xlsx"},
-        {"Table_ID": "Supplementary Table S9", "Title": "Double-Strand Break (DSB) Repair Multi-Mission Spaceflight Meta-Analysis Matrix", "Teacher_Citation": "Fig. 6a", "Sheets": "DSB_Meta_Analysis_26x29 (754 rows: 26 tissues × 29 components × 12 cols)", "File": "Supplementary_Table_S9_DSB_Repair_Meta_Analysis_Matrix.xlsx"},
-        {"Table_ID": "Supplementary Table S10", "Title": "Single-Strand Break (SSB) Repair Multi-Mission Spaceflight Meta-Analysis Matrix", "Teacher_Citation": "Fig. 6b", "Sheets": "SSB_Meta_Analysis_26x45 (1,170 rows: 26 tissues × 45 components × 11 cols)", "File": "Supplementary_Table_S10_SSB_Repair_Meta_Analysis_Matrix.xlsx"},
+        {"Table_ID": "Table S1", "Title": "Animal Cohort Compilation and Biospecimen Metadata Atlas", "Teacher_Citation": "Fig. 1a-b, Table S1", "Sheets": "Cohort_Summary_Fig1b (52 cohorts × 12 cols), Sample_Metadata_Audit_761 (761 samples × 12 cols)", "File": "Table_S1_Cohort_and_Sample_Metadata.xlsx"},
+        {"Table_ID": "Table S2", "Title": "Spaceflight-Induced Co-Directionally Regulated DDR Genes and Repertoire Overlap", "Teacher_Citation": "Fig. 3a, Fig. S2a, Fig. S3ab, Fig. S4a, Table S2", "Sheets": "Thymus_Top30_DEGs (30), Thymus_Overlap (893), Kidney_DEGs (12), Kidney_Overlap (893), Up_DEGs (5), Up_Overlap (893), Down_DEGs (11), Down_Overlap (893)", "File": "Table_S2_DDR_Overlap_and_Common_DEGs.xlsx"},
+        {"Table_ID": "Table S3", "Title": "Seven DNA Damage Repair Pathways Gene Repertoire Sizes and Multi-Tissue Detection Audit", "Teacher_Citation": "Fig. S5, Table S3", "Sheets": "Pathway_Repertoire_Sizes (7 pathways × 2 cols), Tissue_Detection_Summary (182 rows × 12 cols), Sample_Pathway_Counts_761 (761 samples × 12 cols)", "File": "Table_S3_Seven_Pathways_Gene_Repertoires_and_Detection.xlsx"},
+        {"Table_ID": "Table S4", "Title": "Baseline Expression Profiles and ANOVA Heterogeneity of Core Repair Genes Across Tissues", "Teacher_Citation": "Fig. 4b,c, Fig. 5c, Fig. 4/5 Legends, Table S4", "Sheets": "ANOVA_Core_Genes (26 genes × 8 cols), ANOVA_Pathways (7 pathways × 6 cols), Tissue_Gene_Mean_Log2 (676 rows × 9 cols), Sample_Log2_Values (9,360 rows × 8 cols)", "File": "Table_S4_Repair_Genes_Expression_and_ANOVA.xlsx"},
     ]
     df_manifest = pd.DataFrame(manifest_rows)
-    manifest_path = os.path.join(DESKTOP_DIR, "Supplementary_Tables_Manifest.csv")
+    manifest_path = os.path.join(DESKTOP_DIR, "Table_S_Manifest.csv")
     df_manifest.to_csv(manifest_path, index=False)
     print(f"Manifest written: {manifest_path}")
 

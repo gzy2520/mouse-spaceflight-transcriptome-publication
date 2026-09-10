@@ -1,23 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Apply minimal tracked changes (<w:ins> and <w:del>) to user's Methods document XML,
-strictly updating and adding Supplementary Table citations to match teacher's manuscript.
+Apply restrained, teacher-aligned tracked changes to Methods document XML:
+1. Only cite Table S1, Table S2, Table S3, Table S4 where truly appropriate.
+2. Use 'Table S' notation strictly, removing 'Supplementary'.
+3. Remove redundant bullet citations and main figure table conversions.
 """
 
 import copy
 import lxml.etree as etree
 
-tree = etree.parse('clean_unpack/word/document.xml')
+tree = etree.parse('clean_unpack2/word/document.xml')
 root = tree.getroot()
 ns = {
     'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     'm': 'http://schemas.openxmlformats.org/officeDocument/2006/math'
 }
 
-cur_id = 300
+cur_id = 350
 
-def create_ins(text, author="gzy", date="2026-09-10T10:18:00Z", is_bold=False):
+def create_ins(text, author="gzy", date="2026-09-10T10:30:00Z"):
     global cur_id
     cur_id += 1
     ins = etree.Element(f"{{{ns['w']}}}ins", {
@@ -31,8 +33,6 @@ def create_ins(text, author="gzy", date="2026-09-10T10:18:00Z", is_bold=False):
         f"{{{ns['w']}}}ascii": "Calibri",
         f"{{{ns['w']}}}hAnsi": "Calibri"
     })
-    if is_bold:
-        etree.SubElement(rPr, f"{{{ns['w']}}}b")
     etree.SubElement(rPr, f"{{{ns['w']}}}color", {f"{{{ns['w']}}}val": "262626"})
     etree.SubElement(rPr, f"{{{ns['w']}}}sz", {f"{{{ns['w']}}}val": "20"})
     
@@ -42,7 +42,7 @@ def create_ins(text, author="gzy", date="2026-09-10T10:18:00Z", is_bold=False):
     t.text = text
     return ins
 
-def create_del(text, author="gzy", date="2026-09-10T10:18:00Z"):
+def create_del(text, author="gzy", date="2026-09-10T10:30:00Z"):
     global cur_id
     cur_id += 1
     del_el = etree.Element(f"{{{ns['w']}}}del", {
@@ -67,116 +67,78 @@ def create_del(text, author="gzy", date="2026-09-10T10:18:00Z"):
 
 paras = root.find('w:body', ns).findall('w:p', ns)
 
-# 1. P8: Add Table S5 after "NES matrix." and Table S6 after "complete cohort coverage."
-p8 = paras[8]
-for c in p8.findall('w:r', ns):
-    t = c.find('w:t', ns)
-    if t is not None and "mission-equal NES matrix." in (t.text or ""):
-        orig_text = t.text
-        s5_marker = "Figure 1c presents the complete 26 × 15 mission-equal NES matrix"
-        s6_marker = "Supplementary Figure S1 displays the top 12 Hallmark pathways exhibiting the highest global positive and negative enrichment across missions with complete cohort coverage"
-        
-        idx_s5 = orig_text.find(s5_marker)
-        idx_s6 = orig_text.find(s6_marker)
-        
-        before_s5 = orig_text[:idx_s5 + len(s5_marker)]
-        between = orig_text[idx_s5 + len(s5_marker):idx_s6 + len(s6_marker)]
-        after_s6 = orig_text[idx_s6 + len(s6_marker):]
-        
-        t.text = before_s5
-        ins_s5 = create_ins(" (Supplementary Table S5)")
-        
-        r2 = etree.Element(f"{{{ns['w']}}}r")
-        r2.append(copy.deepcopy(c.find('w:rPr', ns)))
-        t2 = etree.SubElement(r2, f"{{{ns['w']}}}t")
-        t2.set('{http://www.w3.org/XML/1998/namespace}space', 'preserve')
-        t2.text = between
-        
-        ins_s6 = create_ins(" (Supplementary Table S6)")
-        
-        r3 = etree.Element(f"{{{ns['w']}}}r")
-        r3.append(copy.deepcopy(c.find('w:rPr', ns)))
-        t3 = etree.SubElement(r3, f"{{{ns['w']}}}t")
-        t3.set('{http://www.w3.org/XML/1998/namespace}space', 'preserve')
-        t3.text = after_s6
-        
-        idx = p8.index(c)
-        p8.insert(idx + 1, ins_s5)
-        p8.insert(idx + 2, r2)
-        p8.insert(idx + 3, ins_s6)
-        p8.insert(idx + 4, r3)
+# 1. P2: Update ins id="2" from "(Supplementary Table S1)" to "(Table S1)"
+p2 = paras[2]
+for c in p2.findall('w:ins', ns):
+    if c.attrib.get(f"{{{ns['w']}}}id") == "2":
+        t = c.find('.//w:t', ns)
+        if t is not None and "Supplementary Table S1" in t.text:
+            idx = p2.index(c)
+            p2.remove(c)
+            p2.insert(idx, create_del(" (Supplementary Table S1)"))
+            p2.insert(idx + 1, create_ins(" (Table S1)"))
+            break
+
+# 2. P3: Update ins id="8" from "(Supplementary Table S1)" to "(Table S1)"
+p3 = paras[3]
+for c in p3.findall('w:ins', ns):
+    if c.attrib.get(f"{{{ns['w']}}}id") == "8":
+        t = c.find('.//w:t', ns)
+        if t is not None and "Supplementary Table S1" in t.text:
+            idx = p3.index(c)
+            p3.remove(c)
+            p3.insert(idx, create_del(" (Supplementary Table S1)"))
+            p3.insert(idx + 1, create_ins(" (Table S1)"))
+            break
+
+# 3. P4: Update "(Supplementary Table S1)" to "(Table S1)" in ins id="10"
+p4 = paras[4]
+for c in p4.findall('w:ins', ns):
+    if c.attrib.get(f"{{{ns['w']}}}id") == "10":
+        for t in c.findall('.//w:t', ns):
+            if t.text and "Supplementary Table S1" in t.text:
+                t.text = t.text.replace("Supplementary Table S1", "Table S1")
         break
 
-# 2. P11: Replace gzy's ins id=73 "(Supplementary Table S5)" with del and ins of Table S8.
-# And after "depicted in Figure 2", insert Table S7.
+# 4. P11: Delete gzy's ins id="73" "(Supplementary Table S5)" entirely via tracked deletion
 p11 = paras[11]
 for c in p11.findall('w:ins', ns):
     if c.attrib.get(f"{{{ns['w']}}}id") == "73":
         idx = p11.index(c)
         p11.remove(c)
         p11.insert(idx, create_del(" (Supplementary Table S5)"))
-        p11.insert(idx + 1, create_ins(" (Supplementary Table S8)"))
         break
 
-for c in p11.findall('w:r', ns):
-    t = c.find('w:t', ns)
-    if t is not None and "depicted in Figure 2." in (t.text or ""):
-        t.text = t.text.replace("depicted in Figure 2.", "depicted in Figure 2")
-        idx = p11.index(c)
-        ins_s7 = create_ins(" (Supplementary Table S7)")
-        p11.insert(idx + 1, ins_s7)
-        r_dot = etree.Element(f"{{{ns['w']}}}r")
-        r_dot.append(copy.deepcopy(c.find('w:rPr', ns)))
-        t_dot = etree.SubElement(r_dot, f"{{{ns['w']}}}t")
-        t_dot.text = "."
-        p11.insert(idx + 2, r_dot)
-        break
-
-# 3. P13: after del 113, 114, 115, 116 -> insert "; Supplementary Table S2"
+# 5. P13: Add (Table S2) once at the end of the sentence before the period
 p13 = paras[13]
-ins_map_13 = {
-    "113": "; Supplementary Table S2",
-    "114": "; Supplementary Table S2",
-    "115": "; Supplementary Table S2",
-    "116": "; Supplementary Table S2"
-}
-for c in list(p13):
-    del_id = c.attrib.get(f"{{{ns['w']}}}id")
-    if del_id in ins_map_13:
-        idx = p13.index(c)
-        p13.insert(idx + 1, create_ins(ins_map_13[del_id]))
+last_r = p13.findall('w:r', ns)[-1]
+t_last = last_r.find('w:t', ns)
+if t_last is not None and t_last.text.endswith('.'):
+    t_last.text = t_last.text[:-1]
+    idx = p13.index(last_r)
+    p13.insert(idx + 1, create_ins(" (Table S2)"))
+    r_dot = etree.Element(f"{{{ns['w']}}}r")
+    r_dot.append(copy.deepcopy(last_r.find('w:rPr', ns)))
+    t_dot = etree.SubElement(r_dot, f"{{{ns['w']}}}t")
+    t_dot.text = "."
+    p13.insert(idx + 2, r_dot)
 
-# 4. P14: after del 131, 133, 134, 137 -> insert Table S2
+# 6. P14: Add (Table S2) after "11 in low-NES tissues"
 p14 = paras[14]
-ins_map_14 = {
-    "131": " (Supplementary Table S2),",
-    "133": "(Supplementary Table S2)",
-    "134": " (Supplementary Table S2)",
-    "137": "(Supplementary Table S2), "
-}
 for c in list(p14):
-    del_id = c.attrib.get(f"{{{ns['w']}}}id")
-    if del_id in ins_map_14:
+    if c.attrib.get(f"{{{ns['w']}}}id") == "137":
         idx = p14.index(c)
-        p14.insert(idx + 1, create_ins(ins_map_14[del_id]))
+        p14.insert(idx + 1, create_ins(" (Table S2)"))
+        break
 
-# 5. P18, P19, P20: NHEJ, HR, A-EJ -> Table S4
-for p_idx, del_target in [(18, "174"), (19, "177"), (20, "178")]:
-    p = paras[p_idx]
-    for c in list(p):
-        if c.attrib.get(f"{{{ns['w']}}}id") == del_target:
-            idx = p.index(c)
-            p.insert(idx + 1, create_ins("Supplementary Table S4, ", is_bold=True))
-            break
-
-# 6. P21: ANOVA in DSB -> Table S4
+# 7. P21: Add (Table S4) after "evaluated by one-way ANOVA across anatomical tissues."
 p21 = paras[21]
 for c in p21.findall('w:r', ns):
     t = c.find('w:t', ns)
     if t is not None and "across anatomical tissues." in (t.text or ""):
         t.text = t.text.replace("across anatomical tissues.", "across anatomical tissues")
         idx = p21.index(c)
-        p21.insert(idx + 1, create_ins(" (Supplementary Table S4)"))
+        p21.insert(idx + 1, create_ins(" (Table S4)"))
         r_dot = etree.Element(f"{{{ns['w']}}}r")
         r_dot.append(copy.deepcopy(c.find('w:rPr', ns)))
         t_dot = etree.SubElement(r_dot, f"{{{ns['w']}}}t")
@@ -184,31 +146,14 @@ for c in p21.findall('w:r', ns):
         p21.insert(idx + 2, r_dot)
         break
 
-# 7. P22: Figure 4e -> Table S9
-p22 = paras[22]
-for c in list(p22):
-    if c.attrib.get(f"{{{ns['w']}}}id") == "181":
-        idx = p22.index(c)
-        p22.insert(idx + 1, create_ins(" (Supplementary Table S9)"))
-        break
-
-# 8. P26, P27, P28, P29: BER, NER, MMR, FA -> Table S4
-for p_idx, del_target in [(26, "213"), (27, "214"), (28, "217"), (29, "218")]:
-    p = paras[p_idx]
-    for c in list(p):
-        if c.attrib.get(f"{{{ns['w']}}}id") == del_target:
-            idx = p.index(c)
-            p.insert(idx + 1, create_ins("Supplementary Table S4, ", is_bold=True))
-            break
-
-# 9. P30: ANOVA in SSB -> Table S4
+# 8. P30: Add (Table S4) after "evaluated by one-way ANOVA."
 p30 = paras[30]
 for c in p30.findall('w:r', ns):
     t = c.find('w:t', ns)
     if t is not None and "evaluated by one-way ANOVA." in (t.text or ""):
         t.text = t.text.replace("evaluated by one-way ANOVA.", "evaluated by one-way ANOVA")
         idx = p30.index(c)
-        p30.insert(idx + 1, create_ins(" (Supplementary Table S4)"))
+        p30.insert(idx + 1, create_ins(" (Table S4)"))
         r_dot = etree.Element(f"{{{ns['w']}}}r")
         r_dot.append(copy.deepcopy(c.find('w:rPr', ns)))
         t_dot = etree.SubElement(r_dot, f"{{{ns['w']}}}t")
@@ -216,21 +161,13 @@ for c in p30.findall('w:r', ns):
         p30.insert(idx + 2, r_dot)
         break
 
-# 10. P31: Figure 5f -> Table S10
-p31 = paras[31]
-for c in list(p31):
-    if c.attrib.get(f"{{{ns['w']}}}id") == "221":
-        idx = p31.index(c)
-        p31.insert(idx + 1, create_ins(" (Supplementary Table S10)"))
-        break
-
-# 11. P33: Supplementary Figure S5 -> Table S3
+# 9. P33: Add (Table S3) after del id="230"
 p33 = paras[33]
 for c in list(p33):
     if c.attrib.get(f"{{{ns['w']}}}id") == "230":
         idx = p33.index(c)
-        p33.insert(idx + 1, create_ins("(Supplementary Table S3)"))
+        p33.insert(idx + 1, create_ins(" (Table S3)"))
         break
 
-tree.write('clean_unpack/word/document.xml', encoding='utf-8', xml_declaration=True)
-print(f"Done! Clean document.xml updated with tracked changes up to ID {cur_id}.")
+tree.write('clean_unpack2/word/document.xml', encoding='utf-8', xml_declaration=True)
+print("Updated clean_unpack2/word/document.xml with restrained, teacher-aligned Table S1-S4 citations!")
