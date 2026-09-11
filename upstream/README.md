@@ -50,8 +50,8 @@ publication tables. The original repository and approved `release/` are untouche
   not substituted expression or differential-expression results.
 - `approved_label_overrides.csv` preserves the final Eye `missions` display label.
   Its explicit before/after rule changes no GO statistic or numerical selection.
-- The final two-way ANOVA workbook is supplied software output. Its bytes are
-  preserved; recreating the software model is outside this code's scope.
+- The final two-way ANOVA workbook is supplied software output. Only internal theme names were normalized; all cells are unchanged.
+  Recreating the software model is outside this code's scope.
 
 ## Computation
 

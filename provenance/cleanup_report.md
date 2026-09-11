@@ -21,7 +21,9 @@ The final comparison against the desktop manuscript package found:
   floating-point differences, maximum absolute difference 2.9976021664879227e-15;
   all other values and text agree. Comparison tolerance: relative 1e-12,
   absolute 1e-14.
-- The supplied seven-sheet `2way_anova_7_pathways.xlsx` is byte-identical.
+- The supplied seven-sheet `2way_anova_7_pathways.xlsx` was byte-identical
+  during reconstruction validation. Subsequently only its internal theme names
+  were normalized; all other archive members remain byte-identical.
   It remains external software output; neither an inferred replacement model
   nor the unused old S4/one-way ANOVA is represented as the paper's statistics.
 - Of 57 exported numerical/provenance artifacts, 49 are byte-identical.

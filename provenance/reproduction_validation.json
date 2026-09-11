@@ -257,5 +257,10 @@
       "errors": []
     }
   ],
-  "external_statistics_byte_identical": true
+  "external_statistics_byte_identical": false,
+  "external_statistics_metadata_update": {
+    "changed_member": "xl/theme/theme1.xml",
+    "all_other_members_byte_identical": true,
+    "note": "Theme names normalized; cell content, styles and statistical results unchanged."
+  }
 }

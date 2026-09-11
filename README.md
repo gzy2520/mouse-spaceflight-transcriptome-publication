@@ -37,7 +37,8 @@ metadata such as creation dates can differ. Python dependencies are pinned in
 
 The old `Table_S4_Repair_Genes_Expression_and_ANOVA.xlsx` was not used for the
 paper's significance analysis. The supplied `2way_anova_7_pathways.xlsx` is an
-external software result, preserved verbatim under `data/external_statistics/`.
+external software result stored under `data/external_statistics/`. Only internal
+theme names were normalized; all cells and statistical results remain unchanged.
 The renderer neither recalculates it nor substitutes the obsolete one-way ANOVA.
 The external result alone does not encode a reproducible software analysis setup.
 
