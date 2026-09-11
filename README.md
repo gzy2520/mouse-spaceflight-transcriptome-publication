@@ -11,12 +11,13 @@ The publication renderer starts from the versioned numerical inputs. It writes
 only to a new output directory, including the workbook exports.
 
 ```sh
-Rscript -e 'if (!requireNamespace("renv", quietly=TRUE)) install.packages("renv"); renv::restore()'
+Rscript -e 'if (!requireNamespace("renv", quietly=TRUE)) install.packages("renv"); renv::restore(prompt=FALSE); renv::activate()'
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 PYTHON="$PWD/.venv/bin/python" Rscript workflow/run_final_release.R reproduced_results/final
 ```
 
+Python 3.12 or later is required; Python 3.14.7 was used for verification.
 R 4.4.3 and the versions in `renv.lock` were used for the approved figures.
 Use the same fonts and graphics libraries for pixel-identical rendering; PDF
 metadata such as creation dates can differ. Python dependencies are pinned in
@@ -40,9 +41,15 @@ external software result, preserved verbatim under `data/external_statistics/`.
 The renderer neither recalculates it nor substitutes the obsolete one-way ANOVA.
 The external result alone does not encode a reproducible software analysis setup.
 
+For the complete source-data workflow, follow [`upstream/README.md`](upstream/README.md).
+
 The frozen `results/tables/` CSVs are numerical inputs to the publication package.
 Copying them is not an upstream analysis rerun. See `upstream/README.md` for the
 acquisition and analysis source chain and its validation status.
+
+The complete source reconstruction passed: 51 PNGs match the approved figures
+pixel-for-pixel; all seven analysis workbooks agree within floating-point
+precision. See [validation evidence](provenance/cleanup_report.md).
 
 ## Repository layout
 

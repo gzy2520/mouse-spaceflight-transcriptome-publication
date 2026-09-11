@@ -376,7 +376,8 @@ def main(argv: list[str] | None = None) -> int:
     included = [t for t in tissues if n_by_tissue.get(t, 0) >= MIN_FLIGHT_SAMPLES_FOR_OVERALL]
     excluded = [t for t in tissues if t not in included]
     overall, z_long, audit = fisher_z_aggregate(per_tissue_rho, term_keys, included)
-    np.fill_diagonal(overall.to_numpy(), 1.0)
+    for index in range(len(overall)):
+        overall.iat[index, index] = 1.0  # pandas 3 exposes read-only NumPy views
     if overall.isna().any().any():
         raise ValueError("Overall Fisher-z matrix contains undefined pairs")
     overall = (overall + overall.T) / 2.0

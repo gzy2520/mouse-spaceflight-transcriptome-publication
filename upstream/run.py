@@ -109,6 +109,22 @@ def acquire(work, local, download):
                     partial.unlink()
                     raise SystemExit('Annotation archive checksum mismatch: '+rel)
                 partial.replace(dst)
+    historical_rows=[r for r in rows('nasa_processed_files.csv') if r.get('bundled_historical_snapshot')=='true']
+    missing=[r for r in historical_rows if not (work/r['workspace_path']).exists() and not (local and (local/r['workspace_path']).exists())]
+    if missing:
+        spec=json.loads((HERE/'historical_snapshot.json').read_text())
+        historical=HERE.parent/'data/.cache'/spec['filename']
+        if not historical.exists() and download:
+            historical.parent.mkdir(parents=True,exist_ok=True)
+            partial=historical.with_suffix('.partial')
+            with urllib.request.urlopen(spec['url'],timeout=180) as src, partial.open('wb') as dst:
+                shutil.copyfileobj(src,dst)
+            if sha(partial)!=spec['sha256']:raise SystemExit('Historical input archive checksum mismatch')
+            partial.replace(historical)
+        if historical.exists():
+            if sha(historical)!=spec['sha256']:raise SystemExit('Historical input archive checksum mismatch')
+            with tarfile.open(historical) as bundle:
+                bundle.extractall(work, filter='data')
     errors=[]
     for row in rows('nasa_processed_files.csv')+rows('annotation_snapshots.csv'):
         dst=work/row['workspace_path']
@@ -197,20 +213,24 @@ def export(work):
     if metadata.exists():shutil.copytree(metadata,out/'data/publication_input/mouse_metadata',dirs_exist_ok=True)
     audit=work/'publication_release/results/tables/Fig_6_mouse_sample_metadata_complete_audit.csv'
     if audit.exists():copy(audit,out/'results/tables'/audit.name)
-    with open(work/'logs/export_comparison.csv','w',newline='') as f:
-        w=csv.DictWriter(f,fieldnames=list(report[0]));w.writeheader();w.writerows(report)
-    print('Candidate only:',out)
-    print({s:sum(r['status']==s for r in report) for s in {r['status'] for r in report}})
     for rule in rows('approved_label_overrides.csv'):
         target=out/rule['publication_path']
         if not target.exists():continue
-        with target.open(newline='') as f:
+        with target.open(newline='',encoding='utf-8-sig') as f:
             content=list(csv.DictReader(f)); fields=list(content[0])
         for record in content:
             if record[rule['key_column']]==rule['key_value'] and record[rule['column']]==rule['from_value']:
                 record[rule['column']]=rule['to_value']
         with target.open('w',newline='') as f:
             writer=csv.DictWriter(f,fieldnames=fields,lineterminator='\n');writer.writeheader();writer.writerows(content)
+    for record in report:
+        target=out/record['publication_path']
+        record['candidate_sha256']=sha(target) if target.is_file() else ''
+        record['status']='byte_identical' if record['candidate_sha256']==record['expected_sha256'] else 'needs_semantic_comparison' if target.is_file() else 'missing'
+    with open(work/'logs/export_comparison.csv','w',newline='') as f:
+        writer=csv.DictWriter(f,fieldnames=list(report[0]));writer.writeheader();writer.writerows(report)
+    print('Candidate only:',out)
+    print({status:sum(r['status']==status for r in report) for status in {r['status'] for r in report}})
     if any(r['status']=='missing' for r in report):
         raise SystemExit('Missing computed publication inputs; see logs/export_comparison.csv')
 
@@ -226,7 +246,7 @@ def render(work, rscript, python, library):
     env=os.environ.copy();env['PYTHON']=python
     if library:env['R_LIBS_USER']=library
     if Path(rscript).is_absolute():env['PATH']=str(Path(rscript).parent)+os.pathsep+env.get('PATH','')
-    subprocess.run([rscript,str(candidate/'workflow/run_final_release.R'),str(work/'reproduced_figures')],env=env,check=True)
+    subprocess.run([rscript,'workflow/run_final_release.R','../reproduced_figures'],cwd=candidate,env=env,check=True)
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)

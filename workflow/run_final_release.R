@@ -41,6 +41,11 @@ run(python, c("workflow/build_all_publication_supplementary_tables.py", "--outpu
               file.path(out, "Supplementary_Tables"), "--figure-dir", out))
 writeLines(capture.output(sessionInfo()), file.path(out, "provenance/sessionInfo.txt"))
 writeLines(system2("git", c("rev-parse", "HEAD"), stdout = TRUE), file.path(out, "provenance/source_revision.txt"))
-file.copy("README.md", file.path(out, "README.md"))
+writeLines(c("# Reproduced manuscript figures and tables", "",
+  "Main/ and Suppl/: 51 PNG/PDF pairs. Supplementary_Tables/: eight workbooks.",
+  "The supplied two-way ANOVA workbook is preserved verbatim; its model is not recalculated.",
+  "See provenance/source_revision.txt and provenance/sessionInfo.txt for the build context.",
+  "Reproduction instructions: https://github.com/gzy2520/mouse-spaceflight-transcriptome-publication"),
+  file.path(out, "README.md"))
 run(python, c("workflow/build_review_gallery.py", out))
 message("Rebuilt manuscript figures and tables: ", out)

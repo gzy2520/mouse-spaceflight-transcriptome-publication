@@ -1,0 +1,261 @@
+{
+  "figures": [
+    {
+      "figure": "Main/Fig_1b.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_1c.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_2.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_3a.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_3b.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_4a.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_4b.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_4c.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_4d.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_4e.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_5a.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_5b.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_5c.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_5d.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_5e.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Main/Fig_5f.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S1.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S2a.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S2b.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S3a.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S3b.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S4a.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S4b.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S5.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_log2fc_per_tissue_merged.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Adrenal_gland.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Bone_marrow.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Cecum.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Cerebellum.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Colon.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Dorsal_skin.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Extensor_digitorum_longus.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Eye.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Femoral_lateral_skin.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Femoral_skin.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Gastrocnemius.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Heart.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Heart_Heart_right_ventricle.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Kidney.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Left_lobe_of_the_liver.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Liver.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Lung.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Mammary_gland.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Optic_nerve.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Quadriceps_femoris.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Retina.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Soleus.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Spleen.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Spleen_distal.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Thymus.png",
+      "pixel_identical": true
+    },
+    {
+      "figure": "Suppl/Fig_S6_per_tissue/Spearman_log2FC_Tibialis_anterior.png",
+      "pixel_identical": true
+    }
+  ],
+  "pdf_count": 51,
+  "tables": [
+    {
+      "file": "Table_S1_Cohort_and_Sample_Metadata.xlsx",
+      "cells": 9780,
+      "numeric_roundoff_cells": 0,
+      "max_absolute_difference": 0.0,
+      "errors": []
+    },
+    {
+      "file": "Table_S2_DDR_Overlap_and_Common_DEGs.xlsx",
+      "cells": 34723,
+      "numeric_roundoff_cells": 0,
+      "max_absolute_difference": 0.0,
+      "errors": []
+    },
+    {
+      "file": "Table_S3_Seven_Pathways_Gene_Repertoires_and_Detection.xlsx",
+      "cells": 11356,
+      "numeric_roundoff_cells": 0,
+      "max_absolute_difference": 0.0,
+      "errors": []
+    },
+    {
+      "file": "Table_S5_Functional_Pathway_and_Hallmark_GSEA.xlsx",
+      "cells": 5866,
+      "numeric_roundoff_cells": 27,
+      "max_absolute_difference": 2.9976021664879227e-15,
+      "errors": []
+    },
+    {
+      "file": "Table_S6_Pathway_Association_and_FisherZ_Integration.xlsx",
+      "cells": 13911,
+      "numeric_roundoff_cells": 0,
+      "max_absolute_difference": 0.0,
+      "errors": []
+    },
+    {
+      "file": "Table_S7_DSB_Repair_Meta_Analysis_Matrix.xlsx",
+      "cells": 9060,
+      "numeric_roundoff_cells": 0,
+      "max_absolute_difference": 0.0,
+      "errors": []
+    },
+    {
+      "file": "Table_S8_SSB_Repair_Meta_Analysis_Matrix.xlsx",
+      "cells": 12881,
+      "numeric_roundoff_cells": 0,
+      "max_absolute_difference": 0.0,
+      "errors": []
+    }
+  ],
+  "external_statistics_byte_identical": true
+}

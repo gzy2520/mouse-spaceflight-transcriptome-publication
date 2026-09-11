@@ -42,6 +42,5 @@ for suffix in png pdf; do
 done
 cp "$tmp_dir/figure_manifest.csv" "$output_dir/provenance/figure_manifest.csv"
 cp "$tmp_dir/README.md" "$output_dir/provenance/renderer_README.md"
-cp "$input_dir/12_validation_summary.csv" "$output_dir/provenance/12_validation_summary.csv"
 
 printf 'LOG2FC_RELEASE_PASS: %s\n' "$output_dir"

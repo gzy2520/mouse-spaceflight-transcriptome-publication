@@ -111,14 +111,14 @@ sha256_file <- function(path) {
   sub(paste0("  ", path, "$"), "", output)
 }
 
-run_fgsea_safe <- function(pathways, stats, min_size, max_size) {
+run_fgsea_safe <- function(pathways, stats, min_size, max_size, nes_only = FALSE) {
   set.seed(25)
   result <- suppressWarnings(fgseaMultilevel(
     pathways = pathways,
     stats = stats,
     minSize = as.integer(min_size),
     maxSize = as.integer(max_size),
-    eps = 1e-10,
+    eps = if (nes_only) 1 else 1e-10,
     scoreType = "std",
     nproc = fgsea_nproc
   ))
@@ -136,7 +136,7 @@ run_fgsea_safe <- function(pathways, stats, min_size, max_size) {
       stats = stats,
       minSize = as.integer(min_size),
       maxSize = as.integer(max_size),
-      eps = 1e-10,
+      eps = if (nes_only) 1 else 1e-10,
       scoreType = score_type,
       nproc = fgsea_nproc
     ))
@@ -169,6 +169,7 @@ run_fgsea_safe <- function(pathways, stats, min_size, max_size) {
     collapse = ";",
     FUN.VALUE = character(1)
   )]
+  if (nes_only) result[, (intersect(c("pval", "padj", "log2err"), names(result))) := NULL]
   result
 }
 
@@ -762,7 +763,8 @@ if (run_global) {
           pathways,
           stats,
           min_size = 10L,
-          max_size = 5000L
+          max_size = 5000L,
+          nes_only = TRUE
         )
         result[, `:=`(
           library = library_name,
@@ -776,6 +778,9 @@ if (run_global) {
         )]
         fwrite(result, cache_path)
       }
+      # The global manuscript summaries consume NES only. Do not publish the
+      # unused P values from the shortened multilevel precision calculation.
+      result[, (intersect(c("pval", "padj", "log2err"), names(result))) := NULL]
       part_index <- part_index + 1L
       global_parts[[part_index]] <- result
       message(sprintf(
