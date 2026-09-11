@@ -35,12 +35,6 @@ metadata such as creation dates can differ. Python dependencies are pinned in
 - `tables/log/`: regenerated expression summaries and sample values.
 - `provenance/`: figure/source mapping, sample scope, tissue order and runtime.
 
-The old `Table_S4_Repair_Genes_Expression_and_ANOVA.xlsx` was not used for the
-paper's significance analysis. The supplied `2way_anova_7_pathways.xlsx` is an
-external software result stored under `data/external_statistics/`. Only internal
-theme names were normalized; all cells and statistical results remain unchanged.
-The renderer neither recalculates it nor substitutes the obsolete one-way ANOVA.
-The external result alone does not encode a reproducible software analysis setup.
 
 For the complete source-data workflow, follow [`upstream/README.md`](upstream/README.md).
 
