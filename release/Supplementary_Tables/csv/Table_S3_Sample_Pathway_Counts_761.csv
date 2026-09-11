@@ -1,0 +1,762 @@
+Tissue,OSD_Accession,Analysis_Unit_ID,Condition,Is_Technical_Replicate,n_BER,n_NER,n_MMR,n_FA,n_HR,n_AEJ,n_NHEJ
+Eye,OSD-100,OSD-100,Flight,False,53,53,27,39,134,9,17
+Eye,OSD-100,OSD-100,Flight,False,53,53,27,39,135,9,17
+Eye,OSD-100,OSD-100,Flight,False,53,53,27,39,134,9,17
+Eye,OSD-100,OSD-100,Flight,False,53,53,27,39,133,9,17
+Eye,OSD-100,OSD-100,Flight,False,53,53,27,39,135,9,17
+Eye,OSD-100,OSD-100,Flight,False,52,53,27,39,135,9,17
+Eye,OSD-100,OSD-100,Ground,False,52,53,27,39,135,9,17
+Eye,OSD-100,OSD-100,Ground,False,53,53,27,39,134,9,17
+Eye,OSD-100,OSD-100,Ground,False,53,53,27,39,135,9,17
+Eye,OSD-100,OSD-100,Ground,False,53,53,27,39,134,9,17
+Eye,OSD-100,OSD-100,Ground,False,53,53,27,39,133,9,17
+Eye,OSD-100,OSD-100,Ground,False,53,53,27,39,133,9,17
+Gastrocnemius,OSD-101,OSD-101,Flight,False,52,53,26,36,125,9,17
+Gastrocnemius,OSD-101,OSD-101,Flight,False,53,53,27,38,129,9,17
+Gastrocnemius,OSD-101,OSD-101,Flight,False,53,53,25,38,125,9,17
+Gastrocnemius,OSD-101,OSD-101,Flight,False,52,53,27,38,129,9,17
+Gastrocnemius,OSD-101,OSD-101,Flight,False,52,53,27,37,128,9,17
+Gastrocnemius,OSD-101,OSD-101,Flight,False,53,53,27,38,128,9,17
+Gastrocnemius,OSD-101,OSD-101,Ground,False,53,53,27,38,128,9,17
+Gastrocnemius,OSD-101,OSD-101,Ground,False,52,53,27,36,125,9,17
+Gastrocnemius,OSD-101,OSD-101,Ground,False,52,53,26,37,129,9,17
+Gastrocnemius,OSD-101,OSD-101,Ground,False,53,53,27,38,127,9,17
+Gastrocnemius,OSD-101,OSD-101,Ground,False,52,53,25,37,126,9,17
+Gastrocnemius,OSD-101,OSD-101,Ground,False,53,53,27,37,128,9,17
+Soleus,OSD-104,OSD-104,Flight,False,53,53,27,39,128,9,17
+Soleus,OSD-104,OSD-104,Flight,False,53,53,27,39,128,9,17
+Soleus,OSD-104,OSD-104,Flight,False,52,53,27,39,130,9,17
+Soleus,OSD-104,OSD-104,Flight,False,51,53,27,39,130,9,17
+Soleus,OSD-104,OSD-104,Flight,False,52,53,27,38,130,9,17
+Soleus,OSD-104,OSD-104,Flight,False,51,53,26,36,129,9,17
+Soleus,OSD-104,OSD-104,Ground,False,52,53,27,39,128,9,17
+Soleus,OSD-104,OSD-104,Ground,False,51,52,27,38,126,9,17
+Soleus,OSD-104,OSD-104,Ground,False,52,53,27,39,129,9,17
+Soleus,OSD-104,OSD-104,Ground,False,53,53,27,39,130,9,17
+Soleus,OSD-104,OSD-104,Ground,False,53,52,26,38,128,9,17
+Soleus,OSD-104,OSD-104,Ground,False,52,53,27,38,128,9,17
+Liver,OSD-137,OSD-137,Flight,False,51,53,27,39,130,9,17
+Liver,OSD-137,OSD-137,Flight,False,52,53,27,39,131,9,17
+Liver,OSD-137,OSD-137,Flight,False,52,53,26,39,129,9,17
+Liver,OSD-137,OSD-137,Flight,False,52,53,26,39,127,9,17
+Liver,OSD-137,OSD-137,Flight,False,53,53,27,39,132,9,17
+Liver,OSD-137,OSD-137,Flight,False,53,53,26,39,132,9,17
+Liver,OSD-137,OSD-137,Ground,False,53,53,26,39,132,9,17
+Liver,OSD-137,OSD-137,Ground,False,53,53,27,39,132,9,17
+Liver,OSD-137,OSD-137,Ground,False,53,53,26,39,132,9,17
+Liver,OSD-137,OSD-137,Ground,False,52,53,27,39,131,9,17
+Liver,OSD-137,OSD-137,Ground,False,52,53,27,39,132,9,17
+Liver,OSD-137,OSD-137,Ground,False,52,53,27,39,131,9,17
+Adrenal gland,OSD-161,OSD-161,Flight,False,52,53,26,39,133,9,17
+Adrenal gland,OSD-161,OSD-161,Flight,False,52,53,26,39,133,9,17
+Adrenal gland,OSD-161,OSD-161,Flight,False,52,53,27,39,133,9,17
+Adrenal gland,OSD-161,OSD-161,Flight,False,52,53,27,39,133,9,17
+Adrenal gland,OSD-161,OSD-161,Flight,False,53,53,26,39,133,9,17
+Adrenal gland,OSD-161,OSD-161,Ground,False,53,53,27,39,133,9,17
+Adrenal gland,OSD-161,OSD-161,Ground,False,52,53,27,39,132,9,17
+Adrenal gland,OSD-161,OSD-161,Ground,False,53,53,26,39,133,9,17
+Adrenal gland,OSD-161,OSD-161,Ground,False,52,53,26,39,133,9,17
+Adrenal gland,OSD-161,OSD-161,Ground,False,52,53,27,39,133,9,17
+Eye,OSD-162,OSD-162,Flight,False,53,53,27,39,134,9,17
+Eye,OSD-162,OSD-162,Flight,False,53,53,27,39,135,9,17
+Eye,OSD-162,OSD-162,Flight,False,53,53,27,39,134,9,17
+Eye,OSD-162,OSD-162,Flight,False,53,53,27,39,133,9,17
+Eye,OSD-162,OSD-162,Flight,False,52,53,27,39,135,9,17
+Eye,OSD-162,OSD-162,Ground,False,52,53,27,39,134,9,17
+Eye,OSD-162,OSD-162,Ground,False,53,53,27,39,135,9,17
+Eye,OSD-162,OSD-162,Ground,False,53,53,27,39,134,9,17
+Eye,OSD-162,OSD-162,Ground,False,53,53,27,39,135,9,17
+Eye,OSD-162,OSD-162,Ground,False,52,53,27,39,135,9,17
+Kidney,OSD-163,OSD-163,Flight,False,52,53,27,39,134,9,17
+Kidney,OSD-163,OSD-163,Flight,False,52,53,27,39,133,9,17
+Kidney,OSD-163,OSD-163,Flight,False,52,53,27,39,133,9,17
+Kidney,OSD-163,OSD-163,Flight,False,52,53,27,39,134,9,17
+Kidney,OSD-163,OSD-163,Flight,False,52,53,27,39,133,9,17
+Kidney,OSD-163,OSD-163,Flight,False,52,53,26,39,134,9,17
+Kidney,OSD-163,OSD-163,Ground,False,52,53,27,39,133,9,18
+Kidney,OSD-163,OSD-163,Ground,False,52,53,27,39,133,9,18
+Kidney,OSD-163,OSD-163,Ground,False,52,53,27,39,134,9,18
+Kidney,OSD-163,OSD-163,Ground,False,52,53,27,39,134,9,18
+Kidney,OSD-163,OSD-163,Ground,False,52,53,27,39,134,9,18
+Kidney,OSD-163,OSD-163,Ground,False,52,53,27,39,134,9,17
+Retina,OSD-194,OSD-194,Flight,False,53,53,27,39,134,9,17
+Retina,OSD-194,OSD-194,Flight,False,53,53,27,39,135,9,17
+Retina,OSD-194,OSD-194,Flight,False,53,53,27,39,134,9,17
+Retina,OSD-194,OSD-194,Flight,False,53,53,27,39,135,9,17
+Retina,OSD-194,OSD-194,Flight,False,53,53,27,39,133,9,17
+Retina,OSD-194,OSD-194,Ground,False,53,53,27,39,134,9,17
+Retina,OSD-194,OSD-194,Ground,False,53,53,27,39,135,9,17
+Retina,OSD-194,OSD-194,Ground,False,53,53,27,39,134,9,17
+Retina,OSD-194,OSD-194,Ground,False,53,53,27,39,134,9,17
+Femoral skin,OSD-239,OSD-239,Flight,False,53,53,27,39,134,9,17
+Femoral skin,OSD-239,OSD-239,Flight,False,53,53,27,39,134,9,17
+Femoral skin,OSD-239,OSD-239,Ground,False,53,53,27,39,134,9,17
+Femoral skin,OSD-239,OSD-239,Ground,False,53,53,27,39,134,9,17
+Femoral skin,OSD-239,OSD-239,Ground,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-240,OSD-240,Flight,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-240,OSD-240,Flight,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-240,OSD-240,Flight,False,52,53,27,39,134,9,17
+Dorsal skin,OSD-240,OSD-240,Flight,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-240,OSD-240,Flight,False,52,53,27,39,135,9,17
+Dorsal skin,OSD-240,OSD-240,Flight,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-240,OSD-240,Flight,False,53,53,27,39,133,9,17
+Dorsal skin,OSD-240,OSD-240,Flight,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-240,OSD-240,Flight,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-240,OSD-240,Flight,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-240,OSD-240,Ground,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-240,OSD-240,Ground,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-240,OSD-240,Ground,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-240,OSD-240,Ground,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-240,OSD-240,Ground,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-240,OSD-240,Ground,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-240,OSD-240,Ground,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-240,OSD-240,Ground,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-240,OSD-240,Ground,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-240,OSD-240,Ground,False,53,53,27,39,135,9,17
+Femoral lateral skin,OSD-241,OSD-241,Flight,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Flight,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Flight,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Flight,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Flight,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Flight,False,52,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Flight,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Flight,False,52,53,27,39,133,9,17
+Femoral lateral skin,OSD-241,OSD-241,Flight,False,53,53,27,39,133,9,17
+Femoral lateral skin,OSD-241,OSD-241,Ground,False,53,53,27,39,133,9,17
+Femoral lateral skin,OSD-241,OSD-241,Ground,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Ground,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Ground,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Ground,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Ground,False,53,53,27,39,132,9,17
+Femoral lateral skin,OSD-241,OSD-241,Ground,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Ground,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Ground,False,53,53,27,39,134,9,17
+Femoral lateral skin,OSD-241,OSD-241,Ground,False,53,53,27,39,134,9,17
+Liver,OSD-242,OSD-242,Flight,False,53,53,26,38,128,9,17
+Liver,OSD-242,OSD-242,Flight,False,52,52,27,35,125,9,17
+Liver,OSD-242,OSD-242,Flight,False,52,53,27,38,127,8,17
+Liver,OSD-242,OSD-242,Flight,False,52,53,26,38,126,9,17
+Liver,OSD-242,OSD-242,Flight,False,51,53,26,36,132,9,17
+Liver,OSD-242,OSD-242,Ground,False,53,53,26,39,132,9,17
+Liver,OSD-242,OSD-242,Ground,False,52,53,27,39,132,9,17
+Liver,OSD-242,OSD-242,Ground,False,53,52,27,39,131,9,17
+Liver,OSD-242,OSD-242,Ground,False,52,53,27,39,130,9,17
+Kidney,OSD-253,OSD-253,Flight,False,53,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253,Flight,False,53,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253,Flight,False,53,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253,Flight,False,53,53,26,39,131,9,17
+Kidney,OSD-253,OSD-253,Flight,False,52,52,26,39,131,9,17
+Kidney,OSD-253,OSD-253,Ground,False,52,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253,Ground,False,52,52,26,39,133,9,17
+Kidney,OSD-253,OSD-253,Ground,False,52,52,26,39,133,9,17
+Kidney,OSD-253,OSD-253,Ground,False,52,53,27,39,132,9,17
+Kidney,OSD-253,OSD-253__C3H_25,Flight,False,53,53,26,39,132,9,17
+Kidney,OSD-253,OSD-253__C3H_25,Flight,False,53,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253__C3H_25,Flight,False,52,53,27,39,134,9,17
+Kidney,OSD-253,OSD-253__C3H_25,Flight,False,53,53,27,39,132,9,17
+Kidney,OSD-253,OSD-253__C3H_25,Flight,False,52,53,26,39,133,9,18
+Kidney,OSD-253,OSD-253__C3H_25,Ground,False,53,53,26,39,134,9,17
+Kidney,OSD-253,OSD-253__C3H_25,Ground,False,52,53,27,39,132,9,17
+Kidney,OSD-253,OSD-253__C3H_25,Ground,False,52,52,27,39,132,9,17
+Kidney,OSD-253,OSD-253__C3H_25,Ground,False,52,53,26,39,134,9,17
+Kidney,OSD-253,OSD-253__C3H_25,Ground,False,52,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253__C3H_75,Flight,False,53,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253__C3H_75,Flight,False,52,53,26,39,134,9,17
+Kidney,OSD-253,OSD-253__C3H_75,Flight,False,51,53,27,39,131,9,17
+Kidney,OSD-253,OSD-253__C3H_75,Flight,False,53,53,26,39,134,9,17
+Kidney,OSD-253,OSD-253__C3H_75,Flight,False,52,53,26,39,134,9,17
+Kidney,OSD-253,OSD-253__C3H_75,Ground,False,52,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253__C3H_75,Ground,False,52,53,26,39,132,9,17
+Kidney,OSD-253,OSD-253__C3H_75,Ground,False,52,52,26,38,132,9,17
+Kidney,OSD-253,OSD-253__C3H_75,Ground,False,52,52,26,39,131,9,17
+Kidney,OSD-253,OSD-253__C3H_75,Ground,False,52,53,27,39,134,9,17
+Kidney,OSD-253,OSD-253__C57BL_75,Flight,False,52,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253__C57BL_75,Flight,False,53,53,27,39,134,9,17
+Kidney,OSD-253,OSD-253__C57BL_75,Flight,False,53,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253__C57BL_75,Flight,False,52,53,26,39,131,9,17
+Kidney,OSD-253,OSD-253__C57BL_75,Flight,False,52,53,26,39,133,9,17
+Kidney,OSD-253,OSD-253__C57BL_75,Ground,False,53,53,27,39,134,9,17
+Kidney,OSD-253,OSD-253__C57BL_75,Ground,False,52,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253__C57BL_75,Ground,False,52,53,27,39,134,9,17
+Kidney,OSD-253,OSD-253__C57BL_75,Ground,False,52,53,27,39,133,9,17
+Kidney,OSD-253,OSD-253__C57BL_75,Ground,False,52,53,26,39,132,9,17
+Dorsal skin,OSD-254,OSD-254,Flight,False,52,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254,Flight,False,52,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254,Flight,False,52,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254,Flight,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-254,OSD-254,Flight,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254,Ground,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254,Ground,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254,Ground,False,53,53,26,39,134,9,17
+Dorsal skin,OSD-254,OSD-254,Ground,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-254,OSD-254,Ground,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_25,Flight,False,52,53,27,39,133,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_25,Flight,False,52,53,27,39,135,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_25,Flight,False,52,53,27,39,135,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_25,Flight,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_25,Flight,False,53,53,27,39,133,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_25,Ground,False,52,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_25,Ground,False,52,53,27,39,132,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_25,Ground,False,52,53,27,39,132,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_25,Ground,False,52,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_25,Ground,False,52,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_75,Flight,False,52,53,27,39,135,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_75,Flight,False,52,53,27,39,132,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_75,Flight,False,52,53,27,39,133,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_75,Flight,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_75,Flight,False,52,53,27,39,133,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_75,Ground,False,52,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_75,Ground,False,52,53,27,39,133,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_75,Ground,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_75,Ground,False,53,53,27,39,133,9,17
+Dorsal skin,OSD-254,OSD-254__C3H_75,Ground,False,53,53,27,39,133,9,17
+Dorsal skin,OSD-254,OSD-254__C57BL_75,Flight,False,52,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C57BL_75,Flight,False,52,53,27,39,135,9,17
+Dorsal skin,OSD-254,OSD-254__C57BL_75,Flight,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-254,OSD-254__C57BL_75,Flight,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C57BL_75,Flight,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C57BL_75,Ground,False,52,53,26,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C57BL_75,Ground,False,52,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C57BL_75,Ground,False,53,53,27,39,134,9,17
+Dorsal skin,OSD-254,OSD-254__C57BL_75,Ground,False,53,53,27,39,135,9,17
+Dorsal skin,OSD-254,OSD-254__C57BL_75,Ground,False,53,53,27,39,133,9,17
+Retina,OSD-255,OSD-255,Flight,False,53,52,26,37,129,9,17
+Retina,OSD-255,OSD-255,Flight,False,53,52,27,38,130,9,17
+Retina,OSD-255,OSD-255,Flight,False,52,52,27,37,128,9,17
+Retina,OSD-255,OSD-255,Flight,False,52,53,27,38,130,9,17
+Retina,OSD-255,OSD-255,Flight,False,53,52,26,37,127,9,17
+Retina,OSD-255,OSD-255,Flight,False,53,52,26,39,128,9,17
+Retina,OSD-255,OSD-255,Flight,False,52,53,27,36,130,9,17
+Retina,OSD-255,OSD-255,Flight,False,52,52,27,36,130,9,17
+Retina,OSD-255,OSD-255,Ground,False,53,53,27,39,129,9,17
+Retina,OSD-255,OSD-255,Ground,False,52,52,25,35,128,9,17
+Retina,OSD-255,OSD-255,Ground,False,52,53,26,39,130,9,17
+Retina,OSD-255,OSD-255,Ground,False,53,53,26,38,129,9,17
+Retina,OSD-255,OSD-255,Ground,False,53,52,26,37,125,9,17
+Retina,OSD-255,OSD-255,Ground,False,52,51,27,36,131,9,17
+Retina,OSD-255,OSD-255,Ground,False,53,53,27,39,129,9,17
+Retina,OSD-255,OSD-255,Ground,False,52,52,27,38,127,9,17
+Thymus,OSD-289,OSD-289__MHU2,Flight,False,53,53,27,39,134,9,17
+Thymus,OSD-289,OSD-289__MHU2,Flight,False,53,53,27,39,133,9,17
+Thymus,OSD-289,OSD-289__MHU2,Flight,False,53,53,27,39,132,9,17
+Thymus,OSD-289,OSD-289__MHU2,Ground,False,53,53,27,39,134,9,17
+Thymus,OSD-289,OSD-289__MHU2,Ground,False,53,53,27,39,134,9,17
+Thymus,OSD-289,OSD-289__MHU2,Ground,False,53,53,27,39,133,9,17
+Thymus,OSD-289,OSD-289,Flight,False,53,53,27,39,132,9,17
+Thymus,OSD-289,OSD-289,Flight,False,53,53,26,39,134,9,17
+Thymus,OSD-289,OSD-289,Flight,False,53,53,26,39,134,9,17
+Thymus,OSD-289,OSD-289,Ground,False,53,53,27,39,133,9,17
+Thymus,OSD-289,OSD-289,Ground,False,53,53,27,39,133,9,17
+Thymus,OSD-289,OSD-289,Ground,False,53,53,27,39,133,9,17
+Left lobe of the liver,OSD-379,OSD-379,Flight,False,52,53,27,39,132,9,17
+Left lobe of the liver,OSD-379,OSD-379,Flight,False,52,53,26,39,130,9,17
+Left lobe of the liver,OSD-379,OSD-379,Flight,False,53,52,26,37,123,9,17
+Left lobe of the liver,OSD-379,OSD-379,Flight,False,51,52,27,38,123,8,17
+Left lobe of the liver,OSD-379,OSD-379,Flight,False,52,53,26,39,129,9,17
+Left lobe of the liver,OSD-379,OSD-379,Flight,False,52,52,27,38,126,9,17
+Left lobe of the liver,OSD-379,OSD-379,Flight,False,52,52,27,39,128,9,17
+Left lobe of the liver,OSD-379,OSD-379,Flight,False,53,53,26,39,131,9,17
+Left lobe of the liver,OSD-379,OSD-379,Ground,False,53,53,27,39,131,9,17
+Left lobe of the liver,OSD-379,OSD-379,Ground,False,52,53,26,38,129,9,17
+Left lobe of the liver,OSD-379,OSD-379,Ground,False,53,53,26,39,132,9,17
+Left lobe of the liver,OSD-379,OSD-379,Ground,False,51,53,26,37,129,9,17
+Left lobe of the liver,OSD-379,OSD-379,Ground,False,52,53,26,39,130,9,17
+Left lobe of the liver,OSD-379,OSD-379,Ground,False,52,52,26,39,129,9,17
+Left lobe of the liver,OSD-379,OSD-379,Ground,False,53,52,25,39,128,8,17
+Left lobe of the liver,OSD-379,OSD-379,Ground,False,52,53,26,39,132,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Flight,False,51,53,26,37,126,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Flight,False,50,53,25,38,128,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Flight,False,50,53,26,38,129,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Flight,False,53,53,26,39,128,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Flight,False,51,52,26,37,126,8,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Flight,False,53,53,26,38,130,8,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Flight,False,52,52,25,38,129,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Ground,False,53,53,26,39,131,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Ground,False,53,53,26,38,127,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Ground,False,51,53,27,39,130,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Ground,False,52,52,26,38,127,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Ground,False,52,53,27,39,130,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Ground,False,52,52,25,37,127,9,17
+Left lobe of the liver,OSD-379,OSD-379__age_32w,Ground,False,52,53,26,39,131,9,17
+Retina,OSD-397,OSD-397,Flight,False,53,53,26,39,131,9,17
+Retina,OSD-397,OSD-397,Flight,False,53,52,27,39,130,9,17
+Retina,OSD-397,OSD-397,Flight,False,52,52,27,38,129,9,17
+Retina,OSD-397,OSD-397,Flight,False,53,53,26,38,129,9,17
+Retina,OSD-397,OSD-397,Flight,False,52,53,27,38,130,9,17
+Retina,OSD-397,OSD-397,Flight,False,53,53,27,39,133,9,17
+Retina,OSD-397,OSD-397,Flight,False,52,53,27,38,131,9,17
+Retina,OSD-397,OSD-397,Flight,False,53,52,26,37,129,9,17
+Retina,OSD-397,OSD-397,Flight,False,52,53,27,39,129,9,17
+Retina,OSD-397,OSD-397,Ground,False,53,53,26,38,130,9,17
+Retina,OSD-397,OSD-397,Ground,False,52,53,27,38,132,9,17
+Retina,OSD-397,OSD-397,Ground,False,53,52,27,39,128,9,17
+Retina,OSD-397,OSD-397,Ground,False,52,52,26,38,129,9,17
+Retina,OSD-397,OSD-397,Ground,False,53,52,27,37,131,9,17
+Retina,OSD-397,OSD-397,Ground,False,53,52,27,39,131,9,17
+Retina,OSD-397,OSD-397,Ground,False,52,53,27,38,132,9,17
+Gastrocnemius,OSD-419,OSD-419,Flight,False,46,48,23,23,101,7,17
+Gastrocnemius,OSD-419,OSD-419,Flight,False,46,49,22,23,101,7,17
+Gastrocnemius,OSD-419,OSD-419,Flight,False,46,47,23,20,100,6,16
+Gastrocnemius,OSD-419,OSD-419,Flight,False,45,44,22,20,97,7,16
+Gastrocnemius,OSD-419,OSD-419,Ground,False,43,49,20,22,99,6,15
+Gastrocnemius,OSD-419,OSD-419,Ground,False,40,39,20,16,80,5,12
+Gastrocnemius,OSD-419,OSD-419,Ground,False,44,46,21,19,95,7,16
+Gastrocnemius,OSD-419,OSD-419,Ground,False,44,51,24,27,110,7,17
+Gastrocnemius,OSD-419,OSD-419,Ground,False,46,47,24,22,105,7,16
+Gastrocnemius,OSD-419,OSD-419,Ground,False,39,45,22,20,93,7,16
+Gastrocnemius,OSD-419,OSD-419,Ground,False,38,46,22,18,94,7,13
+Gastrocnemius,OSD-419,OSD-419,Ground,False,42,48,20,21,96,7,16
+Spleen-distal,OSD-420,OSD-420,Flight,False,46,51,25,31,118,8,15
+Spleen-distal,OSD-420,OSD-420,Flight,False,47,50,25,33,113,9,16
+Spleen-distal,OSD-420,OSD-420,Flight,False,50,52,25,35,121,9,17
+Spleen-distal,OSD-420,OSD-420,Flight,False,51,52,26,36,124,8,17
+Spleen-distal,OSD-420,OSD-420,Flight,False,51,52,26,35,120,8,17
+Spleen-distal,OSD-420,OSD-420,Flight,False,52,53,26,39,131,9,17
+Spleen-distal,OSD-420,OSD-420,Flight,False,52,52,26,39,130,9,17
+Spleen-distal,OSD-420,OSD-420,Flight,False,52,52,26,37,125,9,17
+Spleen-distal,OSD-420,OSD-420,Flight,False,51,53,26,39,131,9,17
+Spleen-distal,OSD-420,OSD-420,Flight,False,51,52,26,36,126,9,17
+Spleen-distal,OSD-420,OSD-420,Ground,False,52,52,26,38,127,9,17
+Spleen-distal,OSD-420,OSD-420,Ground,False,49,51,25,36,123,9,17
+Spleen-distal,OSD-420,OSD-420,Ground,False,50,51,25,33,117,8,17
+Spleen-distal,OSD-420,OSD-420,Ground,False,51,52,26,38,124,9,17
+Spleen-distal,OSD-420,OSD-420,Ground,False,51,52,26,37,124,9,17
+Spleen-distal,OSD-420,OSD-420,Ground,False,49,49,25,30,115,9,16
+Spleen-distal,OSD-420,OSD-420,Ground,False,52,53,26,39,131,9,17
+Spleen-distal,OSD-420,OSD-420,Ground,False,52,52,26,38,126,9,17
+Spleen-distal,OSD-420,OSD-420,Ground,False,50,52,26,39,128,9,17
+Spleen-distal,OSD-420,OSD-420,Ground,False,52,52,26,38,128,9,17
+Thymus,OSD-421,OSD-421,Flight,False,49,51,24,32,119,9,17
+Thymus,OSD-421,OSD-421,Flight,False,46,53,24,32,122,8,17
+Thymus,OSD-421,OSD-421,Flight,False,51,52,26,37,125,9,17
+Thymus,OSD-421,OSD-421,Flight,False,47,52,25,36,125,8,17
+Thymus,OSD-421,OSD-421,Flight,False,46,51,22,33,114,8,16
+Thymus,OSD-421,OSD-421,Flight,False,47,51,24,34,120,9,17
+Thymus,OSD-421,OSD-421,Flight,False,49,48,23,31,123,9,17
+Thymus,OSD-421,OSD-421,Flight,False,49,49,26,33,118,9,17
+Thymus,OSD-421,OSD-421,Flight,False,47,51,26,34,121,9,16
+Thymus,OSD-421,OSD-421,Flight,False,50,53,26,35,124,9,17
+Thymus,OSD-421,OSD-421,Ground,False,49,51,26,37,125,9,17
+Thymus,OSD-421,OSD-421,Ground,False,50,51,26,34,122,9,17
+Thymus,OSD-421,OSD-421,Ground,False,51,51,27,38,128,9,17
+Thymus,OSD-421,OSD-421,Ground,False,51,53,25,38,127,9,17
+Thymus,OSD-421,OSD-421,Ground,False,51,53,26,39,130,9,17
+Thymus,OSD-421,OSD-421,Ground,False,49,51,26,37,123,9,17
+Thymus,OSD-421,OSD-421,Ground,False,51,52,26,39,129,9,17
+Thymus,OSD-421,OSD-421,Ground,False,51,52,26,39,129,9,17
+Thymus,OSD-421,OSD-421,Ground,False,52,53,26,39,133,9,17
+Thymus,OSD-421,OSD-421,Ground,False,52,53,26,39,131,9,17
+Kidney,OSD-462,OSD-462,Flight,True,52,52,26,39,131,9,17
+Kidney,OSD-462,OSD-462,Flight,False,52,53,26,39,133,9,17
+Kidney,OSD-462,OSD-462,Flight,True,52,53,26,39,133,9,17
+Kidney,OSD-462,OSD-462,Flight,False,52,52,26,39,132,9,17
+Kidney,OSD-462,OSD-462,Flight,False,52,52,26,39,132,9,17
+Kidney,OSD-462,OSD-462,Flight,False,52,53,26,39,133,9,17
+Kidney,OSD-462,OSD-462,Flight,False,53,53,26,39,134,9,17
+Kidney,OSD-462,OSD-462,Flight,False,53,52,26,39,133,9,17
+Kidney,OSD-462,OSD-462,Flight,False,52,53,26,39,134,9,17
+Kidney,OSD-462,OSD-462,Flight,False,52,52,26,39,132,9,17
+Kidney,OSD-462,OSD-462,Ground,False,52,53,27,39,131,9,17
+Kidney,OSD-462,OSD-462,Ground,True,52,53,26,39,132,9,17
+Kidney,OSD-462,OSD-462,Ground,False,52,52,27,39,131,9,17
+Kidney,OSD-462,OSD-462,Ground,False,52,52,26,39,132,9,17
+Kidney,OSD-462,OSD-462,Ground,False,52,52,26,39,132,9,17
+Kidney,OSD-462,OSD-462,Ground,False,52,53,26,39,134,9,17
+Kidney,OSD-462,OSD-462,Ground,False,52,53,26,39,133,9,17
+Kidney,OSD-462,OSD-462,Ground,False,52,52,26,39,131,9,17
+Kidney,OSD-462,OSD-462,Ground,False,52,53,27,39,134,9,17
+Kidney,OSD-462,OSD-462,Ground,False,53,53,26,39,132,9,17
+Left lobe of the liver,OSD-463,OSD-463,Flight,False,52,53,26,39,128,9,17
+Left lobe of the liver,OSD-463,OSD-463,Flight,False,51,53,27,39,131,9,17
+Left lobe of the liver,OSD-463,OSD-463,Flight,False,51,53,26,38,130,9,17
+Left lobe of the liver,OSD-463,OSD-463,Flight,False,51,52,26,38,127,9,17
+Left lobe of the liver,OSD-463,OSD-463,Flight,False,52,53,26,39,131,9,17
+Left lobe of the liver,OSD-463,OSD-463,Flight,False,51,52,26,39,129,9,17
+Left lobe of the liver,OSD-463,OSD-463,Flight,True,52,52,26,39,130,9,17
+Left lobe of the liver,OSD-463,OSD-463,Flight,True,51,52,26,39,129,8,17
+Left lobe of the liver,OSD-463,OSD-463,Flight,False,52,53,26,39,130,9,17
+Left lobe of the liver,OSD-463,OSD-463,Ground,True,52,52,26,39,126,9,17
+Left lobe of the liver,OSD-463,OSD-463,Ground,False,52,53,26,39,130,9,17
+Left lobe of the liver,OSD-463,OSD-463,Ground,False,53,53,26,39,130,9,17
+Left lobe of the liver,OSD-463,OSD-463,Ground,False,53,52,25,38,127,9,17
+Left lobe of the liver,OSD-463,OSD-463,Ground,False,52,53,26,38,132,9,17
+Left lobe of the liver,OSD-463,OSD-463,Ground,False,52,53,26,39,130,9,17
+Left lobe of the liver,OSD-463,OSD-463,Ground,False,50,52,26,38,128,9,17
+Left lobe of the liver,OSD-463,OSD-463,Ground,False,50,53,26,38,131,9,17
+Left lobe of the liver,OSD-463,OSD-463,Ground,False,52,53,27,38,129,9,17
+Lung,OSD-464,OSD-464,Flight,False,51,53,27,39,133,9,17
+Lung,OSD-464,OSD-464,Flight,False,53,53,27,39,133,9,17
+Lung,OSD-464,OSD-464,Flight,False,53,53,27,39,134,9,17
+Lung,OSD-464,OSD-464,Flight,False,53,53,27,39,134,9,17
+Lung,OSD-464,OSD-464,Flight,False,52,53,27,39,134,9,17
+Lung,OSD-464,OSD-464,Flight,False,52,53,27,39,134,9,17
+Lung,OSD-464,OSD-464,Flight,True,53,53,27,39,134,9,17
+Lung,OSD-464,OSD-464,Flight,False,52,53,27,39,133,9,17
+Lung,OSD-464,OSD-464,Flight,False,52,53,26,39,134,9,17
+Lung,OSD-464,OSD-464,Ground,False,52,53,27,39,134,9,17
+Lung,OSD-464,OSD-464,Ground,True,52,53,26,39,133,9,17
+Lung,OSD-464,OSD-464,Ground,False,53,53,27,39,134,9,17
+Lung,OSD-464,OSD-464,Ground,False,53,53,27,39,133,9,17
+Lung,OSD-464,OSD-464,Ground,False,53,53,27,39,134,9,17
+Lung,OSD-464,OSD-464,Ground,False,53,53,27,39,133,9,17
+Lung,OSD-464,OSD-464,Ground,False,52,53,27,39,134,9,17
+Lung,OSD-464,OSD-464,Ground,False,51,53,26,39,133,9,17
+Liver,OSD-47,OSD-47,Flight,False,53,52,27,38,129,9,17
+Liver,OSD-47,OSD-47,Flight,False,52,52,26,37,129,9,17
+Liver,OSD-47,OSD-47,Flight,False,52,52,26,39,129,9,17
+Liver,OSD-47,OSD-47,Ground,False,53,52,27,39,131,9,17
+Liver,OSD-47,OSD-47,Ground,False,53,52,27,39,131,9,17
+Liver,OSD-47,OSD-47,Ground,False,53,52,27,39,130,9,17
+Liver,OSD-48,OSD-48,Flight,False,52,52,27,39,131,9,17
+Liver,OSD-48,OSD-48,Flight,False,52,52,27,38,129,9,17
+Liver,OSD-48,OSD-48,Ground,False,52,52,26,39,129,9,17
+Liver,OSD-48,OSD-48,Ground,False,53,52,26,39,129,9,17
+Spleen,OSD-506,OSD-506,Flight,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Flight,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Flight,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Flight,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Flight,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Flight,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Flight,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Flight,False,53,53,27,39,133,9,17
+Spleen,OSD-506,OSD-506,Flight,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Ground,False,53,53,27,39,133,9,17
+Spleen,OSD-506,OSD-506,Ground,False,53,53,27,39,133,9,17
+Spleen,OSD-506,OSD-506,Ground,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Ground,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Ground,True,53,53,27,39,133,9,17
+Spleen,OSD-506,OSD-506,Ground,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Ground,False,53,53,27,39,134,9,17
+Spleen,OSD-506,OSD-506,Ground,False,53,53,27,39,134,9,17
+Mammary gland,OSD-511,OSD-511,Flight,False,52,53,26,39,134,9,17
+Mammary gland,OSD-511,OSD-511,Flight,False,52,52,27,39,131,9,17
+Mammary gland,OSD-511,OSD-511,Flight,False,53,53,26,39,133,9,17
+Mammary gland,OSD-511,OSD-511,Flight,False,53,53,27,39,133,9,17
+Mammary gland,OSD-511,OSD-511,Flight,False,52,53,27,39,132,9,17
+Mammary gland,OSD-511,OSD-511,Ground,False,53,53,27,39,134,9,17
+Mammary gland,OSD-511,OSD-511,Ground,False,53,53,26,39,133,9,17
+Mammary gland,OSD-511,OSD-511,Ground,False,53,53,27,39,134,9,17
+Mammary gland,OSD-511,OSD-511,Ground,False,53,53,27,39,134,9,17
+Mammary gland,OSD-511,OSD-511,Ground,False,53,53,27,39,132,9,17
+Mammary gland,OSD-511,OSD-511,Ground,False,52,53,27,39,132,9,17
+Mammary gland,OSD-511,OSD-511,Ground,False,53,53,27,39,134,9,17
+Mammary gland,OSD-511,OSD-511,Ground,False,53,53,27,39,133,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Flight,False,53,53,27,39,134,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Flight,False,53,53,27,39,134,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Flight,False,53,53,27,39,133,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Flight,False,52,53,27,39,134,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Flight,False,53,53,26,39,133,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Ground,False,52,53,27,39,132,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Ground,False,52,53,27,39,132,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Ground,False,53,53,27,39,134,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Ground,False,53,53,27,39,134,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Ground,False,52,53,26,39,133,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Ground,False,52,53,27,39,133,9,17
+Mammary gland,OSD-511,OSD-511__age_32w,Ground,False,53,53,27,39,133,9,17
+Adrenal gland,OSD-512,OSD-512,Flight,True,52,53,27,39,135,9,17
+Adrenal gland,OSD-512,OSD-512,Flight,False,52,53,26,39,133,9,17
+Adrenal gland,OSD-512,OSD-512,Flight,False,53,53,27,39,135,9,17
+Adrenal gland,OSD-512,OSD-512,Flight,False,52,53,27,39,133,9,17
+Adrenal gland,OSD-512,OSD-512,Flight,False,53,53,26,39,133,9,17
+Adrenal gland,OSD-512,OSD-512,Flight,False,52,53,26,39,133,9,17
+Adrenal gland,OSD-512,OSD-512,Flight,False,53,53,26,39,134,9,17
+Adrenal gland,OSD-512,OSD-512,Flight,False,53,53,27,39,134,9,17
+Adrenal gland,OSD-512,OSD-512,Flight,False,52,53,26,39,135,9,17
+Adrenal gland,OSD-512,OSD-512,Ground,True,52,53,27,39,134,9,17
+Adrenal gland,OSD-512,OSD-512,Ground,False,53,53,27,39,135,9,17
+Adrenal gland,OSD-512,OSD-512,Ground,False,52,52,26,39,132,9,17
+Adrenal gland,OSD-512,OSD-512,Ground,False,52,53,27,39,133,9,17
+Adrenal gland,OSD-512,OSD-512,Ground,False,52,53,27,39,135,9,17
+Adrenal gland,OSD-512,OSD-512,Ground,False,52,53,27,39,135,9,17
+Adrenal gland,OSD-512,OSD-512,Ground,False,52,53,26,39,134,9,17
+Adrenal gland,OSD-512,OSD-512,Ground,False,53,53,27,39,135,9,17
+Adrenal gland,OSD-512,OSD-512,Ground,False,52,53,27,39,134,9,17
+Kidney,OSD-513,OSD-513,Flight,True,53,52,27,39,128,9,17
+Kidney,OSD-513,OSD-513,Flight,False,53,53,26,39,130,9,17
+Kidney,OSD-513,OSD-513,Flight,False,52,53,26,38,130,9,17
+Kidney,OSD-513,OSD-513,Flight,False,52,53,26,39,133,9,17
+Kidney,OSD-513,OSD-513,Flight,False,53,53,27,38,130,9,17
+Kidney,OSD-513,OSD-513,Flight,False,52,53,27,38,129,9,17
+Kidney,OSD-513,OSD-513,Flight,False,51,53,26,39,133,9,17
+Kidney,OSD-513,OSD-513,Flight,False,51,52,26,38,129,9,17
+Kidney,OSD-513,OSD-513,Flight,False,51,53,26,38,129,9,17
+Kidney,OSD-513,OSD-513,Ground,True,51,53,27,37,130,9,17
+Kidney,OSD-513,OSD-513,Ground,False,52,53,26,39,133,9,17
+Kidney,OSD-513,OSD-513,Ground,False,52,53,27,38,129,8,17
+Kidney,OSD-513,OSD-513,Ground,False,52,53,27,39,129,9,17
+Kidney,OSD-513,OSD-513,Ground,False,52,53,26,37,132,9,17
+Kidney,OSD-513,OSD-513,Ground,False,52,53,26,38,131,9,17
+Kidney,OSD-513,OSD-513,Ground,False,51,53,26,37,128,9,17
+Kidney,OSD-513,OSD-513,Ground,False,52,52,26,38,129,9,17
+Kidney,OSD-513,OSD-513,Ground,False,52,53,26,38,132,9,17
+Thymus,OSD-515,OSD-515,Flight,False,53,53,27,39,133,9,18
+Thymus,OSD-515,OSD-515,Flight,False,53,53,27,39,134,9,18
+Thymus,OSD-515,OSD-515,Flight,False,53,53,27,39,134,9,18
+Thymus,OSD-515,OSD-515,Flight,False,53,53,27,39,134,9,17
+Thymus,OSD-515,OSD-515,Flight,False,53,53,27,39,133,9,17
+Thymus,OSD-515,OSD-515,Flight,False,53,53,27,39,133,9,17
+Thymus,OSD-515,OSD-515,Flight,False,52,53,27,39,134,9,17
+Thymus,OSD-515,OSD-515,Ground,True,53,53,27,39,134,9,18
+Thymus,OSD-515,OSD-515,Ground,False,53,53,27,39,134,9,18
+Thymus,OSD-515,OSD-515,Ground,False,53,53,27,39,134,9,17
+Thymus,OSD-515,OSD-515,Ground,False,52,53,27,39,134,9,18
+Thymus,OSD-515,OSD-515,Ground,False,53,53,27,39,134,9,18
+Thymus,OSD-515,OSD-515,Ground,False,53,53,27,39,133,9,18
+Thymus,OSD-515,OSD-515,Ground,False,53,53,27,39,133,9,17
+Thymus,OSD-515,OSD-515,Ground,False,53,53,27,39,134,9,18
+Thymus,OSD-515,OSD-515,Ground,False,53,53,27,39,134,9,18
+Cerebellum,OSD-525,OSD-525,Flight,True,51,53,27,38,133,9,17
+Cerebellum,OSD-525,OSD-525,Flight,False,52,52,27,39,131,9,17
+Cerebellum,OSD-525,OSD-525,Flight,False,52,53,27,39,133,9,17
+Cerebellum,OSD-525,OSD-525,Flight,False,51,53,27,38,132,9,17
+Cerebellum,OSD-525,OSD-525,Flight,False,51,52,27,39,132,9,17
+Cerebellum,OSD-525,OSD-525,Flight,False,52,53,27,39,132,9,17
+Cerebellum,OSD-525,OSD-525,Flight,False,51,52,27,39,131,8,17
+Cerebellum,OSD-525,OSD-525,Flight,False,52,53,27,38,131,9,17
+Cerebellum,OSD-525,OSD-525,Flight,False,52,53,27,38,131,9,17
+Cerebellum,OSD-525,OSD-525,Ground,True,50,53,27,38,133,9,17
+Cerebellum,OSD-525,OSD-525,Ground,False,52,53,27,39,132,9,17
+Cerebellum,OSD-525,OSD-525,Ground,False,52,53,27,39,131,9,17
+Cerebellum,OSD-525,OSD-525,Ground,False,51,53,27,37,131,8,17
+Cerebellum,OSD-525,OSD-525,Ground,False,51,53,26,38,132,9,17
+Cerebellum,OSD-525,OSD-525,Ground,False,52,53,27,38,131,9,17
+Cerebellum,OSD-525,OSD-525,Ground,False,51,53,27,38,132,9,17
+Cerebellum,OSD-525,OSD-525,Ground,False,51,53,27,38,130,9,17
+Cerebellum,OSD-525,OSD-525,Ground,False,52,53,27,39,133,9,17
+Tibialis anterior,OSD-576,OSD-576,Flight,False,52,53,27,39,132,9,17
+Tibialis anterior,OSD-576,OSD-576,Flight,False,53,53,27,38,133,9,17
+Tibialis anterior,OSD-576,OSD-576,Flight,False,53,53,27,38,133,9,17
+Tibialis anterior,OSD-576,OSD-576,Flight,False,52,53,25,36,129,9,17
+Tibialis anterior,OSD-576,OSD-576,Flight,False,53,53,27,39,132,9,17
+Tibialis anterior,OSD-576,OSD-576,Flight,False,53,53,27,38,132,9,17
+Tibialis anterior,OSD-576,OSD-576,Flight,False,53,53,26,38,127,9,17
+Tibialis anterior,OSD-576,OSD-576,Flight,False,53,53,27,38,129,9,17
+Tibialis anterior,OSD-576,OSD-576,Flight,False,53,53,26,38,127,9,17
+Tibialis anterior,OSD-576,OSD-576,Ground,False,53,53,27,39,132,9,17
+Tibialis anterior,OSD-576,OSD-576,Ground,False,53,53,27,37,130,9,17
+Tibialis anterior,OSD-576,OSD-576,Ground,False,53,53,27,38,130,9,17
+Tibialis anterior,OSD-576,OSD-576,Ground,False,52,53,26,37,129,9,17
+Tibialis anterior,OSD-576,OSD-576,Ground,False,53,53,27,39,131,9,17
+Tibialis anterior,OSD-576,OSD-576,Ground,False,52,53,25,37,128,8,17
+Tibialis anterior,OSD-576,OSD-576,Ground,False,53,53,27,39,129,9,17
+Tibialis anterior,OSD-576,OSD-576,Ground,False,53,53,27,38,129,9,17
+Tibialis anterior,OSD-576,OSD-576,Ground,False,52,53,26,37,129,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Flight,False,52,53,27,39,134,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Flight,False,51,53,26,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Flight,False,53,53,26,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Flight,False,53,53,26,39,134,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Flight,False,52,53,26,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Ground,False,53,53,27,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Ground,False,51,53,26,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Ground,False,52,53,27,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Ground,False,51,53,27,39,131,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Ground,False,51,53,27,39,131,9,18
+Heart / Heart right ventricle,OSD-580,OSD-580,Ground,False,53,53,27,39,134,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Ground,False,53,53,27,39,134,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Ground,False,53,53,27,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Ground,False,52,53,27,39,132,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580,Ground,False,53,53,26,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Flight,False,52,53,27,39,132,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Flight,False,52,53,26,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Flight,False,52,53,27,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Flight,False,51,53,26,39,132,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Flight,False,52,52,26,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Ground,False,51,53,27,39,132,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Ground,False,52,53,27,39,134,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Ground,False,51,53,27,39,132,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Ground,False,51,53,27,38,131,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Ground,False,51,53,27,39,134,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Ground,False,52,53,26,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Ground,False,52,53,26,39,134,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Ground,False,52,53,26,39,134,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Ground,False,53,53,26,39,133,9,17
+Heart / Heart right ventricle,OSD-580,OSD-580__age_29w,Ground,False,53,53,26,39,134,9,17
+Heart,OSD-599,OSD-599,Flight,False,51,52,26,39,129,9,17
+Heart,OSD-599,OSD-599,Flight,False,51,52,26,39,127,9,17
+Heart,OSD-599,OSD-599,Flight,False,52,52,26,39,128,9,17
+Heart,OSD-599,OSD-599,Ground,False,52,52,26,39,129,9,17
+Heart,OSD-599,OSD-599,Ground,False,52,52,25,38,128,9,17
+Heart,OSD-599,OSD-599,Ground,False,52,52,25,39,127,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Flight,True,54,53,26,38,130,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Flight,False,53,53,27,38,129,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Flight,False,53,53,25,38,130,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Flight,False,53,53,26,37,130,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Flight,False,51,53,26,37,128,8,17
+Extensor digitorum longus,OSD-665,OSD-665,Flight,False,53,53,27,38,130,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Flight,False,52,53,27,37,129,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Flight,False,53,53,27,38,128,8,17
+Extensor digitorum longus,OSD-665,OSD-665,Flight,False,50,53,25,37,130,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Ground,True,52,53,27,37,130,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Ground,False,51,53,26,37,131,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Ground,False,52,53,27,38,130,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Ground,False,52,53,27,38,130,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Ground,False,52,53,26,39,130,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Ground,False,52,53,27,38,129,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Ground,False,52,53,27,38,129,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Ground,False,52,53,26,38,129,9,17
+Extensor digitorum longus,OSD-665,OSD-665,Ground,False,52,53,27,37,128,9,17
+Quadriceps femoris,OSD-666,OSD-666,Flight,True,51,53,25,38,127,9,17
+Quadriceps femoris,OSD-666,OSD-666,Flight,False,51,53,26,39,130,9,17
+Quadriceps femoris,OSD-666,OSD-666,Flight,False,52,53,27,38,130,8,17
+Quadriceps femoris,OSD-666,OSD-666,Flight,False,52,53,27,37,127,8,17
+Quadriceps femoris,OSD-666,OSD-666,Flight,False,52,53,27,38,131,9,17
+Quadriceps femoris,OSD-666,OSD-666,Flight,False,51,53,27,38,129,8,17
+Quadriceps femoris,OSD-666,OSD-666,Flight,False,51,53,26,37,127,8,17
+Quadriceps femoris,OSD-666,OSD-666,Flight,False,53,53,27,38,131,9,17
+Quadriceps femoris,OSD-666,OSD-666,Flight,False,52,53,26,37,128,9,17
+Quadriceps femoris,OSD-666,OSD-666,Ground,True,52,53,27,36,130,9,17
+Quadriceps femoris,OSD-666,OSD-666,Ground,False,52,53,27,38,131,9,17
+Quadriceps femoris,OSD-666,OSD-666,Ground,False,51,53,27,36,130,9,17
+Quadriceps femoris,OSD-666,OSD-666,Ground,False,51,53,26,37,131,9,17
+Quadriceps femoris,OSD-666,OSD-666,Ground,False,53,53,25,38,133,9,17
+Quadriceps femoris,OSD-666,OSD-666,Ground,False,51,53,26,37,128,9,17
+Quadriceps femoris,OSD-666,OSD-666,Ground,False,53,53,27,38,130,9,17
+Quadriceps femoris,OSD-666,OSD-666,Ground,False,53,53,26,39,133,9,17
+Quadriceps femoris,OSD-666,OSD-666,Ground,False,53,53,26,37,127,9,17
+Colon,OSD-667,OSD-667,Flight,False,53,53,27,39,134,9,17
+Colon,OSD-667,OSD-667,Flight,False,53,53,27,39,133,9,17
+Colon,OSD-667,OSD-667,Flight,False,53,53,27,39,134,9,17
+Colon,OSD-667,OSD-667,Flight,False,53,53,27,39,134,9,17
+Colon,OSD-667,OSD-667,Ground,False,53,53,27,39,134,9,17
+Colon,OSD-667,OSD-667,Ground,False,53,53,27,39,133,9,17
+Colon,OSD-667,OSD-667,Ground,False,53,53,27,39,134,9,17
+Colon,OSD-667,OSD-667,Ground,False,53,53,27,39,133,9,17
+Colon,OSD-667,OSD-667,Ground,False,53,53,27,39,135,9,17
+Liver,OSD-686,OSD-686,Flight,False,50,52,25,32,121,9,17
+Liver,OSD-686,OSD-686,Flight,False,49,52,25,32,118,8,17
+Liver,OSD-686,OSD-686,Flight,False,50,52,25,33,123,9,17
+Liver,OSD-686,OSD-686,Ground,False,50,52,25,34,125,9,17
+Liver,OSD-686,OSD-686,Ground,False,51,52,25,32,125,9,17
+Liver,OSD-686,OSD-686,Ground,False,49,52,25,35,124,8,17
+Bone marrow,OSD-690,OSD-690,Flight,False,54,53,27,39,133,9,17
+Bone marrow,OSD-690,OSD-690,Flight,False,52,53,27,39,134,9,17
+Bone marrow,OSD-690,OSD-690,Flight,False,54,53,27,39,134,9,17
+Bone marrow,OSD-690,OSD-690,Flight,False,54,53,27,39,134,9,17
+Bone marrow,OSD-690,OSD-690,Flight,False,54,53,27,39,134,9,17
+Bone marrow,OSD-690,OSD-690,Flight,False,53,53,27,39,133,9,17
+Bone marrow,OSD-690,OSD-690,Ground,False,54,53,27,39,133,9,17
+Bone marrow,OSD-690,OSD-690,Ground,False,54,53,27,39,133,9,17
+Bone marrow,OSD-690,OSD-690,Ground,False,53,53,27,39,134,9,17
+Bone marrow,OSD-690,OSD-690,Ground,False,54,53,27,39,134,9,17
+Bone marrow,OSD-690,OSD-690,Ground,False,54,53,27,39,134,9,17
+Bone marrow,OSD-690,OSD-690,Ground,False,53,53,27,39,134,9,17
+Soleus,OSD-714,OSD-714,Flight,False,52,52,27,39,130,9,17
+Soleus,OSD-714,OSD-714,Flight,False,51,53,27,39,132,9,17
+Soleus,OSD-714,OSD-714,Flight,False,53,53,27,39,131,9,17
+Soleus,OSD-714,OSD-714,Ground,False,53,53,27,36,124,9,17
+Soleus,OSD-714,OSD-714,Ground,False,53,53,26,39,127,9,17
+Soleus,OSD-714,OSD-714,Ground,False,53,53,27,38,128,9,17
+Retina,OSD-758,OSD-758,Flight,False,52,53,27,38,132,9,17
+Retina,OSD-758,OSD-758,Flight,False,53,53,27,39,133,9,17
+Retina,OSD-758,OSD-758,Flight,False,52,53,26,38,134,9,17
+Retina,OSD-758,OSD-758,Flight,False,53,53,27,39,133,9,17
+Retina,OSD-758,OSD-758,Flight,False,52,53,27,39,135,9,17
+Retina,OSD-758,OSD-758,Ground,False,52,53,27,38,134,9,17
+Retina,OSD-758,OSD-758,Ground,False,53,53,27,39,134,9,17
+Retina,OSD-758,OSD-758,Ground,False,53,53,27,39,134,9,17
+Retina,OSD-758,OSD-758,Ground,False,52,53,27,38,132,9,17
+Retina,OSD-758,OSD-758,Ground,False,52,53,27,38,135,9,17
+Retina,OSD-758,OSD-758,Ground,False,53,53,27,39,135,9,17
+Retina,OSD-758,OSD-758,Ground,False,53,53,27,39,135,9,17
+Retina,OSD-758,OSD-758,Ground,False,53,53,27,39,134,9,17
+Retina,OSD-758,OSD-758,Ground,False,53,53,27,39,133,9,17
+Retina,OSD-758,OSD-758,Ground,False,52,53,27,38,134,9,17
+Retina,OSD-758,OSD-758,Ground,False,53,53,27,39,134,9,17
+Retina,OSD-758,OSD-758,Ground,False,52,53,27,38,131,9,17
+Optic nerve,OSD-759,OSD-759,Flight,False,53,53,27,39,132,9,17
+Optic nerve,OSD-759,OSD-759,Flight,False,53,53,27,39,134,9,17
+Optic nerve,OSD-759,OSD-759,Flight,False,53,53,27,39,133,9,17
+Optic nerve,OSD-759,OSD-759,Flight,False,53,53,27,39,133,9,17
+Optic nerve,OSD-759,OSD-759,Flight,False,53,53,27,39,133,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,134,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,134,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,133,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,133,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,134,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,135,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,133,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,133,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,135,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,135,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,134,9,17
+Optic nerve,OSD-759,OSD-759,Ground,False,53,53,27,39,132,9,17
+Soleus,OSD-770,OSD-770,Flight,True,52,52,27,38,128,9,18
+Soleus,OSD-770,OSD-770,Flight,False,52,53,27,38,130,9,17
+Soleus,OSD-770,OSD-770,Flight,False,52,53,27,38,125,9,18
+Soleus,OSD-770,OSD-770,Flight,False,53,52,26,38,129,8,18
+Soleus,OSD-770,OSD-770,Flight,False,52,53,27,38,129,9,18
+Soleus,OSD-770,OSD-770,Flight,False,52,53,27,38,130,8,18
+Soleus,OSD-770,OSD-770,Flight,False,51,53,25,37,126,9,18
+Soleus,OSD-770,OSD-770,Flight,False,52,53,27,37,128,9,18
+Soleus,OSD-770,OSD-770,Flight,False,52,53,26,36,126,8,18
+Soleus,OSD-770,OSD-770,Ground,True,53,53,27,38,126,8,17
+Soleus,OSD-770,OSD-770,Ground,False,53,53,25,39,131,9,18
+Soleus,OSD-770,OSD-770,Ground,False,51,53,27,38,130,9,17
+Soleus,OSD-770,OSD-770,Ground,False,53,53,26,39,131,9,17
+Soleus,OSD-770,OSD-770,Ground,False,53,53,27,38,130,9,17
+Soleus,OSD-770,OSD-770,Ground,False,53,53,26,37,131,9,18
+Soleus,OSD-770,OSD-770,Ground,False,53,53,27,39,129,9,17
+Soleus,OSD-770,OSD-770,Ground,False,52,53,27,39,130,9,18
+Soleus,OSD-770,OSD-770,Ground,False,53,53,27,37,127,9,17
+Kidney,OSD-771,OSD-771,Flight,False,52,53,27,39,134,9,17
+Kidney,OSD-771,OSD-771,Flight,False,53,53,27,39,133,9,17
+Kidney,OSD-771,OSD-771,Flight,False,53,53,27,39,133,9,17
+Kidney,OSD-771,OSD-771,Flight,False,52,53,26,39,134,9,17
+Kidney,OSD-771,OSD-771,Flight,False,53,53,26,39,134,9,17
+Kidney,OSD-771,OSD-771,Ground,False,52,53,27,39,134,9,17
+Kidney,OSD-771,OSD-771,Ground,False,52,53,27,39,134,9,17
+Kidney,OSD-771,OSD-771,Ground,False,52,53,26,39,133,9,17
+Kidney,OSD-771,OSD-771,Ground,False,53,53,27,39,133,9,17
+Kidney,OSD-771,OSD-771,Ground,False,53,53,27,39,133,9,17
+Kidney,OSD-771,OSD-771,Ground,False,53,53,27,39,133,9,17
+Kidney,OSD-771,OSD-771,Ground,False,52,53,26,39,134,9,17
+Kidney,OSD-771,OSD-771,Ground,False,52,53,27,39,133,9,17
+Kidney,OSD-771,OSD-771,Ground,False,52,53,27,39,133,9,17
+Kidney,OSD-771,OSD-771,Ground,False,52,53,27,39,134,9,17
+Kidney,OSD-771,OSD-771__age_29w,Flight,False,53,53,27,39,133,9,17
+Kidney,OSD-771,OSD-771__age_29w,Flight,False,53,53,26,39,133,9,17
+Kidney,OSD-771,OSD-771__age_29w,Flight,False,53,53,27,39,134,9,17
+Kidney,OSD-771,OSD-771__age_29w,Flight,False,53,53,27,39,132,9,17
+Kidney,OSD-771,OSD-771__age_29w,Flight,False,51,53,27,39,134,9,17
+Kidney,OSD-771,OSD-771__age_29w,Ground,False,52,53,26,39,133,9,17
+Kidney,OSD-771,OSD-771__age_29w,Ground,False,52,53,26,39,133,9,17
+Kidney,OSD-771,OSD-771__age_29w,Ground,False,52,53,27,39,133,9,17
+Kidney,OSD-771,OSD-771__age_29w,Ground,False,53,53,27,39,132,9,17
+Kidney,OSD-771,OSD-771__age_29w,Ground,False,51,53,27,39,133,9,17
+Kidney,OSD-771,OSD-771__age_29w,Ground,False,52,53,26,39,134,9,17
+Kidney,OSD-771,OSD-771__age_29w,Ground,False,52,53,27,39,134,9,17
+Kidney,OSD-771,OSD-771__age_29w,Ground,False,52,53,27,39,132,9,17
+Kidney,OSD-771,OSD-771__age_29w,Ground,False,52,53,27,39,134,9,17
+Kidney,OSD-771,OSD-771__age_29w,Ground,False,51,53,27,39,134,9,17
+Cecum,OSD-899,OSD-899,Flight,False,53,53,27,39,132,9,17
+Cecum,OSD-899,OSD-899,Flight,False,52,53,27,39,135,9,17
+Cecum,OSD-899,OSD-899,Flight,False,51,53,26,36,126,9,17
+Cecum,OSD-899,OSD-899,Flight,False,52,53,26,38,133,9,17
+Cecum,OSD-899,OSD-899,Flight,False,52,53,26,38,133,9,17
+Cecum,OSD-899,OSD-899,Ground,False,52,53,26,39,134,9,17
+Cecum,OSD-899,OSD-899,Ground,False,53,53,26,39,129,9,17
+Cecum,OSD-899,OSD-899,Ground,False,52,53,26,39,131,9,17
+Cecum,OSD-899,OSD-899,Ground,False,52,53,27,39,132,9,17
+Cecum,OSD-899,OSD-899,Ground,False,52,53,27,38,132,9,17
+Lung,OSD-900,OSD-900,Flight,False,52,53,27,39,134,9,17
+Lung,OSD-900,OSD-900,Flight,False,53,53,27,39,134,9,17
+Lung,OSD-900,OSD-900,Flight,False,53,53,27,39,134,9,17
+Lung,OSD-900,OSD-900,Flight,False,53,53,27,39,134,9,17
+Lung,OSD-900,OSD-900,Flight,False,53,53,27,39,134,9,17
+Lung,OSD-900,OSD-900,Ground,False,53,53,27,39,134,9,17
+Lung,OSD-900,OSD-900,Ground,False,53,53,27,39,133,9,17
+Lung,OSD-900,OSD-900,Ground,False,52,53,27,39,134,9,17
+Lung,OSD-900,OSD-900,Ground,False,52,53,27,39,134,9,17
+Lung,OSD-900,OSD-900,Ground,False,52,53,27,39,133,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Flight,False,53,52,26,39,128,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Flight,False,53,53,27,39,131,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Flight,False,52,52,26,38,130,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Flight,False,53,53,27,39,131,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Flight,False,53,53,27,39,131,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Flight,False,52,52,27,39,128,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Ground,False,51,53,26,38,130,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Ground,False,52,53,27,37,128,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Ground,False,52,53,26,37,128,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Ground,False,50,53,26,38,129,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Ground,False,53,53,27,39,130,9,17
+Extensor digitorum longus,OSD-99,OSD-99,Ground,False,52,53,27,37,127,9,17

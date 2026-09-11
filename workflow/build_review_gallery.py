@@ -31,7 +31,7 @@ def build(root: Path) -> None:
         '</style><h1>最终图表查验</h1><p>16 个主图面板、9 个补充图面板、26 个组织相关性图。'
         '点击图像查看原分辨率；PDF 可单独打开。Fig. 1a 不在此包中。</p>'
         '<p><a href="README.md">方法与目录说明</a> · '
-        '<a href="provenance/output_sha256.csv">文件校验清单</a></p><main>'
+        '<a href="Supplementary_Tables/">补充表格</a></p><main>'
         + ''.join(cards) + '</main></html>', encoding='utf-8'
     )
     main = sorted(root.glob("Main/*.png"))

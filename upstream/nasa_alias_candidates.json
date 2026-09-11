@@ -1,0 +1,92 @@
+{
+  "OSD-137": {
+    "GLDS-137_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-137/file/GLDS-137_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-137/download?source=datamanager&file=GLDS-137_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv"
+    },
+    "GLDS-137_rna_seq_differential_expression_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-137/file/GLDS-137_rna_seq_differential_expression_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-137/download?source=datamanager&file=GLDS-137_rna_seq_differential_expression_GLbulkRNAseq.csv"
+    }
+  },
+  "OSD-194": {
+    "GLDS-194_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-194/file/GLDS-194_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-194/download?source=datamanager&file=GLDS-194_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv"
+    },
+    "GLDS-194_rna_seq_differential_expression_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-194/file/GLDS-194_rna_seq_differential_expression_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-194/download?source=datamanager&file=GLDS-194_rna_seq_differential_expression_GLbulkRNAseq.csv"
+    }
+  },
+  "OSD-240": {
+    "GLDS-240_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-240/file/GLDS-240_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-240/download?source=datamanager&file=GLDS-240_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv"
+    },
+    "GLDS-240_rna_seq_differential_expression_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-240/file/GLDS-240_rna_seq_differential_expression_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-240/download?source=datamanager&file=GLDS-240_rna_seq_differential_expression_GLbulkRNAseq.csv"
+    }
+  },
+  "OSD-242": {
+    "GLDS-242_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-242/file/GLDS-242_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-242/download?source=datamanager&file=GLDS-242_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv"
+    },
+    "GLDS-242_rna_seq_differential_expression_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-242/file/GLDS-242_rna_seq_differential_expression_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-242/download?source=datamanager&file=GLDS-242_rna_seq_differential_expression_GLbulkRNAseq.csv"
+    }
+  },
+  "OSD-254": {
+    "GLDS-254_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-254/file/GLDS-254_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-254/download?source=datamanager&file=GLDS-254_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv"
+    },
+    "GLDS-254_rna_seq_differential_expression_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-254/file/GLDS-254_rna_seq_differential_expression_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-254/download?source=datamanager&file=GLDS-254_rna_seq_differential_expression_GLbulkRNAseq.csv"
+    }
+  },
+  "OSD-397": {
+    "GLDS-397_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-397/file/GLDS-397_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-397/download?source=datamanager&file=GLDS-397_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv"
+    },
+    "GLDS-397_rna_seq_differential_expression_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-397/file/GLDS-397_rna_seq_differential_expression_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-397/download?source=datamanager&file=GLDS-397_rna_seq_differential_expression_GLbulkRNAseq.csv"
+    }
+  },
+  "OSD-511": {
+    "GLDS-511_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-511/file/GLDS-511_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-511/download?source=datamanager&file=GLDS-511_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv"
+    },
+    "GLDS-511_rna_seq_differential_expression_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-511/file/GLDS-511_rna_seq_differential_expression_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-511/download?source=datamanager&file=GLDS-511_rna_seq_differential_expression_GLbulkRNAseq.csv"
+    }
+  },
+  "OSD-162": {
+    "GLDS-162_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-162/file/GLDS-162_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-162/download?source=datamanager&file=GLDS-162_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv"
+    },
+    "GLDS-162_rna_seq_differential_expression_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-162/file/GLDS-162_rna_seq_differential_expression_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-162/download?source=datamanager&file=GLDS-162_rna_seq_differential_expression_GLbulkRNAseq.csv"
+    }
+  },
+  "OSD-168": {
+    "GLDS-168_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-168/file/GLDS-168_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-168/download?source=datamanager&file=GLDS-168_rna_seq_differential_expression_rRNArm_GLbulkRNAseq.csv"
+    },
+    "GLDS-168_rna_seq_differential_expression_GLbulkRNAseq.csv": {
+      "REST_URL": "https://visualization.osdr.nasa.gov/biodata/api/v2/dataset/OSD-168/file/GLDS-168_rna_seq_differential_expression_GLbulkRNAseq.csv/",
+      "URL": "https://osdr.nasa.gov/geode-py/ws/studies/OSD-168/download?source=datamanager&file=GLDS-168_rna_seq_differential_expression_GLbulkRNAseq.csv"
+    }
+  }
+}

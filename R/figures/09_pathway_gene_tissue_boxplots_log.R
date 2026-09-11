@@ -12,7 +12,7 @@
 #   - Points: individual flight mice (n = 360), shape 16, seed 25
 #   - Boxplot: Q1, Mean (middle solid bar), Q3, 1.5 * IQR whiskers
 #   - Dashed lines: connect tissue-level mean values for each gene
-#   - One-way ANOVA: test tissue heterogeneity on log2 scale for pathway & genes
+#   - Significance is supplied separately as the approved external software table.
 #   - Colorblind-safe palette: strict avoidance of red+green and blue+yellow
 #   - Legend: single-row (nrow = 1), clean gene symbols without parentheses
 # -----------------------------------------------------------------------------
@@ -57,20 +57,6 @@ if (nzchar(pub_dir)) {
 }
 dir.create(fig_dir, recursive = TRUE, showWarnings = FALSE)
 dir.create(tbl_dir, recursive = TRUE, showWarnings = FALSE)
-
-format_sci <- function(p) {
-  if (is.na(p)) return("NA")
-  if (p >= 0.01) return(sprintf("%.3f", p))
-  sci_str <- sprintf("%.2e", p)
-  parts <- strsplit(sci_str, "e")[[1]]
-  base_part <- parts[1]
-  exp_int <- as.integer(parts[2])
-  digits <- c("0" = "\u2070", "1" = "\u00b9", "2" = "\u00b2", "3" = "\u00b3", "4" = "\u2074",
-              "5" = "\u2075", "6" = "\u2076", "7" = "\u2077", "8" = "\u2078", "9" = "\u2079", "-" = "\u207b")
-  exp_str <- as.character(exp_int)
-  exp_unicode <- paste0(sapply(strsplit(exp_str, "")[[1]], function(ch) digits[[ch]]), collapse = "")
-  sprintf("%s \u00d7 10%s", base_part, exp_unicode)
-}
 
 # Input data paths
 qsmooth_path <- file.path(repo_root, "data/publication_input/qsmooth/06_component_flight_sample_yarn_qsmooth_values.csv.gz")
@@ -306,8 +292,6 @@ bands <- data.table(
   ymax = Inf
 )
 
-anova_gene_list <- list()
-anova_pw_list <- list()
 summary_mean_list <- list()
 used_data_list <- list()
 
@@ -352,40 +336,6 @@ for (pw_name in names(pathway_defs)) {
   }, by = .(Group, EnsemblID, Gene)]
   
   summary_mean_list[[pw_name]] <- box_stats[, .(Pathway = pw_name, Group, EnsemblID, Gene, Mean = middle, SD, Q1 = lower, Q3 = upper, Ymin = ymin, Ymax = ymax, N)]
-  
-  # One-way ANOVA per gene on log2 values
-  gene_p_strs <- character()
-  for (sym in gene_symbols) {
-    g_data <- sub_dt[EnsemblID == gene_ids[[sym]] & !is.na(YARNNormalizedLog2)]
-    fit_g <- aov(YARNNormalizedLog2 ~ Group, data = g_data)
-    s_g <- summary(fit_g)[[1]]
-    f_g <- s_g["Group", "F value"]
-    p_g <- s_g["Group", "Pr(>F)"]
-    df_g <- s_g["Group", "Df"]
-    df_r <- s_g["Residuals", "Df"]
-    sig_g <- fifelse(p_g < 0.001, "***", fifelse(p_g < 0.01, "**", fifelse(p_g < 0.05, "*", "ns")))
-    gene_p_strs <- c(gene_p_strs, sprintf("%s (P = %s)", sym, format_sci(p_g)))
-    
-    anova_gene_list[[length(anova_gene_list) + 1]] <- data.table(
-      Pathway = pw_name, EnsemblID = gene_ids[[sym]], Symbol = sym,
-      Df_group = df_g, Df_residual = df_r, F_value = f_g, P_value = p_g, Significance = sig_g
-    )
-  }
-  
-  # Overall Pathway One-way ANOVA on log2 values
-  pw_sample <- sub_dt[!is.na(YARNNormalizedLog2), .(MeanExpr = mean(YARNNormalizedLog2)), by = .(Group, SampleID)]
-  fit_pw <- aov(MeanExpr ~ Group, data = pw_sample)
-  s_pw <- summary(fit_pw)[[1]]
-  f_pw <- s_pw["Group", "F value"]
-  p_pw <- s_pw["Group", "Pr(>F)"]
-  df_pw <- s_pw["Group", "Df"]
-  df_pwr <- s_pw["Residuals", "Df"]
-  sig_pw <- fifelse(p_pw < 0.001, "***", fifelse(p_pw < 0.01, "**", fifelse(p_pw < 0.05, "*", "ns")))
-  
-  anova_pw_list[[length(anova_pw_list) + 1]] <- data.table(
-    Pathway = pw_name, Df_group = df_pw, Df_residual = df_pwr,
-    F_value = f_pw, P_value = p_pw, Significance = sig_pw
-  )
   
   # Layout dodge width
   n_genes <- length(gene_symbols)
@@ -493,25 +443,13 @@ for (pw_name in names(pathway_defs)) {
   ggsave(png_file, p, width = 18, height = 8.5, dpi = 300, bg = "white")
   ggsave(pdf_file, p, width = 18, height = 8.5, device = grDevices::cairo_pdf, bg = "white")
   
-  # Also export descriptive name copy if not writing to release Main
-  if (!nzchar(pub_dir)) {
-    desc_png <- file.path(fig_dir, sprintf("%s_%s_tissue_boxplot_log2.png", panel_id, safe_name))
-    desc_pdf <- file.path(fig_dir, sprintf("%s_%s_tissue_boxplot_log2.pdf", panel_id, safe_name))
-    file.copy(png_file, desc_png, overwrite = TRUE)
-    file.copy(pdf_file, desc_pdf, overwrite = TRUE)
-  }
-  
   message("Generated ", panel_id, " (", pw_name, " log2): ", png_file)
 }
 
 # Export summary tables
-anova_gene_dt <- rbindlist(anova_gene_list)
-anova_pw_dt <- rbindlist(anova_pw_list)
 summary_mean_dt <- rbindlist(summary_mean_list)
 used_data_dt <- rbindlist(used_data_list)
 
-fwrite(anova_pw_dt, file.path(tbl_dir, "01_pathway_one_way_anova_log_summary.csv"))
-fwrite(anova_gene_dt, file.path(tbl_dir, "02_gene_one_way_anova_log_summary.csv"))
 fwrite(summary_mean_dt, file.path(tbl_dir, "03_tissue_gene_mean_log_qsmooth_summary.csv"))
 fwrite(used_data_dt, file.path(tbl_dir, "04_sample_log_qsmooth_values_used.csv.gz"))
 
@@ -520,63 +458,6 @@ if (nzchar(pub_dir)) {
   dir.create(provenance_dir, recursive = TRUE, showWarnings = FALSE)
   fwrite(axis_order_audit, file.path(provenance_dir, "pathway_boxplot_x_axis_order.csv"))
   
-  # Also sync to results/log_scale
-  results_log_dir <- file.path(repo_root, "results/log_scale")
-  res_fig_dir <- file.path(results_log_dir, "figures")
-  res_tbl_dir <- file.path(results_log_dir, "tables")
-  dir.create(res_fig_dir, recursive = TRUE, showWarnings = FALSE)
-  dir.create(res_tbl_dir, recursive = TRUE, showWarnings = FALSE)
-  for (pw_name in names(pathway_defs)) {
-    p_id <- pathway_defs[[pw_name]]$fig_panel
-    s_name <- gsub("[^A-Za-z0-9_]", "-", pw_name)
-    file.copy(file.path(fig_dir, sprintf("%s.png", p_id)), file.path(res_fig_dir, sprintf("%s.png", p_id)), overwrite = TRUE)
-    file.copy(file.path(fig_dir, sprintf("%s.pdf", p_id)), file.path(res_fig_dir, sprintf("%s.pdf", p_id)), overwrite = TRUE)
-    file.copy(file.path(fig_dir, sprintf("%s.png", p_id)), file.path(res_fig_dir, sprintf("%s_%s_tissue_boxplot_log2.png", p_id, s_name)), overwrite = TRUE)
-    file.copy(file.path(fig_dir, sprintf("%s.pdf", p_id)), file.path(res_fig_dir, sprintf("%s_%s_tissue_boxplot_log2.pdf", p_id, s_name)), overwrite = TRUE)
-  }
-  file.copy(file.path(tbl_dir, "01_pathway_one_way_anova_log_summary.csv"), file.path(res_tbl_dir, "01_pathway_one_way_anova_log_summary.csv"), overwrite = TRUE)
-  file.copy(file.path(tbl_dir, "02_gene_one_way_anova_log_summary.csv"), file.path(res_tbl_dir, "02_gene_one_way_anova_log_summary.csv"), overwrite = TRUE)
-  file.copy(file.path(tbl_dir, "03_tissue_gene_mean_log_qsmooth_summary.csv"), file.path(res_tbl_dir, "03_tissue_gene_mean_log_qsmooth_summary.csv"), overwrite = TRUE)
-  file.copy(file.path(tbl_dir, "04_sample_log_qsmooth_values_used.csv.gz"), file.path(res_tbl_dir, "04_sample_log_qsmooth_values_used.csv.gz"), overwrite = TRUE)
-  fwrite(axis_order_audit, file.path(results_log_dir, "pathway_boxplot_x_axis_order.csv"))
-} else {
-  fwrite(axis_order_audit, file.path(out_dir, "pathway_boxplot_x_axis_order.csv"))
 }
 
-# Generate HTML gallery for quick viewing
-html_cards <- paste0(vapply(names(pathway_defs), function(pw_name) {
-  pw_info <- pathway_defs[[pw_name]]
-  p_id <- pw_info$fig_panel
-  sprintf(
-    '<article style="background:white;padding:16px;border:1px solid #ddd;border-radius:6px;">
-      <h2 style="font-size:16px;margin-top:0;">%s (%s - Log2 Scale)</h2>
-      <a href="figures/%s.png"><img loading="lazy" src="figures/%s.png" style="width:100%%;height:280px;object-fit:contain;"></a>
-      <p style="margin-top:8px;"><a href="figures/%s.png" style="color:#245b8b;font-weight:bold;">PNG (300 DPI)</a> · <a href="figures/%s.pdf" style="color:#245b8b;font-weight:bold;">PDF</a></p>
-    </article>',
-    p_id, pw_info$title, p_id, p_id, p_id, p_id
-  )
-}, character(1L)), collapse = "\n")
-
-html_content <- sprintf(
-  '<!doctype html><html lang="zh-CN"><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>7条DNA修复通路组织表达箱线图（对数Log2尺度版）</title>
-<style>
-body{font-family:system-ui,-apple-system,sans-serif;margin:32px;background:#f6f7f8;color:#203040}
-main{display:grid;grid-template-columns:repeat(auto-fit,minmax(500px,1fr));gap:24px}
-@media(max-width:600px){main{display:block}}
-</style>
-<h1>7条DNA修复通路组织表达箱线图（对数 Log2 尺度版本）</h1>
-<p style="color:#4a5568;">与最终线性版本完全对齐：严格遵循色盲友好配色（无红绿、无蓝黄）、NER 单排紧凑图例且去除括号符号、按图4a/5a树顺序排序。Y轴采用 YARN qsmooth 对数尺度 (log2 scale)。</p>
-<main>
-%s
-</main>
-</html>', html_cards
-)
-if (nzchar(pub_dir)) {
-  writeLines(html_content, file.path(results_log_dir, "index.html"))
-} else {
-  writeLines(html_content, file.path(out_dir, "index.html"))
-}
-
-message("All 7 log2 pathway figures and tables successfully generated under: ", out_dir)
+message("Generated seven log2 expression panels and expression summaries: ", out_dir)

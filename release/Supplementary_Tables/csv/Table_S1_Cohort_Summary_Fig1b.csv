@@ -1,0 +1,53 @@
+Mission_Cluster,Tissue,Sex,Age_Group,Total_Samples,Unique_Mice,Flight_Samples,Ground_Control_Samples,OSD_Accession_Count,OSD_Accessions,Analysis_Units_Count,Analysis_Units
+NG-11,Heart,Female,9–11 wk,6,6,3,3,1,OSD-599,1,OSD-599
+SpaceX-11,Femoral lateral skin,Female,30 wk,19,19,9,10,1,OSD-241,1,OSD-241
+SpaceX-11,Dorsal skin,Female,30 wk,20,20,10,10,1,OSD-240,1,OSD-240
+SpaceX-12,Liver,Male,9 wk,6,6,3,3,1,OSD-686,1,OSD-686
+SpaceX-12,Liver,Male,10 wk,9,9,5,4,1,OSD-242,1,OSD-242
+SpaceX-12,Retina,Male,10 wk,16,16,8,8,1,OSD-255,1,OSD-255
+SpaceX-12,Spleen-distal,Male,10 wk,20,20,10,10,1,OSD-420,1,OSD-420
+SpaceX-12,Femoral skin,Male,9 wk,5,5,2,3,1,OSD-239,1,OSD-239
+SpaceX-12,Thymus,Male,9 wk,6,6,3,3,1,OSD-289,1,OSD-289__MHU2
+SpaceX-12,Thymus,Male,10 wk,20,20,10,10,1,OSD-421,1,OSD-421
+SpaceX-14,Bone marrow,Male,12 wk,12,12,6,6,1,OSD-690,1,OSD-690
+SpaceX-15,Kidney,Female,11 wk,39,39,20,19,1,OSD-253,4,OSD-253;OSD-253__C3H_25;OSD-253__C3H_75;OSD-253__C57BL_75
+SpaceX-15,Dorsal skin,Female,11 wk,40,40,20,20,1,OSD-254,4,OSD-254;OSD-254__C3H_25;OSD-254__C3H_75;OSD-254__C57BL_75
+SpaceX-16,Left lobe of the liver,Female,10–12 wk,16,16,8,8,1,OSD-379,1,OSD-379
+SpaceX-16,Left lobe of the liver,Female,32 wk,14,14,7,7,1,OSD-379,1,OSD-379__age_32w
+SpaceX-16,Mammary gland,Female,10–12 wk,13,13,5,8,1,OSD-511,1,OSD-511
+SpaceX-16,Mammary gland,Female,32 wk,12,12,5,7,1,OSD-511,1,OSD-511__age_32w
+SpaceX-18,Kidney,Female,12 wk,15,15,5,10,1,OSD-771,1,OSD-771
+SpaceX-18,Kidney,Female,29 wk,15,15,5,10,1,OSD-771,1,OSD-771__age_29w
+SpaceX-18,Heart / Heart right ventricle,Female,12 wk,15,15,5,10,1,OSD-580,1,OSD-580
+SpaceX-18,Heart / Heart right ventricle,Female,29 wk,15,15,5,10,1,OSD-580,1,OSD-580__age_29w
+SpaceX-21,Quadriceps femoris,Male,16–17 wk,18,18,9,9,1,OSD-666,1,OSD-666
+SpaceX-21,Tibialis anterior,Male,16–17 wk,18,18,9,9,1,OSD-576,1,OSD-576
+SpaceX-21,Spleen,Male,16–17 wk,17,17,9,8,1,OSD-506,1,OSD-506
+SpaceX-21,Left lobe of the liver,Male,16–17 wk,18,18,9,9,1,OSD-463,1,OSD-463
+SpaceX-21,Colon,Female,14–15 wk,9,9,4,5,1,OSD-667,1,OSD-667
+SpaceX-21,Cerebellum,Male,16–17 wk,18,18,9,9,1,OSD-525,1,OSD-525
+SpaceX-21,Kidney,Female,14–15 wk,20,20,10,10,1,OSD-462,1,OSD-462
+SpaceX-21,Kidney,Male,16–17 wk,18,18,9,9,1,OSD-513,1,OSD-513
+SpaceX-21,Extensor digitorum longus,Male,16–17 wk,18,18,9,9,1,OSD-665,1,OSD-665
+SpaceX-21,Adrenal gland,Male,16–17 wk,18,18,9,9,1,OSD-512,1,OSD-512
+SpaceX-21,Soleus,Male,16–17 wk,18,18,9,9,1,OSD-770,1,OSD-770
+SpaceX-21,Lung,Female,14–15 wk,10,10,5,5,1,OSD-900,1,OSD-900
+SpaceX-21,Lung,Male,16–17 wk,17,17,9,8,1,OSD-464,1,OSD-464
+SpaceX-21,Cecum,Female,14–15 wk,10,10,5,5,1,OSD-899,1,OSD-899
+SpaceX-21,Thymus,Male,16–17 wk,16,16,7,9,1,OSD-515,1,OSD-515
+SpaceX-27,Optic nerve,Male,11–12 wk,17,17,5,12,1,OSD-759,1,OSD-759
+SpaceX-27,Retina,Male,11–12 wk,17,17,5,12,1,OSD-758,1,OSD-758
+SpaceX-4,Eye,Female,16 wk,12,12,6,6,1,OSD-100,1,OSD-100
+SpaceX-4,Extensor digitorum longus,Female,16 wk,12,12,6,6,1,OSD-99,1,OSD-99
+SpaceX-4,Gastrocnemius,Female,16 wk,24,24,10,14,2,OSD-101;OSD-419,2,OSD-101;OSD-419
+SpaceX-4,Soleus,Female,16 wk,12,12,6,6,1,OSD-104,1,OSD-104
+SpaceX-4,Liver,Female,16 wk,4,4,2,2,1,OSD-48,1,OSD-48
+SpaceX-4,Liver,Female,8 mo,6,6,3,3,1,OSD-47,1,OSD-47
+SpaceX-4,Retina,Female,16 wk,16,16,9,7,1,OSD-397,1,OSD-397
+SpaceX-8,Kidney,Female,12 wk,12,12,6,6,1,OSD-163,1,OSD-163
+SpaceX-8,Eye,Female,12 wk,10,10,5,5,1,OSD-162,1,OSD-162
+SpaceX-8,Adrenal gland,Female,12 wk,10,10,5,5,1,OSD-161,1,OSD-161
+SpaceX-8,Liver,Female,12 wk,12,12,6,6,1,OSD-137,1,OSD-137
+SpaceX-8,Retina,Female,12 wk,9,9,5,4,1,OSD-194,1,OSD-194
+SpaceX-9,Soleus,Male,8 wk,6,6,3,3,1,OSD-714,1,OSD-714
+SpaceX-9,Thymus,Male,8 wk,6,6,3,3,1,OSD-289,1,OSD-289

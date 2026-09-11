@@ -1,0 +1,16 @@
+original_term_order,display_term_order,term_key,term_name,go_id,term_role
+1,1,DNA_damage_response_GO0006974,DNA damage response,GO:0006974,official_root
+3,2,DNA_repair_GO0006281,DNA repair,GO:0006281,official_root
+2,3,DNA_damage_signal_transduction_GO0042770,Signal transduction in response to DNA damage,GO:0042770,official_root
+5,4,intrinsic_apoptotic_signaling_GO0008630,Intrinsic apoptotic signaling pathway,GO:0008630,official_root
+4,5,DNA_damage_tolerance_GO0006301,DNA damage tolerance,GO:0006301,official_root
+14,6,telomere_maintenance_GO0043247,Telomere maintenance in response to DNA damage,GO:0043247,official_root
+13,7,telomere_region_GO0000781,"Chromosome, telomeric region",GO:0000781,context
+6,8,cell_cycle_GO0007049,Cell cycle,GO:0007049,context
+9,9,DNA_replication_GO0006260,DNA replication,GO:0006260,context
+8,10,DNA_templated_transcription_GO0006351,DNA-templated transcription,GO:0006351,context
+7,11,translation_GO0006412,Translation,GO:0006412,context
+12,12,mitochondrion_GO0005739,Mitochondrion,GO:0005739,context
+10,13,mechanosensation_GO0050954,Sensory perception of mechanical stimulus,GO:0050954,context
+11,14,cytoskeleton_GO0005856,Cytoskeleton,GO:0005856,context
+15,15,cell_death_GO0008219,Cell death,GO:0008219,comparison_context

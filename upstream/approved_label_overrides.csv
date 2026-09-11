@@ -1,0 +1,2 @@
+publication_path,key_column,key_value,column,from_value,to_value
+data/publication_input/go/04_tissue_statistics_concrete_terms_and_context.csv,analysis_tissue,Eye,missions,SpaceX-4;SpaceX-8+SpaceX-9,SpaceX-4;SpaceX-8

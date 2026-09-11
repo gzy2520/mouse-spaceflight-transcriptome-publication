@@ -1,0 +1,28 @@
+Pathway,PathwayOrder,SeedGOID,ExpansionMode,RuleLabel,Rationale
+BER,1,GO:0006284,is_a,BER biological process,Explicit base-excision repair and its is_a subclasses only.
+BER,1,GO:0000012,exact,Single-strand break repair,Generic single-strand break repair is displayed in the BER-SSBR track without assigning its HR-specific subclasses to BER.
+BER,1,GO:0019104,structural,BER glycosylase activity,DNA N-glycosylase activity initiates BER.
+BER,1,GO:0003906,structural,BER AP endonuclease activity,AP endonuclease activity processes BER intermediates.
+BER,1,GO:0051575,structural,BER 5-prime dRP lyase activity,5-prime dRP lyase activity processes BER intermediates.
+BER,1,GO:0106334,exact,BER 3-prime dRP lyase activity,3-prime dRP lyase activity is retained as an explicit BER activity.
+BER,1,GO:0070421,exact,BER ligase III-XRCC1 complex,The GO definition explicitly assigns this complex to BER.
+NER,2,GO:0006289,is_a,NER biological process,Explicit nucleotide-excision repair and its is_a subclasses only.
+NER,2,GO:0000109,structural,NER complex,Nucleotide-excision repair complex and structural subclasses.
+MMR,3,GO:0006298,is_a,MMR biological process,Explicit mismatch repair and its is_a subclasses only.
+MMR,3,GO:0032300,structural,MMR complex,Mismatch-repair complex and structural subclasses.
+MMR,3,GO:0030983,structural,Mismatch recognition,Mismatch-specific DNA binding and structural subclasses.
+MMR,3,GO:0032404,structural,MMR complex binding,Binding terms explicitly naming mismatch-repair complexes.
+FA,4,GO:0036297,is_a,FA interstrand cross-link repair,Interstrand cross-link repair and its is_a subclasses are assigned to the Fanconi-anemia track.
+FA,4,GO:0043240,structural,FA nuclear complex,Fanconi-anemia nuclear complex and structural subclasses.
+HR,5,GO:0000724,is_a,HR-mediated DSB repair,Double-strand break repair via homologous recombination and is_a subclasses only.
+HR,5,GO:0000725,is_a,Recombinational repair,Recombinational repair terms are retained only when the downstream BP filter confirms DNA-repair ancestry.
+HR,5,GO:0048476,structural,Holliday-junction resolvase complex,Complex explicitly involved in homologous-recombination intermediate resolution.
+HR,5,GO:0009379,structural,Holliday-junction helicase complex,Complex explicitly involved in homologous-recombination branch migration.
+HR,5,GO:0009378,structural,Holliday-junction helicase activity,Activity explicitly involved in homologous-recombination branch migration.
+HR,5,GO:0000150,structural,DNA strand exchange activity,DNA strand-exchange activity is retained as a homologous-recombination mechanism.
+AEJ,6,GO:0097681,is_a,Alternative end joining,Explicit alternative nonhomologous end joining and is_a subclasses only.
+NHEJ,7,GO:0097680,is_a,Classical NHEJ,Explicit classical nonhomologous end joining and is_a subclasses only.
+NHEJ,7,GO:0070419,structural,NHEJ complex,Nonhomologous-end-joining complex and structural subclasses.
+NHEJ,7,GO:0043564,exact,Ku70-Ku80 complex,Ku70-Ku80 is a core classical-NHEJ complex.
+NHEJ,7,GO:0070418,structural,DNA-PK complex,DNA-dependent protein kinase complex is core classical NHEJ machinery.
+NHEJ,7,GO:0004677,exact,DNA-PK activity,DNA-dependent protein kinase activity is assigned to classical NHEJ.

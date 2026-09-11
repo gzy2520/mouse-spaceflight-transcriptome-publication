@@ -1,0 +1,2 @@
+workspace_path,local_source_path,sha256,size_bytes,role
+reference/MSigDB_2026.1.Mm_mouse_Ensembl_membership.tsv.gz,03_analysis_results/10_full_stable_id_rerun_20260823/00_frozen_inputs/MSigDB_2026.1.Mm_mouse_Ensembl_membership.tsv.gz,b9d111e94e7aa95230aa0988e53e113389259cb6e5671bdc9d1634cd64ece967,8095589,MSigDB 2026.1.Mm fixed Ensembl membership database

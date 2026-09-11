@@ -1,0 +1,86 @@
+Sheet,SheetOrder,RowInSheet,Pathway,RequestedComponent,Included,ExclusionReason,Essential components
+DSB,1,1,NHEJ,DNA-PKcs,TRUE,"",DNA-PKcs
+DSB,1,2,NHEJ,Ku70,TRUE,"",Ku70
+DSB,1,3,NHEJ,Ku80,TRUE,"",Ku80
+DSB,1,4,NHEJ,XLF,TRUE,"",XLF
+DSB,1,5,NHEJ,PAXX,TRUE,"",PAXX
+DSB,1,6,NHEJ,XRCC4,TRUE,"",XRCC4
+DSB,1,7,NHEJ,Ligase IV,TRUE,"",Ligase IV
+DSB,1,8,HR,PRA1,TRUE,"",PRA1
+DSB,1,9,HR,PRA2,TRUE,"",PRA2
+DSB,1,10,HR,PRA3,TRUE,"",PRA3
+DSB,1,11,HR,BRCA1,TRUE,"",BRCA1
+DSB,1,12,HR,BRCA2,TRUE,"",BRCA2
+DSB,1,13,HR,BARD1,TRUE,"",BARD1
+DSB,1,14,HR,PALB2,TRUE,"",PALB2
+DSB,1,15,HR,BLM,TRUE,"",BLM
+DSB,1,16,HR,Rad51,TRUE,"",Rad51
+DSB,1,17,HR,Rad54,TRUE,"",Rad54
+DSB,1,18,HR,CtIp,TRUE,"",CtIp
+DSB,1,19,HR,PolD1,TRUE,"",PolD1
+DSB,1,20,HR_A-EJ,MRE11,TRUE,"",MRE11
+DSB,1,21,HR_A-EJ,Rad50,TRUE,"",Rad50
+DSB,1,22,HR_A-EJ,NBS1,TRUE,"",NBS1
+DSB,1,23,HR_A-EJ,Exo1,TRUE,"",Exo1
+DSB,1,24,HR_A-EJ,DNA2,TRUE,"",DNA2
+DSB,1,25,A-EJ,Parp1,TRUE,"",Parp1
+DSB,1,26,A-EJ,PolQ,TRUE,"",PolQ
+DSB,1,27,A-EJ,XRCC1,TRUE,"",XRCC1
+DSB,1,28,A-EJ,Ligase I,TRUE,"",Ligase I
+DSB,1,29,A-EJ,Ligase III,TRUE,"",Ligase III
+SSB_others,2,1,BER,UNG,TRUE,"",UNG
+SSB_others,2,2,BER,OGG1,TRUE,"",OGG1
+SSB_others,2,3,BER,NEIL1,TRUE,"",NEIL1
+SSB_others,2,4,BER,NEIL2,TRUE,"",NEIL2
+SSB_others,2,5,BER,APE1,TRUE,"",APE1
+SSB_others,2,6,BER,PNKP,TRUE,"",PNKP
+SSB_others,2,7,BER,FEN1,TRUE,"",FEN1
+SSB_others,2,8,NER,XPA,TRUE,"",XPA
+SSB_others,2,9,NER,XPC,TRUE,"",XPC
+SSB_others,2,10,NER,RAD23B,TRUE,"",RAD23B
+SSB_others,2,11,NER,CETN2,TRUE,"",CETN2
+SSB_others,2,12,NER,CSA,TRUE,"",CSA
+SSB_others,2,13,NER,CSB,TRUE,"",CSB
+SSB_others,2,14,NER,DDB1,TRUE,"",DDB1
+SSB_others,2,15,NER,DDB2,TRUE,"",DDB2
+SSB_others,2,16,NER,XPB,TRUE,"",XPB
+SSB_others,2,17,NER,XPD,TRUE,"",XPD
+SSB_others,2,18,NER,p8,TRUE,"",p8
+SSB_others,2,19,NER,p34,TRUE,"",p34
+SSB_others,2,20,NER,p44,TRUE,"",p44
+SSB_others,2,21,NER,p52,TRUE,"",p52
+SSB_others,2,22,NER,p62,TRUE,"",p62
+SSB_others,2,23,NER,ERCC1,TRUE,"",ERCC1
+SSB_others,2,24,NER,XPF,TRUE,"",XPF
+SSB_others,2,25,NER,XPG,TRUE,"",XPG
+SSB_others,2,26,MMR,MSH1,TRUE,"",MSH1
+SSB_others,2,27,MMR,MSH2,TRUE,"",MSH2
+SSB_others,2,28,MMR,MSH3,TRUE,"",MSH3
+SSB_others,2,29,MMR,MSH6,TRUE,"",MSH6
+SSB_others,2,30,MMR,PMS2,TRUE,"",PMS2
+SSB_others,2,31,FA,FANCA,TRUE,"",FANCA
+SSB_others,2,32,FA,FANCB,TRUE,"",FANCB
+SSB_others,2,33,FA,FANCC,TRUE,"",FANCC
+SSB_others,2,34,FA,FANCE,TRUE,"",FANCE
+SSB_others,2,35,FA,FANCF,TRUE,"",FANCF
+SSB_others,2,36,FA,FANCG,TRUE,"",FANCG
+SSB_others,2,37,FA,FANCL,TRUE,"",FANCL
+SSB_others,2,38,FA,FANCT,TRUE,"",FANCT
+SSB_others,2,39,FA,FANCM,TRUE,"",FANCM
+SSB_others,2,40,FA,MHF1,TRUE,"",MHF1
+SSB_others,2,41,FA,MHF2,TRUE,"",MHF2
+SSB_others,2,42,FA,FAAP100,TRUE,"",FAAP100
+SSB_others,2,43,FA,FAAP20,TRUE,"",FAAP20
+SSB_others,2,44,FA,FAAP24,TRUE,"",FAAP24
+SSB_others,2,45,FA,FANCD2,TRUE,"",FANCD2
+SSB_others,2,46,FA,FANCI,TRUE,"",FANCI
+SSB_others,2,47,shared,PolB,FALSE,shared rows excluded according to the current instruction,PolB
+SSB_others,2,48,shared,PolD1,FALSE,shared rows excluded according to the current instruction,PolD1
+SSB_others,2,49,shared,PolE,FALSE,shared rows excluded according to the current instruction,PolE
+SSB_others,2,50,shared,XRCC1,FALSE,shared rows excluded according to the current instruction,XRCC1
+SSB_others,2,51,shared,Ligase I,FALSE,shared rows excluded according to the current instruction,Ligase I
+SSB_others,2,52,shared,Ligase III,FALSE,shared rows excluded according to the current instruction,Ligase III
+SSB_others,2,53,shared,PCNA,FALSE,shared rows excluded according to the current instruction,PCNA
+SSB_others,2,54,shared,RPA1,FALSE,shared rows excluded according to the current instruction,RPA1
+SSB_others,2,55,shared,RPA2,FALSE,shared rows excluded according to the current instruction,RPA2
+SSB_others,2,56,shared,RPA3,FALSE,shared rows excluded according to the current instruction,RPA3

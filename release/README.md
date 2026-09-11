@@ -1,78 +1,59 @@
-# Mouse spaceflight transcriptome: publication release
+# Mouse spaceflight transcriptome
 
-Open `release/index.html` for the clickable figure review gallery.
-The single final output is `release/`. Figures are freshly rendered from frozen
-publication inputs, with the latest manuscript numbering: Fig. 4b–d and 5b–e
-are log2 expression boxplots; Fig. 4e and 5f are meta-log2FC dotplots.
-Fig. 1a is prepared separately and is intentionally absent.
+The approved manuscript figures are in `release/Main/` and `release/Suppl/`.
+This repository preserves the selected log2-expression version. Fig. 1a is
+prepared separately. Gene selection and analysis use stable Ensembl identifiers;
+gene symbols are display labels. Random seed is 25.
 
-## Rebuild
+## Rebuild figures and supplementary tables
 
-R 4.4.3 was used. R dependencies are recorded in `renv.lock`; Python dependencies
-are pinned in `requirements.txt`.
+The publication renderer starts from the versioned numerical inputs. It writes
+only to a new output directory, including the workbook exports.
 
 ```sh
 Rscript -e 'if (!requireNamespace("renv", quietly=TRUE)) install.packages("renv"); renv::restore()'
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
-PYTHON="$PWD/.venv/bin/python" Rscript workflow/run_final_release.R reproduced_results/check
-Rscript tests/validate_final_release.R reproduced_results/check full
+PYTHON="$PWD/.venv/bin/python" Rscript workflow/run_final_release.R reproduced_results/final
 ```
 
-The destination must not exist. The build does not overwrite earlier results.
-This is a frozen-input publication reproduction package: it regenerates figures
-and the seven-pathway log2-expression summaries and ANOVAs. It does not rerun
-raw-read processing, differential expression, GO enrichment or YARN normalization.
+R 4.4.3 and the versions in `renv.lock` were used for the approved figures.
+Use the same fonts and graphics libraries for pixel-identical rendering; PDF
+metadata such as creation dates can differ. Python dependencies are pinned in
+`requirements.txt`.
 
-## Final outputs
+## Outputs and statistics
 
-- `release/Main/`: 16 main panels, each in PNG and PDF.
-- `release/Suppl/`: 9 supplementary panels, each in PNG and PDF.
-- `release/Suppl/Fig_S6_per_tissue/`: 26 tissue correlation panels, each in PNG and PDF.
-- `release/tables/`: 27 unchanged manuscript tables.
-- `release/tables/log/`: four regenerated log2-expression statistical tables (official formal release).
-- `release/tables/linear/`: four regenerated linear-expression statistical tables (reference).
-- `release/provenance/`: input/output SHA-256 manifests, plotting audits,
-  sample metadata audit, runtime and source revision.
+- `Main/`: 16 panels, each PNG and PDF. Fig. 4b–d and 5b–e show log2 expression;
+  Fig. 4a/5a are tissue expression heatmaps and Fig. 4e/5f are meta-log2FC dotplots.
+- `Suppl/`: 9 panels and 26 individual tissue correlation panels, each PNG/PDF.
+  Fig. S1 is Hallmark enrichment. Fig. S6 is sample-log2FC Spearman correlation,
+  with equal-weight Fisher-z pooling, not a meta-log2FC effect-size plot.
+- `Supplementary_Tables/`: Tables S1–S3 and S5–S8, plus the supplied seven-sheet
+  `2way_anova_7_pathways.xlsx` used for significance.
+- `tables/log/`: regenerated expression summaries and sample values.
+- `provenance/`: figure/source mapping, sample scope, tissue order and runtime.
 
-No descriptive-name duplicates or alternative style exports are included.
-Historical versions remain recoverable through Git.
-See `provenance/cleanup_report.md` for the cleanup scope and verification.
+The old `Table_S4_Repair_Genes_Expression_and_ANOVA.xlsx` was not used for the
+paper's significance analysis. The supplied `2way_anova_7_pathways.xlsx` is an
+external software result, preserved verbatim under `data/external_statistics/`.
+The renderer neither recalculates it nor substitutes the obsolete one-way ANOVA.
+The external result alone does not encode a reproducible software analysis setup.
 
-## Source layout
+The frozen `results/tables/` CSVs are numerical inputs to the publication package.
+Copying them is not an upstream analysis rerun. See `upstream/README.md` for the
+acquisition and analysis source chain and its validation status.
 
-`data/publication_input/` contains frozen numerical inputs and source audits.
-`results/tables/` contains 29 frozen source tables: 27 manuscript tables and
-two metadata audits. These are retained inputs, not disposable output.
-`R/final_figures/`, the two retained scripts in `R/figures/` and the two Python
-renderers implement the selected figures. The retained Hallmark style helper
-supports its approved appearance. `R/data/` contains optional network-dependent
-metadata-refresh scripts and is separate from the offline release build.
+## Repository layout
 
-## Analysis conventions
+`R/` and `python/` contain the selected renderers and metadata preparation.
+`workflow/` contains the publication entry point, workbook exporter and gallery.
+`data/publication_input/` contains the exact publication inputs.
+`release/` preserves the approved outputs. Historical alternatives and removed
+scripts remain recoverable from Git history. The retained Word document is an
+editorial manuscript draft, not executable analysis documentation.
 
-Ensembl IDs are used for gene selection, grouping and clustering. Symbols are
-display labels. Random seed is 25. The metadata scope is 761 sample columns
-across 48 accessions and 26 tissues; sample columns must not automatically be
-interpreted as unique animals.
-
-Fig. 1c displays the frozen 26 × 15 mission-equal mean NES matrix. Positive NES
-means enrichment toward the flight-ranked end, not pathway activation.
-Fig. 2 and S6 use ground-referenced sample log2FC, within-tissue Spearman
-correlations and equal-weight Fisher-z pooling across eligible tissues.
-
-Fig. 4a and 5a both display YARN qsmooth log2 expression with average-linkage
-tissue trees based on 1 − Spearman rho. Fig. 4e and 5f display tissue meta-log2FC
-(median of mission-level medians) with nominal signed-Stouffer P < 0.05.
-Neil2 (ENSMUSG00000035121) is excluded from the 45-component SSB display.
-
-Pathway boxplots use YARN qsmooth normalized expression on log2 scale (`YARNNormalizedLog2`).
-The central line is the mean; box edges are Q1/Q3, with the existing 1.5-IQR whisker convention.
-Gene and pathway one-way ANOVAs describe tissue heterogeneity. Their nominal P values
-are retained and exported to `release/tables/log/`. Linear-scale tables are also preserved under
-`release/tables/linear/` for numerical cross-reference.
-
-The existing methods Word document is retained as a manuscript draft; its
-historical script references and sample-unit wording need editorial reconciliation
-before submission. Author-selected licensing and citation metadata are tracked
-in `provenance/PUBLICATION_CHECKLIST.md`.
+The publication input scope is 761 sample columns across 48 accessions and
+26 tissues. Sample columns are not automatically unique animals. Fig. 2 uses
+360 flight sample observations; tissues with fewer than five flight samples are
+shown individually but excluded from the cross-tissue correlation pooling.

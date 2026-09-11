@@ -1,0 +1,17 @@
+{
+  "original_supplied_path": "/Users/gzy2520/Desktop/graduate design/outputs/20260909_2way_anova_7_sheets/2way_anova_7_pathways.xlsx",
+  "filename": "2way_anova_7_pathways.xlsx",
+  "sha256": "3f4fcb1db4fdc5ea5ef9230387b81274f5d3175222668da242cd914b9926bea3",
+  "sheet_order": [
+    "NER",
+    "MMR",
+    "HR",
+    "FA",
+    "BER",
+    "A-EJ",
+    "NHEJ"
+  ],
+  "role": "User-supplied actual significance workbook; copied unchanged as Table S4.",
+  "reproduction_scope": "Preserves software output only. No statistical model is recalculated; software name/version and model settings are not inferred.",
+  "excluded": "Obsolete Table_S4_Repair_Genes_Expression_and_ANOVA.xlsx and Table_S1_to_S4_Consolidated.xlsx are not used or exported."
+}

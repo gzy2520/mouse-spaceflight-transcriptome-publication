@@ -1,0 +1,28 @@
+Pathway,PathwayOrder,SeedGOID,ExpansionMode,RuleLabel,Rationale
+BER,1,GO:0006284,pathway_related,BER biological process,Root term and all descendants through the five-relation closure used in the three-source comparison.
+BER,1,GO:0000012,pathway_related,Single-strand break repair,Root term and all descendants through the five-relation closure used in the three-source comparison.
+BER,1,GO:0019104,pathway_related,BER glycosylase activity,Root term and all descendants through the five-relation closure used in the three-source comparison.
+BER,1,GO:0003906,pathway_related,BER AP endonuclease activity,Root term and all descendants through the five-relation closure used in the three-source comparison.
+BER,1,GO:0051575,pathway_related,BER 5-prime dRP lyase activity,Root term and all descendants through the five-relation closure used in the three-source comparison.
+BER,1,GO:0106334,pathway_related,BER 3-prime dRP lyase activity,Root term and all descendants through the five-relation closure used in the three-source comparison.
+BER,1,GO:0070421,pathway_related,BER ligase III-XRCC1 complex,Root term and all descendants through the five-relation closure used in the three-source comparison.
+NER,2,GO:0006289,pathway_related,NER biological process,Root term and all descendants through the five-relation closure used in the three-source comparison.
+NER,2,GO:0000109,pathway_related,NER complex,Root term and all descendants through the five-relation closure used in the three-source comparison.
+MMR,3,GO:0006298,pathway_related,MMR biological process,Root term and all descendants through the five-relation closure used in the three-source comparison.
+MMR,3,GO:0032300,pathway_related,MMR complex,Root term and all descendants through the five-relation closure used in the three-source comparison.
+MMR,3,GO:0030983,pathway_related,Mismatch recognition,Root term and all descendants through the five-relation closure used in the three-source comparison.
+MMR,3,GO:0032404,pathway_related,MMR complex binding,Root term and all descendants through the five-relation closure used in the three-source comparison.
+FA,4,GO:0036297,pathway_related,FA interstrand cross-link repair,Root term and all descendants through the five-relation closure used in the three-source comparison.
+FA,4,GO:0043240,pathway_related,FA nuclear complex,Root term and all descendants through the five-relation closure used in the three-source comparison.
+HR,5,GO:0000724,pathway_related,HR-mediated DSB repair,Root term and all descendants through the five-relation closure used in the three-source comparison.
+HR,5,GO:0000725,pathway_related,Recombinational repair,Root term and all descendants through the five-relation closure used in the three-source comparison.
+HR,5,GO:0048476,pathway_related,Holliday-junction resolvase complex,Root term and all descendants through the five-relation closure used in the three-source comparison.
+HR,5,GO:0009379,pathway_related,Holliday-junction helicase complex,Root term and all descendants through the five-relation closure used in the three-source comparison.
+HR,5,GO:0009378,pathway_related,Holliday-junction helicase activity,Root term and all descendants through the five-relation closure used in the three-source comparison.
+HR,5,GO:0000150,pathway_related,DNA strand exchange activity,Root term and all descendants through the five-relation closure used in the three-source comparison.
+AEJ,6,GO:0097681,pathway_related,Alternative end joining,Root term and all descendants through the five-relation closure used in the three-source comparison.
+NHEJ,7,GO:0097680,pathway_related,Classical NHEJ,Root term and all descendants through the five-relation closure used in the three-source comparison.
+NHEJ,7,GO:0070419,pathway_related,NHEJ complex,Root term and all descendants through the five-relation closure used in the three-source comparison.
+NHEJ,7,GO:0043564,pathway_related,Ku70-Ku80 complex,Root term and all descendants through the five-relation closure used in the three-source comparison.
+NHEJ,7,GO:0070418,pathway_related,DNA-PK complex,Root term and all descendants through the five-relation closure used in the three-source comparison.
+NHEJ,7,GO:0004677,pathway_related,DNA-PK activity,Root term and all descendants through the five-relation closure used in the three-source comparison.

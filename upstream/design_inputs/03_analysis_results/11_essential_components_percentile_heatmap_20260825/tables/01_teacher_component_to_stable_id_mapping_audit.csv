@@ -1,0 +1,30 @@
+EnsemblID,RequestedComponent,Pathway,Essential components,ComponentSource,ComponentOrder,ExpectedMouseSymbol,Interpretation,MGI_ID,EntrezID,OfficialMouseSymbol,GeneBiotype,DisplayComponent,PathwayDisplay
+ENSMUSG00000022672,DNA-PKcs,NHEJ,DNA-PKcs,Teacher workbook,1,Prkdc,DNA-dependent protein kinase catalytic subunit,MGI:104779,19090,Prkdc,protein_coding,Prkdc,NHEJ
+ENSMUSG00000022471,Ku70,NHEJ,Ku70,Teacher workbook,2,Xrcc6,Ku70,MGI:95606,14375,Xrcc6,protein_coding,Xrcc6,NHEJ
+ENSMUSG00000026187,Ku80,NHEJ,Ku80,Teacher workbook,3,Xrcc5,Ku80,MGI:104517,22596,Xrcc5,protein_coding,Xrcc5,NHEJ
+ENSMUSG00000026162,XLF,NHEJ,XLF,Teacher workbook,4,Nhej1,XLF/NHEJ1,MGI:1922820,75570,Nhej1,protein_coding,Nhej1,NHEJ
+ENSMUSG00000047617,PAXX,NHEJ,PAXX,Teacher workbook,5,Paxx,PAXX,MGI:2442831,227622,Paxx,protein_coding,Paxx,NHEJ
+ENSMUSG00000021615,XRCC4,NHEJ,XRCC4,Teacher workbook,6,Xrcc4,XRCC4,MGI:1333799,108138,Xrcc4,protein_coding,Xrcc4,NHEJ
+ENSMUSG00000049717,Ligase IV,NHEJ,Ligase IV,Teacher workbook,7,Lig4,DNA ligase IV,MGI:1335098,319583,Lig4,protein_coding,Lig4,NHEJ
+ENSMUSG00000000751,PRA1,HR,PRA1,Teacher workbook,8,Rpa1,Teacher label PRA1 interpreted as RPA1 (replication protein A1); official mouse symbol Rpa1,MGI:1915525,68275,Rpa1,protein_coding,Rpa1,HR
+ENSMUSG00000028884,RPA2,HR,,Teacher supplementary instruction,9,Rpa2,RPA2 subunit of the RPA heterotrimer,MGI:1339939,19891,Rpa2,protein_coding,Rpa2,HR
+ENSMUSG00000012483,RPA3,HR,,Teacher supplementary instruction,10,Rpa3,RPA3 subunit of the RPA heterotrimer,MGI:1915490,68240,Rpa3,protein_coding,Rpa3,HR
+ENSMUSG00000017146,BRCA1,HR,BRCA1,Teacher workbook,11,Brca1,BRCA1,MGI:104537,12189,Brca1,protein_coding,Brca1,HR
+ENSMUSG00000041147,BRCA2,HR,BRCA2,Teacher workbook,12,Brca2,BRCA2,MGI:109337,12190,Brca2,protein_coding,Brca2,HR
+ENSMUSG00000026196,BARD1,HR,BARD1,Teacher workbook,13,Bard1,BARD1,MGI:1328361,12021,Bard1,protein_coding,Bard1,HR
+ENSMUSG00000044702,PALB2,HR,PALB2,Teacher workbook,14,Palb2,PALB2,MGI:3040695,233826,Palb2,protein_coding,Palb2,HR
+ENSMUSG00000030528,BLM,HR,BLM,Teacher workbook,15,Blm,BLM,MGI:1328362,12144,Blm,protein_coding,Blm,HR
+ENSMUSG00000027323,Rad51,HR,Rad51,Teacher workbook,16,Rad51,RAD51,MGI:97890,19361,Rad51,protein_coding,Rad51,HR
+ENSMUSG00000028702,Rad54,HR,Rad54,Teacher workbook,17,Rad54l,RAD54 = Rad54l,MGI:894697,19366,Rad54l,protein_coding,Rad54l,HR
+ENSMUSG00000041238,CtIp,HR,CtIp,Teacher workbook,18,Rbbp8,CtIP = Rbbp8,MGI:2442995,225182,Rbbp8,protein_coding,Rbbp8,HR
+ENSMUSG00000038644,PolD1,HR,PolD1,Teacher workbook,19,Pold1,DNA polymerase delta 1,MGI:97741,18971,Pold1,protein_coding,Pold1,HR
+ENSMUSG00000031928,MRE11,HR_A-EJ,MRE11,Teacher workbook,20,Mre11a,MRE11 = Mre11a,MGI:1100512,17535,Mre11a,protein_coding,Mre11a,HR–A-EJ
+ENSMUSG00000020380,Rad50,HR_A-EJ,Rad50,Teacher workbook,21,Rad50,RAD50,MGI:109292,19360,Rad50,protein_coding,Rad50,HR–A-EJ
+ENSMUSG00000028224,NBS1,HR_A-EJ,NBS1,Teacher workbook,22,Nbn,NBS1 = Nbn,MGI:1351625,27354,Nbn,protein_coding,Nbn,HR–A-EJ
+ENSMUSG00000039748,Exo1,HR_A-EJ,Exo1,Teacher workbook,23,Exo1,EXO1,MGI:1349427,26909,Exo1,protein_coding,Exo1,HR–A-EJ
+ENSMUSG00000036875,DNA2,HR_A-EJ,DNA2,Teacher workbook,24,Dna2,DNA2,MGI:2443732,327762,Dna2,protein_coding,Dna2,HR–A-EJ
+ENSMUSG00000026496,Parp1,A-EJ,Parp1,Teacher workbook,25,Parp1,PARP1,MGI:1340806,11545,Parp1,protein_coding,Parp1,A-EJ
+ENSMUSG00000034206,PolQ,A-EJ,PolQ,Teacher workbook,26,Polq,DNA polymerase theta,MGI:2155399,77782,Polq,protein_coding,Polq,A-EJ
+ENSMUSG00000051768,XRCC1,A-EJ,XRCC1,Teacher workbook,27,Xrcc1,XRCC1,MGI:99137,22594,Xrcc1,protein_coding,Xrcc1,A-EJ
+ENSMUSG00000056394,Ligase I,A-EJ,Ligase I,Teacher workbook,28,Lig1,DNA ligase I,MGI:101789,16881,Lig1,protein_coding,Lig1,A-EJ
+ENSMUSG00000020697,Ligase III,A-EJ,Ligase III,Teacher workbook,29,Lig3,DNA ligase III,MGI:109152,16882,Lig3,protein_coding,Lig3,A-EJ
